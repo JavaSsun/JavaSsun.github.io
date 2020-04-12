@@ -28,12 +28,6 @@
   
     <link rel="icon" href="/assets/icon.png">
   
-
-  
-    <link rel="stylesheet" href="/lib/gitalk/gitalk.css">
-    <script src="/lib/gitalk/gitalk.min.js"></script>
-  
-
   <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
   <style type="text/css">
   
@@ -354,24 +348,26 @@
   
 
   
-  <div class="gitalk">
-    <div id="gitalk-container"></div>
-    <script type="text/javascript">
-        const gitalk = new Gitalk({
-            clientID: '6de296bf97c5dad73d1f',
-            clientSecret: 'ba695de1ebc460baabe8af89681b7fb9d8efa2f0',
-            repo: 'My-Blog-Comments',
-            owner: 'JavaSsun',
-            admin: ['JavaSsun'],
-            id: md5(location.pathname),      // Ensure uniqueness and length less than 50
-            distractionFreeMode: false  // Facebook-like distraction free mode
-        })
- 
-        gitalk.render('gitalk-container')
-    </script>
-</div>
+    <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
 
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: '1e900ec23611537d4e04',
+  	clientSecret: '6d66e5928125a240ab4b0af05e25975e4b51aa69',
+  	repo: 'mycomments',
+  	owner: 'JavaSsun',
+  	admin: [''],
+  	id: 'Tue Jul 03 2018 00:00:00 GMT+0800',
+  	distractionFreeMode: 'true'
+})
+gitalk.render('gitalk-container') 
+}
+</script>
+  
 
 
           </div>
