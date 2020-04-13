@@ -11,7 +11,7 @@
   <meta name="description" content="Share">
 <meta property="og:type" content="website">
 <meta property="og:title" content="haoran&#39;s blog">
-<meta property="og:url" content="http://javassun.github.io/categories/%E6%97%A5%E5%BF%97/%E4%BA%8C%E7%BA%A7%E7%9B%AE%E5%BD%95/index.html">
+<meta property="og:url" content="http://javassun.github.io/categories/hexo/%E4%BA%8C%E7%BA%A7%E7%9B%AE%E5%BD%95/index.html">
 <meta property="og:site_name" content="haoran&#39;s blog">
 <meta property="og:description" content="Share">
 <meta property="article:author" content="Allen">
@@ -233,11 +233,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/日志//" class="article-tag-list-link color3">日志</a>
+        			<a href="/categories/hexo//" class="article-tag-list-link color5">hexo</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/日志/二级目录//" class="article-tag-list-link color5">二级目录</a>
+        			<a href="/categories/hexo/二级目录//" class="article-tag-list-link color5">二级目录</a>
         		</li>
       		
 		</ul>
@@ -272,6 +272,55 @@
           </div>
     </div>
   </div>
+
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv" >
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" >
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+
+<!--《添加网站运行时间  <br/>-->
+
+    <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    <script>
+    var now = new Date();
+
+    function createtime() {
+        //此处修改你的建站时间或者网站上线时间
+        var create_time = '02/14/2018 00:00:00';
+        now.setTime(now.getTime() + 250);
+        days = (now - grt) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+        }
+        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if (String(snum).length == 1) {
+            snum = "0" + snum;
+        }
+        document.getElementById("timeDate").innerHTML = " | 本站已安全运行 " + dnum + " 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+    setInterval("createtime()", 250);
+    </script>
+
+<!-- 添加网站运行时间》-->
+
 </footer>
 
     </div>
@@ -354,6 +403,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">hello</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">others</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -435,7 +492,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">Nothing</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;一个脱离了高级趣味的人</div>
   	  	
     	</section>
     
