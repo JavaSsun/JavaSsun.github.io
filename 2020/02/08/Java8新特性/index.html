@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://JavaSsun.github.io">
   <title>Java8新特性 | haoran&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言2014年，Oracle发布了Java8新版本后，愈来愈多的公司开始尝试使用Java8新特性来摆脱繁琐的语法，在使用Java8代码编写公司项目后，为了追上时代潮流，开始系统学习Java8的一些新特性。 疫情在家闲来无事，把之前用过的Java8在收集整理网上各种Java8学习笔记，此篇文章算是个人Java8学习笔记的小结。  速度更块 代码更少（Lambda表达式） 强大的Stream API">
+  <meta name="description" content="前言2014年，Oracle发布了Java8新版本后，愈来愈多的公司开始尝试使用Java8新特性来摆脱繁琐的语法，在使用Java8代码编写公司项目后，尝到了“语法糖”的妙处，由此开始了系统学习Java8的一些新特性。疫情在家，闲来无事，收集整理网上各种Java8学习笔记后，汇成一篇，以便诸君参考，亦是个人Java8学习的小结。 特性 速度更块 代码更少（Lambda表达式） 强大的Stream A">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java8新特性">
 <meta property="og:url" content="http://javassun.github.io/2020/02/08/Java8%E6%96%B0%E7%89%B9%E6%80%A7/index.html">
 <meta property="og:site_name" content="haoran&#39;s blog">
-<meta property="og:description" content="前言2014年，Oracle发布了Java8新版本后，愈来愈多的公司开始尝试使用Java8新特性来摆脱繁琐的语法，在使用Java8代码编写公司项目后，为了追上时代潮流，开始系统学习Java8的一些新特性。 疫情在家闲来无事，把之前用过的Java8在收集整理网上各种Java8学习笔记，此篇文章算是个人Java8学习笔记的小结。  速度更块 代码更少（Lambda表达式） 强大的Stream API">
+<meta property="og:description" content="前言2014年，Oracle发布了Java8新版本后，愈来愈多的公司开始尝试使用Java8新特性来摆脱繁琐的语法，在使用Java8代码编写公司项目后，尝到了“语法糖”的妙处，由此开始了系统学习Java8的一些新特性。疫情在家，闲来无事，收集整理网上各种Java8学习笔记后，汇成一篇，以便诸君参考，亦是个人Java8学习的小结。 特性 速度更块 代码更少（Lambda表达式） 强大的Stream A">
 <meta property="og:image" content="http://javassun.github.io/2020/02/08/Java8%E6%96%B0%E7%89%B9%E6%80%A7/97801292-5716-4519-9bff-9f8f08aed48b.png">
 <meta property="og:image" content="http://javassun.github.io/2020/02/08/Java8%E6%96%B0%E7%89%B9%E6%80%A7/743ea2bc-aeda-44e0-b691-31c354b94f47.png">
 <meta property="og:image" content="http://javassun.github.io/2020/02/08/Java8%E6%96%B0%E7%89%B9%E6%80%A7/37346492-7531-44b8-a2bf-681c14b381ec.jpg">
@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://javassun.github.io/2020/02/08/Java8%E6%96%B0%E7%89%B9%E6%80%A7/1d49dcda-eb3d-4eb7-aa3c-889e5607867f.png">
 <meta property="og:image" content="http://javassun.github.io/2020/02/08/Java8%E6%96%B0%E7%89%B9%E6%80%A7/0b30f162-415f-4a9c-a650-ba13116ff20b.png">
 <meta property="article:published_time" content="2020-02-08T04:43:25.000Z">
-<meta property="article:modified_time" content="2020-04-16T03:48:37.954Z">
+<meta property="article:modified_time" content="2020-04-16T03:53:57.447Z">
 <meta property="article:author" content="Allen">
 <meta property="article:tag" content="java8">
 <meta name="twitter:card" content="summary">
@@ -267,9 +267,8 @@
     <div class="article-entry" itemprop="articleBody">
       
 	
-		<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>2014年，Oracle发布了Java8新版本后，愈来愈多的公司开始尝试使用Java8新特性来摆脱繁琐的语法，在使用Java8代码编写公司项目后，为了追上时代潮流，开始系统学习Java8的一些新特性。</p>
-<p>疫情在家闲来无事，把之前用过的Java8在收集整理网上各种Java8学习笔记，此篇文章算是个人Java8学习笔记的小结。</p>
-<ul>
+		<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>2014年，Oracle发布了Java8新版本后，愈来愈多的公司开始尝试使用Java8新特性来摆脱繁琐的语法，在使用Java8代码编写公司项目后，尝到了“语法糖”的妙处，由此开始了系统学习Java8的一些新特性。<br>疫情在家，闲来无事，收集整理网上各种Java8学习笔记后，汇成一篇，以便诸君参考，亦是个人Java8学习的小结。</p>
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
 <li>速度更块</li>
 <li>代码更少（Lambda表达式）</li>
 <li>强大的Stream API</li>
@@ -277,6 +276,7 @@
 <li>最大化减少空指针异常 Optional</li>
 </ul>
 <p><font color="red">核心为：Lambda表达式与Stream API</font></p>
+<a id="more"></a>
 <h2 id="1-Lambda表达式"><a href="#1-Lambda表达式" class="headerlink" title="1. Lambda表达式"></a>1. Lambda表达式</h2><h3 id="1-为什么使用Lambda表达式"><a href="#1-为什么使用Lambda表达式" class="headerlink" title="1. 为什么使用Lambda表达式"></a>1. 为什么使用Lambda表达式</h3><p><strong>Lambda</strong>是一个<font color="red">匿名函数</font>，我们可以把Lambda表达式理解为是<font color="red">一段可以传递的代码</font>（将代码像数据一样传递）。可以写出更简洁、更灵活的代码。作为一种紧凑的代码风格，使Java语言的表达更加凝练。</p>
 <ul>
 <li>从匿名类到 Lambda 的转换</li>
