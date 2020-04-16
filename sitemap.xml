@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://javassun.github.io/2020/02/08/Java8%E6%96%B0%E7%89%B9%E6%80%A7/</loc>
+    
+    <lastmod>2020-04-16T16:17:20.801Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://javassun.github.io/2019/11/28/LinkedHashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/</loc>
     
     <lastmod>2020-04-16T10:05:57.494Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>http://javassun.github.io/2019/11/16/ArrayList%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/</loc>
     
     <lastmod>2020-04-16T10:05:19.287Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://javassun.github.io/2020/02/08/Java8%E6%96%B0%E7%89%B9%E6%80%A7/</loc>
-    
-    <lastmod>2020-04-16T08:32:55.827Z</lastmod>
     
   </url>
   
