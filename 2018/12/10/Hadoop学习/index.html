@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://JavaSsun.github.io">
   <title>Hadoop学习 | haoran&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Author: haoransunWechat: SHR—97 BigData是什么？&amp;nbsp;&amp;nbsp; 巨量资料,需要利用目前主流软件工具在合理的时间范围内对数据进行截取，转换已达到帮助企业获取有用资讯的目的。&amp;nbsp;&amp;nbsp; 数据量极大：GB、TB、PB数据样板足够大。&amp;nbsp;&amp;nbsp; 数据时效性：time-value 数据处理速度快，合理的时间范围。&amp;nbsp;&amp;nbs">
+  <meta name="description" content="Author: haoransunWechat: SHR—97 1 BigData是什么？&amp;nbsp;&amp;nbsp; 巨量资料,需要利用目前主流软件工具在合理的时间范围内对数据进行截取，转换已达到帮助企业获取有用资讯的目的。&amp;nbsp;&amp;nbsp; 数据量极大：GB、TB、PB数据样板足够大。&amp;nbsp;&amp;nbsp; 数据时效性：time-value 数据处理速度快，合理的时间范围。&amp;nbsp;&amp;n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hadoop学习">
 <meta property="og:url" content="http://javassun.github.io/2018/12/10/Hadoop%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="haoran&#39;s blog">
-<meta property="og:description" content="Author: haoransunWechat: SHR—97 BigData是什么？&amp;nbsp;&amp;nbsp; 巨量资料,需要利用目前主流软件工具在合理的时间范围内对数据进行截取，转换已达到帮助企业获取有用资讯的目的。&amp;nbsp;&amp;nbsp; 数据量极大：GB、TB、PB数据样板足够大。&amp;nbsp;&amp;nbsp; 数据时效性：time-value 数据处理速度快，合理的时间范围。&amp;nbsp;&amp;nbs">
+<meta property="og:description" content="Author: haoransunWechat: SHR—97 1 BigData是什么？&amp;nbsp;&amp;nbsp; 巨量资料,需要利用目前主流软件工具在合理的时间范围内对数据进行截取，转换已达到帮助企业获取有用资讯的目的。&amp;nbsp;&amp;nbsp; 数据量极大：GB、TB、PB数据样板足够大。&amp;nbsp;&amp;nbsp; 数据时效性：time-value 数据处理速度快，合理的时间范围。&amp;nbsp;&amp;n">
 <meta property="og:image" content="http://javassun.github.io/2018/12/10/Hadoop%E5%AD%A6%E4%B9%A0/167b4606-c285-4335-a8c4-f35058d2ea44.jpg">
 <meta property="og:image" content="http://javassun.github.io/2018/12/10/Hadoop%E5%AD%A6%E4%B9%A0/02eec767-36ad-402f-8810-01714d9289b5.jpg">
 <meta property="og:image" content="http://javassun.github.io/2018/12/10/Hadoop%E5%AD%A6%E4%B9%A0/67e36864-d57b-4d53-a6ee-1caeec63c5cf.png">
@@ -46,7 +46,7 @@
 <meta property="og:image" content="http://javassun.github.io/2018/12/10/Hadoop%E5%AD%A6%E4%B9%A0/430bfe18-50fc-4d96-afa7-82e86c19376d.jpg">
 <meta property="og:image" content="http://javassun.github.io/2018/12/10/Hadoop%E5%AD%A6%E4%B9%A0/198c9b96-5511-4adb-b818-745806da174e.jpg">
 <meta property="article:published_time" content="2018-12-10T11:43:43.000Z">
-<meta property="article:modified_time" content="2020-04-14T09:47:46.519Z">
+<meta property="article:modified_time" content="2020-04-16T06:22:14.362Z">
 <meta property="article:author" content="Allen">
 <meta property="article:tag" content="BigData">
 <meta name="twitter:card" content="summary">
@@ -276,16 +276,40 @@
 
 	<!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-BigData是什么？"><span class="toc-number">1.</span> <span class="toc-text">1 BigData是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-BigData面临的问题？"><span class="toc-number">2.</span> <span class="toc-text">2 BigData面临的问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Hadoop生态："><span class="toc-number">3.</span> <span class="toc-text">3 Hadoop生态：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-在自己的机器上产生公私钥对"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 在自己的机器上产生公私钥对</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Hadoop架构图-三个服务节点详解"><span class="toc-number">4.</span> <span class="toc-text">4 Hadoop架构图-三个服务节点详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-回顾文件系统-FastDFS-MongDB架构对比"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 回顾文件系统 FastDFS-MongDB架构对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-架构图"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 架构图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-HDFS-Shell-amp-JAVA-API"><span class="toc-number">5.</span> <span class="toc-text">5 HDFS Shell &amp; JAVA API</span></a></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+      
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
       
 	
 		<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h2 id="BigData是什么？"><a href="#BigData是什么？" class="headerlink" title="BigData是什么？"></a>BigData是什么？</h2><p>&nbsp;&nbsp; 巨量资料,需要利用目前主流软件工具在合理的时间范围内对数据进行截取，转换已达到帮助企业获取有用资讯的目的。<br>&nbsp;&nbsp; 数据量极大：GB、TB、PB数据样板足够大。<br>&nbsp;&nbsp; 数据时效性：time-value 数据处理速度快，合理的时间范围。<br>&nbsp;&nbsp; 数据多样性：数据存在形式多样化。<br>&nbsp;&nbsp; 数据可疑性：数据要有价值。—清洗、降噪（沙海淘金）</p>
-<h2 id="BigData面临的问题？"><a href="#BigData面临的问题？" class="headerlink" title="BigData面临的问题？"></a>BigData面临的问题？</h2><p>&nbsp;&nbsp; 存储、分析：<br>&nbsp;&nbsp; 方案：<br>&nbsp;&nbsp; 垂直提升：升级硬件，成本高 &nbsp;&nbsp; 计算机-摩尔定律（每18个月，成本不变-性能提升1倍）<br>&nbsp;&nbsp; <font color="red">水平扩展：成本可线性控制–分布式思维&nbsp;&nbsp; √</font><br>&nbsp;&nbsp; <strong>Hadoop</strong>就是在通过线性服务扩展，去解决大数据所面临的存储和计算。<br>&nbsp;&nbsp; <strong>Hadoop</strong>有两个模块：<br>&nbsp;&nbsp; &nbsp;&nbsp; <a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html" target="_blank" rel="noopener">HDFS</a> hadoop distributed file system：解决大数据存储问题。<br>&nbsp;&nbsp; &nbsp;&nbsp; MapReduce:通过Map阶段和Reduce阶段实现对大数据的分布式并行计算。</p>
+<h2 id="1-BigData是什么？"><a href="#1-BigData是什么？" class="headerlink" title="1 BigData是什么？"></a>1 BigData是什么？</h2><p>&nbsp;&nbsp; 巨量资料,需要利用目前主流软件工具在合理的时间范围内对数据进行截取，转换已达到帮助企业获取有用资讯的目的。<br>&nbsp;&nbsp; 数据量极大：GB、TB、PB数据样板足够大。<br>&nbsp;&nbsp; 数据时效性：time-value 数据处理速度快，合理的时间范围。<br>&nbsp;&nbsp; 数据多样性：数据存在形式多样化。<br>&nbsp;&nbsp; 数据可疑性：数据要有价值。—清洗、降噪（沙海淘金）</p>
+<h2 id="2-BigData面临的问题？"><a href="#2-BigData面临的问题？" class="headerlink" title="2 BigData面临的问题？"></a>2 BigData面临的问题？</h2><p>&nbsp;&nbsp; 存储、分析：<br>&nbsp;&nbsp; 方案：<br>&nbsp;&nbsp; 垂直提升：升级硬件，成本高 &nbsp;&nbsp; 计算机-摩尔定律（每18个月，成本不变-性能提升1倍）<br>&nbsp;&nbsp; <font color="red">水平扩展：成本可线性控制–分布式思维&nbsp;&nbsp; √</font><br>&nbsp;&nbsp; <strong>Hadoop</strong>就是在通过线性服务扩展，去解决大数据所面临的存储和计算。<br>&nbsp;&nbsp; <strong>Hadoop</strong>有两个模块：<br>&nbsp;&nbsp; &nbsp;&nbsp; <a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html" target="_blank" rel="noopener">HDFS</a> hadoop distributed file system：解决大数据存储问题。<br>&nbsp;&nbsp; &nbsp;&nbsp; MapReduce:通过Map阶段和Reduce阶段实现对大数据的分布式并行计算。</p>
 <a id="more"></a>
-<h2 id="Hadoop生态："><a href="#Hadoop生态：" class="headerlink" title="Hadoop生态："></a>Hadoop生态：</h2><p>&nbsp;&nbsp; HDFS：分布式文件存储系统<br>&nbsp;&nbsp; MapReduce：分布式计算引擎<br>&nbsp;&nbsp; HBase：基于HDFS上的一款列存储NoSQL数据库<br>&nbsp;&nbsp; Flume：分布式日志采集<br>&nbsp;&nbsp; Kafka：分布式消息队列<br>&nbsp;&nbsp; <strong>Mahout：机器学习算法库，绝大多数算法通过MapReduce计算模型实现</strong><br>&nbsp;&nbsp; Zookeeper：分布式协调服务<br><strong>大数据计算</strong><br>&nbsp;&nbsp; 离线计算：Hadoop Map Reduce<br>&nbsp;&nbsp; 近实时计算：Spark Core(离线计算)<br>&nbsp;&nbsp; 实时计算：Storm、KafkaStream、SparkStram</p>
+<h2 id="3-Hadoop生态："><a href="#3-Hadoop生态：" class="headerlink" title="3 Hadoop生态："></a>3 Hadoop生态：</h2><p>&nbsp;&nbsp; HDFS：分布式文件存储系统<br>&nbsp;&nbsp; MapReduce：分布式计算引擎<br>&nbsp;&nbsp; HBase：基于HDFS上的一款列存储NoSQL数据库<br>&nbsp;&nbsp; Flume：分布式日志采集<br>&nbsp;&nbsp; Kafka：分布式消息队列<br>&nbsp;&nbsp; <strong>Mahout：机器学习算法库，绝大多数算法通过MapReduce计算模型实现</strong><br>&nbsp;&nbsp; Zookeeper：分布式协调服务<br><strong>大数据计算</strong><br>&nbsp;&nbsp; 离线计算：Hadoop Map Reduce<br>&nbsp;&nbsp; 近实时计算：Spark Core(离线计算)<br>&nbsp;&nbsp; 实时计算：Storm、KafkaStream、SparkStram</p>
 <p><strong>HDFS安装（单机环境-伪分布式）</strong><br>1）CentOS-6.5 64 bit 基本配置<br>&nbsp;&nbsp;&nbsp;&nbsp;1.主机名必须CentOS</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi  &#x2F;etc&#x2F;sysconfig&#x2F;network </span><br><span class="line">NETWORKING&#x3D;yes</span><br><span class="line">HOSTNAME&#x3D;CentOS</span><br><span class="line">然后reboot即可。</span><br></pre></td></tr></table></figure>
 <p>&nbsp;&nbsp;&nbsp;&nbsp; 2.修改主机名和ip的映射关系</p>
@@ -302,7 +326,7 @@
 <li><p>基于口令的安全验证<br>&nbsp;&nbsp;&nbsp;&nbsp;只要你知道你自己的账号和口令，就可以登录到远程主机。所有传输的数据都会被加密，但是不能保证你正在连接的服务器是你想连接的服务器。可能会有别的服务器在冒充真正的服务器，即受到<font color="red">中间人</font>这种方式的攻击。</p>
 </li>
 <li><p>基于密钥的安全验证<br><img src="/2018/12/10/Hadoop%E5%AD%A6%E4%B9%A0/167b4606-c285-4335-a8c4-f35058d2ea44.jpg" alt><br>&nbsp;&nbsp;&nbsp;&nbsp;需要依靠<a href="https://baike.baidu.com/item/%E5%AF%86%E5%8C%99" target="_blank" rel="noopener">密匙</a>，也就是你必须为自己创建一对密匙，并把公用密匙放在需要访问的服务器上。如果你要连接到SSH服务器上，客户端软件就会向服务器发出请求，请求用你的密匙进行安全验证。服务器收到请求之后，先在该服务器上你的主目录下寻找你的公用密匙，然后把它和你发送过来的公用密匙进行比较。如果两个密匙一致，服务器就用公用密匙加密“质询”（challenge）并把它发送给客户端软件。客户端软件收到“质询”之后就可以用你的私人密匙解密再把它发送给服务器。用这种方式，你必须知道自己密匙的<a href="https://baike.baidu.com/item/%E5%8F%A3%E4%BB%A4" target="_blank" rel="noopener">口令</a>。但是，与第一种级别相比，第二种级别不需要在网络上传送口令。<br>第二种级别不仅加密所有传送的数据，而且“中间人”这种攻击方式也是不可能的（因为他没有你的私人密匙）。但是整个登录的过程可能需要10秒</p>
-<h3 id="在自己的机器上产生公私钥对"><a href="#在自己的机器上产生公私钥对" class="headerlink" title="在自己的机器上产生公私钥对"></a>在自己的机器上产生公私钥对</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa         使用rsa算法生成公私钥对（按4次回家即可）</span><br><span class="line">在用户的家目录下</span><br><span class="line">ls -al .ssh&#x2F;              即可看到</span><br><span class="line">使用 ssh-copy-id CentOS   添加到目标机的目录下（CentOS为目标机名称）</span><br><span class="line">被添加到 .ssh&#x2F;authorized_keys文件中</span><br><span class="line">ls -al .ssh&#x2F;              即可看到</span><br></pre></td></tr></table></figure>
+<h3 id="3-1-在自己的机器上产生公私钥对"><a href="#3-1-在自己的机器上产生公私钥对" class="headerlink" title="3.1 在自己的机器上产生公私钥对"></a>3.1 在自己的机器上产生公私钥对</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa         使用rsa算法生成公私钥对（按4次回家即可）</span><br><span class="line">在用户的家目录下</span><br><span class="line">ls -al .ssh&#x2F;              即可看到</span><br><span class="line">使用 ssh-copy-id CentOS   添加到目标机的目录下（CentOS为目标机名称）</span><br><span class="line">被添加到 .ssh&#x2F;authorized_keys文件中</span><br><span class="line">ls -al .ssh&#x2F;              即可看到</span><br></pre></td></tr></table></figure>
 <p>有了 .ssh/authorized_keys 才可免密码登录，使用 ssh root@CentOS 验证。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat .ssh&#x2F;id_rsa.pub &gt;&gt; .ssh&#x2F;authorized_keys</span><br><span class="line">与</span><br><span class="line">ssh-copy-id CentOS 等价</span><br></pre></td></tr></table></figure>
 <p>4）<strong>安装配置 Hadoop（单机环境）</strong></p>
@@ -345,12 +369,13 @@
 <p>页面效果：<img src="/2018/12/10/Hadoop%E5%AD%A6%E4%B9%A0/7a72e903-35e7-4c4e-aa3b-f0a0e7496aa6.png" alt><br><img src="/2018/12/10/Hadoop%E5%AD%A6%E4%B9%A0/9d8d0169-e01e-4092-8998-399a69eec890.png" alt></p>
 <p><strong>为什么需要使用hdfs namenode -format 对“老大”格式化呢？</strong><br><img src="/2018/12/10/Hadoop%E5%AD%A6%E4%B9%A0/a832df60-4c67-4993-a064-460b7f98de50.png" alt><br>使用 tree /usr/hadoop-2.6.0/hadoop-root/命令可以看到name下的block元数据，例如当前是 <font color="red">blk_1073741827和blk_1073741828</font>，对比下图，可知页面此处存储的是元数据。<img src="/2018/12/10/Hadoop%E5%AD%A6%E4%B9%A0/d1a8e8f4-1c4d-4a7b-a55d-b7f9a2ebf371.png" alt>)<img src="/2018/12/10/Hadoop%E5%AD%A6%E4%B9%A0/8c0f6317-7dac-4998-8639-ae08f1ae312a.png" alt><br><strong>如果启动不起来，只能使用命令 rm -rf /usr/hadoop-2.6.0/hadoop-root，删掉此文件夹，重新格式化 hdfs namenode -format</strong></p>
 <p><strong>如果想要获取某一个切片数据怎么办呢？使用 sz命令层层查找，如图所示：</strong><br><img src="/2018/12/10/Hadoop%E5%AD%A6%E4%B9%A0/e3b2f8c4-be62-4c14-bbd9-3d809d6ebe45.jpg" alt></p>
-<h1 id="Hadoop架构图-三个服务节点详解"><a href="#Hadoop架构图-三个服务节点详解" class="headerlink" title="Hadoop架构图-三个服务节点详解"></a>Hadoop架构图-三个服务节点详解</h1><h3 id="回顾文件系统-FastDFS-MongDB架构对比"><a href="#回顾文件系统-FastDFS-MongDB架构对比" class="headerlink" title="回顾文件系统 FastDFS-MongDB架构对比"></a>回顾文件系统 FastDFS-MongDB架构对比</h3><p><img src="/2018/12/10/Hadoop%E5%AD%A6%E4%B9%A0/984cd0ea-bfe4-4798-8ddb-4d6e57638359.jpg" alt><br><font color="red">木桶原理</font>：以性能最短的作为整个集群的上限。<br><font color="red">泳道原理</font>：各司其职，彼此独立。</p>
-<h3 id="HDFS架构图"><a href="#HDFS架构图" class="headerlink" title="HDFS架构图"></a><a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html" target="_blank" rel="noopener">HDFS</a>架构图</h3><p><img src="/2018/12/10/Hadoop%E5%AD%A6%E4%B9%A0/77d58bfc-e130-4014-b8a2-5b97969a9ab9.jpg" alt></p>
+<h2 id="4-Hadoop架构图-三个服务节点详解"><a href="#4-Hadoop架构图-三个服务节点详解" class="headerlink" title="4 Hadoop架构图-三个服务节点详解"></a>4 Hadoop架构图-三个服务节点详解</h2><h3 id="4-1-回顾文件系统-FastDFS-MongDB架构对比"><a href="#4-1-回顾文件系统-FastDFS-MongDB架构对比" class="headerlink" title="4.1 回顾文件系统 FastDFS-MongDB架构对比"></a>4.1 回顾文件系统 FastDFS-MongDB架构对比</h3><p><img src="/2018/12/10/Hadoop%E5%AD%A6%E4%B9%A0/984cd0ea-bfe4-4798-8ddb-4d6e57638359.jpg" alt><br><font color="red">木桶原理</font>：以性能最短的作为整个集群的上限。<br><font color="red">泳道原理</font>：各司其职，彼此独立。</p>
+<h3 id="4-2-架构图"><a href="#4-2-架构图" class="headerlink" title="4.2 架构图"></a>4.2 架构图</h3><p><a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html" target="_blank" rel="noopener">HDFS</a></p>
+<p><img src="/2018/12/10/Hadoop%E5%AD%A6%E4%B9%A0/77d58bfc-e130-4014-b8a2-5b97969a9ab9.jpg" alt></p>
 <p><font color="red">Block</font>：HDFS底层将文件切割成<font color="red">Block</font>，默认切割尺度128MB（切割尺度可配置，若不足128MB，按照实际大小存储成一个Block）.<br><font color="red">Namenode</font>：管理集群元数据（文件名、数据块映射）、下发指令给Datenode<br><font color="red">Datenode</font>：数据节点，负责其存储数据块的读写请求，同时向Namenode汇报自己的状态信息<br><font color="red">Rack</font>：机架，优化存储，优化计算，可以通过命令<code>hdfs dfsadmin -printTopology</code>看到。<br><strong>架构理解：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HDFS是一个主从架构，HDFS只维护了一个单一的Namenode节点，作为“老大”，这个主节点发号施令，并且存储元信息，监测Datenodes节点群的状态。HDFS有一系列的Datenode节点，作为Namenode的“小弟”， 小弟听从执行老大的各种指令，例如Creation,Deletion,Replication。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Namenode存储的是元数据，也可以理解为块的索引，”一个文件切割成块，就像把大象切割存到了冰箱里，未来如果想要大象在幻化拼接出来，就需要这种索引，即元数据.“，Namenode存的是元数据（索引），而不是数据。这些集群的元数据存储在Namenode节点的内存中，元数据即是文件路径、块到Datenode的映射关系等。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">Hadoop是以块的形式存储数据的，块的大小是128MB，这是一种切割尺度，例如存出一个文件，如果小于128MB，则切不开，一个块即可存储，此时块的大小即是文件的实际大小</font>,<font color="blue">但是，对于Namenode而言，再小的一个文件也需要记录，需要记录这个块存储在了那个Datenode上面，即块到Datenode的映射关系。</font><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">举个例子：有一个文件，这个文件128MB，按照128MB的尺度去切，能切除一个块出来，Namenode就需要存储一个块的元信息即可；“Hadoop不适合存储小文件”。又比如：有1W个文件，加在一起是128MB，现在用同样的尺度去切，则每一个文件都是一个Block,会产生1W个Block,则Namenode上会存储1W个块的元信息（映射信息）,Datenode存储1W个文件，这1W个文件有128MB，对于Datenode而言，1个128MB的文件和1W个文件总共128MB加在一起去存储，没有任何影响，都是存，但是问题来了，Namenode则得不偿失，Namenode的内存浪费很严重（整个HDFS中只有1个Namenode,其内存及其宝贵）.Datenode不够可以线性扩展。</font></strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;看上图可知：Datenode节点之间没有关系，只不过他们之间的Block是有复制的，Hadoop的机制是每一个块，在整个集群中最起码有一个备份，（这里与FastDFS和MongoDB的备份不同，他们是服务器与服务器之间的备份，FastDFS卷内是机器间整体的备份，MongoDB是shard之间整体的备份，而Hadoop做的是块的备份，更细粒度的备份，FastDFS与MongoDB做的是整体间的备份，就要求副本集成员之间机器的配置必须是一样的，而Hadoop则没有这种要求，不管是什么类型的机器，只要能存储数据，我都能利用起来，哪怕是存储一个Block,这样意味着Hadoop对成百上千个Datanode的硬件要求极低(能存就行）。<font color="red">这是Hadoop与传统的分布式文件系统最大的差异,传统的是做机器内部整体的备份，Hadoop没有这个要求，Datanode之间彼此独立，依据各自性能存储不同数量的块。</font>如果有一个机器挂掉了，则有备份，这就是Hadopp做的故障转移，<font color="red">只要保证每个块，存在一定数量的副本即可</font><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;看上面图可知：客户端只要是操作元数据，走的是Namenode。 只要是对块的读写，走的是Datenode,同时，Namenode负责向Datenode发号指令。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">Rack:机架</font>，类似于书架(书多了没地方放，有了书架可以更好的管理书籍)，机器多了，就需要机架，更方便的管理机器。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类似于上图，<font color="red">块的复制是机架间的复制，</font>我们都有风险意识，不要把鸡蛋放到一个篮子里，防止鸡飞蛋打。将一批机器放在一个物理的机架上，这批机器共享一个交换机，<font color="red">首先</font>，这样有助于运维，如果这个机架上的某个机器坏了，检修这个机架上的故障机器即可，对别的机架上的机器运转没有影响；<font color="red">其次</font>，如果有电气故障（失火，机器都烧没了），别的机架上的机器不受影响。<font color="blue">安全角度，块的副本集起码不是都在一个机架间的机器上，保证了容灾恢复块数据。</font>效率角度：尽可能做机架内部机器间的通讯，尽量避免跨机架间通信，因为要多走起码一个路由器.</p>
 <p>** HDFS存储特点：**<br> 1）各个DataNode物理服务节点配置物理要求<br> 2）不擅长存储小文件<br><strong>NameNode和Secondary(辅助)NameNode</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;因为Namenode太忙了，就需要为Namenode配置一个<font color="red">秘书 SecondaryNamenode</font>.类比现实生活：<strong>假如说公司的领导跑路了，小秘在也不能担当领导的职责，总经理跑路了，总经理助理也不能下发任意指令。没有人听总经理助理的命令，不具备对集群的管理能力，充其量就是<font color="red">端茶、倒水、整理文件</font></strong>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">NameNode</font>主要是维系集群的元数据信息，主要是：<strong>fsimage、edits、edits_inprogress</strong>，而<font color="red">SecondayNameNode</font>充其量只有<strong>fsimage、edits</strong>，缺少了<font color="red">edits_inprogress</font> 类似于下图：<img src="/2018/12/10/Hadoop%E5%AD%A6%E4%B9%A0/02668115-cf77-4fc3-8a60-21552578ca51.jpg" alt></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>edits与fsimage</strong>：存储在NameNode服务器本地的两个文件，edits文件类似于日志文件，记录的是用户对NameNode元数据的修改；fsimage记录的是内存中的数据。edits和fsimage加起来才等价于<font color="red">老大Memory中的元数据。</font><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Hadoop启动过程与上述两文件的关系：（Memory中元数据的由来）</strong>Hadoop在启动NameNode的时候,<font color="purple">NameNode将fsimage和edits中的数据加载到内存中，fsimage是元数据的二进制信息，而edits是对元数据的修改操作信息；因此会利用edits中的日志对fsimage做一些执行操作，以达到内存中的数据恢复至上一次关机前的内存状态，当内存数据恢复之后，Namenode会刷新这两个文件，结果会导致edits被清空，而fsimage与内存保持高度一致。这些操作都发生在启动过程中</font>，接下来，NameNode开始正常工作，即开始管理Datenode,因为Datenode会汇报自己的状态信息，此时Namenode会将这些收集到的状态信息与自己内存中信息作对比，一旦对比通过，则集群可以正常运行；<font color="red">在此期间，外界可以对HDFS做一些文件上传、修改的指令，此时会分为两个阶段：修改的指令直接发到NameNode的内存中，此时达到了对元数据的修改；同时，内存中的数据是不稳定的，易丢，Hadoop为了保证用户的每一次操作都是安全的，会将写的数据存入edits日志中，此刻，内存中的数据才是整个NameNode所有的数据（原始的+新发送的指令数据）,edits+fsimage才等于内存中的数据，问题来了？如果Hadoop长时间工作在一个修改比较频繁的环境下，会导致edits会越来越大（Memory的内存消耗暂时不看），对比Redis的AOF持久化，AOF记录的是内存中所有的操作，而edits记录的只是从这一次启动到正常工作以后所有的修改操作的增量，会导致edits文件越来越大，如果edits有一种机制：可以flush就好了，即刷新fsimage到磁盘即可，只要刷新成功，edits中的数据既可以释放。</font>但是。如果去刷新fsimage,会拉低NameNode的性能（NameNode的神经是紧绷的，因为他要管理整个集群的信息，有成千上百个人等着我去主持会议，汇报工作，发布指令，能让我在家里整理内务？），如果刷新成功，当关闭再次开启的时候，edtits不会有那么大了，Namenode启动就会十分快了，反之，Namenode没有时间去整理自己的edits，下一次启动还是走上述两个阶段，还是慢的要死。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个公司的规模如果十分大了，就会想方设法提高效率，总裁级别的人一般都有小秘，小秘<font color="red">辅助</font>的做一些日常工作，再怎么辅助，不能干预公司的决定，古代宦官、后宫不能干政是一个道理。让小秘去整理内务，没让小秘去管理自己的小弟，况且小弟也不会听小秘的。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">SecondaryNameNode就相当于给NameNode请了一个小秘、保姆、助理</font>.助理没有非常大的权利，但是待遇很好，总裁在那个办公室，小秘就在总裁办公室的旁边，<strong>有点像皇帝身边的太监</strong>。为什么待遇这么好呢？小秘给总经理做事，总经理的一些私事是不想让小弟知道的，小秘要保密的。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同理，NameNode负责去管理元数据和DateNode，但因为分身乏术，疏于对自己自身数据的持久化，丧失了对自己数据的管理能力，就需要有一个和NameNode内存、配置一样的机器，因为SecondaryNameNode会定时的去访问NameNode,问NameNode需不需要我来做整理啊？此处的“问”就是去查NameNode的edits文件有多大了，距离我上一次来整理你过了多长时间了，如果这两个条件满足了，即<font color="red">时间到了而且文件过大了</font>,小秘就会拷贝-下载（不能拿走，即剪切，总经理要用怎么办呢？）edits和fsimage各一份到自己的本地磁盘中，在拷贝的过程中，总经理还在忙（比如还有人要修改文件），怎么办呢？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">NameNode中的edits_inprogress登场了，即准备一个临时的文件，如果有人发来的写的指令，总裁就先将指令暂存到edits_inprogerss文件中，同时，小秘会在自己内存中模拟总裁以前的NameNode的过程，加载、合并，拿到一个更新的fsimage,比总裁的fsimage心新，因为在小秘那里，原有的fsimage已经和edits合并了，当然是最新的了；然后小秘会将自己最新的fsimage(已经整理好的文件)再次上传给总裁那里，为了不与总裁原有的fsimage命名冲突，给他叫做fsimage.chk文件，（chk:取自50070中页面里的save checkpoint 检查点）。</font><font color="red">上传、下载走的都是http协议</font><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上传结束后，NameNode就不再需要edits和fsimage这两个文件了，会用edits_inprogress和fsimage.chk替换掉原有的edits和fsimage。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;至此，NameNode工作起来就很流畅了，负责管理DateNode，管理元数据，没有时间整理内务，整理内务的工作由SecondaryNameNode来做，小秘至少的配置是内存与总裁的一致。小秘不在了，挂掉了，集群仍可以正常访问，NameNode会在第一次启动的时候整理自己的内存文件，会导致如果长时间运行，下次再启动的时候，启动时间过长。因此，<font color="red">NameNode挂了，休想通过SecondaryNaemNode来进行恢复，但有一种极端情况，在小秘下载合并之前，没有人对NameNode做出修改指令，此时是可以考虑从小秘那里来恢复的</font></p>
-<h2 id="HDFS-Shell-amp-JAVA-API"><a href="#HDFS-Shell-amp-JAVA-API" class="headerlink" title="HDFS Shell &amp; JAVA API"></a>HDFS Shell &amp; JAVA API</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html" target="_blank" rel="noopener"><strong>HDFS命令参考</strong></a></p>
+<h2 id="5-HDFS-Shell-amp-JAVA-API"><a href="#5-HDFS-Shell-amp-JAVA-API" class="headerlink" title="5 HDFS Shell &amp; JAVA API"></a>5 HDFS Shell &amp; JAVA API</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html" target="_blank" rel="noopener"><strong>HDFS命令参考</strong></a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">命令帮助：</span><br><span class="line">hdfs dfs -help   或者 hadoop fs -help</span><br><span class="line">常用命令解释：</span><br><span class="line">-appendToFile：追加至文件</span><br><span class="line">-cat：查看</span><br><span class="line">-chmod：修改权限</span><br><span class="line">-copyFromLocal：从本地上传文件到hdfs</span><br><span class="line">-copyToLocal：从hdfs下载文件到本地</span><br><span class="line">上面两个都是linux与hdfs跨机器间的文件交流</span><br><span class="line">-cp：hdfs文件间的相互拷贝，集群内部的</span><br><span class="line">-df：查看磁盘使用情况</span><br><span class="line">-du：查看目录使用情况</span><br><span class="line">-get：下载</span><br><span class="line">-ls：展示文件目录</span><br><span class="line">-mkdir:创建目录</span><br><span class="line">-moveFromLocal：从本机剪切文件到hdfs</span><br><span class="line">-moveToLocal：从hdfs剪切文件到本地</span><br><span class="line">-mv：hdfs集群内部文件的移动</span><br><span class="line">-put：上传</span><br><span class="line">-rm [-r] [-f] ：删除文件</span><br><span class="line">-tail -f :查看</span><br><span class="line">-text: 查看</span><br><span class="line">-touchz：创建衣一个空白文件</span><br><span class="line"></span><br><span class="line">案例</span><br><span class="line">[root@CentOS ~]# hadoop fs -appendToFile &#x2F;root&#x2F;install.log &#x2F;aa.log</span><br><span class="line"></span><br><span class="line">[root@CentOS ~]# hadoop fs -cat  &#x2F;aa.log</span><br><span class="line"></span><br><span class="line">[root@CentOS ~]# hadoop fs -copyToLocal &#x2F;aa.log &#x2F;root&#x2F;</span><br><span class="line"></span><br><span class="line">[root@CentOS ~]# hadoop fs -mkdir -p &#x2F;dir1&#x2F;dir2</span><br><span class="line"></span><br><span class="line">[root@CentOS ~]# hadoop fs -cp &#x2F;aa.log &#x2F;dir1&#x2F;dir2</span><br><span class="line"></span><br><span class="line">[root@CentOS ~]# hadoop fs -mv &#x2F;aa.log &#x2F;ab.log</span><br><span class="line"></span><br><span class="line">[root@CentOS ~]# hadoop fs -touchz &#x2F;hello.java</span><br><span class="line"></span><br><span class="line">[root@CentOS ~]# hadoop fs -rm -r -f &#x2F;dir1</span><br></pre></td></tr></table></figure>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>JAVA API 操作HDFS</strong></p>
 <ol>
@@ -496,6 +521,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-BigData是什么？"><span class="toc-number">1.</span> <span class="toc-text">1 BigData是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-BigData面临的问题？"><span class="toc-number">2.</span> <span class="toc-text">2 BigData面临的问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Hadoop生态："><span class="toc-number">3.</span> <span class="toc-text">3 Hadoop生态：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-在自己的机器上产生公私钥对"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 在自己的机器上产生公私钥对</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Hadoop架构图-三个服务节点详解"><span class="toc-number">4.</span> <span class="toc-text">4 Hadoop架构图-三个服务节点详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-回顾文件系统-FastDFS-MongDB架构对比"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 回顾文件系统 FastDFS-MongDB架构对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-架构图"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 架构图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-HDFS-Shell-amp-JAVA-API"><span class="toc-number">5.</span> <span class="toc-text">5 HDFS Shell &amp; JAVA API</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -660,15 +698,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -677,10 +727,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -700,11 +746,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -712,15 +758,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">BigData</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">

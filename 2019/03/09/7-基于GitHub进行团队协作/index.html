@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://JavaSsun.github.io">
   <title>7-基于GitHub进行团队协作 | haoran&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Author: haoransunWechat: SHR—97图片来源：极客时间，需个人购买教程。 1.创建团队项目先在settings中创建组织类型的托管。然后在组织中创建团队的仓库。">
+  <meta name="description" content="Author: haoransunWechat: SHR—97图片来源：极客时间，需个人购买教程。 1 创建团队项目先在settings中创建组织类型的托管。然后在组织中创建团队的仓库。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="7-基于GitHub进行团队协作">
 <meta property="og:url" content="http://javassun.github.io/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/index.html">
 <meta property="og:site_name" content="haoran&#39;s blog">
-<meta property="og:description" content="Author: haoransunWechat: SHR—97图片来源：极客时间，需个人购买教程。 1.创建团队项目先在settings中创建组织类型的托管。然后在组织中创建团队的仓库。">
+<meta property="og:description" content="Author: haoransunWechat: SHR—97图片来源：极客时间，需个人购买教程。 1 创建团队项目先在settings中创建组织类型的托管。然后在组织中创建团队的仓库。">
 <meta property="og:image" content="http://javassun.github.io/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/64446d90-2b9c-449f-a087-5f965818e04e.png">
 <meta property="og:image" content="http://javassun.github.io/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/e2f857e9-f884-4e0c-9add-09e13a4c4d6f.png">
 <meta property="og:image" content="http://javassun.github.io/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/31adef54-e872-40b9-899a-b1de0bc43a23.png">
@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://javassun.github.io/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/0b05b38d-5d3a-49b4-a38e-82c28270a5a1.jpg">
 <meta property="og:image" content="http://javassun.github.io/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/7a33688d-e6b3-4177-9b88-0c9a405dbe47.jpg">
 <meta property="article:published_time" content="2019-03-09T12:01:08.000Z">
-<meta property="article:modified_time" content="2020-04-14T06:11:16.591Z">
+<meta property="article:modified_time" content="2020-04-16T05:57:36.385Z">
 <meta property="article:author" content="Allen">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
@@ -323,13 +323,37 @@
 
 	<!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-创建团队项目"><span class="toc-number">1.</span> <span class="toc-text">1 创建团队项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-选择适合自己团队的工作流"><span class="toc-number">2.</span> <span class="toc-text">2 选择适合自己团队的工作流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-挑选合适的分支集成策略"><span class="toc-number">3.</span> <span class="toc-text">3 挑选合适的分支集成策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-启用issue跟踪需求和任务"><span class="toc-number">4.</span> <span class="toc-text">4 启用issue跟踪需求和任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-使用project管理issue"><span class="toc-number">5.</span> <span class="toc-text">5 使用project管理issue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-项目内部如何-code-review"><span class="toc-number">6.</span> <span class="toc-text">6 项目内部如何 code review</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-团队协作如何做多分支的集成"><span class="toc-number">7.</span> <span class="toc-text">7 团队协作如何做多分支的集成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-如何保证集成质量"><span class="toc-number">8.</span> <span class="toc-text">8 如何保证集成质量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-产品如何发布到GitHub上"><span class="toc-number">9.</span> <span class="toc-text">9 产品如何发布到GitHub上</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-如何给项目添加详细的指导文档-Wiki"><span class="toc-number">10.</span> <span class="toc-text">10 如何给项目添加详细的指导文档 (Wiki)</span></a></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+      
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
       
 	
 		<p>Author: haoransun<br>Wechat: SHR—97<br>图片来源：极客时间，需个人购买教程。</p>
-<h2 id="1-创建团队项目"><a href="#1-创建团队项目" class="headerlink" title="1.创建团队项目"></a>1.创建团队项目</h2><p>先在settings中创建组织类型的托管。然后在组织中创建团队的仓库。</p>
+<h2 id="1-创建团队项目"><a href="#1-创建团队项目" class="headerlink" title="1 创建团队项目"></a>1 创建团队项目</h2><p>先在settings中创建组织类型的托管。然后在组织中创建团队的仓库。</p>
 <a id="more"></a>
 <p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/64446d90-2b9c-449f-a087-5f965818e04e.png" alt><br>点击 Create后出现当前画面</p>
 <p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/e2f857e9-f884-4e0c-9add-09e13a4c4d6f.png" alt></p>
@@ -338,7 +362,7 @@
 <hr>
 <p>创建Team</p>
 <p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/205f2e23-e3a9-4ef3-9ead-a885002f398b.png" alt></p>
-<h2 id="2-选择适合自己团队的工作流"><a href="#2-选择适合自己团队的工作流" class="headerlink" title="2.选择适合自己团队的工作流"></a>2.选择适合自己团队的工作流</h2><p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/a8c719c7-af57-49cd-be78-22c37ef1a453.jpg" alt></p>
+<h2 id="2-选择适合自己团队的工作流"><a href="#2-选择适合自己团队的工作流" class="headerlink" title="2 选择适合自己团队的工作流"></a>2 选择适合自己团队的工作流</h2><p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/a8c719c7-af57-49cd-be78-22c37ef1a453.jpg" alt></p>
 <hr>
 <p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/20094dc9-d19f-4455-bcf6-a6cd1ba16704.jpg" alt></p>
 <hr>
@@ -351,7 +375,7 @@
 <p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/36620676-47e4-41be-9609-c4511a38485e.jpg" alt></p>
 <hr>
 <p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/10ed3ecd-acac-457e-862b-520139270bd8.jpg" alt></p>
-<h2 id="3-挑选合适的分支集成策略"><a href="#3-挑选合适的分支集成策略" class="headerlink" title="3.挑选合适的分支集成策略"></a>3.挑选合适的分支集成策略</h2><p>Insights &gt;&gt; Network 中可以查看版本树的演进。</p>
+<h2 id="3-挑选合适的分支集成策略"><a href="#3-挑选合适的分支集成策略" class="headerlink" title="3 挑选合适的分支集成策略"></a>3 挑选合适的分支集成策略</h2><p>Insights &gt;&gt; Network 中可以查看版本树的演进。</p>
 <p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/49ab1fe1-5685-40f2-aa6c-27e585533b76.jpg" alt></p>
 <p>集成策略：</p>
 <p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/051f3a09-38a5-4957-9510-dfcbb34c93d2.png" alt></p>
@@ -363,7 +387,7 @@
 <p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/5b3df45b-80df-4c4c-93a8-81b8c641fa1a.jpg" alt></p>
 <p><strong>Rebase</strong>: 不改变特性分支，base分支会自动添加特性分支的所有变更，且<strong>不会</strong>合成一个</p>
 <p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/3010b401-fd66-4425-b675-4556c67cb407.jpg" alt></p>
-<h2 id="4-启用issue跟踪需求和任务"><a href="#4-启用issue跟踪需求和任务" class="headerlink" title="4.启用issue跟踪需求和任务"></a>4.启用issue跟踪需求和任务</h2><p>选用 stars:&gt;100000 的开源项目来查看</p>
+<h2 id="4-启用issue跟踪需求和任务"><a href="#4-启用issue跟踪需求和任务" class="headerlink" title="4 启用issue跟踪需求和任务"></a>4 启用issue跟踪需求和任务</h2><p>选用 stars:&gt;100000 的开源项目来查看</p>
 <p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/16e07275-4d2b-402a-a50e-0648631716e4.png" alt></p>
 <p>点击 Lables 以 标签的形式查看</p>
 <p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/0a6cc850-3f29-4abd-b282-26daee4a2e06.png" alt></p>
@@ -371,17 +395,17 @@
 <p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/dfe21652-2b4e-46e1-b534-4c02ec6dd531.png" alt></p>
 <p>建立 issue后会出现类似的文件</p>
 <p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/186c0666-1dfa-4ced-b588-ece60d6c9605.png" alt></p>
-<h2 id="5-使用project管理issue"><a href="#5-使用project管理issue" class="headerlink" title="5.使用project管理issue"></a>5.使用project管理issue</h2><p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/fc10fa87-3b54-48a4-9a20-1723d6b72ed3.png" alt></p>
+<h2 id="5-使用project管理issue"><a href="#5-使用project管理issue" class="headerlink" title="5 使用project管理issue"></a>5 使用project管理issue</h2><p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/fc10fa87-3b54-48a4-9a20-1723d6b72ed3.png" alt></p>
 <p>不同的看板类型 显示效果不一样，以bug为例：</p>
 <p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/1ecccc60-40dd-40be-b6ed-2befb2a266ad.png" alt></p>
 <p>可以对任务分发，项目进度把握进行观察</p>
 <p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/026076bc-ccd1-4208-ae96-196c3982138e.png" alt></p>
-<h2 id="6-项目内部如何-code-review"><a href="#6-项目内部如何-code-review" class="headerlink" title="6.项目内部如何 code review"></a>6.项目内部如何 code review</h2><p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/c53619b8-9fdc-4d69-8d0b-436f94468ad2.png" alt></p>
+<h2 id="6-项目内部如何-code-review"><a href="#6-项目内部如何-code-review" class="headerlink" title="6 项目内部如何 code review"></a>6 项目内部如何 code review</h2><p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/c53619b8-9fdc-4d69-8d0b-436f94468ad2.png" alt></p>
 <p>根据需求对匹配到的不同分支做限制。</p>
 <p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/b0768be8-0078-4c68-8538-0197138b47a6.png" alt></p>
 <p>下面做了限制，防止对远端代码造成破坏。</p>
 <p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/2c20094b-8f8e-405c-90e5-65521154518c.png" alt></p>
-<h2 id="7-团队协作如何做多分支的集成"><a href="#7-团队协作如何做多分支的集成" class="headerlink" title="7.团队协作如何做多分支的集成"></a>7.团队协作如何做多分支的集成</h2><p>特性分支总是有先有后的合成到base分支上，看看GitHub上是如何做</p>
+<h2 id="7-团队协作如何做多分支的集成"><a href="#7-团队协作如何做多分支的集成" class="headerlink" title="7 团队协作如何做多分支的集成"></a>7 团队协作如何做多分支的集成</h2><p>特性分支总是有先有后的合成到base分支上，看看GitHub上是如何做</p>
 <p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/3b118050-ca7b-4d73-a633-2f02ae35ad12.jpg" alt></p>
 <p><strong>Merge</strong>:</p>
 <p>beijing merge 到 base后：</p>
@@ -482,9 +506,9 @@
 
 
 
-<h2 id="8-如何保证集成质量"><a href="#8-如何保证集成质量" class="headerlink" title="8.如何保证集成质量"></a>8.如何保证集成质量</h2><p>通过 settings 中的 各种保险设置进行控制</p>
+<h2 id="8-如何保证集成质量"><a href="#8-如何保证集成质量" class="headerlink" title="8 如何保证集成质量"></a>8 如何保证集成质量</h2><p>通过 settings 中的 各种保险设置进行控制</p>
 <p>也可在 市场中搜索各种 插件 APP 进行集成管控自己的代码。</p>
-<h2 id="9-产品如何发布到GitHub上"><a href="#9-产品如何发布到GitHub上" class="headerlink" title="9.产品如何发布到GitHub上"></a>9.产品如何发布到GitHub上</h2><p><strong>Release</strong><br><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/83c9516e-1095-4441-adcb-fb43d32f54e9.png" alt></p>
+<h2 id="9-产品如何发布到GitHub上"><a href="#9-产品如何发布到GitHub上" class="headerlink" title="9 产品如何发布到GitHub上"></a>9 产品如何发布到GitHub上</h2><p><strong>Release</strong><br><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/83c9516e-1095-4441-adcb-fb43d32f54e9.png" alt></p>
 <p>如果是以 travis为例，需要在 .travis.yml文件中编写deploy的各种配置<br><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/88dbd0f3-6076-4eb1-9195-d55b17dffd1d.jpg" alt></p>
 <hr>
 <p>api_key 不能暴露， 通过变量方式获取<br><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/3b822c8e-5eef-4bb5-a123-879c578f650a.jpg" alt></p>
@@ -503,7 +527,7 @@
 <p>pull request merge到主分支</p>
 <p>经过 travis ci 各种审查后，点击 release即可看到<br><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/6fde5cb5-4e6e-4894-8079-6426d91dd358.jpg" alt></p>
 <p>即通过 travis ci 通过 配置 travis.yml文件 将 java 工程部署到GitHub的 release中，期间要配置Token。</p>
-<h2 id="10-如何给项目添加详细的指导文档-Wiki"><a href="#10-如何给项目添加详细的指导文档-Wiki" class="headerlink" title="10.如何给项目添加详细的指导文档 (Wiki)"></a>10.如何给项目添加详细的指导文档 (Wiki)</h2><p><strong>GitHub提供了 Wiki 功能</strong></p>
+<h2 id="10-如何给项目添加详细的指导文档-Wiki"><a href="#10-如何给项目添加详细的指导文档-Wiki" class="headerlink" title="10 如何给项目添加详细的指导文档 (Wiki)"></a>10 如何给项目添加详细的指导文档 (Wiki)</h2><p><strong>GitHub提供了 Wiki 功能</strong></p>
 <p><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/0b05b38d-5d3a-49b4-a38e-82c28270a5a1.jpg" alt></p>
 <p>挑选别的开源项目中 wiki写的比较好的 下载下来，推送到自己的项目中才能进行各种 edit。</p>
 <p>此时远端的 wiki 中 会出现别人的 wiki<br><img src="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/7a33688d-e6b3-4177-9b88-0c9a405dbe47.jpg" alt></p>
@@ -633,6 +657,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-创建团队项目"><span class="toc-number">1.</span> <span class="toc-text">1 创建团队项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-选择适合自己团队的工作流"><span class="toc-number">2.</span> <span class="toc-text">2 选择适合自己团队的工作流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-挑选合适的分支集成策略"><span class="toc-number">3.</span> <span class="toc-text">3 挑选合适的分支集成策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-启用issue跟踪需求和任务"><span class="toc-number">4.</span> <span class="toc-text">4 启用issue跟踪需求和任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-使用project管理issue"><span class="toc-number">5.</span> <span class="toc-text">5 使用project管理issue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-项目内部如何-code-review"><span class="toc-number">6.</span> <span class="toc-text">6 项目内部如何 code review</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-团队协作如何做多分支的集成"><span class="toc-number">7.</span> <span class="toc-text">7 团队协作如何做多分支的集成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-如何保证集成质量"><span class="toc-number">8.</span> <span class="toc-text">8 如何保证集成质量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-产品如何发布到GitHub上"><span class="toc-number">9.</span> <span class="toc-text">9 产品如何发布到GitHub上</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-如何给项目添加详细的指导文档-Wiki"><span class="toc-number">10.</span> <span class="toc-text">10 如何给项目添加详细的指导文档 (Wiki)</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -797,15 +834,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -814,10 +863,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -837,11 +882,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -849,15 +894,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">BigData</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">

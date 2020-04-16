@@ -42,7 +42,7 @@
 <meta property="og:image" content="http://javassun.github.io/2018/08/11/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/7e9d1463-32aa-42f1-b3de-f627a98136fa.png">
 <meta property="og:image" content="http://javassun.github.io/2018/08/11/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/71900d3f-350a-4750-8a47-4bff361282d3.png">
 <meta property="article:published_time" content="2018-08-11T02:47:51.000Z">
-<meta property="article:modified_time" content="2020-04-14T03:29:34.890Z">
+<meta property="article:modified_time" content="2020-04-16T05:21:29.173Z">
 <meta property="article:author" content="Allen">
 <meta property="article:tag" content="Hexo-yilia">
 <meta name="twitter:card" content="summary">
@@ -250,7 +250,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">702字</span>
+        <span class="post-count">703字</span>
       </span>
     </span>
 
@@ -272,6 +272,30 @@
 
 	<!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-搭建GitHub-Pages"><span class="toc-number">1.</span> <span class="toc-text">一 搭建GitHub Pages</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-注册一个GitHub账号，且登录"><span class="toc-number">1.1.</span> <span class="toc-text">1 注册一个GitHub账号，且登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-创建仓库"><span class="toc-number">1.2.</span> <span class="toc-text">2 创建仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-启用Github-Pages"><span class="toc-number">1.3.</span> <span class="toc-text">3 启用Github Pages</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-选择主题"><span class="toc-number">1.4.</span> <span class="toc-text">4 选择主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-下载安装Node-js和Git"><span class="toc-number">1.5.</span> <span class="toc-text">5 下载安装Node.js和Git</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-Hexo"><span class="toc-number">2.</span> <span class="toc-text">二 Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-安装Hexo"><span class="toc-number">2.1.</span> <span class="toc-text">1 安装Hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-更换主题"><span class="toc-number">2.2.</span> <span class="toc-text">2 更换主题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-部署到GitHub"><span class="toc-number">3.</span> <span class="toc-text">三 部署到GitHub</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-使用Hexo-deploy-部署到GitHub"><span class="toc-number">3.1.</span> <span class="toc-text">1 使用Hexo deploy 部署到GitHub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-检查SSH-Keys设置"><span class="toc-number">3.2.</span> <span class="toc-text">2 检查SSH Keys设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-部署到GitHub"><span class="toc-number">3.3.</span> <span class="toc-text">3 部署到GitHub</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-日常维护"><span class="toc-number">4.</span> <span class="toc-text">四 日常维护</span></a></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+      
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
@@ -344,7 +368,7 @@
 <p><img src="/2018/08/11/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/_25YT4_7D_601_601_283MW__7D_7B3_29_28_60I@A.png" alt></p>
 <p>6 设置个人账号信息</p>
 <p><img src="/2018/08/11/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/QV1PTZ_25XP966E3RO_7E0_7DZ_246H.png" alt></p>
-<h3 id="部署到GitHub"><a href="#部署到GitHub" class="headerlink" title="部署到GitHub"></a>部署到GitHub</h3><p>hexo d -g</p>
+<h3 id="3-部署到GitHub"><a href="#3-部署到GitHub" class="headerlink" title="3 部署到GitHub"></a>3 部署到GitHub</h3><p>hexo d -g</p>
 <p><img src="/2018/08/11/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/7e9d1463-32aa-42f1-b3de-f627a98136fa.png" alt></p>
 <h2 id="四-日常维护"><a href="#四-日常维护" class="headerlink" title="四 日常维护"></a>四 日常维护</h2><p>当部署成功后，日常只需</p>
 <ol>
@@ -482,6 +506,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-搭建GitHub-Pages"><span class="toc-number">1.</span> <span class="toc-text">一 搭建GitHub Pages</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-注册一个GitHub账号，且登录"><span class="toc-number">1.1.</span> <span class="toc-text">1 注册一个GitHub账号，且登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-创建仓库"><span class="toc-number">1.2.</span> <span class="toc-text">2 创建仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-启用Github-Pages"><span class="toc-number">1.3.</span> <span class="toc-text">3 启用Github Pages</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-选择主题"><span class="toc-number">1.4.</span> <span class="toc-text">4 选择主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-下载安装Node-js和Git"><span class="toc-number">1.5.</span> <span class="toc-text">5 下载安装Node.js和Git</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-Hexo"><span class="toc-number">2.</span> <span class="toc-text">二 Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-安装Hexo"><span class="toc-number">2.1.</span> <span class="toc-text">1 安装Hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-更换主题"><span class="toc-number">2.2.</span> <span class="toc-text">2 更换主题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-部署到GitHub"><span class="toc-number">3.</span> <span class="toc-text">三 部署到GitHub</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-使用Hexo-deploy-部署到GitHub"><span class="toc-number">3.1.</span> <span class="toc-text">1 使用Hexo deploy 部署到GitHub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-检查SSH-Keys设置"><span class="toc-number">3.2.</span> <span class="toc-text">2 检查SSH Keys设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-部署到GitHub"><span class="toc-number">3.3.</span> <span class="toc-text">3 部署到GitHub</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-日常维护"><span class="toc-number">4.</span> <span class="toc-text">四 日常维护</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -646,15 +683,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -663,10 +712,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -686,11 +731,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -698,15 +743,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">BigData</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">

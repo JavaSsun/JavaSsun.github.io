@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://JavaSsun.github.io">
   <title>ZooKeeper学习 | haoran&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Author: haoransunWechat: SHR—97 一、概述官网：https:&#x2F;&#x2F;zookeeper.apache.org&#x2F;介绍：ZooKeeper是一个开源的分布式应用协调服务系统，主要用来完成统一命名服务、状态同步服务、集群管理、分布式应用配置项的管理等工作。问题：">
+  <meta name="description" content="Author: haoransunWechat: SHR—97 一、概述1.1 官网https:&#x2F;&#x2F;zookeeper.apache.org&#x2F; 1.2 介绍ZooKeeper是一个开源的分布式应用协调服务系统，主要用来完成统一命名服务、状态同步服务、集群管理、分布式应用配置项的管理等工作。问题：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ZooKeeper学习">
 <meta property="og:url" content="http://javassun.github.io/2019/01/10/ZooKeeper/index.html">
 <meta property="og:site_name" content="haoran&#39;s blog">
-<meta property="og:description" content="Author: haoransunWechat: SHR—97 一、概述官网：https:&#x2F;&#x2F;zookeeper.apache.org&#x2F;介绍：ZooKeeper是一个开源的分布式应用协调服务系统，主要用来完成统一命名服务、状态同步服务、集群管理、分布式应用配置项的管理等工作。问题：">
+<meta property="og:description" content="Author: haoransunWechat: SHR—97 一、概述1.1 官网https:&#x2F;&#x2F;zookeeper.apache.org&#x2F; 1.2 介绍ZooKeeper是一个开源的分布式应用协调服务系统，主要用来完成统一命名服务、状态同步服务、集群管理、分布式应用配置项的管理等工作。问题：">
 <meta property="og:image" content="http://javassun.github.io/2019/01/10/ZooKeeper/ac1656df-ca7c-45ee-9688-6201ee09006f.png">
 <meta property="og:image" content="http://javassun.github.io/2019/01/10/ZooKeeper/7d94097e-7d38-4b30-b02e-f4a0e8e8f2af.jpg">
 <meta property="og:image" content="http://javassun.github.io/2019/01/10/ZooKeeper/e16f5df3-83c2-4ff4-bfae-076bdcaaffff.jpg">
 <meta property="og:image" content="http://javassun.github.io/2019/01/10/ZooKeeper/9fbc88b2-8d78-49c7-b59b-b38aebb6c49a.jpg">
 <meta property="article:published_time" content="2019-01-10T11:19:11.000Z">
-<meta property="article:modified_time" content="2020-04-14T11:37:58.196Z">
+<meta property="article:modified_time" content="2020-04-16T06:51:24.421Z">
 <meta property="article:author" content="Allen">
 <meta property="article:tag" content="ZooKeeper">
 <meta name="twitter:card" content="summary">
@@ -249,20 +249,45 @@
 
 	<!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、概述"><span class="toc-number">1.</span> <span class="toc-text">一、概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-官网"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 官网</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-介绍"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 介绍</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、环境搭建"><span class="toc-number">2.</span> <span class="toc-text">二、环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-安装"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-启动"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 启动</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、Zookeeper指令操作"><span class="toc-number">3.</span> <span class="toc-text">三、Zookeeper指令操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、JAVA-API-操作"><span class="toc-number">4.</span> <span class="toc-text">四、JAVA API 操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-Maven-依赖坐标"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 Maven 依赖坐标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-增、删、改、查操作"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 增、删、改、查操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注册监听"><span class="toc-number">4.3.</span> <span class="toc-text">注册监听</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、应用"><span class="toc-number">5.</span> <span class="toc-text">五、应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-命名服务（Naming-Service"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 命名服务（Naming Service)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-集群管理与Master选举"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 集群管理与Master选举</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-数据发布与订阅（配置中心）"><span class="toc-number">5.3.</span> <span class="toc-text">5.3 数据发布与订阅（配置中心）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-分布式锁"><span class="toc-number">5.4.</span> <span class="toc-text">5.4 分布式锁</span></a></li></ol></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+      
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
       
 	
 		<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><h2 id="官网：https-zookeeper-apache-org"><a href="#官网：https-zookeeper-apache-org" class="headerlink" title="官网：https://zookeeper.apache.org/"></a>官网：<a href="https://zookeeper.apache.org/" target="_blank" rel="noopener">https://zookeeper.apache.org/</a></h2><h2 id="介绍："><a href="#介绍：" class="headerlink" title="介绍："></a>介绍：</h2><p><strong>ZooKeeper</strong>是一个开源的分布式应用协调服务系统，主要用来完成统一命名服务、状态同步服务、集群管理、分布式应用配置项的管理等工作。<br>问题：<br><img src="/2019/01/10/ZooKeeper/ac1656df-ca7c-45ee-9688-6201ee09006f.png" alt> </p>
+<h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><h2 id="1-1-官网"><a href="#1-1-官网" class="headerlink" title="1.1 官网"></a>1.1 官网</h2><p><a href="https://zookeeper.apache.org/" target="_blank" rel="noopener">https://zookeeper.apache.org/</a></p>
+<h2 id="1-2-介绍"><a href="#1-2-介绍" class="headerlink" title="1.2 介绍"></a>1.2 介绍</h2><p><strong>ZooKeeper</strong>是一个开源的分布式应用协调服务系统，主要用来完成统一命名服务、状态同步服务、集群管理、分布式应用配置项的管理等工作。<br>问题：<br><img src="/2019/01/10/ZooKeeper/ac1656df-ca7c-45ee-9688-6201ee09006f.png" alt> </p>
 <a id="more"></a>
 <p><strong>Zookeeper特点</strong><br><img src="/2019/01/10/ZooKeeper/7d94097e-7d38-4b30-b02e-f4a0e8e8f2af.jpg" alt><br>&nbsp;&nbsp;1. Zookeeper有一个层次化的名称空间，很像一个分布式文件系统（树形层次结构）<br>&nbsp;&nbsp;2. Zookeeper树中的每个节点被称为—-<strong>Znode</strong><br>&nbsp;&nbsp;3. <strong>Znode</strong>，兼具文件和目录两种特点。既像文件一样维护者数据、元信息、ACL、时间戳等数据结构，又像目录一样可以作为路径标识的一部分。</p>
 <p><strong>ZNode类型</strong><br>&nbsp;&nbsp;Zookeeper中的节点分为<strong>临时节点</strong>、<strong>永久节点</strong>、<strong>顺序节点</strong>。节点的类型在创建时即被确定，并且不能改变。<br>&nbsp;&nbsp;1. <strong>临时节点（Ephemeral Node）</strong>：该节点的生命周期依赖于创建他们的会话。一旦会话（Session）结束，临时节点将被自动删除，Zookeeper的临时节点不允许拥有子节点。<br>&nbsp;&nbsp;2. <strong>永久节点（Persistent Node）</strong>：该节点的生命周期不依赖于会话，并且只有在客户端执行删除操作的时候，他们才能被删除。<br>&nbsp;&nbsp;3. <strong>顺序节点（Sequential Node）</strong>：顺序节点可以是持久的或者临时的。当一个新的Znode被创建为顺序节点时，Zookeeper通过将10位的序列号附加到原始名称来设置ZNode的路径。例如：如果将具有路径** /myapp<strong>的Znode创建为顺序节点，则Zookeeper会将路径更改为</strong>/myapp0000000001**，并且下一个序列号设置为0000000002.</p>
 <p><strong>Watches</strong><br>&nbsp;&nbsp;客户端可以在节点上设置Watch，称之为监视器。当节点状态发生改变时（ZNode的增删改）将会触发Watch所对应的操作。当Watch被触发时，Zookeeper将会向客户端发送且仅发送一条通知。</p>
-<h1 id="二、环境搭建"><a href="#二、环境搭建" class="headerlink" title="二、环境搭建"></a>二、环境搭建</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>&nbsp;&nbsp;注：单机模式为例<br>&nbsp;&nbsp;&nbsp;&nbsp;1. 配置JDK的环境变量<br>&nbsp;&nbsp;&nbsp;&nbsp;2. 下载<br><code>wget http://mirrors.shu.edu.cn/apache/zookeeper/zookeeper-3.4.11/zookeeper-3.4.11.tar.gz</code><br>&nbsp;&nbsp;&nbsp;&nbsp;3. 解压<br><code>tar -zxvf zookeeper-3.4.11.tar.gz -C /usr</code><br>&nbsp;&nbsp;&nbsp;&nbsp;4. 修改配置文件</p>
+<h1 id="二、环境搭建"><a href="#二、环境搭建" class="headerlink" title="二、环境搭建"></a>二、环境搭建</h1><h2 id="2-1-安装"><a href="#2-1-安装" class="headerlink" title="2.1 安装"></a>2.1 安装</h2><p>&nbsp;&nbsp;注：单机模式为例<br>&nbsp;&nbsp;&nbsp;&nbsp;1. 配置JDK的环境变量<br>&nbsp;&nbsp;&nbsp;&nbsp;2. 下载<br><code>wget http://mirrors.shu.edu.cn/apache/zookeeper/zookeeper-3.4.11/zookeeper-3.4.11.tar.gz</code><br>&nbsp;&nbsp;&nbsp;&nbsp;3. 解压<br><code>tar -zxvf zookeeper-3.4.11.tar.gz -C /usr</code><br>&nbsp;&nbsp;&nbsp;&nbsp;4. 修改配置文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">修改配置文件</span><br><span class="line">cp &#x2F;usr&#x2F;zookeeper-3.4.11&#x2F;conf&#x2F;zoo_sample.cfg &#x2F;usr&#x2F;zookeeper-3.4.11&#x2F;conf&#x2F;zoo.cfg</span><br><span class="line"># 修改配置文件</span><br><span class="line">vi &#x2F;usr&#x2F;zookeeper-3.4.11&#x2F;conf&#x2F;zoo.cfg</span><br><span class="line"> tickTime&#x3D;2000</span><br><span class="line"> dataDir&#x3D;&#x2F;root&#x2F;zkData</span><br><span class="line"> clientPort&#x3D;2181</span><br></pre></td></tr></table></figure>
-<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;1. 启动 ZK Server</p>
+<h2 id="2-2-启动"><a href="#2-2-启动" class="headerlink" title="2.2 启动"></a>2.2 启动</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;1. 启动 ZK Server</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;zookeeper-3.4.11&#x2F;bin</span><br><span class="line">.&#x2F;zkServer.sh start ..&#x2F;conf&#x2F;zoo.cfg</span><br></pre></td></tr></table></figure>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;2. 启动成功<br><img src="/2019/01/10/ZooKeeper/e16f5df3-83c2-4ff4-bfae-076bdcaaffff.jpg" alt></p>
 <h1 id="三、Zookeeper指令操作"><a href="#三、Zookeeper指令操作" class="headerlink" title="三、Zookeeper指令操作"></a>三、Zookeeper指令操作</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;<strong>使用 客户端脚本连接ZK Server **<br><code>./zkCli.sh -server ip:port</code><br>&nbsp;&nbsp;</strong>常用指令**</p>
@@ -276,11 +301,11 @@
 <li>quit 退出客户端</li>
 <li>create [-s] [-e] path data acl 创建节点 -s 顺序节点 -e 临时节点</li>
 <li>close 关闭连接</li>
-<li>delete path [version] 删除节点<h1 id="四、JAVA-API-操作"><a href="#四、JAVA-API-操作" class="headerlink" title="四、JAVA API 操作"></a>四、JAVA API 操作</h1><h2 id="Maven-依赖坐标"><a href="#Maven-依赖坐标" class="headerlink" title="Maven 依赖坐标"></a>Maven 依赖坐标</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;com.101tec&lt;&#x2F;groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;zkclient&lt;&#x2F;artifactId&gt;</span><br><span class="line">     &lt;version&gt;0.8&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+<li>delete path [version] 删除节点<h1 id="四、JAVA-API-操作"><a href="#四、JAVA-API-操作" class="headerlink" title="四、JAVA API 操作"></a>四、JAVA API 操作</h1><h2 id="4-1-Maven-依赖坐标"><a href="#4-1-Maven-依赖坐标" class="headerlink" title="4.1 Maven 依赖坐标"></a>4.1 Maven 依赖坐标</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;com.101tec&lt;&#x2F;groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;zkclient&lt;&#x2F;artifactId&gt;</span><br><span class="line">     &lt;version&gt;0.8&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<h2 id="增、删、改、查操作"><a href="#增、删、改、查操作" class="headerlink" title="增、删、改、查操作"></a>增、删、改、查操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">package com.baizhi.zookeeper;</span><br><span class="line">import org.I0Itec.zkclient.ZkClient;</span><br><span class="line">import org.junit.After;</span><br><span class="line">import org.junit.Before;</span><br><span class="line">import org.junit.Test;</span><br><span class="line">import java.util.Date;</span><br><span class="line">import java.util.List;</span><br><span class="line">&#x2F;**</span><br><span class="line">* @author haoransun</span><br><span class="line">*&#x2F;</span><br><span class="line">public class ZkClientOperation &#123;</span><br><span class="line">     private ZkClient zkClient &#x3D; null;</span><br><span class="line">     @Before</span><br><span class="line">     public void before()&#123;</span><br><span class="line">         zkClient &#x3D; new ZkClient(&quot;192.168.128.160&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">     &#x2F;**</span><br><span class="line">     * 增删改查</span><br><span class="line">     *&#x2F;</span><br><span class="line">     @Test</span><br><span class="line">     public void zkCRUD()&#123;</span><br><span class="line">         &#x2F;&#x2F; 创建持久节点</span><br><span class="line">         zkClient.createPersistent(&quot;&#x2F;tencent&quot;,true);</span><br><span class="line">         &#x2F;&#x2F; 创建临时节点</span><br><span class="line">         zkClient.createEphemeral(&quot;&#x2F;zpark&quot;,&quot;bzjy&quot;);</span><br><span class="line">         &#x2F;&#x2F; 创建临时顺序节点</span><br><span class="line">         String e1 &#x3D; zkClient.createEphemeralSequential(&quot;&#x2F;tencent&#x2F;league-of-legends&quot;, &quot;lol&quot;);</span><br><span class="line">         String e2 &#x3D; zkClient.createEphemeralSequential(&quot;&#x2F;tencent&#x2F;cross-fire&quot;, &quot;cf&quot;);</span><br><span class="line">         System.out.println(&quot;创建的临时顺序节点e1：&quot;+e1);</span><br><span class="line">         System.out.println(&quot;创建的临时顺序节点e2：&quot;+e2);</span><br><span class="line">         &#x2F;&#x2F; 获取节点列表</span><br><span class="line">         List&lt;String&gt; list &#x3D; zkClient.getChildren(&quot;&#x2F;tencent&quot;);</span><br><span class="line">         list.forEach(n -&gt; System.out.println(n));</span><br><span class="line">         &#x2F;&#x2F; 删除节点</span><br><span class="line">         boolean result &#x3D; zkClient.deleteRecursive(&quot;&#x2F;tencent&quot;);</span><br><span class="line">         System.out.println(&quot;删除结果：&quot;+result);</span><br><span class="line">         &#x2F;&#x2F; 获取节点内容</span><br><span class="line">         Object data &#x3D; zkClient.readData(&quot;&#x2F;zpark&quot;);</span><br><span class="line">         System.out.println(&quot;&#x2F;zpark 保存的数据为：&quot;+data);</span><br><span class="line">        &#x2F;&#x2F; 更新节点内容</span><br><span class="line">        监听接口 订阅方法 取消订阅方法</span><br><span class="line">        IZkChildListener subscribeChildChanges unsubscribeChildChanges</span><br><span class="line">        IZkDataListener subscribeDataChanges unsubscribeDataChanges</span><br><span class="line">        注册监听</span><br><span class="line">        在ZkClient中客户端可以通过注册相关的事件监听来实现对Zookeeper服务端事件的订阅，其中</span><br><span class="line">        ZkClient提供的常⽤监听事件接口有以下几种：</span><br><span class="line">        测试代码：</span><br><span class="line">         zkClient.writeData(&quot;&#x2F;zpark&quot;,new Date());</span><br><span class="line">         Object newData &#x3D; zkClient.readData(&quot;&#x2F;zpark&quot;);</span><br><span class="line">         System.out.println(&quot;&#x2F;zpark 更新后数据为：&quot;+newData);</span><br><span class="line">     &#125;</span><br><span class="line">         @After</span><br><span class="line">         public void after()&#123;</span><br><span class="line">             zkClient.close();</span><br><span class="line">         &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-2-增、删、改、查操作"><a href="#4-2-增、删、改、查操作" class="headerlink" title="4.2 增、删、改、查操作"></a>4.2 增、删、改、查操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">package com.baizhi.zookeeper;</span><br><span class="line">import org.I0Itec.zkclient.ZkClient;</span><br><span class="line">import org.junit.After;</span><br><span class="line">import org.junit.Before;</span><br><span class="line">import org.junit.Test;</span><br><span class="line">import java.util.Date;</span><br><span class="line">import java.util.List;</span><br><span class="line">&#x2F;**</span><br><span class="line">* @author haoransun</span><br><span class="line">*&#x2F;</span><br><span class="line">public class ZkClientOperation &#123;</span><br><span class="line">     private ZkClient zkClient &#x3D; null;</span><br><span class="line">     @Before</span><br><span class="line">     public void before()&#123;</span><br><span class="line">         zkClient &#x3D; new ZkClient(&quot;192.168.128.160&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">     &#x2F;**</span><br><span class="line">     * 增删改查</span><br><span class="line">     *&#x2F;</span><br><span class="line">     @Test</span><br><span class="line">     public void zkCRUD()&#123;</span><br><span class="line">         &#x2F;&#x2F; 创建持久节点</span><br><span class="line">         zkClient.createPersistent(&quot;&#x2F;tencent&quot;,true);</span><br><span class="line">         &#x2F;&#x2F; 创建临时节点</span><br><span class="line">         zkClient.createEphemeral(&quot;&#x2F;zpark&quot;,&quot;bzjy&quot;);</span><br><span class="line">         &#x2F;&#x2F; 创建临时顺序节点</span><br><span class="line">         String e1 &#x3D; zkClient.createEphemeralSequential(&quot;&#x2F;tencent&#x2F;league-of-legends&quot;, &quot;lol&quot;);</span><br><span class="line">         String e2 &#x3D; zkClient.createEphemeralSequential(&quot;&#x2F;tencent&#x2F;cross-fire&quot;, &quot;cf&quot;);</span><br><span class="line">         System.out.println(&quot;创建的临时顺序节点e1：&quot;+e1);</span><br><span class="line">         System.out.println(&quot;创建的临时顺序节点e2：&quot;+e2);</span><br><span class="line">         &#x2F;&#x2F; 获取节点列表</span><br><span class="line">         List&lt;String&gt; list &#x3D; zkClient.getChildren(&quot;&#x2F;tencent&quot;);</span><br><span class="line">         list.forEach(n -&gt; System.out.println(n));</span><br><span class="line">         &#x2F;&#x2F; 删除节点</span><br><span class="line">         boolean result &#x3D; zkClient.deleteRecursive(&quot;&#x2F;tencent&quot;);</span><br><span class="line">         System.out.println(&quot;删除结果：&quot;+result);</span><br><span class="line">         &#x2F;&#x2F; 获取节点内容</span><br><span class="line">         Object data &#x3D; zkClient.readData(&quot;&#x2F;zpark&quot;);</span><br><span class="line">         System.out.println(&quot;&#x2F;zpark 保存的数据为：&quot;+data);</span><br><span class="line">        &#x2F;&#x2F; 更新节点内容</span><br><span class="line">        监听接口 订阅方法 取消订阅方法</span><br><span class="line">        IZkChildListener subscribeChildChanges unsubscribeChildChanges</span><br><span class="line">        IZkDataListener subscribeDataChanges unsubscribeDataChanges</span><br><span class="line">        注册监听</span><br><span class="line">        在ZkClient中客户端可以通过注册相关的事件监听来实现对Zookeeper服务端事件的订阅，其中</span><br><span class="line">        ZkClient提供的常⽤监听事件接口有以下几种：</span><br><span class="line">        测试代码：</span><br><span class="line">         zkClient.writeData(&quot;&#x2F;zpark&quot;,new Date());</span><br><span class="line">         Object newData &#x3D; zkClient.readData(&quot;&#x2F;zpark&quot;);</span><br><span class="line">         System.out.println(&quot;&#x2F;zpark 更新后数据为：&quot;+newData);</span><br><span class="line">     &#125;</span><br><span class="line">         @After</span><br><span class="line">         public void after()&#123;</span><br><span class="line">             zkClient.close();</span><br><span class="line">         &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="注册监听"><a href="#注册监听" class="headerlink" title="注册监听"></a>注册监听</h2><p>&nbsp;&nbsp;在ZkClient中客户端可以通过注册相关的事件监听来实现对Zookeeper服务端事件的订阅，其中ZkClient提供的常用事件监听接口有以下几种：</p>
 <table>
 <thead>
@@ -308,12 +333,12 @@
 </tbody></table>
 <p>测试代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">package com.baizhi.zookeeper;</span><br><span class="line">import org.I0Itec.zkclient.IZkChildListener;</span><br><span class="line">import org.I0Itec.zkclient.IZkDataListener;</span><br><span class="line">import org.I0Itec.zkclient.ZkClient;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.List;</span><br><span class="line">&#x2F;**</span><br><span class="line">* @author gaozhy</span><br><span class="line">* @date 2018&#x2F;4&#x2F;20.17:32</span><br><span class="line">*&#x2F;</span><br><span class="line">public class ZKListener &#123;</span><br><span class="line">     public static void main(String[] args) throws IOException &#123;</span><br><span class="line">         ZkClient zkClient &#x3D; new ZkClient(&quot;192.168.128.160:2181&quot;);</span><br><span class="line">         &#x2F;&#x2F; 订阅⼦节点改变</span><br><span class="line">         zkClient.subscribeChildChanges(&quot;&#x2F;tencent&quot;, new IZkChildListener() &#123;</span><br><span class="line">         @Override</span><br><span class="line">         public void handleChildChange(String parentPath, List&lt;String&gt;currentChilds) throws Exception &#123;</span><br><span class="line">             System.out.println(&quot;parentPath: &quot;+parentPath);</span><br><span class="line">             currentChilds.forEach( n -&gt; System.out.println(&quot;child node:&quot;+n));</span><br><span class="line">             System.out.println(&quot;-----------------------------------&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">         &#125;);</span><br><span class="line">         &#x2F;&#x2F; 订阅数据改变</span><br><span class="line">         zkClient.subscribeDataChanges(&quot;&#x2F;tencent&quot;, new IZkDataListener() &#123;</span><br><span class="line">         @Override</span><br><span class="line">         public void handleDataChange(String dataPath, Object data)throws Exception &#123;</span><br><span class="line">             System.out.println(&quot;data change: &quot;+dataPath + &quot;,changedata: &quot;+data);</span><br><span class="line">         &#125;</span><br><span class="line">         @Override</span><br><span class="line">         public void handleDataDeleted(String dataPath) throws Exception&#123;</span><br><span class="line">             System.out.println(&quot;delete node path: &quot;+dataPath);</span><br><span class="line">         &#125;</span><br><span class="line">         &#125;);</span><br><span class="line">         System.in.read();</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="五、应用"><a href="#五、应用" class="headerlink" title="五、应用"></a>五、应用</h1><h2 id="命名服务（Naming-Service"><a href="#命名服务（Naming-Service" class="headerlink" title="命名服务（Naming Service)"></a>命名服务（Naming Service)</h2><p>如：阿⾥巴巴集团开源的分布式服务框架Dubbo中使⽤ZooKeeper来作为其命名服务，维护全局的服务地址列表。在Dubbo实现中： 服务提供者在启动的时候，向ZK上的指定节点/dubbo/${serviceName}/providers目录下写入自己的URL地址，这个操作就完成了服务的发布。服务消费者启动的时候，订阅/dubbo/${serviceName}/providers目录下的提供者URL地址，并向/dubbo/${serviceName}/consumers目录下写入自己的URL地址,注意：所有向ZK上注册的地址都是临时节点，这样能够保证服务提供者和消费者能够自动感应资源的变化。</p>
+<h1 id="五、应用"><a href="#五、应用" class="headerlink" title="五、应用"></a>五、应用</h1><h2 id="5-1-命名服务（Naming-Service"><a href="#5-1-命名服务（Naming-Service" class="headerlink" title="5.1 命名服务（Naming Service)"></a>5.1 命名服务（Naming Service)</h2><p>如：阿⾥巴巴集团开源的分布式服务框架Dubbo中使⽤ZooKeeper来作为其命名服务，维护全局的服务地址列表。在Dubbo实现中： 服务提供者在启动的时候，向ZK上的指定节点/dubbo/${serviceName}/providers目录下写入自己的URL地址，这个操作就完成了服务的发布。服务消费者启动的时候，订阅/dubbo/${serviceName}/providers目录下的提供者URL地址，并向/dubbo/${serviceName}/consumers目录下写入自己的URL地址,注意：所有向ZK上注册的地址都是临时节点，这样能够保证服务提供者和消费者能够自动感应资源的变化。</p>
 <p><img src="/2019/01/10/ZooKeeper/9fbc88b2-8d78-49c7-b59b-b38aebb6c49a.jpg" alt></p>
-<h2 id="集群管理与Master选举"><a href="#集群管理与Master选举" class="headerlink" title="集群管理与Master选举"></a>集群管理与Master选举</h2><p>利用Zookeeper有两个特性，就可以实现另一种集群机器存活性能监控系统：</p>
+<h2 id="5-2-集群管理与Master选举"><a href="#5-2-集群管理与Master选举" class="headerlink" title="5.2 集群管理与Master选举"></a>5.2 集群管理与Master选举</h2><p>利用Zookeeper有两个特性，就可以实现另一种集群机器存活性能监控系统：</p>
 <ol>
 <li>客户端在节点X上注册一个Wather，那么如果X的子节点变化了，会通知客户端、</li>
-<li>创建EPHEMERAL类型的节点，一旦客户端和服务器的会话结束或过期，那么该节点就会消失。<h2 id="数据发布与订阅（配置中心）"><a href="#数据发布与订阅（配置中心）" class="headerlink" title="数据发布与订阅（配置中心）"></a>数据发布与订阅（配置中心）</h2>发布与订阅模型，即所谓的配置中⼼，顾名思义就是发布者将数据发布到ZK节点上，供订阅者动态获<br>取数据，实现配置信息的集中式管理和动态更新。例如全局的配置信息，服务式服务框架的服务地址<br>列表等就⾮常适合使⽤。<h2 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h2>分布式锁，这个主要得益于ZooKeeper为我们保证了数据的强⼀致性。锁服务可以分为两类，⼀个是<br>保持独占，另⼀个是控制时序。</li>
+<li>创建EPHEMERAL类型的节点，一旦客户端和服务器的会话结束或过期，那么该节点就会消失。<h2 id="5-3-数据发布与订阅（配置中心）"><a href="#5-3-数据发布与订阅（配置中心）" class="headerlink" title="5.3 数据发布与订阅（配置中心）"></a>5.3 数据发布与订阅（配置中心）</h2>发布与订阅模型，即所谓的配置中⼼，顾名思义就是发布者将数据发布到ZK节点上，供订阅者动态获<br>取数据，实现配置信息的集中式管理和动态更新。例如全局的配置信息，服务式服务框架的服务地址<br>列表等就⾮常适合使⽤。<h2 id="5-4-分布式锁"><a href="#5-4-分布式锁" class="headerlink" title="5.4 分布式锁"></a>5.4 分布式锁</h2>分布式锁，这个主要得益于ZooKeeper为我们保证了数据的强⼀致性。锁服务可以分为两类，⼀个是<br>保持独占，另⼀个是控制时序。</li>
 </ol>
 <p>更详细的应用场景，可参考：</p>
 <ol>
@@ -447,6 +472,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、概述"><span class="toc-number">1.</span> <span class="toc-text">一、概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-官网"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 官网</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-介绍"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 介绍</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、环境搭建"><span class="toc-number">2.</span> <span class="toc-text">二、环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-安装"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-启动"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 启动</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、Zookeeper指令操作"><span class="toc-number">3.</span> <span class="toc-text">三、Zookeeper指令操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、JAVA-API-操作"><span class="toc-number">4.</span> <span class="toc-text">四、JAVA API 操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-Maven-依赖坐标"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 Maven 依赖坐标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-增、删、改、查操作"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 增、删、改、查操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注册监听"><span class="toc-number">4.3.</span> <span class="toc-text">注册监听</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、应用"><span class="toc-number">5.</span> <span class="toc-text">五、应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-命名服务（Naming-Service"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 命名服务（Naming Service)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-集群管理与Master选举"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 集群管理与Master选举</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-数据发布与订阅（配置中心）"><span class="toc-number">5.3.</span> <span class="toc-text">5.3 数据发布与订阅（配置中心）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-分布式锁"><span class="toc-number">5.4.</span> <span class="toc-text">5.4 分布式锁</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -611,15 +649,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -628,10 +678,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -651,11 +697,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -663,15 +709,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">BigData</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">

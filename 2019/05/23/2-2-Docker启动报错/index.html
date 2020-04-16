@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://JavaSsun.github.io">
   <title>2.2-Docker启动报错 | haoran&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="出处：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;2GNKmRJtBGHhUyVBRbRgeA Docker虚拟化故障Docker虚拟化主要有三类故障：应用故障：应用执行状态与预期不一致。 容器故障：无法正确创建、停止、更新容器等。 集群故障：集群创建失败、更新失败、无法连接等。">
+  <meta name="description" content="出处：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;2GNKmRJtBGHhUyVBRbRgeA 1 Docker虚拟化故障Docker虚拟化主要有三类故障：应用故障：应用执行状态与预期不一致。 容器故障：无法正确创建、停止、更新容器等。 集群故障：集群创建失败、更新失败、无法连接等。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2.2-Docker启动报错">
 <meta property="og:url" content="http://javassun.github.io/2019/05/23/2-2-Docker%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/index.html">
 <meta property="og:site_name" content="haoran&#39;s blog">
-<meta property="og:description" content="出处：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;2GNKmRJtBGHhUyVBRbRgeA Docker虚拟化故障Docker虚拟化主要有三类故障：应用故障：应用执行状态与预期不一致。 容器故障：无法正确创建、停止、更新容器等。 集群故障：集群创建失败、更新失败、无法连接等。">
+<meta property="og:description" content="出处：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;2GNKmRJtBGHhUyVBRbRgeA 1 Docker虚拟化故障Docker虚拟化主要有三类故障：应用故障：应用执行状态与预期不一致。 容器故障：无法正确创建、停止、更新容器等。 集群故障：集群创建失败、更新失败、无法连接等。">
 <meta property="og:image" content="http://javassun.github.io/2019/05/23/2-2-Docker%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/bffe455a-b137-4cd1-b009-874dbeaaebf8.jpg">
 <meta property="og:image" content="http://javassun.github.io/2019/05/23/2-2-Docker%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/3bf44228-5466-47a3-a7fb-eae0c2c85e13.jpg">
 <meta property="og:image" content="http://javassun.github.io/2019/05/23/2-2-Docker%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/4c8256fb-0669-4cc5-9381-30b95b45422f.jpg">
 <meta property="og:image" content="http://javassun.github.io/2019/05/23/2-2-Docker%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/0e4560e9-3eff-484b-8da3-96e821d660ab.jpg">
 <meta property="og:image" content="http://javassun.github.io/2019/05/23/2-2-Docker%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/57f33576-3246-41b0-be58-c5382485a341.png">
 <meta property="article:published_time" content="2019-05-23T10:32:24.000Z">
-<meta property="article:modified_time" content="2020-04-14T06:42:17.874Z">
+<meta property="article:modified_time" content="2020-04-16T06:10:26.846Z">
 <meta property="article:author" content="Allen">
 <meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
@@ -228,7 +228,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.2k字</span>
+        <span class="post-count">1.3k字</span>
       </span>
     </span>
 
@@ -250,19 +250,43 @@
 
 	<!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Docker虚拟化故障"><span class="toc-number">1.</span> <span class="toc-text">1 Docker虚拟化故障</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Docker-虚拟化故障排错"><span class="toc-number">2.</span> <span class="toc-text">2 Docker 虚拟化故障排错</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-案例1"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 案例1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-案例2"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 案例2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-案例3"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 案例3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-案例4"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 案例4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-案例5"><span class="toc-number">2.5.</span> <span class="toc-text">2.5 案例5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-案例6"><span class="toc-number">2.6.</span> <span class="toc-text">2.6 案例6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-案例7"><span class="toc-number">2.7.</span> <span class="toc-text">2.7 案例7</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-案例8"><span class="toc-number">2.8.</span> <span class="toc-text">2.8 案例8</span></a></li></ol></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+      
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
       
 	
 		<p>出处：<a href="https://mp.weixin.qq.com/s/2GNKmRJtBGHhUyVBRbRgeA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/2GNKmRJtBGHhUyVBRbRgeA</a></p>
-<h2 id="Docker虚拟化故障"><a href="#Docker虚拟化故障" class="headerlink" title="Docker虚拟化故障"></a>Docker虚拟化故障</h2><p>Docker虚拟化主要有三类故障：<br><strong>应用故障：</strong>应用执行状态与预期不一致。</p>
+<h2 id="1-Docker虚拟化故障"><a href="#1-Docker虚拟化故障" class="headerlink" title="1 Docker虚拟化故障"></a>1 Docker虚拟化故障</h2><p>Docker虚拟化主要有三类故障：<br><strong>应用故障：</strong>应用执行状态与预期不一致。</p>
 <p><strong>容器故障：</strong>无法正确创建、停止、更新容器等。</p>
 <p><strong>集群故障：</strong>集群创建失败、更新失败、无法连接等。</p>
 <a id="more"></a>
-<h2 id="Docker-虚拟化故障排错"><a href="#Docker-虚拟化故障排错" class="headerlink" title="Docker 虚拟化故障排错"></a>Docker 虚拟化故障排错</h2><p>所有的Docker虚拟化故障排查诊断，都可以通过Docker命令行工具或者Web控制台来完成。</p>
+<h2 id="2-Docker-虚拟化故障排错"><a href="#2-Docker-虚拟化故障排错" class="headerlink" title="2 Docker 虚拟化故障排错"></a>2 Docker 虚拟化故障排错</h2><p>所有的Docker虚拟化故障排查诊断，都可以通过Docker命令行工具或者Web控制台来完成。</p>
 <p>通过WEB控制台查看，需要自建控制台，对于Docker运维管理员来说，命令行工具排错是一个不错的帮手。</p>
-<h3 id="案例1"><a href="#案例1" class="headerlink" title="案例1"></a>案例1</h3><p><strong>案例描述：</strong><br>生产环境，全新安装的Docker无法启动，报错信息如下：</p>
+<h3 id="2-1-案例1"><a href="#2-1-案例1" class="headerlink" title="2.1 案例1"></a>2.1 案例1</h3><p><strong>案例描述：</strong><br>生产环境，全新安装的Docker无法启动，报错信息如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl  start  docker.service</span><br><span class="line">Job for docker.service failed because the control process exited with  error code.See</span><br><span class="line">&quot;systemctl status docker.service&quot;  and  &quot;journalctl -xe&quot;  for details</span><br></pre></td></tr></table></figure>
 <p>通过journalctl -xe命令查看启动的详细日志，启动daemon错误，因为Selinux不支持，Selinux阻挡了Docker引擎的启动，如图所示：<br><img src="/2019/05/23/2-2-Docker%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/bffe455a-b137-4cd1-b009-874dbeaaebf8.jpg" alt></p>
 <p><strong>解决方案：</strong><br>如上问题，解决方法有两种：</p>
@@ -270,23 +294,23 @@
 <p>/etc/selinux/config，将配置文件中enforcing设置为disabled，然后重启系统，然后重启docker引擎即可。</p>
 <p>2.docker主配置文件：</p>
 <p>/etc/sysconfig/docker，将配置文件中–selinux-enabled选项为false，改成：–selinux-enabled=false即可。</p>
-<h3 id="案例2"><a href="#案例2" class="headerlink" title="案例2"></a>案例2</h3><p><strong>案例描述：</strong><br>Docker虚拟化引擎报错信息如下：</p>
+<h3 id="2-2-案例2"><a href="#2-2-案例2" class="headerlink" title="2.2 案例2"></a>2.2 案例2</h3><p><strong>案例描述：</strong><br>Docker虚拟化引擎报错信息如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown  socket at step GROUP: No such process</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/05/23/2-2-Docker%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/3bf44228-5466-47a3-a7fb-eae0c2c85e13.jpg" alt></p>
 <p><strong>解决方案：</strong><br>如上错误提示是因为Docker无法找到Group组信息，docker组有可能被误删除，解决方法有两种：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.创建宿主机docker组即可，命令：groupadd docker；</span><br><span class="line">2.&#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;docker.socket文件，SocketGroup&#x3D;修改为root也可以；</span><br></pre></td></tr></table></figure>
-<h3 id="案例3"><a href="#案例3" class="headerlink" title="案例3"></a>案例3</h3><p><strong>案例描述：</strong><br>Docker虚拟化引擎报错信息如下：<br><img src="/2019/05/23/2-2-Docker%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/4c8256fb-0669-4cc5-9381-30b95b45422f.jpg" alt></p>
+<h3 id="2-3-案例3"><a href="#2-3-案例3" class="headerlink" title="2.3 案例3"></a>2.3 案例3</h3><p><strong>案例描述：</strong><br>Docker虚拟化引擎报错信息如下：<br><img src="/2019/05/23/2-2-Docker%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/4c8256fb-0669-4cc5-9381-30b95b45422f.jpg" alt></p>
 <p>如上错误提示是因为Linux操作系统没有更多的Loopback 设备给Docker使用。</p>
 <p><strong>解决方案：</strong><br>创建更多的Loopback设备即可，命令如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for i inseq 0 6;do mknod -m 0660 &#x2F;dev&#x2F;loop$i b 7 $i;done</span><br></pre></td></tr></table></figure>
-<h3 id="案例4"><a href="#案例4" class="headerlink" title="案例4"></a>案例4</h3><p><strong>案例描述：</strong></p>
+<h3 id="2-4-案例4"><a href="#2-4-案例4" class="headerlink" title="2.4 案例4"></a>2.4 案例4</h3><p><strong>案例描述：</strong></p>
 <p>Docker命令执行，报错如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cannot connect to the Docker daemon at unix:</span><br><span class="line">&#x2F;&#x2F;&#x2F;var&#x2F;run&#x2F;docker.sock. Is the docker daemon running?</span><br></pre></td></tr></table></figure>
 <p>根据如上错误提示，该错误很明显可能是docker没有启动。</p>
 <p><strong>解决方案：</strong></p>
 <p>检测docker进程是否启动，ps -ef|grep docker，如果没有启动，启动Docker即可。</p>
 <p>检测Docker进程存在，但是无法连接，可以重启一下Docker服务，检测一下Sock路径是否正确；<br><img src="/2019/05/23/2-2-Docker%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/0e4560e9-3eff-484b-8da3-96e821d660ab.jpg" alt></p>
-<h3 id="案例5"><a href="#案例5" class="headerlink" title="案例5"></a>案例5</h3><p><strong>案例描述：</strong><br>Docker获取远程镜像，报错信息如下：</p>
+<h3 id="2-5-案例5"><a href="#2-5-案例5" class="headerlink" title="2.5 案例5"></a>2.5 案例5</h3><p><strong>案例描述：</strong><br>Docker获取远程镜像，报错信息如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Get https:&#x2F;&#x2F;registry-1.docker.io&#x2F;v2&#x2F;: dial tcp: lookup registry-1.docker.io</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/05/23/2-2-Docker%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/57f33576-3246-41b0-be58-c5382485a341.png" alt></p>
 <p>该错误表示无法连接远程仓库Docker.io。</p>
@@ -295,7 +319,7 @@
 <p>如果能够ping通，但是下载还是比较慢，可以修改Docker仓库源为国内或者自建的仓库源；</p>
 <p>Docker镜像修改方法，vim /etc/docker/daemon.json，执行如下命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">at&gt;&#x2F;etc&#x2F;docker&#x2F;daemon.json&lt;&lt;EOF</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">&quot;registry-mirrors&quot;:[&quot;https:&#x2F;&#x2F;registry.docker-cn.com&quot;]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">service docker restart</span><br></pre></td></tr></table></figure>
-<h3 id="案例6"><a href="#案例6" class="headerlink" title="案例6"></a>案例6</h3><p><strong>案例描述：</strong><br>启动Docker容器，报错信息如下:</p>
+<h3 id="2-6-案例6"><a href="#2-6-案例6" class="headerlink" title="2.6 案例6"></a>2.6 案例6</h3><p><strong>案例描述：</strong><br>启动Docker容器，报错信息如下:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;bin&#x2F;docker-current: Error response from daemon: oci runtime error: container_linux.go:247: starting container process caused &quot;exec: \&quot;&#x2F;bin&#x2F;bash\&quot;: executable file not found in $PATH&quot;.</span><br></pre></td></tr></table></figure>
 
 <p>如上报错，通常是由于容器启动时，不支持该命令：/bin/bash。</p>
@@ -303,14 +327,14 @@
 <p>解决方法有如下两种：</p>
 <p>修改启动命令为正确的Docker容器启动命令，例如修改为：/bin/sh或者sleep 99999d等；</p>
 <p>Docker镜像自身问题或者Docker引擎版本比较低导致，可以升级Docker引擎版本服务；</p>
-<h3 id="案例7"><a href="#案例7" class="headerlink" title="案例7"></a>案例7</h3><p><strong>案例描述：</strong><br>Docker虚拟化运行中，报错信息如下：</p>
+<h3 id="2-7-案例7"><a href="#2-7-案例7" class="headerlink" title="2.7 案例7"></a>2.7 案例7</h3><p><strong>案例描述：</strong><br>Docker虚拟化运行中，报错信息如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Docker no space left on device</span><br><span class="line">Docker no space left on device</span><br><span class="line">Docker no space left on device</span><br><span class="line">Docker no space left on device</span><br><span class="line">Docker no space left on device</span><br></pre></td></tr></table></figure>
 <p>如上错误，表示Docker虚拟化引擎平台，没有多月的空间设备所使用，证明容器磁盘不足或者物理机磁盘不足。</p>
 <p><strong>解决方案：</strong></p>
 <p>手工删除Docker容器占用数据比较大的目录；</p>
 <p>或者通过docker system prune自动删除一些日志目录，此种方法会停止所有容器；</p>
 <p>或者临时增加Docker存储硬盘等；</p>
-<h3 id="案例8"><a href="#案例8" class="headerlink" title="案例8"></a>案例8</h3><p><strong>案例描述：</strong><br>Docker push上传镜像至本地仓库报错信息如下：</p>
+<h3 id="2-8-案例8"><a href="#2-8-案例8" class="headerlink" title="2.8 案例8"></a>2.8 案例8</h3><p><strong>案例描述：</strong><br>Docker push上传镜像至本地仓库报错信息如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The push refers to a repository [106.12.133.186:5000&#x2F;busybox] Get https:&#x2F;&#x2F;106.12.133.186:5000&#x2F;v1&#x2F;_ping: http: server gave HTTP response to HTTPS client</span><br></pre></td></tr></table></figure>
 
 <p>根据如上错误提示，错误是由于客户端采用https，docker registry未采用https服务所致。一种处理方式是把客户对地址“106.12.133.186:5000”请求改为http。</p>
@@ -444,6 +468,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Docker虚拟化故障"><span class="toc-number">1.</span> <span class="toc-text">1 Docker虚拟化故障</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Docker-虚拟化故障排错"><span class="toc-number">2.</span> <span class="toc-text">2 Docker 虚拟化故障排错</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-案例1"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 案例1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-案例2"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 案例2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-案例3"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 案例3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-案例4"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 案例4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-案例5"><span class="toc-number">2.5.</span> <span class="toc-text">2.5 案例5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-案例6"><span class="toc-number">2.6.</span> <span class="toc-text">2.6 案例6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-案例7"><span class="toc-number">2.7.</span> <span class="toc-text">2.7 案例7</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-案例8"><span class="toc-number">2.8.</span> <span class="toc-text">2.8 案例8</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -608,15 +645,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -625,10 +674,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -648,11 +693,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -660,15 +705,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">BigData</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">

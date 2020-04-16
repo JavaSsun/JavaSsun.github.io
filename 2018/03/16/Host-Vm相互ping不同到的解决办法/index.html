@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://javassun.github.io/2018/03/16/Host-Vm%E7%9B%B8%E4%BA%92ping%E4%B8%8D%E5%90%8C%E5%88%B0%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/91c717c7-f0a5-45fb-ae74-58cbaba603e7.png">
 <meta property="og:image" content="http://javassun.github.io/2018/03/16/Host-Vm%E7%9B%B8%E4%BA%92ping%E4%B8%8D%E5%90%8C%E5%88%B0%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/a375362f-3899-4f21-b131-daf5fecc9009.png">
 <meta property="article:published_time" content="2018-03-16T11:47:27.000Z">
-<meta property="article:modified_time" content="2020-04-14T04:54:55.770Z">
+<meta property="article:modified_time" content="2020-04-16T05:23:47.869Z">
 <meta property="article:author" content="Allen">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -251,6 +251,30 @@
 
 	<!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#缘由"><span class="toc-number">1.</span> <span class="toc-text">缘由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#两机互ping的问题"><span class="toc-number">2.</span> <span class="toc-text">两机互ping的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟机上网问题"><span class="toc-number">3.</span> <span class="toc-text">虚拟机上网问题</span></a></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+      
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
@@ -386,6 +410,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#缘由"><span class="toc-number">1.</span> <span class="toc-text">缘由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#两机互ping的问题"><span class="toc-number">2.</span> <span class="toc-text">两机互ping的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟机上网问题"><span class="toc-number">3.</span> <span class="toc-text">虚拟机上网问题</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -550,15 +587,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -567,10 +616,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -590,11 +635,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -602,15 +647,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">BigData</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">

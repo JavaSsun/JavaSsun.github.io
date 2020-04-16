@@ -16,7 +16,7 @@
 <meta property="og:description" content="转载自 https:&#x2F;&#x2F;blog.csdn.net&#x2F;wsmrzx&#x2F;article&#x2F;details&#x2F;81477926">
 <meta property="og:image" content="http://javassun.github.io/2018/08/19/Hexo%E6%92%B0%E5%86%99%E6%96%87%E7%AB%A0/60bbee39-dccc-48d2-9fb5-149a40253315.png">
 <meta property="article:published_time" content="2018-08-19T03:07:37.000Z">
-<meta property="article:modified_time" content="2020-04-14T05:20:25.490Z">
+<meta property="article:modified_time" content="2020-04-16T05:46:51.053Z">
 <meta property="article:author" content="Allen">
 <meta property="article:tag" content="Hexo-yilia">
 <meta name="twitter:card" content="summary">
@@ -246,6 +246,30 @@
 
 	<!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-创建文章"><span class="toc-number">1.</span> <span class="toc-text">一 创建文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-编写文章（基于Markdown）"><span class="toc-number">2.</span> <span class="toc-text">二 编写文章（基于Markdown）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Markdown基本语法略"><span class="toc-number">2.1.</span> <span class="toc-text">1 Markdown基本语法略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-说明："><span class="toc-number">2.2.</span> <span class="toc-text">2 说明：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-高级设置"><span class="toc-number">2.3.</span> <span class="toc-text">3 高级设置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三-部署发布"><span class="toc-number">3.</span> <span class="toc-text">三 部署发布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四-Hexo一篇文章多个categories"><span class="toc-number">4.</span> <span class="toc-text">四 Hexo一篇文章多个categories</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-子分类"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 子分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-多个分类"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 多个分类</span></a></li></ol></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+      
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
@@ -254,12 +278,12 @@
 		<p>转载自 <a href="https://blog.csdn.net/wsmrzx/article/details/81477926" target="_blank" rel="noopener">https://blog.csdn.net/wsmrzx/article/details/81477926</a></p>
 <p><img src="/2018/08/19/Hexo%E6%92%B0%E5%86%99%E6%96%87%E7%AB%A0/60bbee39-dccc-48d2-9fb5-149a40253315.png" alt></p>
 <a id="more"></a>
-<h3 id="一、创建文章"><a href="#一、创建文章" class="headerlink" title="一、创建文章"></a>一、创建文章</h3><p>在站点文件夹中打开 git bash，输入如下命令创建文章，其中 <code>title</code> 为文章的标题</p>
+<h3 id="一-创建文章"><a href="#一-创建文章" class="headerlink" title="一 创建文章"></a>一 创建文章</h3><p>在站点文件夹中打开 git bash，输入如下命令创建文章，其中 <code>title</code> 为文章的标题</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure>
 <p>当输入命令后，就会在 <strong>source/_post</strong> 文件夹下创建一个文件，命名为：<strong>title.md</strong></p>
 <p>这个文件就是将要发布到网站上的原始文件，用于记录文章内容</p>
 <p>下面，我们将要在这个文件中写下我们的第一篇博客</p>
-<h3 id="二、编写文章（基于Markdown）"><a href="#二、编写文章（基于Markdown）" class="headerlink" title="二、编写文章（基于Markdown）"></a>二、编写文章（基于Markdown）</h3><h4 id="1-Markdown基本语法略"><a href="#1-Markdown基本语法略" class="headerlink" title="1 Markdown基本语法略"></a>1 <strong>Markdown基本语法略</strong></h4><h4 id="2-说明："><a href="#2-说明：" class="headerlink" title="2 说明："></a>2 <strong>说明：</strong></h4><p>在 Hexo中 插入图片时，请按照以下的步骤进行设置</p>
+<h3 id="二-编写文章（基于Markdown）"><a href="#二-编写文章（基于Markdown）" class="headerlink" title="二 编写文章（基于Markdown）"></a>二 编写文章（基于Markdown）</h3><h4 id="1-Markdown基本语法略"><a href="#1-Markdown基本语法略" class="headerlink" title="1 Markdown基本语法略"></a>1 <strong>Markdown基本语法略</strong></h4><h4 id="2-说明："><a href="#2-说明：" class="headerlink" title="2 说明："></a>2 <strong>说明：</strong></h4><p>在 Hexo中 插入图片时，请按照以下的步骤进行设置</p>
 <p>1 将 <strong>站点配置文件</strong> 中的 <code>post_asset_folder</code> 选项的值设置为 true</p>
 <p>2.在站点文件夹中打开 git bash，输入命令 <code>npm install hexo-asset-image --save</code> 安装插件</p>
 <p><strong>ps:如果上述 安装包不能正确加载图片，建议下述低版本安装包：</strong><br><font color="red"> 使用 npm install <a href="https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2FCodeFalling%2Fhexo-asset-image" target="_blank" rel="noopener">https://github.com/CodeFalling/hexo-asset-image</a> –save 安装0.0.5版本的hexo-asset-image插件。</font></p>
@@ -284,18 +308,18 @@
 <p>在利用 Hexo 框架搭建的博客网站中，首页会显示文章的内容，且默认显示文章的全部内容</p>
 <p>如果当文章太长的时候就会显得十分冗余，所以我们有必要对其进行精简</p>
 <p>这时，我们只需在文章中使用 <code>&lt;!--more--&gt;</code> 标志即可，<strong>表示只会显示标志前面的内容</strong></p>
-<h3 id="三、部署发布"><a href="#三、部署发布" class="headerlink" title="三、部署发布"></a>三、部署发布</h3><p>在站点文件夹中打开 git bash，输入如下命令部署和发布文章</p>
+<h3 id="三-部署发布"><a href="#三-部署发布" class="headerlink" title="三 部署发布"></a>三 部署发布</h3><p>在站点文件夹中打开 git bash，输入如下命令部署和发布文章</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g -d</span><br></pre></td></tr></table></figure>
 
 <p><strong>建议</strong>：在使用 <code>hexo g</code> 部署之后，可以先使用 <code>hexo s</code> 运行本地站点，然后在浏览器输入地址 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> 查看运行结果，检查无误后再使用 <code>hexo d</code> 发布</p>
-<h3 id="四、Hexo一篇文章多个categories"><a href="#四、Hexo一篇文章多个categories" class="headerlink" title="四、Hexo一篇文章多个categories"></a>四、Hexo一篇文章多个categories</h3><p>在很多情况下，我们希望在 Hexo 中写的一篇文章能够同时属于多个分类，例如我写一篇 《Servlet笔记》，我既想将它放在 <strong>Java</strong> 这个分类中，又想将它放入 <strong>Servlet</strong> 这个分类。</p>
+<h3 id="四-Hexo一篇文章多个categories"><a href="#四-Hexo一篇文章多个categories" class="headerlink" title="四 Hexo一篇文章多个categories"></a>四 Hexo一篇文章多个categories</h3><p>在很多情况下，我们希望在 Hexo 中写的一篇文章能够同时属于多个分类，例如我写一篇 《Servlet笔记》，我既想将它放在 <strong>Java</strong> 这个分类中，又想将它放入 <strong>Servlet</strong> 这个分类。</p>
 <p>  按照官方的解释，<code>categories</code> 这个选项有两种配置方法（其实有三种）。那我们就来讲讲这三种配置方法。</p>
-<h4 id="子分类"><a href="#子分类" class="headerlink" title="子分类"></a>子分类</h4><p>下面的分类会将该分章放到 <code>Java/Servlet</code>这个分类下。</p>
+<h4 id="4-1-子分类"><a href="#4-1-子分类" class="headerlink" title="4.1 子分类"></a>4.1 子分类</h4><p>下面的分类会将该分章放到 <code>Java/Servlet</code>这个分类下。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line">  - Java</span><br><span class="line">  - Servlet</span><br></pre></td></tr></table></figure>
 <p>同样的作用我们也可以这样写。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">categories: [Java, Servlet]</span><br></pre></td></tr></table></figure>
 
-<h4 id="多个分类"><a href="#多个分类" class="headerlink" title="多个分类"></a>多个分类</h4><p>如果我们的要求是将文章同时分到多个不同的分类中呢，我们应该这样</p>
+<h4 id="4-2-多个分类"><a href="#4-2-多个分类" class="headerlink" title="4.2 多个分类"></a>4.2 多个分类</h4><p>如果我们的要求是将文章同时分到多个不同的分类中呢，我们应该这样</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line">  -[Java]</span><br><span class="line">  -[Servlet]</span><br></pre></td></tr></table></figure>
 
 <p>这样，就可以将上面的文章分类到 <code>Java</code> 和 <code>Servlet</code> 这两个不同的目录中了。</p>
@@ -426,6 +450,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-创建文章"><span class="toc-number">1.</span> <span class="toc-text">一 创建文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-编写文章（基于Markdown）"><span class="toc-number">2.</span> <span class="toc-text">二 编写文章（基于Markdown）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Markdown基本语法略"><span class="toc-number">2.1.</span> <span class="toc-text">1 Markdown基本语法略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-说明："><span class="toc-number">2.2.</span> <span class="toc-text">2 说明：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-高级设置"><span class="toc-number">2.3.</span> <span class="toc-text">3 高级设置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三-部署发布"><span class="toc-number">3.</span> <span class="toc-text">三 部署发布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四-Hexo一篇文章多个categories"><span class="toc-number">4.</span> <span class="toc-text">四 Hexo一篇文章多个categories</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-子分类"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 子分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-多个分类"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 多个分类</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -590,15 +627,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -607,10 +656,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -630,11 +675,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -642,15 +687,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">BigData</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">

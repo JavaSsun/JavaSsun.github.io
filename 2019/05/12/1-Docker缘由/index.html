@@ -45,7 +45,7 @@
 <meta property="og:image" content="http://javassun.github.io/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181205094613899-1061816782.png">
 <meta property="og:image" content="http://javassun.github.io/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181205094653278-1319182904.png">
 <meta property="article:published_time" content="2019-05-12T12:23:22.000Z">
-<meta property="article:modified_time" content="2020-04-14T06:29:27.123Z">
+<meta property="article:modified_time" content="2020-04-16T06:06:56.151Z">
 <meta property="article:author" content="Allen">
 <meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
@@ -253,7 +253,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">8.7k字</span>
+        <span class="post-count">8.8k字</span>
       </span>
     </span>
 
@@ -275,6 +275,30 @@
 
 	<!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-什么是Docker"><span class="toc-number">2.</span> <span class="toc-text">1 什么是Docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Docker和虚拟机的区别"><span class="toc-number">3.</span> <span class="toc-text">2 Docker和虚拟机的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-基本概念"><span class="toc-number">4.</span> <span class="toc-text">3 基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-镜像：一个特殊的文件系统"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 镜像：一个特殊的文件系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-容器：镜像运行时的实体"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 容器：镜像运行时的实体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-仓库：集中存放镜像文件的地方"><span class="toc-number">4.3.</span> <span class="toc-text">3.3 仓库：集中存放镜像文件的地方</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Docker的主要应用场景"><span class="toc-number">5.</span> <span class="toc-text">4 Docker的主要应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-简化配置"><span class="toc-number">5.1.</span> <span class="toc-text">4.1 简化配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-代码流水线（Code-Pipeline）管理"><span class="toc-number">5.2.</span> <span class="toc-text">4.2 代码流水线（Code Pipeline）管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-提高开发效率"><span class="toc-number">5.3.</span> <span class="toc-text">4.3 提高开发效率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-隔离应用"><span class="toc-number">5.4.</span> <span class="toc-text">4.4 隔离应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-整合服务器"><span class="toc-number">5.5.</span> <span class="toc-text">4.5 整合服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-调试能力"><span class="toc-number">5.6.</span> <span class="toc-text">4.6 调试能力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-7-多租户环境"><span class="toc-number">5.7.</span> <span class="toc-text">4.7 多租户环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-8-快速部署"><span class="toc-number">5.8.</span> <span class="toc-text">4.8 快速部署</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Docker改变了什么？"><span class="toc-number">6.</span> <span class="toc-text">5 Docker改变了什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Docker持续开发工作流"><span class="toc-number">7.</span> <span class="toc-text">6  Docker持续开发工作流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-DockerFile"><span class="toc-number">8.</span> <span class="toc-text">7 DockerFile</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-Dockerfile-指令"><span class="toc-number">8.1.</span> <span class="toc-text">7.1 Dockerfile 指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-1-FROM"><span class="toc-number">8.1.1.</span> <span class="toc-text">7.1.1 FROM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-2-RUN"><span class="toc-number">8.1.2.</span> <span class="toc-text">7.1.2 RUN</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-3-COPY"><span class="toc-number">8.1.3.</span> <span class="toc-text">7.1.3 COPY</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-4-ADD"><span class="toc-number">8.1.4.</span> <span class="toc-text">7.1.4 ADD</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-5-WORKDIR"><span class="toc-number">8.1.5.</span> <span class="toc-text">7.1.5 WORKDIR</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-6-CMD"><span class="toc-number">8.1.6.</span> <span class="toc-text">7.1.6 CMD</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-7-ENTRYPOINT"><span class="toc-number">8.1.7.</span> <span class="toc-text">7.1.7 ENTRYPOINT</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-8-ENV"><span class="toc-number">8.1.8.</span> <span class="toc-text">7.1.8 ENV</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-9-EXPOSE"><span class="toc-number">8.1.9.</span> <span class="toc-text">7.1.9 EXPOSE</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-优化"><span class="toc-number">9.</span> <span class="toc-text">8 优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-创建自定义Docker镜像"><span class="toc-number">10.</span> <span class="toc-text">9 创建自定义Docker镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-在-docker-compose-yml中定义服务"><span class="toc-number">11.</span> <span class="toc-text">10 在 docker-compose.yml中定义服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1-关于-Compose"><span class="toc-number">11.1.</span> <span class="toc-text">10.1 关于 Compose</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-常见场景"><span class="toc-number">12.</span> <span class="toc-text">11 常见场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-使用Compose"><span class="toc-number">13.</span> <span class="toc-text">12 使用Compose</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-了解docker-compose-yml"><span class="toc-number">14.</span> <span class="toc-text">13 了解docker-compose.yml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-了解YAML语言"><span class="toc-number">15.</span> <span class="toc-text">14 了解YAML语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-docker-compose-yml文件配置项"><span class="toc-number">16.</span> <span class="toc-text">15 docker-compose.yml文件配置项</span></a></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+      
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
@@ -296,18 +320,18 @@
 <li>认为对现有系统、架构改造太大，成本太高；</li>
 <li>认为Docker只是一种单纯的相对先进的技术，并不能给现有的开发带来什么概念；</li>
 </ul>
-<h2 id="什么是Docker"><a href="#什么是Docker" class="headerlink" title="什么是Docker"></a>什么是Docker</h2><p><strong>Docker</strong>是一个开源的应用容器引擎，可以轻松的为任何应用创建一个轻量级的、可移植的、自给自足的容器。开发者在本地编译通过的容器可以批量的在生产环境中部署，包括VMs(虚拟机)、bare metal、OpenStack集群和其他的基础应用平台。</p>
+<h2 id="1-什么是Docker"><a href="#1-什么是Docker" class="headerlink" title="1 什么是Docker"></a>1 什么是Docker</h2><p><strong>Docker</strong>是一个开源的应用容器引擎，可以轻松的为任何应用创建一个轻量级的、可移植的、自给自足的容器。开发者在本地编译通过的容器可以批量的在生产环境中部署，包括VMs(虚拟机)、bare metal、OpenStack集群和其他的基础应用平台。</p>
 <p>简单理解，Docker类似于集装箱，各式各样的货物，经过集装箱的标准化进行托管，而集装箱和集装箱之间没有影响。也就是说，Docker平台就是一个软件集装箱化平台，这就意味着我们可以构建应用程序，将其依赖关系一起打包到一个容器中，然后这容器就很容易运送到其他的机器上进行运行，而且非常易于装载、复制、移除，非常适合软件弹性架构。</p>
 <p><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181128093811704-1643592196.png" alt></p>
 <p>因此，就像船只、火车或卡车运输集装箱而不论其内部的货物一样，软件容器就充当着 软件部署 的标准单元，其中可以包含不同的代码和依赖项。按照这种方式的容器化软件。开发人员和IT专业人员只需要进行极少修改或者不修改，即可将其部署到不同的环境。</p>
 <p>总而言这，Docker是一个开放平台，使开发人员和管理员可以在称为容器的松散隔离的环境中构建镜像、交付和运行分布式应用程序。以便在开发、QA和生产环境之间进行高效的应用程序生命周期管理。</p>
-<h2 id="Docker和虚拟机的区别"><a href="#Docker和虚拟机的区别" class="headerlink" title="Docker和虚拟机的区别"></a>Docker和虚拟机的区别</h2><p><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181128093906502-569967575.png" alt><br><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181128093915205-139200956.png" alt><br><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181128093934953-2128627412.png" alt></p>
+<h2 id="2-Docker和虚拟机的区别"><a href="#2-Docker和虚拟机的区别" class="headerlink" title="2 Docker和虚拟机的区别"></a>2 Docker和虚拟机的区别</h2><p><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181128093906502-569967575.png" alt><br><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181128093915205-139200956.png" alt><br><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181128093934953-2128627412.png" alt></p>
 <p>如上图所示，由于容器所需的资源要少很多（例如，他们不需要一个完整的OS），所以它们易于部署且可以快速启动、这使得你能够具有更高部署密度。即<strong>允许在同一硬件单元上运行更多服务，从而降低了成本。</strong></p>
 <p>在同一内核上运行的时候，你获得的隔离比VM少。</p>
 <p><font color="red">镜像的主要目标是使环境（依赖项）在不同的部署中保持不变。</font>，即可以在计算机上调试它，然后将其部署到保证具有相同环境的另一台计算机上。</p>
 <p>借助容器镜像，可打包应用或者服务 并采用可靠且可重现的方式对其进行部署。可以说Docker不只是一种技术，还是一种原理和过程。</p>
 <p>在使用Docker之前，经常听到，“这个问题在开发环境是正常的！”。而在使用Docker后，你不会听到开发人员说：“为什么它能在我的计算机上使用却不能用在生产中？”。开发人员只需要说 “它在Docker上运行”，因为打包的Docker应用程序可在任何支持的Docker环境上执行，而且它在所有部署目标（开发、QA、暂停和生产）上都按期运行。</p>
-<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><h2 id="镜像：一个特殊的文件系统"><a href="#镜像：一个特殊的文件系统" class="headerlink" title="镜像：一个特殊的文件系统"></a>镜像：一个特殊的文件系统</h2><p>操作系统分为内核和用户空间。对于Linux而言，内核启动后，会挂在root文件系统为其提供用户空间支持。而Docker镜像相当于是一个root文件系统。</p>
+<h2 id="3-基本概念"><a href="#3-基本概念" class="headerlink" title="3 基本概念"></a>3 基本概念</h2><h3 id="3-1-镜像：一个特殊的文件系统"><a href="#3-1-镜像：一个特殊的文件系统" class="headerlink" title="3.1 镜像：一个特殊的文件系统"></a>3.1 镜像：一个特殊的文件系统</h3><p>操作系统分为内核和用户空间。对于Linux而言，内核启动后，会挂在root文件系统为其提供用户空间支持。而Docker镜像相当于是一个root文件系统。</p>
 <p><strong>Docker镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（匿名卷、环境变量、用户等）。</strong></p>
 <p>镜像是不包含任何动态数据，其内容在构建之后也不会被改变。</p>
 <p>Docker设计时。就充分利用 <strong>Union FS</strong>技术，将其设计为分层存储的架构。镜像实际是由多层文件系统联合组成。</p>
@@ -316,7 +340,7 @@
 <p>在最终容器运行的时候，虽然不会看到这个文件，但是实际上该文件会一直跟随镜像。</p>
 <p>因此，在构建镜像时，需要额外小心，每一层尽量只包含该层需要添加的东西，任何额外的东西应该在该层构建结束前清理掉。</p>
 <p>分层存储的特征还使得镜像的复用、定制变得更为容易，甚至可以用之前构建好的镜像作为基础层，然后进一步添加新的层，以定制自己所需的容器，构建新的镜像。</p>
-<h2 id="容器：镜像运行时的实体"><a href="#容器：镜像运行时的实体" class="headerlink" title="容器：镜像运行时的实体"></a>容器：镜像运行时的实体</h2><p>镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中 类 和 实例一样，镜像时静态的定义，容器是进行运行时的实体。容器可以被创建、启动、停止、删除、暂停等。</p>
+<h3 id="3-2-容器：镜像运行时的实体"><a href="#3-2-容器：镜像运行时的实体" class="headerlink" title="3.2 容器：镜像运行时的实体"></a>3.2 容器：镜像运行时的实体</h3><p>镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中 类 和 实例一样，镜像时静态的定义，容器是进行运行时的实体。容器可以被创建、启动、停止、删除、暂停等。</p>
 <p>容器的实质是进程，但与直接在宿主执行的进程不同，容器进程运行于属于自己独立的命名空间，前面说过镜像使用的是分层存储，容器也是如此。</p>
 <p>容器存储层的生命周期和容器一样，容器消亡时，容器存储层也随之消亡。因此，任何保存于容器存储层的信息都会随容器删除而丢失。</p>
 <p>按着Docker最佳实践的要求，容器不应该向其存储层内写入任何数据，容器存储层要保持无状态变化。</p>
@@ -324,7 +348,7 @@
 <p>数据卷的生命周期独立于容器，容器消亡，数据卷不会消亡。因此使用数据卷后，容器可以随意删除、重新run，数据却不会丢失。</p>
 <p><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181128094117580-274999612.png" alt></p>
 <p><strong><font color="red">注意：</font></strong><br>容器在整个应用程序生命周期工作流中提供以下优点：隔离性、可移植性、灵活性、可伸缩性和可控性。最重要的优点是可在开发和运营之间提供隔离。</p>
-<h2 id="仓库：集中存放镜像文件的地方"><a href="#仓库：集中存放镜像文件的地方" class="headerlink" title="仓库：集中存放镜像文件的地方"></a>仓库：集中存放镜像文件的地方</h2><p>镜像构建完成后，可以很容易的在当前宿主上运行，但是，如果需要在其他服务器上使用这个镜像，我们就需要一个集中的存储、分发镜像的服务。<strong>Docker Registry</strong>就是这样的服务。</p>
+<h3 id="3-3-仓库：集中存放镜像文件的地方"><a href="#3-3-仓库：集中存放镜像文件的地方" class="headerlink" title="3.3 仓库：集中存放镜像文件的地方"></a>3.3 仓库：集中存放镜像文件的地方</h3><p>镜像构建完成后，可以很容易的在当前宿主上运行，但是，如果需要在其他服务器上使用这个镜像，我们就需要一个集中的存储、分发镜像的服务。<strong>Docker Registry</strong>就是这样的服务。</p>
 <p>一个Docker Registry 中可以包含多个仓库（Repository）:每个仓库可以包含多个标签（Tag）;每个标签对应一个镜像。</p>
 <p>所以说，镜像仓库是Docker用来集中存放镜像文件的地方，类似于我们之前的代码仓库。</p>
 <p>通常，一个仓库会包含同一个软件不同版本的镜像，而标签就常用于对应该软件的各个版本。</p>
@@ -335,20 +359,20 @@
 <p>在国内访问Docker Hub可能比较慢，国内有一些云服务商提供类似于Docker Hub的公开服务。</p>
 <p>除了公开服务外，用户还可以在本地搭建私有Docker Registry。Docker官方提供了 Docker Registry 镜像，可以直接使用作为私有Registry服务。</p>
 <p>开源的 Docker Registry 镜像只提供了 Docker Registry API的服务端实现，足以支持Docker命令，不影响使用，但不含图形界面，以及镜像维护、用户管理、访问控制等高级功能。</p>
-<h2 id="Docker的主要应用场景"><a href="#Docker的主要应用场景" class="headerlink" title="Docker的主要应用场景"></a>Docker的主要应用场景</h2><h2 id="简化配置"><a href="#简化配置" class="headerlink" title="简化配置"></a>简化配置</h2><p>虚拟机的最大好处是能在你的硬件设施上运行各种配置不一样的平台（软件、系统），Docker在降低额外开销的情况下提供了同样的功能。它能让你将运行环境和配置放在代码中然后部署，同一个Docker的配置可以在不同的环境中使用，这样就降低了硬件要求和应用环境之间耦合度。</p>
+<h2 id="4-Docker的主要应用场景"><a href="#4-Docker的主要应用场景" class="headerlink" title="4 Docker的主要应用场景"></a>4 Docker的主要应用场景</h2><h3 id="4-1-简化配置"><a href="#4-1-简化配置" class="headerlink" title="4.1 简化配置"></a>4.1 简化配置</h3><p>虚拟机的最大好处是能在你的硬件设施上运行各种配置不一样的平台（软件、系统），Docker在降低额外开销的情况下提供了同样的功能。它能让你将运行环境和配置放在代码中然后部署，同一个Docker的配置可以在不同的环境中使用，这样就降低了硬件要求和应用环境之间耦合度。</p>
 <p>简单来说，容器镜像打包完成后，它就是个独立的个体了，丢到哪里都能跑，而无需针对各个平台去独立配置。<br><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181128094246244-759574629.png" alt></p>
-<h2 id="代码流水线（Code-Pipeline）管理"><a href="#代码流水线（Code-Pipeline）管理" class="headerlink" title="代码流水线（Code Pipeline）管理"></a>代码流水线（Code Pipeline）管理</h2><p>前一个场景对于管理代码的流水线起到了很大的帮助。代码从开发者的机器到最终在生产环境上的部署，需要经过很多的中间环境。而每一个中间环境都有自己微小的差别，Docker给应用提供了一个从开发到上线均一致的环境，让代码的流水线变得简单不少。<br><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181128094322089-159857776.png" alt></p>
-<h2 id="提高开发效率"><a href="#提高开发效率" class="headerlink" title="提高开发效率"></a>提高开发效率</h2><p>不同的开发环境中，我们都想把两件事做好。一是我们想让开发环境尽量贴近生产环境，二是我们想要快速搭建开发环境。</p>
+<h3 id="4-2-代码流水线（Code-Pipeline）管理"><a href="#4-2-代码流水线（Code-Pipeline）管理" class="headerlink" title="4.2 代码流水线（Code Pipeline）管理"></a>4.2 代码流水线（Code Pipeline）管理</h3><p>前一个场景对于管理代码的流水线起到了很大的帮助。代码从开发者的机器到最终在生产环境上的部署，需要经过很多的中间环境。而每一个中间环境都有自己微小的差别，Docker给应用提供了一个从开发到上线均一致的环境，让代码的流水线变得简单不少。<br><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181128094322089-159857776.png" alt></p>
+<h3 id="4-3-提高开发效率"><a href="#4-3-提高开发效率" class="headerlink" title="4.3 提高开发效率"></a>4.3 提高开发效率</h3><p>不同的开发环境中，我们都想把两件事做好。一是我们想让开发环境尽量贴近生产环境，二是我们想要快速搭建开发环境。</p>
 <p>使用Docker非常简单的就能实现这两点，哪怕是开发环境的机器配置一般的情况下搭建多个生产服务应用。一台一般配置服务器或者开发机器也能轻松的跑起多个Docker应用，而无需额外增加机器配置。因为Docker有个非常NB的特性，<strong>拥有虚拟化的特性</strong>，而几乎没有额外的开销。<br><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181128094410700-1435124978.png" alt></p>
-<h2 id="隔离应用"><a href="#隔离应用" class="headerlink" title="隔离应用"></a>隔离应用</h2><p>很多情况下，我们需要在一台服务器上运行多个不同的应用，比如上面提到的提高开发效率的场景等。</p>
+<h3 id="4-4-隔离应用"><a href="#4-4-隔离应用" class="headerlink" title="4.4 隔离应用"></a>4.4 隔离应用</h3><p>很多情况下，我们需要在一台服务器上运行多个不同的应用，比如上面提到的提高开发效率的场景等。</p>
 <p>考虑三点：一是因为要降低成本而进行服务器整合，二是讲一个整体式的应用拆分成松耦合的单个服务（如微服务架构），三是还需要考虑应用之间的兼容性。而对于Docker来说，支持起来非常简单。同一台机器，可以同时运行N个Docker Web应用，托管到不同的Web服务器（Kestrel、Nginx、Tomcat），而无需担心他们会搞起3Q大战，也不用担心开发机器跑步起来。<br><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181128094456537-87357208.png" alt></p>
-<h2 id="整合服务器"><a href="#整合服务器" class="headerlink" title="整合服务器"></a>整合服务器</h2><p>虚拟机可以整合多个应用，Docker隔离应用的能力使得Docker可以整合多个服务器以降低成本。由于没有多个操作系统的内存占用，以及能在多个实例之间共享没有使用的内存，Docker可以比虚拟机提供更好的服务器整合解决方案。</p>
+<h3 id="4-5-整合服务器"><a href="#4-5-整合服务器" class="headerlink" title="4.5 整合服务器"></a>4.5 整合服务器</h3><p>虚拟机可以整合多个应用，Docker隔离应用的能力使得Docker可以整合多个服务器以降低成本。由于没有多个操作系统的内存占用，以及能在多个实例之间共享没有使用的内存，Docker可以比虚拟机提供更好的服务器整合解决方案。</p>
 <p>这意味着资源得到更有效的利用——————可以做更多的衣服，而且没有边角料，成本更低。<br><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181128094534267-1497649789.png" alt></p>
-<h2 id="调试能力"><a href="#调试能力" class="headerlink" title="调试能力"></a>调试能力</h2><p>Docker提供很多的工具，这些工具不一定只是针对容器，但是却适用于容器。它们提供了很多功能，包含可以设置容器检查点、设置版本和查看两个容器之间的差别，这些特性可以帮助调试Bug。<br><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181128094617391-1947396056.png" alt></p>
-<h2 id="多租户环境"><a href="#多租户环境" class="headerlink" title="多租户环境"></a>多租户环境</h2><p>在多租户的应用中，它可以避免关键应用的重写。比如IoT(物联网)的应用中，开发一个快速、易用的多租户环境。这种多租户的基本代码非常复杂，很难处理，重新规划这样一个应用不但消耗时间、也浪费金钱。</p>
+<h3 id="4-6-调试能力"><a href="#4-6-调试能力" class="headerlink" title="4.6 调试能力"></a>4.6 调试能力</h3><p>Docker提供很多的工具，这些工具不一定只是针对容器，但是却适用于容器。它们提供了很多功能，包含可以设置容器检查点、设置版本和查看两个容器之间的差别，这些特性可以帮助调试Bug。<br><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181128094617391-1947396056.png" alt></p>
+<h3 id="4-7-多租户环境"><a href="#4-7-多租户环境" class="headerlink" title="4.7 多租户环境"></a>4.7 多租户环境</h3><p>在多租户的应用中，它可以避免关键应用的重写。比如IoT(物联网)的应用中，开发一个快速、易用的多租户环境。这种多租户的基本代码非常复杂，很难处理，重新规划这样一个应用不但消耗时间、也浪费金钱。</p>
 <p>使用Docker，可以为每一个租户的应用层的多个实例创建隔离的环境，这不仅简单而且成本低廉，当然这一切得益于Docker环境的启动速度和其高效的diff命令。</p>
 <p>就如同我们现在写了一个不支持多租户的业务程序，而实际的业务中经常会出现需要支持多租户或者有新客户需要使用的场景，这时们通常的简单是——————部署一套新的代码。当站点达到一定量的适合，要么重写程序，要么维护人员Game Over。</p>
-<h2 id="快速部署"><a href="#快速部署" class="headerlink" title="快速部署"></a>快速部署</h2><p>在虚拟机之前，引入新的硬件资源需要消耗几天的时间。虚拟化技术（Virtualization）将这个时间缩短到了分钟级别。而Docker通过为进程仅仅创建一个容器而无需启动一个操作系统，再次将这个过程缩短到了秒级。</p>
+<h3 id="4-8-快速部署"><a href="#4-8-快速部署" class="headerlink" title="4.8 快速部署"></a>4.8 快速部署</h3><p>在虚拟机之前，引入新的硬件资源需要消耗几天的时间。虚拟化技术（Virtualization）将这个时间缩短到了分钟级别。而Docker通过为进程仅仅创建一个容器而无需启动一个操作系统，再次将这个过程缩短到了秒级。</p>
 <p>你可以在服务器中或云端创建销毁资源而无需担心重新启动带来的开销。通常情况下，服务器的资源利用率只有30%，而通过使用Docker并进行有效的资源分配可以提高资源的利用率。<br><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181128094717810-819940111.png" alt></p>
 <p><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181128094748866-356935721.png" alt></p>
 <p>Docker 带来的敏捷性（响应速度和灵活性）吸引了越来越多的开发者。他们不仅能知道容器内部到底跑了什么，也能进一步理解 Docker 如何加速了软件开发进程。另外，41% 的用户表示应用的可移植性是他们决定使用 Docker 的关键因素。</p>
@@ -360,7 +384,7 @@
 <p><strong>Docker 实现了微服务架构，也让遗留的单体应用转变为现代应用</strong></p>
 <p><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181128094948673-1019599700.png" alt></p>
 <p>Docker 使得微服务架构的快速发展成为可能，同时它也将传统的业务迁移到容器环境中，以此使得应用程序变得更加可移植。<strong>使用微服务架构进行交付是 Docker 的关键优势！</strong></p>
-<h2 id="Docker改变了什么？"><a href="#Docker改变了什么？" class="headerlink" title="Docker改变了什么？"></a>Docker改变了什么？</h2><ul>
+<h2 id="5-Docker改变了什么？"><a href="#5-Docker改变了什么？" class="headerlink" title="5 Docker改变了什么？"></a>5 Docker改变了什么？</h2><ul>
 <li><p>Docker改变了云服务，使云服务的共融共通的理想逐步成为了可能。并且Docker 已经是云策略的一部分，许多开发者正在计划使用 Docker 将业务迁移到云端。另外，为了避免被云服务供应商绑定，Docker成为很多开发者的首选。</p>
 </li>
 <li><p>Docker改变了产品交付，为产品的整个生命周期提供了一整套的解决方案和流程。</p>
@@ -375,8 +399,8 @@
 </li>
 </ul>
 <p>总之，在某种程度上，Docker改变了产品开发中的一些游戏规则。虽然Docker是一项技术，但是它也带来了新的思维，新的流程和工作方法，Docker在推动行业的发展，Docker已经在改变世界，并且在逐步的变为事实……<br><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181128095105560-528324521.png" alt></p>
-<h1 id="Docker持续开发工作流"><a href="#Docker持续开发工作流" class="headerlink" title="Docker持续开发工作流"></a>Docker持续开发工作流</h1><p><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181203093658359-1691324108.png" alt></p>
-<h2 id="DockerFile"><a href="#DockerFile" class="headerlink" title="DockerFile"></a>DockerFile</h2><p><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181203094045768-1316009773.png" alt></p>
+<h2 id="6-Docker持续开发工作流"><a href="#6-Docker持续开发工作流" class="headerlink" title="6  Docker持续开发工作流"></a>6  Docker持续开发工作流</h2><p><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181203093658359-1691324108.png" alt></p>
+<h2 id="7-DockerFile"><a href="#7-DockerFile" class="headerlink" title="7 DockerFile"></a>7 DockerFile</h2><p><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181203094045768-1316009773.png" alt></p>
 <p>虽然我们可以通过docker commit命令来手动创建镜像，但是通过Dockerfile文件，可以帮助我们自动创建镜像，并且能够自定义创建过程。本质上，Dockerfile就是由一系列<strong>命令</strong>和<strong>参数</strong>构成的脚本，这些命令应用于基础镜像并最终创建一个新的镜像。它简化了从头到尾的构建流程并极大的简化了部署工作。使用dockerfile构建镜像有以下好处：</p>
 <ul>
 <li><p>像编程一样构建镜像，支持分层构建以及缓存；</p>
@@ -388,18 +412,18 @@
 <li><p>可以在任何地方快速构建镜像</p>
 </li>
 </ul>
-<h2 id="Dockerfile-指令"><a href="#Dockerfile-指令" class="headerlink" title="Dockerfile 指令"></a>Dockerfile 指令</h2><p>Dockerfile 指令为 Docker 引擎提供了创建容器映像所需的步骤。这些指令按顺序逐一执行。</p>
-<h4 id="1-FROM"><a href="#1-FROM" class="headerlink" title="1.FROM"></a><strong>1.FROM</strong></h4><p>ROM 指令用于设置在新镜像创建过程期间将使用的容器映像。<br>格式：FROM<br>示例：<br>FROM nginx</p>
-<h4 id="2-RUN"><a href="#2-RUN" class="headerlink" title="2.RUN"></a><strong>2.RUN</strong></h4><p>RUN 指令指定将要运行并捕获到新容器映像中的命令。 这些命令包括安装软件、创建文件和目录，以及创建环境配置等。<br>格式：<br>RUN [“”, “”, “”]<br>RUN<br>示例：<br>RUN apt-get update<br>RUN mkdir -p /usr/src/redis<br>RUN apt-get update &amp;&amp; apt-get install -y libgdiplus<br>RUN [“apt-get”,”install”,”-y”,”nginx”]</p>
+<h3 id="7-1-Dockerfile-指令"><a href="#7-1-Dockerfile-指令" class="headerlink" title="7.1 Dockerfile 指令"></a>7.1 Dockerfile 指令</h3><p>Dockerfile 指令为 Docker 引擎提供了创建容器映像所需的步骤。这些指令按顺序逐一执行。</p>
+<h4 id="7-1-1-FROM"><a href="#7-1-1-FROM" class="headerlink" title="7.1.1 FROM"></a>7.1.1 FROM</h4><p>ROM 指令用于设置在新镜像创建过程期间将使用的容器映像。<br>格式：FROM<br>示例：<br>FROM nginx</p>
+<h4 id="7-1-2-RUN"><a href="#7-1-2-RUN" class="headerlink" title="7.1.2 RUN"></a>7.1.2 RUN</h4><p>RUN 指令指定将要运行并捕获到新容器映像中的命令。 这些命令包括安装软件、创建文件和目录，以及创建环境配置等。<br>格式：<br>RUN [“”, “”, “”]<br>RUN<br>示例：<br>RUN apt-get update<br>RUN mkdir -p /usr/src/redis<br>RUN apt-get update &amp;&amp; apt-get install -y libgdiplus<br>RUN [“apt-get”,”install”,”-y”,”nginx”]</p>
 <p>注意：<font color="red">每一个指令都会创建一层，并构成新的镜像。当运行多个指令时，会产生一些非常臃肿、非常多层的镜像，不仅仅增加了构建部署的时间，也很容易出错。因此，在很多情况下，我们可以合并指令并运行，例如：RUN apt-get update &amp;&amp; apt-get install -y libgdiplus。在命令过多时，一定要注意格式，比如换行、缩进、注释等，会让维护、排障更为容易，这是一个比较好的习惯。使用换行符时，可能会遇到一些问题，具体可以参阅下节的转义字符</font>。</p>
-<h4 id="3-COPY"><a href="#3-COPY" class="headerlink" title="3.COPY"></a><strong>3.COPY</strong></h4><p>COPY 指令将文件和目录复制到容器的文件系统。文件和目录需位于相对于 Dockerfile 的路径中。<br>式：<br>COPY<br>如果源或目标包含空格，请将路径括在方括号和双引号中。<br>COPY [“”, “”]<br>示例：<br>COPY . .<br>COPY nginx.conf /etc/nginx/nginx.conf<br>COPY . /usr/share/nginx/html<br>COPY hom* /mydir/</p>
-<h4 id="4-ADD"><a href="#4-ADD" class="headerlink" title="4.ADD"></a><strong>4.ADD</strong></h4><p>ADD 指令与 COPY 指令非常类似，但它包含更多功能。除了将文件从主机复制到容器映像，ADD 指令还可以使用 URL 规范从远程位置复制文件。<br>格式：<br>ADD<source> <destination><br>示例：<br>ADD <a href="https://www.python.org/ftp/python/3.5.1/python-3.5.1.exe" target="_blank" rel="noopener">https://www.python.org/ftp/python/3.5.1/python-3.5.1.exe</a> /temp/python-3.5.1.exe<br>此示例会将 Python for Windows下载到容器映像的 c:\temp 目录。</destination></p>
-<h4 id="5-WORKDIR"><a href="#5-WORKDIR" class="headerlink" title="5.WORKDIR"></a><strong>5.WORKDIR</strong></h4><p>WORKDIR 指令用于为其他 Dockerfile 指令（如 RUN、CMD）设置一个工作目录，并且还设置用于运行容器映像实例的工作目录。<br>格式：<br>WORKDIR<br>示例：<br>WORKDIR /app</p>
-<h4 id="6-CMD"><a href="#6-CMD" class="headerlink" title="6.CMD"></a><strong>6.CMD</strong></h4><p>CMD指令用于设置部署容器映像的实例时要运行的默认命令。例如，如果该容器将承载 NGINX Web 服务器，则 CMD 可能包括用于启动Web服务器的指令，如 nginx.exe。 如果 Dockerfile 中指定了多个CMD 指令，只会计算最后一个指令。<br>格式：<br>CMD [“&lt;executable”, “<br>CMD<br>示例：<br>CMD [“c:\Apache24\bin\httpd.exe”, “-w”]<br>CMD c:\Apache24\bin\httpd.exe -w</p>
-<h4 id="7-ENTRYPOINT"><a href="#7-ENTRYPOINT" class="headerlink" title="7.ENTRYPOINT"></a><strong>7.ENTRYPOINT</strong></h4><p>配置容器启动后执行的命令，并且不可被 docker run 提供的参数覆盖。每个 Dockerfile 中只能有一个ENTRYPOINT，当指定多个时，只有最后一个起效。<br>格式：<br>ENTRYPOINT [“”, “”]<br>示例：<br>ENTRYPOINT [“dotnet”, “Magicodes.Admin.Web.Host.dll”]</p>
-<h4 id="8-ENV"><a href="#8-ENV" class="headerlink" title="8.ENV"></a><strong>8.ENV</strong></h4><p>ENV命令用于设置环境变量。这些变量以”key=value”的形式存在，并可以在容器内被脚本或者程序调用。这个机制给在容器中运行应用带来了极大的便利。<br>格式：<br>ENV==…<br>示例：<br>ENV VERSION=1.0 DEBUG=on <br>NAME=”Magicodes”</p>
-<h4 id="9-EXPOSE"><a href="#9-EXPOSE" class="headerlink" title="9.EXPOSE"></a><strong>9.EXPOSE</strong></h4><p>EXPOSE用来指定端口，使容器内的应用可以通过端口和外界交互。<br>格式：<br>EXPOSE<br>示例：<br>EXPOSE 80<br><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181203094342684-400475059.png" alt></p>
-<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>有几点值得注意的是：</p>
+<h4 id="7-1-3-COPY"><a href="#7-1-3-COPY" class="headerlink" title="7.1.3 COPY"></a>7.1.3 COPY</h4><p>COPY 指令将文件和目录复制到容器的文件系统。文件和目录需位于相对于 Dockerfile 的路径中。<br>式：<br>COPY<br>如果源或目标包含空格，请将路径括在方括号和双引号中。<br>COPY [“”, “”]<br>示例：<br>COPY . .<br>COPY nginx.conf /etc/nginx/nginx.conf<br>COPY . /usr/share/nginx/html<br>COPY hom* /mydir/</p>
+<h4 id="7-1-4-ADD"><a href="#7-1-4-ADD" class="headerlink" title="7.1.4 ADD"></a>7.1.4 ADD</h4><p>ADD 指令与 COPY 指令非常类似，但它包含更多功能。除了将文件从主机复制到容器映像，ADD 指令还可以使用 URL 规范从远程位置复制文件。<br>格式：<br>ADD<source> <destination><br>示例：<br>ADD <a href="https://www.python.org/ftp/python/3.5.1/python-3.5.1.exe" target="_blank" rel="noopener">https://www.python.org/ftp/python/3.5.1/python-3.5.1.exe</a> /temp/python-3.5.1.exe<br>此示例会将 Python for Windows下载到容器映像的 c:\temp 目录。</destination></p>
+<h4 id="7-1-5-WORKDIR"><a href="#7-1-5-WORKDIR" class="headerlink" title="7.1.5 WORKDIR"></a>7.1.5 WORKDIR</h4><p>WORKDIR 指令用于为其他 Dockerfile 指令（如 RUN、CMD）设置一个工作目录，并且还设置用于运行容器映像实例的工作目录。<br>格式：<br>WORKDIR<br>示例：<br>WORKDIR /app</p>
+<h4 id="7-1-6-CMD"><a href="#7-1-6-CMD" class="headerlink" title="7.1.6 CMD"></a>7.1.6 CMD</h4><p>CMD指令用于设置部署容器映像的实例时要运行的默认命令。例如，如果该容器将承载 NGINX Web 服务器，则 CMD 可能包括用于启动Web服务器的指令，如 nginx.exe。 如果 Dockerfile 中指定了多个CMD 指令，只会计算最后一个指令。<br>格式：<br>CMD [“&lt;executable”, “<br>CMD<br>示例：<br>CMD [“c:\Apache24\bin\httpd.exe”, “-w”]<br>CMD c:\Apache24\bin\httpd.exe -w</p>
+<h4 id="7-1-7-ENTRYPOINT"><a href="#7-1-7-ENTRYPOINT" class="headerlink" title="7.1.7 ENTRYPOINT"></a>7.1.7 ENTRYPOINT</h4><p>配置容器启动后执行的命令，并且不可被 docker run 提供的参数覆盖。每个 Dockerfile 中只能有一个ENTRYPOINT，当指定多个时，只有最后一个起效。<br>格式：<br>ENTRYPOINT [“”, “”]<br>示例：<br>ENTRYPOINT [“dotnet”, “Magicodes.Admin.Web.Host.dll”]</p>
+<h4 id="7-1-8-ENV"><a href="#7-1-8-ENV" class="headerlink" title="7.1.8 ENV"></a>7.1.8 ENV</h4><p>ENV命令用于设置环境变量。这些变量以”key=value”的形式存在，并可以在容器内被脚本或者程序调用。这个机制给在容器中运行应用带来了极大的便利。<br>格式：<br>ENV==…<br>示例：<br>ENV VERSION=1.0 DEBUG=on <br>NAME=”Magicodes”</p>
+<h4 id="7-1-9-EXPOSE"><a href="#7-1-9-EXPOSE" class="headerlink" title="7.1.9 EXPOSE"></a>7.1.9 EXPOSE</h4><p>EXPOSE用来指定端口，使容器内的应用可以通过端口和外界交互。<br>格式：<br>EXPOSE<br>示例：<br>EXPOSE 80<br><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181203094342684-400475059.png" alt></p>
+<h2 id="8-优化"><a href="#8-优化" class="headerlink" title="8 优化"></a>8 优化</h2><p>有几点值得注意的是：</p>
 <ol>
 <li><p>不能忽视dockerfile的优化，通常情况下，我们可以忽略那些细小的优化，但是我们需要知道优化的原理，为什么要优化</p>
 </li>
@@ -425,11 +449,11 @@
 <p>.dockerignore文件用于忽略那些镜像构建时非必须的文件，这些文件可以是开发文档、日志、其他无用的文件。例如:<br><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181203094654908-278191045.png" alt></p>
 </li>
 </ul>
-<h2 id="创建自定义Docker镜像"><a href="#创建自定义Docker镜像" class="headerlink" title="创建自定义Docker镜像"></a>创建自定义Docker镜像</h2><p>创建了Dockerfile之后，需为应用程序中的每项服务创建一个相关镜像。如果应用程序由单个服务或 Web 应用程序组成，则只需创建一个镜像。</p>
+<h2 id="9-创建自定义Docker镜像"><a href="#9-创建自定义Docker镜像" class="headerlink" title="9 创建自定义Docker镜像"></a>9 创建自定义Docker镜像</h2><p>创建了Dockerfile之后，需为应用程序中的每项服务创建一个相关镜像。如果应用程序由单个服务或 Web 应用程序组成，则只需创建一个镜像。</p>
 <p>我们可以使用docker build命令来创建镜像，例如：<br>docker build ./ -t {镜像名称}</p>
 <p>镜像打包好后，我们使用docker image ls命令即可查看当前镜像。</p>
 <p>注意：Docker镜像使用分层存储的架构，也就是说镜像实际是由多层文件系统联合组成。镜像构建时，会一层层构建，前一层是后一层的基础。每一层构建完就不会再发生改变，后一层上的任何改变只发生在自己这一层。因为分层存储的特征，使得镜像的复用、定制变的更为容易。甚至可以用之前构建好的镜像作为基础层，然后进一步添加新的层，以定制自己所需的内容，构建新的镜像。所以，当我们使用Docker images命令，会列出这么多的镜像，我们可以定期清理那些无用的镜像。</p>
-<h2 id="在-docker-compose-yml中定义服务"><a href="#在-docker-compose-yml中定义服务" class="headerlink" title="在 docker-compose.yml中定义服务"></a>在 docker-compose.yml中定义服务</h2><h3 id="关于-Compose"><a href="#关于-Compose" class="headerlink" title="关于 Compose"></a>关于 Compose</h3><p>Compose是一个用于定义和运行多Docker应用程序的工具。使用Compose，我们可以使用YAML文件来配置应用程序的服务。然后，使用单个命令，我们就可以从配置中创建并启动所有服务。</p>
+<h2 id="10-在-docker-compose-yml中定义服务"><a href="#10-在-docker-compose-yml中定义服务" class="headerlink" title="10 在 docker-compose.yml中定义服务"></a>10 在 docker-compose.yml中定义服务</h2><h3 id="10-1-关于-Compose"><a href="#10-1-关于-Compose" class="headerlink" title="10.1 关于 Compose"></a>10.1 关于 Compose</h3><p>Compose是一个用于定义和运行多Docker应用程序的工具。使用Compose，我们可以使用YAML文件来配置应用程序的服务。然后，使用单个命令，我们就可以从配置中创建并启动所有服务。</p>
 <p>Compose适用于所有环境：生产环境、模拟（演示）环境、开发环境和测试环境以及CI工作流程。</p>
 <p>主要功能和特性：</p>
 <ul>
@@ -457,7 +481,7 @@
 <li><p>对某个服务执行命令</p>
 </li>
 </ul>
-<h2 id="常见场景"><a href="#常见场景" class="headerlink" title="常见场景"></a>常见场景</h2><ul>
+<h2 id="11-常见场景"><a href="#11-常见场景" class="headerlink" title="11 常见场景"></a>11 常见场景</h2><ul>
 <li><p>开发或本地环境运行多个服务</p>
 <p>在开发过程时，在隔离环境中运行应用程序并与之交互的能力至关重要。Compose命令行工具可用于创建环境并与之交互。比如通过Compose文件，配置所有应用程序的服务依赖（数据库，消息队列，高速缓存，Web服务的API，等等），然后使用单个命令（docker-compose up）为每个依赖项创建和启动一个或多个容器，使整个程序能够正常运行起来。</p>
 </li>
@@ -465,7 +489,7 @@
 <p>任何持续部署或持续集成过程的一个重要部分是自动化测试套件。自动化端到端测试需要一个运行测试的环境。Compose提供了一种方便的方法来创建和销毁隔离的测试环境。我们只需要通过在Compose文件，即可定义完整环境，并且可以在几个命令中创建和销毁这些环境，如下所示：</p>
 </li>
 </ul>
-<h2 id="使用Compose"><a href="#使用Compose" class="headerlink" title="使用Compose"></a>使用Compose</h2><p>使用Compose有以下三个步骤：</p>
+<h2 id="12-使用Compose"><a href="#12-使用Compose" class="headerlink" title="12 使用Compose"></a>12 使用Compose</h2><p>使用Compose有以下三个步骤：</p>
 <ol>
 <li><p>使用Dockerfile定义应用环境，以便在任意地方进行复制</p>
 </li>
@@ -474,8 +498,8 @@
 <li><p>最后，执行docker-compose up命令，Compose 将启动并运行整个应用程序。</p>
 </li>
 </ol>
-<h2 id="了解docker-compose-yml"><a href="#了解docker-compose-yml" class="headerlink" title="了解docker-compose.yml"></a>了解docker-compose.yml</h2><p>借助 docker-compose.yml 文件，我们可以定义一组相关服务，通过部署命令将其部署为组合应用程序。简单的说，我们可以通过docker-compose.yml来定义多个服务，以便一次执行。<br><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181205094402699-10239551.png" alt></p>
-<h2 id="了解YAML语言"><a href="#了解YAML语言" class="headerlink" title="了解YAML语言"></a>了解YAML语言</h2><p>YAML 是一种简洁的非标记语言。YAML以数据为中心，使用空白，缩进，分行组织数据，从而使得表示更加简洁易读。</p>
+<h2 id="13-了解docker-compose-yml"><a href="#13-了解docker-compose-yml" class="headerlink" title="13 了解docker-compose.yml"></a>13 了解docker-compose.yml</h2><p>借助 docker-compose.yml 文件，我们可以定义一组相关服务，通过部署命令将其部署为组合应用程序。简单的说，我们可以通过docker-compose.yml来定义多个服务，以便一次执行。<br><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181205094402699-10239551.png" alt></p>
+<h2 id="14-了解YAML语言"><a href="#14-了解YAML语言" class="headerlink" title="14 了解YAML语言"></a>14 了解YAML语言</h2><p>YAML 是一种简洁的非标记语言。YAML以数据为中心，使用空白，缩进，分行组织数据，从而使得表示更加简洁易读。</p>
 <p>这里提供一个YAML语法验证网站：<a href="http://nodeca.github.io/js-yaml/" target="_blank" rel="noopener">http://nodeca.github.io/js-yaml/</a></p>
 <p>基本规则</p>
 <ol>
@@ -493,7 +517,7 @@
 </li>
 </ol>
 <p>YAML中允许表示三种格式，分别是常量值，对象和数组，如下所示：<br><img src="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/70544-20181205094613899-1061816782.png" alt></p>
-<h2 id="docker-compose-yml文件配置项"><a href="#docker-compose-yml文件配置项" class="headerlink" title="docker-compose.yml文件配置项"></a>docker-compose.yml文件配置项</h2><p>docker-compose.yml 文件不仅指定正在使用的容器，还指定如何单独配置各容器。常用的配置项如下所示：</p>
+<h2 id="15-docker-compose-yml文件配置项"><a href="#15-docker-compose-yml文件配置项" class="headerlink" title="15 docker-compose.yml文件配置项"></a>15 docker-compose.yml文件配置项</h2><p>docker-compose.yml 文件不仅指定正在使用的容器，还指定如何单独配置各容器。常用的配置项如下所示：</p>
 <ul>
 <li><p>uild：定义镜像生成，可以指定Dockerfile文件所在的目录路径，支持绝对路径和相对路径；</p>
 </li>
@@ -652,6 +676,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-什么是Docker"><span class="toc-number">2.</span> <span class="toc-text">1 什么是Docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Docker和虚拟机的区别"><span class="toc-number">3.</span> <span class="toc-text">2 Docker和虚拟机的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-基本概念"><span class="toc-number">4.</span> <span class="toc-text">3 基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-镜像：一个特殊的文件系统"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 镜像：一个特殊的文件系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-容器：镜像运行时的实体"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 容器：镜像运行时的实体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-仓库：集中存放镜像文件的地方"><span class="toc-number">4.3.</span> <span class="toc-text">3.3 仓库：集中存放镜像文件的地方</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Docker的主要应用场景"><span class="toc-number">5.</span> <span class="toc-text">4 Docker的主要应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-简化配置"><span class="toc-number">5.1.</span> <span class="toc-text">4.1 简化配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-代码流水线（Code-Pipeline）管理"><span class="toc-number">5.2.</span> <span class="toc-text">4.2 代码流水线（Code Pipeline）管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-提高开发效率"><span class="toc-number">5.3.</span> <span class="toc-text">4.3 提高开发效率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-隔离应用"><span class="toc-number">5.4.</span> <span class="toc-text">4.4 隔离应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-整合服务器"><span class="toc-number">5.5.</span> <span class="toc-text">4.5 整合服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-调试能力"><span class="toc-number">5.6.</span> <span class="toc-text">4.6 调试能力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-7-多租户环境"><span class="toc-number">5.7.</span> <span class="toc-text">4.7 多租户环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-8-快速部署"><span class="toc-number">5.8.</span> <span class="toc-text">4.8 快速部署</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Docker改变了什么？"><span class="toc-number">6.</span> <span class="toc-text">5 Docker改变了什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Docker持续开发工作流"><span class="toc-number">7.</span> <span class="toc-text">6  Docker持续开发工作流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-DockerFile"><span class="toc-number">8.</span> <span class="toc-text">7 DockerFile</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-Dockerfile-指令"><span class="toc-number">8.1.</span> <span class="toc-text">7.1 Dockerfile 指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-1-FROM"><span class="toc-number">8.1.1.</span> <span class="toc-text">7.1.1 FROM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-2-RUN"><span class="toc-number">8.1.2.</span> <span class="toc-text">7.1.2 RUN</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-3-COPY"><span class="toc-number">8.1.3.</span> <span class="toc-text">7.1.3 COPY</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-4-ADD"><span class="toc-number">8.1.4.</span> <span class="toc-text">7.1.4 ADD</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-5-WORKDIR"><span class="toc-number">8.1.5.</span> <span class="toc-text">7.1.5 WORKDIR</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-6-CMD"><span class="toc-number">8.1.6.</span> <span class="toc-text">7.1.6 CMD</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-7-ENTRYPOINT"><span class="toc-number">8.1.7.</span> <span class="toc-text">7.1.7 ENTRYPOINT</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-8-ENV"><span class="toc-number">8.1.8.</span> <span class="toc-text">7.1.8 ENV</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-9-EXPOSE"><span class="toc-number">8.1.9.</span> <span class="toc-text">7.1.9 EXPOSE</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-优化"><span class="toc-number">9.</span> <span class="toc-text">8 优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-创建自定义Docker镜像"><span class="toc-number">10.</span> <span class="toc-text">9 创建自定义Docker镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-在-docker-compose-yml中定义服务"><span class="toc-number">11.</span> <span class="toc-text">10 在 docker-compose.yml中定义服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1-关于-Compose"><span class="toc-number">11.1.</span> <span class="toc-text">10.1 关于 Compose</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-常见场景"><span class="toc-number">12.</span> <span class="toc-text">11 常见场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-使用Compose"><span class="toc-number">13.</span> <span class="toc-text">12 使用Compose</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-了解docker-compose-yml"><span class="toc-number">14.</span> <span class="toc-text">13 了解docker-compose.yml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-了解YAML语言"><span class="toc-number">15.</span> <span class="toc-text">14 了解YAML语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-docker-compose-yml文件配置项"><span class="toc-number">16.</span> <span class="toc-text">15 docker-compose.yml文件配置项</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -816,15 +853,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -833,10 +882,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -856,11 +901,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -868,15 +913,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">BigData</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">

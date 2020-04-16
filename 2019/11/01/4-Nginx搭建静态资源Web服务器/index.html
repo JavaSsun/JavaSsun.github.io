@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://JavaSsun.github.io">
   <title>4-Nginx搭建静态资源Web服务器 | haoran&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Author: haoransunWechat: SHR—97学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。&#96; 上传静态资源到Nginx目录中如这里新建了一个dlib目录，里面存放静态资源">
+  <meta name="description" content="Author: haoransunWechat: SHR—97学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。&#96; 1 上传静态资源到Nginx目录中如这里新建了一个dlib目录，里面存放静态资源">
 <meta property="og:type" content="article">
 <meta property="og:title" content="4-Nginx搭建静态资源Web服务器">
 <meta property="og:url" content="http://javassun.github.io/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
 <meta property="og:site_name" content="haoran&#39;s blog">
-<meta property="og:description" content="Author: haoransunWechat: SHR—97学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。&#96; 上传静态资源到Nginx目录中如这里新建了一个dlib目录，里面存放静态资源">
+<meta property="og:description" content="Author: haoransunWechat: SHR—97学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。&#96; 1 上传静态资源到Nginx目录中如这里新建了一个dlib目录，里面存放静态资源">
 <meta property="og:image" content="http://javassun.github.io/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/534bed34-738b-47df-9819-997373f35987.png">
 <meta property="og:image" content="http://javassun.github.io/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/ec1f7e9f-05a4-41a8-9105-f636ec985a7b.jpg">
 <meta property="og:image" content="http://javassun.github.io/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/324fabe1-d3b4-4f0a-aeae-5fbe99099406.jpg">
@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://javassun.github.io/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/2339d20c-675f-4197-a127-8dda272a9a06.png">
 <meta property="og:image" content="http://javassun.github.io/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/88b697fd-76d2-4960-8fe3-0567add181a7.png">
 <meta property="article:published_time" content="2019-11-01T10:53:57.000Z">
-<meta property="article:modified_time" content="2020-04-15T02:43:46.759Z">
+<meta property="article:modified_time" content="2020-04-16T07:02:29.300Z">
 <meta property="article:author" content="Allen">
 <meta property="article:tag" content="Nginx">
 <meta name="twitter:card" content="summary">
@@ -257,15 +257,39 @@
 
 	<!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-上传静态资源到Nginx目录中"><span class="toc-number">1.</span> <span class="toc-text">1 上传静态资源到Nginx目录中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-修改-nginx-conf"><span class="toc-number">2.</span> <span class="toc-text">2 修改 nginx.conf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Nginx常用功能"><span class="toc-number">3.</span> <span class="toc-text">3 Nginx常用功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-如果想要将-静态资源-服务器上的-文件夹或文件所在的目录分享给用户，由用户去决定使用那些文件，这种常用的应用场景如何实现呢？"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 如果想要将 静态资源 服务器上的 文件夹或文件所在的目录分享给用户，由用户去决定使用那些文件，这种常用的应用场景如何实现呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-常常公网带宽有限，当有很多并发用户使用我们的带宽时，就会形成一种争抢关系，可能会有一种策略：用户访问某些大文件的时候，限制下它的速度，以期望能够分离出足够的带宽，给用户访问要的小文件，如css、js等。"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 常常公网带宽有限，当有很多并发用户使用我们的带宽时，就会形成一种争抢关系，可能会有一种策略：用户访问某些大文件的时候，限制下它的速度，以期望能够分离出足够的带宽，给用户访问要的小文件，如css、js等。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-记录access-log日志"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 记录access.log日志</span></a></li></ol></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+      
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
       
 	
 		<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font>`</p>
-<h2 id="上传静态资源到Nginx目录中"><a href="#上传静态资源到Nginx目录中" class="headerlink" title="上传静态资源到Nginx目录中"></a>上传静态资源到Nginx目录中</h2><p>如这里新建了一个dlib目录，里面存放静态资源<br><img src="/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/534bed34-738b-47df-9819-997373f35987.png" alt></p>
+<h2 id="1-上传静态资源到Nginx目录中"><a href="#1-上传静态资源到Nginx目录中" class="headerlink" title="1 上传静态资源到Nginx目录中"></a>1 上传静态资源到Nginx目录中</h2><p>如这里新建了一个dlib目录，里面存放静态资源<br><img src="/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/534bed34-738b-47df-9819-997373f35987.png" alt></p>
 <a id="more"></a>
-<h2 id="修改-nginx-conf"><a href="#修改-nginx-conf" class="headerlink" title="修改 nginx.conf"></a>修改 nginx.conf</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       8080;  # 监听端口</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        #charset koi8-r;</span><br><span class="line"></span><br><span class="line">        access_log  logs&#x2F;host.access.log  main;</span><br><span class="line"></span><br><span class="line">        # 现在的请求比较简单，所有的请求都去访问我们 dlib&#x2F; 目录下面的文件，所以此处建立一个location &#x2F;  这个 “斜杠”表示所有的请求，</span><br><span class="line">        # 然后要去指定 url的后缀 要与我文件目录下的后缀一一对应（文件名），此处有两种写法：1.route，有个问题，会将URL中的一些路径，带到我们的文件目录中来。所以通常使用  2 alias：即 Nginx安装目录中的 dlib目录下，后面的路径与我们的URL路径是一一对应的。</span><br><span class="line">        location &#x2F; &#123;</span><br><span class="line">           alias   dlib&#x2F;;</span><br><span class="line">           # root   html;</span><br><span class="line">           # index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">做完这些后，再去启动Nginx。</span><br><span class="line">.&#x2F;nginx -c ..&#x2F;conf&#x2F;nginx.conf 会发现找不到这个文件</span><br><span class="line">.&#x2F;nginx -c &#x2F;home&#x2F;geek&#x2F;nginx&#x2F;conf&#x2F;nginx.conf 即可</span><br><span class="line">ps -ef | grep nginx</span><br></pre></td></tr></table></figure>
+<h2 id="2-修改-nginx-conf"><a href="#2-修改-nginx-conf" class="headerlink" title="2 修改 nginx.conf"></a>2 修改 nginx.conf</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       8080;  # 监听端口</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        #charset koi8-r;</span><br><span class="line"></span><br><span class="line">        access_log  logs&#x2F;host.access.log  main;</span><br><span class="line"></span><br><span class="line">        # 现在的请求比较简单，所有的请求都去访问我们 dlib&#x2F; 目录下面的文件，所以此处建立一个location &#x2F;  这个 “斜杠”表示所有的请求，</span><br><span class="line">        # 然后要去指定 url的后缀 要与我文件目录下的后缀一一对应（文件名），此处有两种写法：1.route，有个问题，会将URL中的一些路径，带到我们的文件目录中来。所以通常使用  2 alias：即 Nginx安装目录中的 dlib目录下，后面的路径与我们的URL路径是一一对应的。</span><br><span class="line">        location &#x2F; &#123;</span><br><span class="line">           alias   dlib&#x2F;;</span><br><span class="line">           # root   html;</span><br><span class="line">           # index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">做完这些后，再去启动Nginx。</span><br><span class="line">.&#x2F;nginx -c ..&#x2F;conf&#x2F;nginx.conf 会发现找不到这个文件</span><br><span class="line">.&#x2F;nginx -c &#x2F;home&#x2F;geek&#x2F;nginx&#x2F;conf&#x2F;nginx.conf 即可</span><br><span class="line">ps -ef | grep nginx</span><br></pre></td></tr></table></figure>
 <p>效果如下：<br><img src="/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/ec1f7e9f-05a4-41a8-9105-f636ec985a7b.jpg" alt></p>
 <p><strong>192.168.121.100 为Nginx的服务器地址，8080是刚才配置的端口号，/dangdang/book.html是  dlib 目录下的 dangdang/book.html 。</strong></p>
 <p><font color="red"><strong>但是此处有一个问题，打开访问页面的抓包查看</strong></font><br><img src="/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/324fabe1-d3b4-4f0a-aeae-5fbe99099406.jpg" alt></p>
@@ -275,19 +299,19 @@
 <p><strong>再次访问此文件：</strong><br><img src="/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/63cef855-efb9-4663-8018-804306a4f37f.jpg" alt></p>
 <p>此时传输的字节数只有1.6KB了，从响应头中也可看出使用了  gzip压缩。<br><img src="/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/d5decbbd-d47c-4472-a1ec-96b2d251f146.png" alt></p>
 <p><strong>因此使用了 gzip 压缩后，整个静态资源 WEB服务，传输效率会提升很多。</strong></p>
-<h1 id="Nginx常用功能"><a href="#Nginx常用功能" class="headerlink" title="Nginx常用功能"></a>Nginx常用功能</h1><h2 id="如果想要将-静态资源-服务器上的-文件夹或文件所在的目录分享给用户，由用户去决定使用那些文件，这种常用的应用场景如何实现呢？"><a href="#如果想要将-静态资源-服务器上的-文件夹或文件所在的目录分享给用户，由用户去决定使用那些文件，这种常用的应用场景如何实现呢？" class="headerlink" title="如果想要将 静态资源 服务器上的 文件夹或文件所在的目录分享给用户，由用户去决定使用那些文件，这种常用的应用场景如何实现呢？"></a>如果想要将 静态资源 服务器上的 文件夹或文件所在的目录分享给用户，由用户去决定使用那些文件，这种常用的应用场景如何实现呢？</h2><p><strong>Nginx 提供了 官方模块 <font color="red">auto_index_module</font>在官方网站<a href="http://nginx.org/en/docs/" target="_blank" rel="noopener">http://nginx.org/en/docs/</a> 提供了使用说明</strong>。</p>
+<h2 id="3-Nginx常用功能"><a href="#3-Nginx常用功能" class="headerlink" title="3 Nginx常用功能"></a>3 Nginx常用功能</h2><h3 id="3-1-如果想要将-静态资源-服务器上的-文件夹或文件所在的目录分享给用户，由用户去决定使用那些文件，这种常用的应用场景如何实现呢？"><a href="#3-1-如果想要将-静态资源-服务器上的-文件夹或文件所在的目录分享给用户，由用户去决定使用那些文件，这种常用的应用场景如何实现呢？" class="headerlink" title="3.1 如果想要将 静态资源 服务器上的 文件夹或文件所在的目录分享给用户，由用户去决定使用那些文件，这种常用的应用场景如何实现呢？"></a>3.1 如果想要将 静态资源 服务器上的 文件夹或文件所在的目录分享给用户，由用户去决定使用那些文件，这种常用的应用场景如何实现呢？</h3><p><strong>Nginx 提供了 官方模块 <font color="red">auto_index_module</font>在官方网站<a href="http://nginx.org/en/docs/" target="_blank" rel="noopener">http://nginx.org/en/docs/</a> 提供了使用说明</strong>。</p>
 <p>使用方法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">location &#x2F; &#123;</span><br><span class="line">           alias   dlib&#x2F;;</span><br><span class="line">           autoindex on; # 加入此模块</span><br><span class="line">           # root   html;</span><br><span class="line">           # index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">执行 reload即可。</span><br><span class="line"></span><br><span class="line">192.168.121.100:8080&#x2F;</span><br><span class="line">192.168.121.100:8080&#x2F;dangdang&#x2F;</span><br><span class="line">即可看到如下页面，则成功。</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/6e4bca87-3437-42e4-bef5-df5592e3e6df.png" alt></p>
 <hr>
 <p><img src="/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/69254aad-1999-4d64-ab86-4c5cae6cacb7.png" alt></p>
 <p>这样会显示 指定层级下 所有的目录及文件。<strong>提供了共享静态资源的功能.</strong></p>
-<h2 id="常常公网带宽有限，当有很多并发用户使用我们的带宽时，就会形成一种争抢关系，可能会有一种策略：用户访问某些大文件的时候，限制下它的速度，以期望能够分离出足够的带宽，给用户访问要的小文件，如css、js等。"><a href="#常常公网带宽有限，当有很多并发用户使用我们的带宽时，就会形成一种争抢关系，可能会有一种策略：用户访问某些大文件的时候，限制下它的速度，以期望能够分离出足够的带宽，给用户访问要的小文件，如css、js等。" class="headerlink" title="常常公网带宽有限，当有很多并发用户使用我们的带宽时，就会形成一种争抢关系，可能会有一种策略：用户访问某些大文件的时候，限制下它的速度，以期望能够分离出足够的带宽，给用户访问要的小文件，如css、js等。"></a>常常公网带宽有限，当有很多并发用户使用我们的带宽时，就会形成一种争抢关系，可能会有一种策略：用户访问某些大文件的时候，限制下它的速度，以期望能够分离出足够的带宽，给用户访问要的小文件，如css、js等。</h2><p>使用 set命令+内置变量即可达到</p>
+<h3 id="3-2-常常公网带宽有限，当有很多并发用户使用我们的带宽时，就会形成一种争抢关系，可能会有一种策略：用户访问某些大文件的时候，限制下它的速度，以期望能够分离出足够的带宽，给用户访问要的小文件，如css、js等。"><a href="#3-2-常常公网带宽有限，当有很多并发用户使用我们的带宽时，就会形成一种争抢关系，可能会有一种策略：用户访问某些大文件的时候，限制下它的速度，以期望能够分离出足够的带宽，给用户访问要的小文件，如css、js等。" class="headerlink" title="3.2 常常公网带宽有限，当有很多并发用户使用我们的带宽时，就会形成一种争抢关系，可能会有一种策略：用户访问某些大文件的时候，限制下它的速度，以期望能够分离出足够的带宽，给用户访问要的小文件，如css、js等。"></a>3.2 常常公网带宽有限，当有很多并发用户使用我们的带宽时，就会形成一种争抢关系，可能会有一种策略：用户访问某些大文件的时候，限制下它的速度，以期望能够分离出足够的带宽，给用户访问要的小文件，如css、js等。</h3><p>使用 set命令+内置变量即可达到</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">        location &#x2F; &#123;</span><br><span class="line"></span><br><span class="line">           alias   dlib&#x2F;;</span><br><span class="line">           autoindex on;</span><br><span class="line">           set $limit_rate 1k;</span><br><span class="line">          # index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">set $limit_rate 1k; # 限制Nginx向浏览器发送响应的一个速度。</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/396f4ca5-45fe-4926-8719-e22866f50bc2.png" alt></p>
 <p>limit_rate：在 Nginx官网中的 <strong>ngx_http_core_module中 提供了 <a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#variables" target="_blank" rel="noopener">Embedded Variables</a>，在这其中有一个内置的变量，$limit_rate ,来限制我们的访问速度</strong><br><img src="/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/936fe133-af26-413a-beb9-8555e4b397ce.png" alt></p>
 <p><strong>用法：set $limit_rate N； 是空间单位的；意义是：每秒传输 N 字节到浏览器中。<br>再去访问大页面，发现变得很慢了</strong>。</p>
-<h2 id="记录access-log日志"><a href="#记录access-log日志" class="headerlink" title="记录access.log日志"></a>记录access.log日志</h2><p><img src="/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/2339d20c-675f-4197-a127-8dda272a9a06.png" alt></p>
+<h3 id="3-3-记录access-log日志"><a href="#3-3-记录access-log日志" class="headerlink" title="3.3 记录access.log日志"></a>3.3 记录access.log日志</h3><p><img src="/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/2339d20c-675f-4197-a127-8dda272a9a06.png" alt></p>
 <p><strong>nginx.conf 中的 log_format指令在定义日志的格式。</strong></p>
 <p>这里的日志格式使用了许多变量，比如 $remote_addr<br>等等，具体见 00-Nginx访问日志详解。</p>
 <p>这样的日志格式给他明明为 main , 因为我们可能对不同的域名下做不同格式的日志记录，或者对一些大文件，做反向代理等不同的用途时，记录不同日志格式。</p>
@@ -426,6 +450,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-上传静态资源到Nginx目录中"><span class="toc-number">1.</span> <span class="toc-text">1 上传静态资源到Nginx目录中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-修改-nginx-conf"><span class="toc-number">2.</span> <span class="toc-text">2 修改 nginx.conf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Nginx常用功能"><span class="toc-number">3.</span> <span class="toc-text">3 Nginx常用功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-如果想要将-静态资源-服务器上的-文件夹或文件所在的目录分享给用户，由用户去决定使用那些文件，这种常用的应用场景如何实现呢？"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 如果想要将 静态资源 服务器上的 文件夹或文件所在的目录分享给用户，由用户去决定使用那些文件，这种常用的应用场景如何实现呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-常常公网带宽有限，当有很多并发用户使用我们的带宽时，就会形成一种争抢关系，可能会有一种策略：用户访问某些大文件的时候，限制下它的速度，以期望能够分离出足够的带宽，给用户访问要的小文件，如css、js等。"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 常常公网带宽有限，当有很多并发用户使用我们的带宽时，就会形成一种争抢关系，可能会有一种策略：用户访问某些大文件的时候，限制下它的速度，以期望能够分离出足够的带宽，给用户访问要的小文件，如css、js等。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-记录access-log日志"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 记录access.log日志</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -590,15 +627,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -607,10 +656,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -630,11 +675,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -642,15 +687,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">BigData</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">

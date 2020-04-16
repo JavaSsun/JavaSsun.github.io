@@ -218,7 +218,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">429字</span>
+        <span class="post-count">425字</span>
       </span>
     </span>
 
@@ -245,7 +245,7 @@
     <div class="article-entry" itemprop="articleBody">
       
 			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h2 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h2><p>Docker 需要安装在 CentOS 7 64 位的平台，并且内核版本不低于 3.10. CentOS 7.× 满足要求的最低内核版本要求，但由于 CentOS 7 内核版本比较低，部分功能（如 <code>overlay2</code> 存储层驱动）无法使用，并且部分功能可能不太稳定。所以建议大家升级到最新的 CentOS 版本,并且内核也更新到最新的稳定版本.</p>
+<h2 id="1-系统要求"><a href="#1-系统要求" class="headerlink" title="1 系统要求"></a>1 系统要求</h2><p>Docker 需要安装在 CentOS 7 64 位的平台，并且内核版本不低于 3.10. CentOS 7.× 满足要求的最低内核版本要求，但由于 CentOS 7 内核版本比较低，部分功能（如 <code>overlay2</code> 存储层驱动）无法使用，并且部分功能可能不太稳定。所以建议大家升级到最新的 CentOS 版本,并且内核也更新到最新的稳定版本.</p>
 	
 	
     </div>
@@ -381,6 +381,10 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NIO</a>
         		</li>
       		 
@@ -466,7 +470,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">8.7k字</span>
+        <span class="post-count">8.8k字</span>
       </span>
     </span>
 
@@ -738,8 +742,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<h1 id="JSON-Web-Token–摘自阮一峰"><a href="#JSON-Web-Token–摘自阮一峰" class="headerlink" title="JSON Web Token–摘自阮一峰"></a>JSON Web Token–摘自<a href="http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html" target="_blank" rel="noopener">阮一峰</a></h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>JSON Web Token</strong>(缩写 JWT)是目前最流行的跨域认证解决方案。</p>
-<h1 id="一：跨域认证的问题"><a href="#一：跨域认证的问题" class="headerlink" title="一：跨域认证的问题"></a>一：跨域认证的问题</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;互联网离不开用户认证，一般流程是下面这样。</p>
+			<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p> 文章出处： JSON Web Token–摘自<a href="http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html" target="_blank" rel="noopener">阮一峰</a></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>JSON Web Token</strong>(缩写 JWT)是目前最流行的跨域认证解决方案。</p>
+<h1 id="1-跨域认证的问题"><a href="#1-跨域认证的问题" class="headerlink" title="1 跨域认证的问题"></a>1 跨域认证的问题</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;互联网离不开用户认证，一般流程是下面这样。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">用户向服务器发送用户名和密码。</span><br><span class="line">服务器验证通过后，在当前会话（session）里面保存相关数据，比如用户角色、登录时间等。</span><br><span class="line">服务器向用户返回一个 session_id，写入用户的Cookie。</span><br><span class="line">用户随后的每一次请求，都会通过Cookie，将 session_id 回传服务器。</span><br><span class="line">服务器收到 session_id ，找到前期保存的数据，由此得知用户的身份。</span><br></pre></td></tr></table></figure>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这种模式的问题在于：扩展性（scaling）不好。单机当然没有问题，如果是服务器集群，或者跨域的服务导向架构，就要求 session 数据共享，每台服务器都能够读取 session。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;举例来说，A网站和B网站是同一家公司的关联服务。现在要求，用户只要在其中一个网站登录，再访问另一个网站就会自动登录，请问怎么实现？</p>
 	
@@ -756,6 +761,10 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Jwt</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -863,7 +872,7 @@
     <div class="article-entry" itemprop="articleBody">
       
 			<p>Author: haoransun<br>Wechat: SHR—97<br>图片来源：极客时间，需个人购买教程。</p>
-<h2 id="1-国内为什么普遍使用GitLab"><a href="#1-国内为什么普遍使用GitLab" class="headerlink" title="1.国内为什么普遍使用GitLab"></a>1.国内为什么普遍使用GitLab</h2><p><a href="https://about.gitlab.com/" target="_blank" rel="noopener">https://about.gitlab.com/</a><br>大公司有能力自己基于GitLab做二次开发，有利于将代码保存在自己手中。</p>
+<h2 id="1-国内为什么普遍使用GitLab"><a href="#1-国内为什么普遍使用GitLab" class="headerlink" title="1 国内为什么普遍使用GitLab"></a>1 国内为什么普遍使用GitLab</h2><p><a href="https://about.gitlab.com/" target="_blank" rel="noopener">https://about.gitlab.com/</a><br>大公司有能力自己基于GitLab做二次开发，有利于将代码保存在自己手中。</p>
 	
 	
     </div>
@@ -985,11 +994,11 @@
     <div class="article-entry" itemprop="articleBody">
       
 			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h1 id="推荐run方式：-前后不能有空格"><a href="#推荐run方式：-前后不能有空格" class="headerlink" title="推荐run方式：(=前后不能有空格)"></a>推荐run方式：(=前后不能有空格)</h1><font color="red">
+<h1 id="1-推荐run方式：-前后不能有空格"><a href="#1-推荐run方式：-前后不能有空格" class="headerlink" title="1 推荐run方式：(=前后不能有空格)"></a>1 推荐run方式：(=前后不能有空格)</h1><font color="red">
 [root@haoransun src]# nohup java -jar -Dserver.port=8888 demo-0.0.1-SNAPSHOT.jar >config.log 2>&1 &
 </font>
 
-<h1 id="查看端口、进程"><a href="#查看端口、进程" class="headerlink" title="查看端口、进程"></a>查看端口、进程</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep java</span><br><span class="line"></span><br><span class="line">netstat -anp | grep port</span><br></pre></td></tr></table></figure>
+<h1 id="2-查看端口、进程"><a href="#2-查看端口、进程" class="headerlink" title="2 查看端口、进程"></a>2 查看端口、进程</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep java</span><br><span class="line"></span><br><span class="line">netstat -anp | grep port</span><br></pre></td></tr></table></figure>
 	
 	
     </div>
@@ -1004,6 +1013,10 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Jar包运行</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Maven</a>
         		</li>
       		
 		</ul>
@@ -1111,7 +1124,7 @@
     <div class="article-entry" itemprop="articleBody">
       
 			<p>Author: haoransun<br>Wechat: SHR—97<br>图片来源：极客时间，需个人购买教程。</p>
-<h2 id="1-创建团队项目"><a href="#1-创建团队项目" class="headerlink" title="1.创建团队项目"></a>1.创建团队项目</h2><p>先在settings中创建组织类型的托管。然后在组织中创建团队的仓库。</p>
+<h2 id="1-创建团队项目"><a href="#1-创建团队项目" class="headerlink" title="1 创建团队项目"></a>1 创建团队项目</h2><p>先在settings中创建组织类型的托管。然后在组织中创建团队的仓库。</p>
 	
 	
     </div>
@@ -1233,7 +1246,7 @@
     <div class="article-entry" itemprop="articleBody">
       
 			<p>Author: haoransun<br>Wechat: SHR—97<br>图片来源：极客时间，需个人购买教程。</p>
-<h2 id="1-GitHub为什么会火"><a href="#1-GitHub为什么会火" class="headerlink" title="1.GitHub为什么会火"></a>1.GitHub为什么会火</h2><p><img src="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/53d51f84-9a62-4dde-9be4-7cbb9d0b1dae.jpg" alt></p>
+<h2 id="1-GitHub为什么会火"><a href="#1-GitHub为什么会火" class="headerlink" title="1 GitHub为什么会火"></a>1 GitHub为什么会火</h2><p><img src="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/53d51f84-9a62-4dde-9be4-7cbb9d0b1dae.jpg" alt></p>
 	
 	
     </div>
@@ -1550,15 +1563,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1567,10 +1592,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1590,11 +1611,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1602,15 +1623,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">BigData</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">

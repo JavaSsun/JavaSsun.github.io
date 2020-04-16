@@ -739,7 +739,10 @@
       
 			<p>Author: haoransun<br>Wechat: SHR—97</p>
 <p>图片来源：极客时间，需个人购买教程。</p>
-<h2 id="Git下载路径-https-git-scm-com"><a href="#Git下载路径-https-git-scm-com" class="headerlink" title="Git下载路径 https://git-scm.com/"></a>Git下载路径 <a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a></h2><h4 id="廖雪峰-Git文档"><a href="#廖雪峰-Git文档" class="headerlink" title="廖雪峰 Git文档"></a>廖雪峰 Git文档</h4><h2 id="https-www-liaoxuefeng-com-wiki-896043488029600"><a href="#https-www-liaoxuefeng-com-wiki-896043488029600" class="headerlink" title="https://www.liaoxuefeng.com/wiki/896043488029600"></a><a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/896043488029600</a></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version     &#x2F;&#x2F;可查看版本即安装成功</span><br></pre></td></tr></table></figure>
+<h2 id="前言-Git下载路径"><a href="#前言-Git下载路径" class="headerlink" title="前言 Git下载路径"></a>前言 Git下载路径</h2><p><a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a></p>
+<h2 id="参考-廖雪峰-Git文档"><a href="#参考-廖雪峰-Git文档" class="headerlink" title="参考 廖雪峰 Git文档"></a>参考 廖雪峰 Git文档</h2><p>廖雪峰 Git文档<br><a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/896043488029600</a></p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version     &#x2F;&#x2F;可查看版本即安装成功</span><br></pre></td></tr></table></figure>
 	
 	
     </div>
@@ -861,7 +864,8 @@
     <div class="article-entry" itemprop="articleBody">
       
 			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><h2 id="官网：https-zookeeper-apache-org"><a href="#官网：https-zookeeper-apache-org" class="headerlink" title="官网：https://zookeeper.apache.org/"></a>官网：<a href="https://zookeeper.apache.org/" target="_blank" rel="noopener">https://zookeeper.apache.org/</a></h2><h2 id="介绍："><a href="#介绍：" class="headerlink" title="介绍："></a>介绍：</h2><p><strong>ZooKeeper</strong>是一个开源的分布式应用协调服务系统，主要用来完成统一命名服务、状态同步服务、集群管理、分布式应用配置项的管理等工作。<br>问题：<br><img src="/2019/01/10/ZooKeeper/ac1656df-ca7c-45ee-9688-6201ee09006f.png" alt> </p>
+<h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><h2 id="1-1-官网"><a href="#1-1-官网" class="headerlink" title="1.1 官网"></a>1.1 官网</h2><p><a href="https://zookeeper.apache.org/" target="_blank" rel="noopener">https://zookeeper.apache.org/</a></p>
+<h2 id="1-2-介绍"><a href="#1-2-介绍" class="headerlink" title="1.2 介绍"></a>1.2 介绍</h2><p><strong>ZooKeeper</strong>是一个开源的分布式应用协调服务系统，主要用来完成统一命名服务、状态同步服务、集群管理、分布式应用配置项的管理等工作。<br>问题：<br><img src="/2019/01/10/ZooKeeper/ac1656df-ca7c-45ee-9688-6201ee09006f.png" alt> </p>
 	
 	
     </div>
@@ -1106,7 +1110,7 @@
       
 			<p>Author: haoransun<br>Wechat: SHR—97</p>
 <p><font color="red">Map-Reduce的过程与MongoDB如出一辙</font>（如下图）<br><img src="/2018/12/20/Map-Reduce%E5%AD%A6%E4%B9%A0/b8211209-31ef-425b-b480-9765994698c9.jpg" alt></p>
-<h2 id="Map-Reduce简介"><a href="#Map-Reduce简介" class="headerlink" title="Map-Reduce简介"></a>Map-Reduce简介</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>MapReduce</strong>是一种编程模型，用于大规模数据集（大于<strong>1TB</strong>）的并行运算。该运算充分利用<strong>Hadoop</strong>存储节点（<strong>DateNode</strong>）所在物理主机的CPU、内存、网络以及少许磁盘完成分布式计算。通过在<strong>DateNode</strong>所在的主机上启动<strong>NodeManager</strong>进程，该进程负责启动计算任务。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>MapReduce</strong>计算框架将分布式计算分为两个阶段：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Map</strong>阶段：在任务计算初期，计算框架会提前计算好任务切片（对数据做区域划分），然后<font color="red">根据切片数目</font>启动MapTask，对切片所映射的数据做局部的分析/计算，将计算的临时结果存储到对应物理主机的磁盘（<strong>MapTask</strong>的溢写）。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Reduce</strong>阶段：在<strong>Map</strong>阶段的所有操作完成计算任务后，计算框架会选择若干机器（手动指定）执行ReduceTask，完成对<strong>Map</strong>阶段计算数据的汇总（<strong>shuffle</strong><font color="red">洗牌</font>）。</p>
+<h2 id="1-Map-Reduce简介"><a href="#1-Map-Reduce简介" class="headerlink" title="1 Map-Reduce简介"></a>1 Map-Reduce简介</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>MapReduce</strong>是一种编程模型，用于大规模数据集（大于<strong>1TB</strong>）的并行运算。该运算充分利用<strong>Hadoop</strong>存储节点（<strong>DateNode</strong>）所在物理主机的CPU、内存、网络以及少许磁盘完成分布式计算。通过在<strong>DateNode</strong>所在的主机上启动<strong>NodeManager</strong>进程，该进程负责启动计算任务。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>MapReduce</strong>计算框架将分布式计算分为两个阶段：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Map</strong>阶段：在任务计算初期，计算框架会提前计算好任务切片（对数据做区域划分），然后<font color="red">根据切片数目</font>启动MapTask，对切片所映射的数据做局部的分析/计算，将计算的临时结果存储到对应物理主机的磁盘（<strong>MapTask</strong>的溢写）。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Reduce</strong>阶段：在<strong>Map</strong>阶段的所有操作完成计算任务后，计算框架会选择若干机器（手动指定）执行ReduceTask，完成对<strong>Map</strong>阶段计算数据的汇总（<strong>shuffle</strong><font color="red">洗牌</font>）。</p>
 	
 	
     </div>
@@ -1228,8 +1232,8 @@
     <div class="article-entry" itemprop="articleBody">
       
 			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h2 id="BigData是什么？"><a href="#BigData是什么？" class="headerlink" title="BigData是什么？"></a>BigData是什么？</h2><p>&nbsp;&nbsp; 巨量资料,需要利用目前主流软件工具在合理的时间范围内对数据进行截取，转换已达到帮助企业获取有用资讯的目的。<br>&nbsp;&nbsp; 数据量极大：GB、TB、PB数据样板足够大。<br>&nbsp;&nbsp; 数据时效性：time-value 数据处理速度快，合理的时间范围。<br>&nbsp;&nbsp; 数据多样性：数据存在形式多样化。<br>&nbsp;&nbsp; 数据可疑性：数据要有价值。—清洗、降噪（沙海淘金）</p>
-<h2 id="BigData面临的问题？"><a href="#BigData面临的问题？" class="headerlink" title="BigData面临的问题？"></a>BigData面临的问题？</h2><p>&nbsp;&nbsp; 存储、分析：<br>&nbsp;&nbsp; 方案：<br>&nbsp;&nbsp; 垂直提升：升级硬件，成本高 &nbsp;&nbsp; 计算机-摩尔定律（每18个月，成本不变-性能提升1倍）<br>&nbsp;&nbsp; <font color="red">水平扩展：成本可线性控制–分布式思维&nbsp;&nbsp; √</font><br>&nbsp;&nbsp; <strong>Hadoop</strong>就是在通过线性服务扩展，去解决大数据所面临的存储和计算。<br>&nbsp;&nbsp; <strong>Hadoop</strong>有两个模块：<br>&nbsp;&nbsp; &nbsp;&nbsp; <a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html" target="_blank" rel="noopener">HDFS</a> hadoop distributed file system：解决大数据存储问题。<br>&nbsp;&nbsp; &nbsp;&nbsp; MapReduce:通过Map阶段和Reduce阶段实现对大数据的分布式并行计算。</p>
+<h2 id="1-BigData是什么？"><a href="#1-BigData是什么？" class="headerlink" title="1 BigData是什么？"></a>1 BigData是什么？</h2><p>&nbsp;&nbsp; 巨量资料,需要利用目前主流软件工具在合理的时间范围内对数据进行截取，转换已达到帮助企业获取有用资讯的目的。<br>&nbsp;&nbsp; 数据量极大：GB、TB、PB数据样板足够大。<br>&nbsp;&nbsp; 数据时效性：time-value 数据处理速度快，合理的时间范围。<br>&nbsp;&nbsp; 数据多样性：数据存在形式多样化。<br>&nbsp;&nbsp; 数据可疑性：数据要有价值。—清洗、降噪（沙海淘金）</p>
+<h2 id="2-BigData面临的问题？"><a href="#2-BigData面临的问题？" class="headerlink" title="2 BigData面临的问题？"></a>2 BigData面临的问题？</h2><p>&nbsp;&nbsp; 存储、分析：<br>&nbsp;&nbsp; 方案：<br>&nbsp;&nbsp; 垂直提升：升级硬件，成本高 &nbsp;&nbsp; 计算机-摩尔定律（每18个月，成本不变-性能提升1倍）<br>&nbsp;&nbsp; <font color="red">水平扩展：成本可线性控制–分布式思维&nbsp;&nbsp; √</font><br>&nbsp;&nbsp; <strong>Hadoop</strong>就是在通过线性服务扩展，去解决大数据所面临的存储和计算。<br>&nbsp;&nbsp; <strong>Hadoop</strong>有两个模块：<br>&nbsp;&nbsp; &nbsp;&nbsp; <a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html" target="_blank" rel="noopener">HDFS</a> hadoop distributed file system：解决大数据存储问题。<br>&nbsp;&nbsp; &nbsp;&nbsp; MapReduce:通过Map阶段和Reduce阶段实现对大数据的分布式并行计算。</p>
 	
 	
     </div>
@@ -1333,7 +1337,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">12分</span>
+        <span class="post-count">13分</span>
       </span>
     </span>
 </div>
@@ -1364,6 +1368,10 @@
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">定时任务</a>
         		</li>
@@ -1550,15 +1558,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1567,10 +1587,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1590,11 +1606,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1602,15 +1618,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">BigData</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">

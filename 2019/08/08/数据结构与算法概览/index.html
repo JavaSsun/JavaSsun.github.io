@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://JavaSsun.github.io">
   <title>数据结构与算法概览 | haoran&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Author: haoransunWechat: SHR—97学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。 定义&amp;nbsp;&amp;nbsp;&amp;nbsp;广义上：&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;数据结构：一组数据的存储结构。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;算法：操作数据的一组方法。&amp;nbsp;&amp;nbsp;&amp;nbsp;狭义">
+  <meta name="description" content="Author: haoransunWechat: SHR—97学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。 1 定义&amp;nbsp;&amp;nbsp;&amp;nbsp;广义上：&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;数据结构：一组数据的存储结构。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;算法：操作数据的一组方法。&amp;nbsp;&amp;nbsp;&amp;nbsp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构与算法概览">
 <meta property="og:url" content="http://javassun.github.io/2019/08/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/index.html">
 <meta property="og:site_name" content="haoran&#39;s blog">
-<meta property="og:description" content="Author: haoransunWechat: SHR—97学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。 定义&amp;nbsp;&amp;nbsp;&amp;nbsp;广义上：&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;数据结构：一组数据的存储结构。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;算法：操作数据的一组方法。&amp;nbsp;&amp;nbsp;&amp;nbsp;狭义">
+<meta property="og:description" content="Author: haoransunWechat: SHR—97学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。 1 定义&amp;nbsp;&amp;nbsp;&amp;nbsp;广义上：&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;数据结构：一组数据的存储结构。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;算法：操作数据的一组方法。&amp;nbsp;&amp;nbsp;&amp;nbsp;">
 <meta property="og:image" content="http://javassun.github.io/2019/08/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/913e0ababe43a2d57267df5c5f0832a7.jpg">
 <meta property="article:published_time" content="2019-08-08T12:00:30.000Z">
-<meta property="article:modified_time" content="2020-04-14T10:12:50.519Z">
+<meta property="article:modified_time" content="2020-04-16T06:24:12.485Z">
 <meta property="article:author" content="Allen">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
@@ -224,7 +224,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">567字</span>
+        <span class="post-count">573字</span>
       </span>
     </span>
 
@@ -246,19 +246,43 @@
 
 	<!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-定义"><span class="toc-number">1.</span> <span class="toc-text">1 定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-二者关系"><span class="toc-number">2.</span> <span class="toc-text">2 二者关系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-复杂度分析"><span class="toc-number">3.</span> <span class="toc-text">3 复杂度分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-学习图"><span class="toc-number">4.</span> <span class="toc-text">4 学习图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-20个基础"><span class="toc-number">5.</span> <span class="toc-text">5 20个基础</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-策略"><span class="toc-number">6.</span> <span class="toc-text">6 策略</span></a></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+      
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
       
 	
 		<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>&nbsp;&nbsp;&nbsp;广义上：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>数据结构</strong>：<font color="red">一组数据的存储结构</font>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>算法</strong>：<font color="red">操作数据的一组方法</font>。<br>&nbsp;&nbsp;&nbsp;狭义上：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;某些<font color="red">著名</font>的数据结构与算法,如队列、栈、堆、二分查找、动态规划等等。</p>
-<h1 id="二者关系"><a href="#二者关系" class="headerlink" title="二者关系"></a>二者关系</h1><p>&nbsp;&nbsp;&nbsp;数据结构与算法相辅相成。<font color="red">数据结构是为算法服务的，算法要作用在特定的数据结构之上</font>。因此，孤立而单独的讲解两者毫无意义。<br>&nbsp;&nbsp;&nbsp;比如，因为数组具有随机访问的特点，常用的二分查找算法需要用数组来存储数据。但是我们选择链表这种数据结构，二分查找就无法工作了，因为链表不支持随机访问。<br>&nbsp;&nbsp;&nbsp;数据结构是<font color="red">静态</font>的，它只是组织数据的一种方式。如果不在它的基础上操作、构建算法，孤立存在的数据结构是没有用的。</p>
+<h1 id="1-定义"><a href="#1-定义" class="headerlink" title="1 定义"></a>1 定义</h1><p>&nbsp;&nbsp;&nbsp;广义上：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>数据结构</strong>：<font color="red">一组数据的存储结构</font>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>算法</strong>：<font color="red">操作数据的一组方法</font>。<br>&nbsp;&nbsp;&nbsp;狭义上：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;某些<font color="red">著名</font>的数据结构与算法,如队列、栈、堆、二分查找、动态规划等等。</p>
+<h1 id="2-二者关系"><a href="#2-二者关系" class="headerlink" title="2 二者关系"></a>2 二者关系</h1><p>&nbsp;&nbsp;&nbsp;数据结构与算法相辅相成。<font color="red">数据结构是为算法服务的，算法要作用在特定的数据结构之上</font>。因此，孤立而单独的讲解两者毫无意义。<br>&nbsp;&nbsp;&nbsp;比如，因为数组具有随机访问的特点，常用的二分查找算法需要用数组来存储数据。但是我们选择链表这种数据结构，二分查找就无法工作了，因为链表不支持随机访问。<br>&nbsp;&nbsp;&nbsp;数据结构是<font color="red">静态</font>的，它只是组织数据的一种方式。如果不在它的基础上操作、构建算法，孤立存在的数据结构是没有用的。</p>
 <a id="more"></a>
-<h1 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h1><p>&nbsp;&nbsp;&nbsp;<font color="red">复杂度分析</font>占据了数据结构与算法的半壁江山，是数据结构与算法的精髓。<br>&nbsp;&nbsp;&nbsp;数据结构与算法解决的是如何更省、更快的存储和处理数据的问题，因此，需要考量效率和资源消耗的方法，这就是复杂度分析方法。所以，只掌握了数据结构与算法的特点、用法，没有学会复杂度分析，相当于只知口诀，而无心法，只有把心法了然于胸，才能做到无招胜有招！</p>
-<h1 id="学习图"><a href="#学习图" class="headerlink" title="学习图"></a>学习图</h1><p><img src="/2019/08/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/913e0ababe43a2d57267df5c5f0832a7.jpg" alt></p>
-<h1 id="20个基础"><a href="#20个基础" class="headerlink" title="20个基础"></a>20个基础</h1><p>&nbsp;&nbsp;&nbsp;<font color="blue">10个数据结构</font>：<br>&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">数组、链表、栈、队列、散列表、二叉树、堆、跳表、图、Trie树</font><br>&nbsp;&nbsp;&nbsp;<font color="blue">10个算法</font>：<br>&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">递归、排序、二分查找、搜索、哈希算法、贪心算法、分治算法、回溯算法、动态规划、字符串匹配算法</font></p>
-<h1 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h1><p>&nbsp;&nbsp;&nbsp;学习 <strong>‘它’</strong> 的<font color="red">来历、自身特点、适合解决的问题、实际应用场景</font>。</p>
+<h1 id="3-复杂度分析"><a href="#3-复杂度分析" class="headerlink" title="3 复杂度分析"></a>3 复杂度分析</h1><p>&nbsp;&nbsp;&nbsp;<font color="red">复杂度分析</font>占据了数据结构与算法的半壁江山，是数据结构与算法的精髓。<br>&nbsp;&nbsp;&nbsp;数据结构与算法解决的是如何更省、更快的存储和处理数据的问题，因此，需要考量效率和资源消耗的方法，这就是复杂度分析方法。所以，只掌握了数据结构与算法的特点、用法，没有学会复杂度分析，相当于只知口诀，而无心法，只有把心法了然于胸，才能做到无招胜有招！</p>
+<h1 id="4-学习图"><a href="#4-学习图" class="headerlink" title="4 学习图"></a>4 学习图</h1><p><img src="/2019/08/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/913e0ababe43a2d57267df5c5f0832a7.jpg" alt></p>
+<h1 id="5-20个基础"><a href="#5-20个基础" class="headerlink" title="5 20个基础"></a>5 20个基础</h1><p>&nbsp;&nbsp;&nbsp;<font color="blue">10个数据结构</font>：<br>&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">数组、链表、栈、队列、散列表、二叉树、堆、跳表、图、Trie树</font><br>&nbsp;&nbsp;&nbsp;<font color="blue">10个算法</font>：<br>&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">递归、排序、二分查找、搜索、哈希算法、贪心算法、分治算法、回溯算法、动态规划、字符串匹配算法</font></p>
+<h1 id="6-策略"><a href="#6-策略" class="headerlink" title="6 策略"></a>6 策略</h1><p>&nbsp;&nbsp;&nbsp;学习 <strong>‘它’</strong> 的<font color="red">来历、自身特点、适合解决的问题、实际应用场景</font>。</p>
 
 	
 	
@@ -385,6 +409,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-定义"><span class="toc-number">1.</span> <span class="toc-text">1 定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-二者关系"><span class="toc-number">2.</span> <span class="toc-text">2 二者关系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-复杂度分析"><span class="toc-number">3.</span> <span class="toc-text">3 复杂度分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-学习图"><span class="toc-number">4.</span> <span class="toc-text">4 学习图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-20个基础"><span class="toc-number">5.</span> <span class="toc-text">5 20个基础</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-策略"><span class="toc-number">6.</span> <span class="toc-text">6 策略</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -549,15 +586,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -566,10 +615,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -589,11 +634,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -601,15 +646,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">BigData</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">

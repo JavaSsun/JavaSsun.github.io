@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://JavaSsun.github.io">
   <title>8-GitLab简单操作 | haoran&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Author: haoransunWechat: SHR—97图片来源：极客时间，需个人购买教程。 1.国内为什么普遍使用GitLabhttps:&#x2F;&#x2F;about.gitlab.com&#x2F;大公司有能力自己基于GitLab做二次开发，有利于将代码保存在自己手中。">
+  <meta name="description" content="Author: haoransunWechat: SHR—97图片来源：极客时间，需个人购买教程。 1 国内为什么普遍使用GitLabhttps:&#x2F;&#x2F;about.gitlab.com&#x2F;大公司有能力自己基于GitLab做二次开发，有利于将代码保存在自己手中。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="8-GitLab简单操作">
 <meta property="og:url" content="http://javassun.github.io/2019/03/25/8-GitLab%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="haoran&#39;s blog">
-<meta property="og:description" content="Author: haoransunWechat: SHR—97图片来源：极客时间，需个人购买教程。 1.国内为什么普遍使用GitLabhttps:&#x2F;&#x2F;about.gitlab.com&#x2F;大公司有能力自己基于GitLab做二次开发，有利于将代码保存在自己手中。">
+<meta property="og:description" content="Author: haoransunWechat: SHR—97图片来源：极客时间，需个人购买教程。 1 国内为什么普遍使用GitLabhttps:&#x2F;&#x2F;about.gitlab.com&#x2F;大公司有能力自己基于GitLab做二次开发，有利于将代码保存在自己手中。">
 <meta property="og:image" content="http://javassun.github.io/2019/03/25/8-GitLab%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/f06b4b21-3b4a-4c7b-b3a7-5ef2d7a60ce4.jpg">
 <meta property="og:image" content="http://javassun.github.io/2019/03/25/8-GitLab%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/79e63bc0-48e9-4b18-bb60-1ebbc1745ace.png">
 <meta property="og:image" content="http://javassun.github.io/2019/03/25/8-GitLab%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/24bbbb0d-d736-4783-90d9-c6f063636555.png">
@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://javassun.github.io/2019/03/25/8-GitLab%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/a88563d3-da82-4ecc-a297-c27baf6646c7.jpg">
 <meta property="og:image" content="http://javassun.github.io/2019/03/25/8-GitLab%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/39ad396c-484a-4e12-a44a-cbfdea758b81.jpg">
 <meta property="article:published_time" content="2019-03-25T11:04:47.000Z">
-<meta property="article:modified_time" content="2020-04-14T06:10:45.094Z">
+<meta property="article:modified_time" content="2020-04-16T05:56:32.745Z">
 <meta property="article:author" content="Allen">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
@@ -254,30 +254,54 @@
 
 	<!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-国内为什么普遍使用GitLab"><span class="toc-number">1.</span> <span class="toc-text">1 国内为什么普遍使用GitLab</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-GitLab上有哪些核心功能"><span class="toc-number">2.</span> <span class="toc-text">2 GitLab上有哪些核心功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-GitLab如何做项目管理"><span class="toc-number">3.</span> <span class="toc-text">3 GitLab如何做项目管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-GitLab怎样做-code-review"><span class="toc-number">4.</span> <span class="toc-text">4 GitLab怎样做 code review</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-GitLab怎样保证集成质量"><span class="toc-number">5.</span> <span class="toc-text">5 GitLab怎样保证集成质量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-如何把应用部署到AWS上"><span class="toc-number">6.</span> <span class="toc-text">6 如何把应用部署到AWS上</span></a></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+      
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
       
 	
 		<p>Author: haoransun<br>Wechat: SHR—97<br>图片来源：极客时间，需个人购买教程。</p>
-<h2 id="1-国内为什么普遍使用GitLab"><a href="#1-国内为什么普遍使用GitLab" class="headerlink" title="1.国内为什么普遍使用GitLab"></a>1.国内为什么普遍使用GitLab</h2><p><a href="https://about.gitlab.com/" target="_blank" rel="noopener">https://about.gitlab.com/</a><br>大公司有能力自己基于GitLab做二次开发，有利于将代码保存在自己手中。</p>
+<h2 id="1-国内为什么普遍使用GitLab"><a href="#1-国内为什么普遍使用GitLab" class="headerlink" title="1 国内为什么普遍使用GitLab"></a>1 国内为什么普遍使用GitLab</h2><p><a href="https://about.gitlab.com/" target="_blank" rel="noopener">https://about.gitlab.com/</a><br>大公司有能力自己基于GitLab做二次开发，有利于将代码保存在自己手中。</p>
 <a id="more"></a>
-<h2 id="2-GitLab上有哪些核心功能"><a href="#2-GitLab上有哪些核心功能" class="headerlink" title="2.GitLab上有哪些核心功能"></a>2.GitLab上有哪些核心功能</h2><p>几乎包含一个项目的所有开发流程。<br><img src="/2019/03/25/8-GitLab%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/f06b4b21-3b4a-4c7b-b3a7-5ef2d7a60ce4.jpg" alt></p>
+<h2 id="2-GitLab上有哪些核心功能"><a href="#2-GitLab上有哪些核心功能" class="headerlink" title="2 GitLab上有哪些核心功能"></a>2 GitLab上有哪些核心功能</h2><p>几乎包含一个项目的所有开发流程。<br><img src="/2019/03/25/8-GitLab%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/f06b4b21-3b4a-4c7b-b3a7-5ef2d7a60ce4.jpg" alt></p>
 <hr>
 <p><img src="/2019/03/25/8-GitLab%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/79e63bc0-48e9-4b18-bb60-1ebbc1745ace.png" alt></p>
-<h2 id="3-GitLab如何做项目管理"><a href="#3-GitLab如何做项目管理" class="headerlink" title="3.GitLab如何做项目管理"></a>3.GitLab如何做项目管理</h2><p>主要是通过 <strong>issues</strong> 对项目进行追踪管理<br><img src="/2019/03/25/8-GitLab%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/24bbbb0d-d736-4783-90d9-c6f063636555.png" alt></p>
+<h2 id="3-GitLab如何做项目管理"><a href="#3-GitLab如何做项目管理" class="headerlink" title="3 GitLab如何做项目管理"></a>3 GitLab如何做项目管理</h2><p>主要是通过 <strong>issues</strong> 对项目进行追踪管理<br><img src="/2019/03/25/8-GitLab%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/24bbbb0d-d736-4783-90d9-c6f063636555.png" alt></p>
 <p>也可以看仪表盘等等。</p>
-<h2 id="4-GitLab怎样做-code-review"><a href="#4-GitLab怎样做-code-review" class="headerlink" title="4.GitLab怎样做 code review"></a>4.GitLab怎样做 code review</h2><p><strong>Merge Requests</strong></p>
+<h2 id="4-GitLab怎样做-code-review"><a href="#4-GitLab怎样做-code-review" class="headerlink" title="4 GitLab怎样做 code review"></a>4 GitLab怎样做 code review</h2><p><strong>Merge Requests</strong></p>
 <p><img src="/2019/03/25/8-GitLab%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/2e0577ac-52cb-4cd8-b700-633abb8d59aa.png" alt></p>
 <p><strong>仓库设置及变更保护</strong><br><img src="/2019/03/25/8-GitLab%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/3f1d9ab7-f837-4b7c-a463-b3004d9a02a7.jpg" alt></p>
-<h2 id="5-GitLab怎样保证集成质量"><a href="#5-GitLab怎样保证集成质量" class="headerlink" title="5.GitLab怎样保证集成质量"></a>5.GitLab怎样保证集成质量</h2><p>配置.gitlab-ci.yml文件 + 跑 runners</p>
+<h2 id="5-GitLab怎样保证集成质量"><a href="#5-GitLab怎样保证集成质量" class="headerlink" title="5 GitLab怎样保证集成质量"></a>5 GitLab怎样保证集成质量</h2><p>配置.gitlab-ci.yml文件 + 跑 runners</p>
 <p><strong>GitLab</strong> 有自己的<strong>CI</strong><br>通过源文件可以查看</p>
 <p><img src="/2019/03/25/8-GitLab%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/aa33cc03-7b0f-405e-8203-8e0ea05d0644.png" alt></p>
 <p>在自己的项目中可以看到 Runners：就是跑CI/CD的代理，类似于管家，有了它之后，GitLab自身的CI才能运行起来、<br><img src="/2019/03/25/8-GitLab%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/834dfa86-48f3-474f-a4ca-a2cfa2e1ca68.jpg" alt></p>
 <p>跑一套之后的效果（做一个完备的检查）<br><img src="/2019/03/25/8-GitLab%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/a88563d3-da82-4ecc-a297-c27baf6646c7.jpg" alt></p>
 <hr>
 <p><img src="/2019/03/25/8-GitLab%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/39ad396c-484a-4e12-a44a-cbfdea758b81.jpg" alt></p>
-<h2 id="6-如何把应用部署到AWS上"><a href="#6-如何把应用部署到AWS上" class="headerlink" title="6.如何把应用部署到AWS上"></a>6.如何把应用部署到AWS上</h2><p>见 GitLab Help文档</p>
+<h2 id="6-如何把应用部署到AWS上"><a href="#6-如何把应用部署到AWS上" class="headerlink" title="6 如何把应用部署到AWS上"></a>6 如何把应用部署到AWS上</h2><p>见 GitLab Help文档</p>
 
 	
 	
@@ -404,6 +428,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-国内为什么普遍使用GitLab"><span class="toc-number">1.</span> <span class="toc-text">1 国内为什么普遍使用GitLab</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-GitLab上有哪些核心功能"><span class="toc-number">2.</span> <span class="toc-text">2 GitLab上有哪些核心功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-GitLab如何做项目管理"><span class="toc-number">3.</span> <span class="toc-text">3 GitLab如何做项目管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-GitLab怎样做-code-review"><span class="toc-number">4.</span> <span class="toc-text">4 GitLab怎样做 code review</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-GitLab怎样保证集成质量"><span class="toc-number">5.</span> <span class="toc-text">5 GitLab怎样保证集成质量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-如何把应用部署到AWS上"><span class="toc-number">6.</span> <span class="toc-text">6 如何把应用部署到AWS上</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -568,15 +605,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -585,10 +634,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -608,11 +653,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -620,15 +665,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">BigData</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">

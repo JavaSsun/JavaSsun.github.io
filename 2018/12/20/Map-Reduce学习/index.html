@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://JavaSsun.github.io">
   <title>Map-Reduce学习 | haoran&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Author: haoransunWechat: SHR—97 Map-Reduce的过程与MongoDB如出一辙（如下图） Map-Reduce简介&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;MapReduce是一种编程模型，用于大规模数据集（大于1TB）的并行运算。该运算充分利用Hadoop存储节点（DateNode）所在物理主机的CPU、内存、网络以及少许磁盘完成分布式计算。">
+  <meta name="description" content="Author: haoransunWechat: SHR—97 Map-Reduce的过程与MongoDB如出一辙（如下图） 1 Map-Reduce简介&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;MapReduce是一种编程模型，用于大规模数据集（大于1TB）的并行运算。该运算充分利用Hadoop存储节点（DateNode）所在物理主机的CPU、内存、网络以及少许磁盘完成分布式计">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Map-Reduce学习">
 <meta property="og:url" content="http://javassun.github.io/2018/12/20/Map-Reduce%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="haoran&#39;s blog">
-<meta property="og:description" content="Author: haoransunWechat: SHR—97 Map-Reduce的过程与MongoDB如出一辙（如下图） Map-Reduce简介&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;MapReduce是一种编程模型，用于大规模数据集（大于1TB）的并行运算。该运算充分利用Hadoop存储节点（DateNode）所在物理主机的CPU、内存、网络以及少许磁盘完成分布式计算。">
+<meta property="og:description" content="Author: haoransunWechat: SHR—97 Map-Reduce的过程与MongoDB如出一辙（如下图） 1 Map-Reduce简介&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;MapReduce是一种编程模型，用于大规模数据集（大于1TB）的并行运算。该运算充分利用Hadoop存储节点（DateNode）所在物理主机的CPU、内存、网络以及少许磁盘完成分布式计">
 <meta property="og:image" content="http://javassun.github.io/2018/12/20/Map-Reduce%E5%AD%A6%E4%B9%A0/b8211209-31ef-425b-b480-9765994698c9.jpg">
 <meta property="og:image" content="http://javassun.github.io/2018/12/20/Map-Reduce%E5%AD%A6%E4%B9%A0/wpsA77A.tmp.jpg">
 <meta property="article:published_time" content="2018-12-20T12:43:43.000Z">
-<meta property="article:modified_time" content="2020-04-14T09:51:36.793Z">
+<meta property="article:modified_time" content="2020-04-16T06:23:20.094Z">
 <meta property="article:author" content="Allen">
 <meta property="article:tag" content="BigData">
 <meta name="twitter:card" content="summary">
@@ -247,6 +247,30 @@
 
 	<!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Map-Reduce简介"><span class="toc-number">1.</span> <span class="toc-text">1 Map-Reduce简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Map-Reduce计算过程"><span class="toc-number">2.</span> <span class="toc-text">2 Map-Reduce计算过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-举例"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-搭建YARN计算环境"><span class="toc-number">3.</span> <span class="toc-text">3 搭建YARN计算环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-掌握Map-Reduce编程模型"><span class="toc-number">4.</span> <span class="toc-text">4 掌握Map-Reduce编程模型</span></a></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+      
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
@@ -254,15 +278,16 @@
 	
 		<p>Author: haoransun<br>Wechat: SHR—97</p>
 <p><font color="red">Map-Reduce的过程与MongoDB如出一辙</font>（如下图）<br><img src="/2018/12/20/Map-Reduce%E5%AD%A6%E4%B9%A0/b8211209-31ef-425b-b480-9765994698c9.jpg" alt></p>
-<h2 id="Map-Reduce简介"><a href="#Map-Reduce简介" class="headerlink" title="Map-Reduce简介"></a>Map-Reduce简介</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>MapReduce</strong>是一种编程模型，用于大规模数据集（大于<strong>1TB</strong>）的并行运算。该运算充分利用<strong>Hadoop</strong>存储节点（<strong>DateNode</strong>）所在物理主机的CPU、内存、网络以及少许磁盘完成分布式计算。通过在<strong>DateNode</strong>所在的主机上启动<strong>NodeManager</strong>进程，该进程负责启动计算任务。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>MapReduce</strong>计算框架将分布式计算分为两个阶段：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Map</strong>阶段：在任务计算初期，计算框架会提前计算好任务切片（对数据做区域划分），然后<font color="red">根据切片数目</font>启动MapTask，对切片所映射的数据做局部的分析/计算，将计算的临时结果存储到对应物理主机的磁盘（<strong>MapTask</strong>的溢写）。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Reduce</strong>阶段：在<strong>Map</strong>阶段的所有操作完成计算任务后，计算框架会选择若干机器（手动指定）执行ReduceTask，完成对<strong>Map</strong>阶段计算数据的汇总（<strong>shuffle</strong><font color="red">洗牌</font>）。</p>
+<h2 id="1-Map-Reduce简介"><a href="#1-Map-Reduce简介" class="headerlink" title="1 Map-Reduce简介"></a>1 Map-Reduce简介</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>MapReduce</strong>是一种编程模型，用于大规模数据集（大于<strong>1TB</strong>）的并行运算。该运算充分利用<strong>Hadoop</strong>存储节点（<strong>DateNode</strong>）所在物理主机的CPU、内存、网络以及少许磁盘完成分布式计算。通过在<strong>DateNode</strong>所在的主机上启动<strong>NodeManager</strong>进程，该进程负责启动计算任务。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>MapReduce</strong>计算框架将分布式计算分为两个阶段：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Map</strong>阶段：在任务计算初期，计算框架会提前计算好任务切片（对数据做区域划分），然后<font color="red">根据切片数目</font>启动MapTask，对切片所映射的数据做局部的分析/计算，将计算的临时结果存储到对应物理主机的磁盘（<strong>MapTask</strong>的溢写）。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Reduce</strong>阶段：在<strong>Map</strong>阶段的所有操作完成计算任务后，计算框架会选择若干机器（手动指定）执行ReduceTask，完成对<strong>Map</strong>阶段计算数据的汇总（<strong>shuffle</strong><font color="red">洗牌</font>）。</p>
 <a id="more"></a>
-<h2 id="Map-Reduce计算过程"><a href="#Map-Reduce计算过程" class="headerlink" title="Map-Reduce计算过程"></a>Map-Reduce计算过程</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">修路的故事</font>：我们要修一条从<font color="red">西藏</font>到<font color="red">上海</font>的高速公路，由<strong>西北</strong>到<strong>东南</strong>；首先呢，这个工程量是十分巨大的，我们不能让一个工程队去修这条路，（从理论上来讲，是可行的，从祖父到重孙….）但是周期太长，中间会不会发生变故，还不好说。所以一个大的工程出现后，要有一个合理的时间规划，假如期限是1年内搞定，那怎么办呢？此时就需要路段区间同时施工，但区间同时施工又会产生一个问题，这个事儿该由谁来主持呢？史某一个人来主持吗？不可能，修路这种东西，尤其是跨地区修路，是非常难的。每个省、市。区都有自己的特殊的东西，如：钉子户的解决，拆迁的成本等。修路是一个国家的大事，不是某个人可以单独解决的。这就由每个地区的国土资源部来审核、主持。但是跨地区呢？由中央国土资源管理中心来审核、主持各个地区的国土资源部。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提议：修一条从西藏到上海的路，带动周边经济。中央的国土资源部拿到这个请求后，会开会商讨，觉得此事儿可行，靠谱。中央会下发文件，给该工程起代号。中央可以审批，但是有一个前提：就是在我审批之后，未来这个路的具体修法不可能让国家领导人来操心吧，所以：中央审批完成后，会由第一人做三件事，<strong>1.</strong> <font color="red">具体的施工区间（这条路会经过哪些省份、地区）路段</font>（方便各国土资源部进行各自的土地划量，区间同时作业）。<strong>2.</strong> 当地具体该怎么修这条路呢，是修水泥路呢？还是沥漆呢？路面有多宽，多厚？需不需要修建  绿化带呢？即<font color="red">修路的标准要定好</font>。<strong>3.</strong><font color="red">路段的对接标准</font>:各个工程队都不傻，都会只负责各自的划分区域，那些交接的区域该怎么对接呢？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在整理好上述三件事后，要将文件进行公示，<font color="red">即所有人都能看到</font> <strong>4</strong>.将文件详情上传给中央后，中央说：修吧。<strong>5.</strong> 中央会让河南省的国土资源部推荐一个人，即<font color="red">工程总监</font>，全权负责西藏到上海的修路事宜。 当地的（河南省）的国土资源部会选举、指派一个<font color="red">工程总监</font>作为<font color="red">负责人</font><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这个负责人可能一晚上都睡不好觉了，因为这是一个大项目，搞砸了咋笨呢？此人心里会思考：这么大的工程量我该怎样去检测、去实施呢？<strong>6.</strong><font color="red">修路的管理规范定制好</font>，每隔多长时间，<font color="red">各个工程队要向我汇报各个区间的施工进度</font>，有什么难题向我汇报，我要知道工程的施工进度（假如说在施工期间，某个施工队因为技术达不到而修不了某一区间段内的路，要及时通报我，我会从其他地方抽调专业的施工队来帮助你修路）；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这个工程总监想了一夜终于想好后，紧接着该第七步路。<strong>7.</strong> 工程总监从网上下载<font color="red">初期的公示文件</font>：因为要看路段从哪到哪，经过哪些区域，需要哪一个地区的国土资源部配合我的工作等详细信息；<strong>8.</strong> 一切就绪后，负责人就开始<font color="red">向中央申请资金</font>了，<strong>9.</strong> 工程总监将资金、工程区间段的图纸、施工信息等下发给拨给各个地区的<font color="red">国土资源部</font>，交给他们去具体的修路。<strong>10.</strong> 各地区国土资源部拿到拨款后，会在<font color="red">当地进行招标</font>，(带动当地经济，肥水不流外人田)  钱已经给到了<font color="red">工程队</font>。<font color="red">工程队</font>拿到钱后，并不是立马开始修路的，他要去根据<font color="red">公示文件</font>去判断区间范围和修路标准，<strong>11.</strong> 各地区中标<font color="red">工程队开始施工修路</font>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在<font color="red">施工期间</font>要注意的事项：各个地区开始同时施工，施工的第一阶段，<font color="blue">所有的工程队只修自己所负责的区间段，按照既定的标准去修就OK了</font>；各个施工队汇报工程进度时，汇报对象不再是当地政府，而是<font color="red">工程总监</font>，可能出现的状况：当地政府指定了某一个施工队，但是没有考虑施工的具体难易，本地的工程队儿干不了，向工程总监反馈，工程总监考虑从其他地区调工程队来（不到万不得已，不会调，因为有人力、物力、财力流失浪费）；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">当所有的工程队把自己所下发的区间段修完后，工程总监就知道了</font>，此时路段该对接了，第一阶段的Map，因为有公示文件订好了，照着干就行，工程总监干预不了，而第二阶段的Reduce阶段则由<strong>工程总监</strong>说了算。（不可能让某一个区域的个人去做对接，效率太慢，也不可能让所有的工程队都参与对接，浪费资源）由工程总监去指定若干个工程队去进行工程的对接（原来1000,现在改为10个或不等个）。</p>
-<h3 id="类比下图"><a href="#类比下图" class="headerlink" title="类比下图"></a>类比下图</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>1. Client JVM</strong><font color="red">(提议人)</font>，向<strong>ResourceManager</strong><font color="red">(中央国土资源中心)</font>进行<strong>Job</strong><font color="red">(提议)</font>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>2. ResourceManager</strong>会下发一个文件<strong>get new application(授权)</strong>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>3. Client JVM<font color="red">(客户端)</font></strong> 要<strong>copy job resource</strong><font color="red">(公示自己的文件)</font>，工程所用到的资源：路段信息、施工标准、运行上下文等。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>4. Client JVM</strong><font color="red">(提议人)</font>，向<strong>ResourceManager</strong><font color="red">(中央)</font>进行<strong>submit applications</strong><font color="red">(施工文档的提交)</font>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>5a. ResourceManager</strong><font color="red">(中央)</font>会<strong>start container</strong><font color="red">(下发命令)</font>，给地方的<strong>NodeManager</strong><font color="red">(国土资源中心)</font>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>5b. NodeManager</strong><font color="red">(当地政府)</font>除了找工程队外，还要选举、启动<strong>MRAppMaster</strong><font color="red">(工程总监)</font>，<strong>MRAppMaster只有一个</strong>。所有的地方政府都要听他的。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>6. MRAppMaster</strong><font color="red">(工程总监)</font> <strong>Initialize Job</strong><font color="red">(初始化Job)</font>，即相当于先将任务的<font color="red">监测进程</font>启动好。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>7. MRAppMaster</strong><font color="red">(工程总监)</font> <strong>retrieve input splits</strong><font color="red">(查看输入切片，相当于区域路段信息，)</font>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>8. MRAppMaster</strong><font color="red">(工程总监)</font> <strong>allocate resources</strong><font color="red">(拨款,请求资源：Cpu、内存等)</font> from <strong>ResourceManager</strong>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>9a. MRAppMaster</strong><font color="red">(工程总监)</font>会<strong>start container</strong><font color="red">(发号指令)</font>给<strong>NodeManager</strong><font color="red">(地方政府)</font>，去跟地方国土资源中心说：中央给你拨了那么多款，你去把路给我修好了。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>9b. NodeManagerr</strong><font color="red">(地方政府)</font>会<strong>launch</strong><font color="red">(启动)</font>一个本地的<strong>YarnChild</strong><font color="red">(工程队)</font>,此处的YarnChild是一个统称，它既可以是MapTask(区域施工)，也可以工程对接（Reduce Task）.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>10. YarnChild</strong><font color="red">(工程队)</font>会<strong>retrieve job resources</strong><font color="red">(查询确认自己的到底要修那条路，施工。对接标准如何，取决于启动的是区间作业工程队，还是工程对接工程队)</font>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>11. YarnChild</strong><font color="red">(工程队)</font><strong>run</strong> 任务，第一阶段一定是<strong>MapTask</strong>,这个任务量取决于有多少个<strong>切片</strong>（splits），第二阶段由<strong>MRAppMaster</strong>去找寻指定的<strong>NodeManager</strong>启动<strong>ReduceTask</strong>。<br><font color="red">路修完后：工程总监<strong>MRAppMaster</strong>、YarnChild<strong>工程队</strong>的头衔头没有了，当地政府还存在，所以整个<strong>Yarn框架</strong>的核心进程就两个：<strong>ResourceManager</strong>和<strong>NodeManager</strong>，MRAppMaster和YarnChild属于计算过程中的进程，用完就回收。</font></p>
+<h2 id="2-Map-Reduce计算过程"><a href="#2-Map-Reduce计算过程" class="headerlink" title="2 Map-Reduce计算过程"></a>2 Map-Reduce计算过程</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">修路的故事</font>：我们要修一条从<font color="red">西藏</font>到<font color="red">上海</font>的高速公路，由<strong>西北</strong>到<strong>东南</strong>；首先呢，这个工程量是十分巨大的，我们不能让一个工程队去修这条路，（从理论上来讲，是可行的，从祖父到重孙….）但是周期太长，中间会不会发生变故，还不好说。所以一个大的工程出现后，要有一个合理的时间规划，假如期限是1年内搞定，那怎么办呢？此时就需要路段区间同时施工，但区间同时施工又会产生一个问题，这个事儿该由谁来主持呢？史某一个人来主持吗？不可能，修路这种东西，尤其是跨地区修路，是非常难的。每个省、市。区都有自己的特殊的东西，如：钉子户的解决，拆迁的成本等。修路是一个国家的大事，不是某个人可以单独解决的。这就由每个地区的国土资源部来审核、主持。但是跨地区呢？由中央国土资源管理中心来审核、主持各个地区的国土资源部。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提议：修一条从西藏到上海的路，带动周边经济。中央的国土资源部拿到这个请求后，会开会商讨，觉得此事儿可行，靠谱。中央会下发文件，给该工程起代号。中央可以审批，但是有一个前提：就是在我审批之后，未来这个路的具体修法不可能让国家领导人来操心吧，所以：中央审批完成后，会由第一人做三件事，<strong>1.</strong> <font color="red">具体的施工区间（这条路会经过哪些省份、地区）路段</font>（方便各国土资源部进行各自的土地划量，区间同时作业）。<strong>2.</strong> 当地具体该怎么修这条路呢，是修水泥路呢？还是沥漆呢？路面有多宽，多厚？需不需要修建  绿化带呢？即<font color="red">修路的标准要定好</font>。<strong>3.</strong><font color="red">路段的对接标准</font>:各个工程队都不傻，都会只负责各自的划分区域，那些交接的区域该怎么对接呢？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在整理好上述三件事后，要将文件进行公示，<font color="red">即所有人都能看到</font> <strong>4</strong>.将文件详情上传给中央后，中央说：修吧。<strong>5.</strong> 中央会让河南省的国土资源部推荐一个人，即<font color="red">工程总监</font>，全权负责西藏到上海的修路事宜。 当地的（河南省）的国土资源部会选举、指派一个<font color="red">工程总监</font>作为<font color="red">负责人</font><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这个负责人可能一晚上都睡不好觉了，因为这是一个大项目，搞砸了咋笨呢？此人心里会思考：这么大的工程量我该怎样去检测、去实施呢？<strong>6.</strong><font color="red">修路的管理规范定制好</font>，每隔多长时间，<font color="red">各个工程队要向我汇报各个区间的施工进度</font>，有什么难题向我汇报，我要知道工程的施工进度（假如说在施工期间，某个施工队因为技术达不到而修不了某一区间段内的路，要及时通报我，我会从其他地方抽调专业的施工队来帮助你修路）；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这个工程总监想了一夜终于想好后，紧接着该第七步路。<strong>7.</strong> 工程总监从网上下载<font color="red">初期的公示文件</font>：因为要看路段从哪到哪，经过哪些区域，需要哪一个地区的国土资源部配合我的工作等详细信息；<strong>8.</strong> 一切就绪后，负责人就开始<font color="red">向中央申请资金</font>了，<strong>9.</strong> 工程总监将资金、工程区间段的图纸、施工信息等下发给拨给各个地区的<font color="red">国土资源部</font>，交给他们去具体的修路。<strong>10.</strong> 各地区国土资源部拿到拨款后，会在<font color="red">当地进行招标</font>，(带动当地经济，肥水不流外人田)  钱已经给到了<font color="red">工程队</font>。<font color="red">工程队</font>拿到钱后，并不是立马开始修路的，他要去根据<font color="red">公示文件</font>去判断区间范围和修路标准，<strong>11.</strong> 各地区中标<font color="red">工程队开始施工修路</font>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在<font color="red">施工期间</font>要注意的事项：各个地区开始同时施工，施工的第一阶段，<font color="blue">所有的工程队只修自己所负责的区间段，按照既定的标准去修就OK了</font>；各个施工队汇报工程进度时，汇报对象不再是当地政府，而是<font color="red">工程总监</font>，可能出现的状况：当地政府指定了某一个施工队，但是没有考虑施工的具体难易，本地的工程队儿干不了，向工程总监反馈，工程总监考虑从其他地区调工程队来（不到万不得已，不会调，因为有人力、物力、财力流失浪费）；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">当所有的工程队把自己所下发的区间段修完后，工程总监就知道了</font>，此时路段该对接了，第一阶段的Map，因为有公示文件订好了，照着干就行，工程总监干预不了，而第二阶段的Reduce阶段则由<strong>工程总监</strong>说了算。（不可能让某一个区域的个人去做对接，效率太慢，也不可能让所有的工程队都参与对接，浪费资源）由工程总监去指定若干个工程队去进行工程的对接（原来1000,现在改为10个或不等个）。</p>
+<h3 id="2-1-举例"><a href="#2-1-举例" class="headerlink" title="2.1 举例"></a>2.1 举例</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>1. Client JVM</strong><font color="red">(提议人)</font>，向<strong>ResourceManager</strong><font color="red">(中央国土资源中心)</font>进行<strong>Job</strong><font color="red">(提议)</font>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>2. ResourceManager</strong>会下发一个文件<strong>get new application(授权)</strong>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>3. Client JVM<font color="red">(客户端)</font></strong> 要<strong>copy job resource</strong><font color="red">(公示自己的文件)</font>，工程所用到的资源：路段信息、施工标准、运行上下文等。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>4. Client JVM</strong><font color="red">(提议人)</font>，向<strong>ResourceManager</strong><font color="red">(中央)</font>进行<strong>submit applications</strong><font color="red">(施工文档的提交)</font>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>5a. ResourceManager</strong><font color="red">(中央)</font>会<strong>start container</strong><font color="red">(下发命令)</font>，给地方的<strong>NodeManager</strong><font color="red">(国土资源中心)</font>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>5b. NodeManager</strong><font color="red">(当地政府)</font>除了找工程队外，还要选举、启动<strong>MRAppMaster</strong><font color="red">(工程总监)</font>，<strong>MRAppMaster只有一个</strong>。所有的地方政府都要听他的。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>6. MRAppMaster</strong><font color="red">(工程总监)</font> <strong>Initialize Job</strong><font color="red">(初始化Job)</font>，即相当于先将任务的<font color="red">监测进程</font>启动好。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>7. MRAppMaster</strong><font color="red">(工程总监)</font> <strong>retrieve input splits</strong><font color="red">(查看输入切片，相当于区域路段信息，)</font>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>8. MRAppMaster</strong><font color="red">(工程总监)</font> <strong>allocate resources</strong><font color="red">(拨款,请求资源：Cpu、内存等)</font> from <strong>ResourceManager</strong>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>9a. MRAppMaster</strong><font color="red">(工程总监)</font>会<strong>start container</strong><font color="red">(发号指令)</font>给<strong>NodeManager</strong><font color="red">(地方政府)</font>，去跟地方国土资源中心说：中央给你拨了那么多款，你去把路给我修好了。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>9b. NodeManagerr</strong><font color="red">(地方政府)</font>会<strong>launch</strong><font color="red">(启动)</font>一个本地的<strong>YarnChild</strong><font color="red">(工程队)</font>,此处的YarnChild是一个统称，它既可以是MapTask(区域施工)，也可以工程对接（Reduce Task）.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>10. YarnChild</strong><font color="red">(工程队)</font>会<strong>retrieve job resources</strong><font color="red">(查询确认自己的到底要修那条路，施工。对接标准如何，取决于启动的是区间作业工程队，还是工程对接工程队)</font>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>11. YarnChild</strong><font color="red">(工程队)</font><strong>run</strong> 任务，第一阶段一定是<strong>MapTask</strong>,这个任务量取决于有多少个<strong>切片</strong>（splits），第二阶段由<strong>MRAppMaster</strong>去找寻指定的<strong>NodeManager</strong>启动<strong>ReduceTask</strong>。<br><font color="red">路修完后：工程总监<strong>MRAppMaster</strong>、YarnChild<strong>工程队</strong>的头衔头没有了，当地政府还存在，所以整个<strong>Yarn框架</strong>的核心进程就两个：<strong>ResourceManager</strong>和<strong>NodeManager</strong>，MRAppMaster和YarnChild属于计算过程中的进程，用完就回收。</font></p>
 <p><img src="/2018/12/20/Map-Reduce%E5%AD%A6%E4%B9%A0/wpsA77A.tmp.jpg" alt><br><strong>ResourceManager</strong>：资源管理中心，管理<strong>NodeManager</strong>、分配任务资源<br><strong>NodeManager</strong>：启动<strong>MRAppMaster</strong>、<strong>YarnChild</strong><br><font color="red">以上两个是Yarn框架的常驻内存进程。</font><br><strong>MRAppMaster</strong>：监测任务运行（一个任务，只有一个）<br><strong>YarnChild</strong>：MapTask或者ReduceTask的总称，具体计算进程。<br><strong>YarnChild</strong>进程数目：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>MapTask</strong>：切片控制（数据逻辑映射区间）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>ReduceTask</strong>：程序手动指定。</p>
-<h2 id="搭建YARN计算环境"><a href="#搭建YARN计算环境" class="headerlink" title="搭建YARN计算环境"></a>搭建YARN计算环境</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS ~]# cp &#x2F;usr&#x2F;hadoop-2.6.0&#x2F;etc&#x2F;hadoop&#x2F;mapred-site.xml.template &#x2F;usr&#x2F;hadoop-2.6.0&#x2F;etc&#x2F;hadoop&#x2F;mapred-site.xml</span><br><span class="line"></span><br><span class="line">[root@CentOS ~]# vi &#x2F;usr&#x2F;hadoop-2.6.0&#x2F;etc&#x2F;hadoop&#x2F;mapred-site.xml</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">        &lt;name&gt;mapreduce.framework.name&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;yarn&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line"></span><br><span class="line">[root@CentOS ~]# vi &#x2F;usr&#x2F;hadoop-2.6.0&#x2F;etc&#x2F;hadoop&#x2F;yarn-site.xml</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.nodemanager.aux-services&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;mapreduce_shuffle&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.hostname&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;CentOS&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line"></span><br><span class="line">启动Yarn</span><br><span class="line">[root@CentOS ~]# start-yarn.sh</span><br><span class="line">[root@CentOS ~]# jps</span><br><span class="line">1628 SecondaryNameNode</span><br><span class="line">1780 ResourceManager</span><br><span class="line">1447 DataNode</span><br><span class="line">1905 Jps</span><br><span class="line">1363 NameNode</span><br><span class="line">1863 NodeManager</span><br></pre></td></tr></table></figure>
+<h2 id="3-搭建YARN计算环境"><a href="#3-搭建YARN计算环境" class="headerlink" title="3 搭建YARN计算环境"></a>3 搭建YARN计算环境</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS ~]# cp &#x2F;usr&#x2F;hadoop-2.6.0&#x2F;etc&#x2F;hadoop&#x2F;mapred-site.xml.template &#x2F;usr&#x2F;hadoop-2.6.0&#x2F;etc&#x2F;hadoop&#x2F;mapred-site.xml</span><br><span class="line"></span><br><span class="line">[root@CentOS ~]# vi &#x2F;usr&#x2F;hadoop-2.6.0&#x2F;etc&#x2F;hadoop&#x2F;mapred-site.xml</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">        &lt;name&gt;mapreduce.framework.name&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;yarn&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line"></span><br><span class="line">[root@CentOS ~]# vi &#x2F;usr&#x2F;hadoop-2.6.0&#x2F;etc&#x2F;hadoop&#x2F;yarn-site.xml</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.nodemanager.aux-services&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;mapreduce_shuffle&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.hostname&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;CentOS&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line"></span><br><span class="line">启动Yarn</span><br><span class="line">[root@CentOS ~]# start-yarn.sh</span><br><span class="line">[root@CentOS ~]# jps</span><br><span class="line">1628 SecondaryNameNode</span><br><span class="line">1780 ResourceManager</span><br><span class="line">1447 DataNode</span><br><span class="line">1905 Jps</span><br><span class="line">1363 NameNode</span><br><span class="line">1863 NodeManager</span><br></pre></td></tr></table></figure>
 
 <p>访问：<a href="http://centos:8088/cluster" target="_blank" rel="noopener">http://centos:8088/cluster</a> 即可看到MapReduce的界面化管理。<br><a href="https://www.jianshu.com/p/20ed705ed5b6?utm_campaign" target="_blank" rel="noopener">参考文档</a></p>
-<h2 id="掌握Map-Reduce编程模型"><a href="#掌握Map-Reduce编程模型" class="headerlink" title="掌握Map-Reduce编程模型"></a>掌握<strong>Map-Reduce</strong>编程模型</h2>
+<h2 id="4-掌握Map-Reduce编程模型"><a href="#4-掌握Map-Reduce编程模型" class="headerlink" title="4 掌握Map-Reduce编程模型"></a>4 掌握<strong>Map-Reduce</strong>编程模型</h2><p>未完待续</p>
+
 	
 	
     </div>
@@ -388,6 +413,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Map-Reduce简介"><span class="toc-number">1.</span> <span class="toc-text">1 Map-Reduce简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Map-Reduce计算过程"><span class="toc-number">2.</span> <span class="toc-text">2 Map-Reduce计算过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-举例"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-搭建YARN计算环境"><span class="toc-number">3.</span> <span class="toc-text">3 搭建YARN计算环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-掌握Map-Reduce编程模型"><span class="toc-number">4.</span> <span class="toc-text">4 掌握Map-Reduce编程模型</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -552,15 +590,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,10 +619,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,11 +638,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -604,15 +650,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">BigData</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">

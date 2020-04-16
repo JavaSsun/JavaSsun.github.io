@@ -8,14 +8,14 @@
   <link rel="dns-prefetch" href="http://JavaSsun.github.io">
   <title>Linux常用插件及乱码 | haoran&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Author: haoransunWechat: SHR—97 清空文件   &gt; filename 或者 : &gt; filename.&#x2F;configure make make install .&#x2F;configure 检测安装平台的目标特征的。如会检测是不是有CC或者GCC，并不是需要CC或者GCC，它是个shell脚本，生成Makefile,为下一步的编译做准备。">
+  <meta name="description" content="Author: haoransunWechat: SHR—97 1. 清空文件 filename 或者 : &gt; filename  2. .&#x2F;configure make make install .&#x2F;configure 检测安装平台的目标特征的。如会检测是不是有CC或者GCC，并不是需要CC或者GCC，它是个shell脚本，生成Makefile,为下一步的编译做准备。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux常用插件及乱码">
 <meta property="og:url" content="http://javassun.github.io/2018/03/20/Linux%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B9%B1%E7%A0%81/index.html">
 <meta property="og:site_name" content="haoran&#39;s blog">
-<meta property="og:description" content="Author: haoransunWechat: SHR—97 清空文件   &gt; filename 或者 : &gt; filename.&#x2F;configure make make install .&#x2F;configure 检测安装平台的目标特征的。如会检测是不是有CC或者GCC，并不是需要CC或者GCC，它是个shell脚本，生成Makefile,为下一步的编译做准备。">
+<meta property="og:description" content="Author: haoransunWechat: SHR—97 1. 清空文件 filename 或者 : &gt; filename  2. .&#x2F;configure make make install .&#x2F;configure 检测安装平台的目标特征的。如会检测是不是有CC或者GCC，并不是需要CC或者GCC，它是个shell脚本，生成Makefile,为下一步的编译做准备。">
 <meta property="article:published_time" content="2018-03-20T10:53:06.000Z">
-<meta property="article:modified_time" content="2020-04-14T05:04:37.820Z">
+<meta property="article:modified_time" content="2020-04-16T05:28:09.933Z">
 <meta property="article:author" content="Allen">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -222,7 +222,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">761字</span>
+        <span class="post-count">799字</span>
       </span>
     </span>
 
@@ -244,13 +244,40 @@
 
 	<!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-清空文件"><span class="toc-number">1.</span> <span class="toc-text">1. 清空文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-configure-make-make-install"><span class="toc-number">2.</span> <span class="toc-text">2. .&#x2F;configure make make install</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-configure"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 .&#x2F;configure</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-make"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 make</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-make-install"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 make install</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-搜索安装包路径"><span class="toc-number">3.</span> <span class="toc-text">3. 搜索安装包路径</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-编辑器"><span class="toc-number">4.</span> <span class="toc-text">4. 编辑器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-树形目录"><span class="toc-number">5.</span> <span class="toc-text">5. 树形目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-通用下载方式"><span class="toc-number">6.</span> <span class="toc-text">6. 通用下载方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-上传下载下工具"><span class="toc-number">7.</span> <span class="toc-text">7. 上传下载下工具</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-CentOS6-中文乱码解决"><span class="toc-number">8.</span> <span class="toc-text">8. CentOS6 中文乱码解决</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-安装语言包"><span class="toc-number">8.1.</span> <span class="toc-text">8.1 安装语言包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-2-设置字符集"><span class="toc-number">8.2.</span> <span class="toc-text">8.2 设置字符集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-1临时生效-好像不管用"><span class="toc-number">8.2.1.</span> <span class="toc-text">8.2.1临时生效(好像不管用)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-2永久生效"><span class="toc-number">8.2.2.</span> <span class="toc-text">8.2.2永久生效</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-CentOS7中英文乱码解决"><span class="toc-number">9.</span> <span class="toc-text">9. CentOS7中英文乱码解决</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#9-1-安装中文库"><span class="toc-number">9.1.</span> <span class="toc-text">9.1 安装中文库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-2-检查是否有中文语言包"><span class="toc-number">9.2.</span> <span class="toc-text">9.2 检查是否有中文语言包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-3-查看当前系统语言环境"><span class="toc-number">9.3.</span> <span class="toc-text">9.3 查看当前系统语言环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-4-修改本机语言环境"><span class="toc-number">9.4.</span> <span class="toc-text">9.4 修改本机语言环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-5-重启系统"><span class="toc-number">9.5.</span> <span class="toc-text">9.5 重启系统</span></a></li></ol></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+      
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
       
 	
 		<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h1 id="清空文件-gt-filename-或者-gt-filename"><a href="#清空文件-gt-filename-或者-gt-filename" class="headerlink" title="清空文件   &gt; filename 或者 : &gt; filename"></a>清空文件   &gt; filename 或者 : &gt; filename</h1><h1 id="configure-make-make-install"><a href="#configure-make-make-install" class="headerlink" title="./configure make make install"></a>./configure make make install</h1><ul>
+<h1 id="1-清空文件"><a href="#1-清空文件" class="headerlink" title="1. 清空文件"></a>1. 清空文件</h1><blockquote>
+<p>filename 或者 : &gt; filename</p>
+</blockquote>
+<h1 id="2-configure-make-make-install"><a href="#2-configure-make-make-install" class="headerlink" title="2. ./configure make make install"></a>2. ./configure make make install</h1><ul>
 <li><p>./configure 检测安装平台的目标特征的。如会检测是不是有CC或者GCC，并不是需要CC或者GCC，它是个shell脚本，生成Makefile,为下一步的编译做准备。</p>
 <a id="more"></a></li>
 <li><p>make 用来编译的，它从 Makefile读取指令，然后编译。</p>
@@ -258,30 +285,31 @@
 <li><p>make install 用来安装。他也从 Makefile中读取指令，安装到指定的位置。</p>
 </li>
 </ul>
-<h2 id="configure"><a href="#configure" class="headerlink" title="./configure"></a>./configure</h2><p>一般用来生成 Makefile，为下一步的编译做准备。</p>
+<h2 id="2-1-configure"><a href="#2-1-configure" class="headerlink" title="2.1 ./configure"></a>2.1 ./configure</h2><p>一般用来生成 Makefile，为下一步的编译做准备。</p>
 <p>你可以通过在 configure 后加上参数来对安装进行控制，比如代码:</p>
 <p>./configure –prefix=/usr<br>意思是将该软件安装在 /usr 下面，执行文件就会安装在 /usr/bin （而不是默认的 /usr/local/bin)，资源文件就会安装在 /usr/share（而不是默认的/usr/local/share）。<br>同时一些软件的配置文件你可以通过指定 –sys-config= 参数进行设定。有一些软件还可以加上 –with、–enable、–without、–disable 等等参数对编译加以控制，你可以通过允许 ./configure –help 察看详细的说明帮助。</p>
-<h2 id="make"><a href="#make" class="headerlink" title="make"></a>make</h2><p>make 的作用是开始进行源代码编译，</p>
+<h2 id="2-2-make"><a href="#2-2-make" class="headerlink" title="2.2 make"></a>2.2 make</h2><p>make 的作用是开始进行源代码编译，</p>
 <p>以及一些功能的提供，这些功能由他的 Makefile 设置文件提供相关的功能，比如 make install 一般表示进行安装，make uninstall 是卸载，不加参数就是默认的进行源代码编译。</p>
 <p>如果 在 make 过程中出现 error ，你就要记下错误代码（注意不仅仅是最后一行）。</p>
 <p>make 是 Linux 开发套件里面自动化编译的一个控制程序，他通过借助 Makefile 里面编写的编译规范进行自动化的调用 gcc 、ld 以及运行某些需要的程序进行编译的程序。</p>
 <p>一般情况下，他所使用的 Makefile ，由 configure 这个设置脚本根据给定的参数和系统环境生成。</p>
-<h2 id="make-install"><a href="#make-install" class="headerlink" title="make install"></a>make install</h2><p>安装（当然有些软件需要先运行 make check 或 make test来进行一些测试），这一步一般需要你有 root 权限（sudo make install</p>
-<h1 id="搜索安装包路径"><a href="#搜索安装包路径" class="headerlink" title="搜索安装包路径"></a>搜索安装包路径</h1><p>whereis 安装包<br>如：whereis vim<br>    whereis tree</p>
-<h1 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h1><p>yum instsall vim</p>
-<h1 id="树形目录"><a href="#树形目录" class="headerlink" title="树形目录"></a>树形目录</h1><p>yun install tree</p>
-<h1 id="通用下载方式"><a href="#通用下载方式" class="headerlink" title="通用下载方式"></a>通用下载方式</h1><p>yum install wget</p>
-<h1 id="上传下载下工具"><a href="#上传下载下工具" class="headerlink" title="上传下载下工具"></a>上传下载下工具</h1><p>yum install lrzsz</p>
-<h1 id="CentOS6-中文乱码解决"><a href="#CentOS6-中文乱码解决" class="headerlink" title="CentOS6 中文乱码解决"></a>CentOS6 中文乱码解决</h1><h2 id="1-安装语言包"><a href="#1-安装语言包" class="headerlink" title="1 安装语言包"></a>1 安装语言包</h2><p>yum groupinstall chinese-support</p>
-<h2 id="2-设置字符集"><a href="#2-设置字符集" class="headerlink" title="2 设置字符集"></a>2 设置字符集</h2><h3 id="临时生效-好像不管用"><a href="#临时生效-好像不管用" class="headerlink" title="临时生效(好像不管用)"></a>临时生效(好像不管用)</h3><p>export LANG=”zh_CN.UTF-8” ## 设置为中文<br>export LANG=”en-US.UTF-8” ## 设置为英文，</p>
-<h3 id="永久生效"><a href="#永久生效" class="headerlink" title="永久生效"></a>永久生效</h3><p>vi /etc/sysconfig/i18n(最好reboot下)<br>LANG =”zh_CN.UTF-8”</p>
+<h2 id="2-3-make-install"><a href="#2-3-make-install" class="headerlink" title="2.3 make install"></a>2.3 make install</h2><p>安装（当然有些软件需要先运行 make check 或 make test来进行一些测试），这一步一般需要你有 root 权限（sudo make install</p>
+<h1 id="3-搜索安装包路径"><a href="#3-搜索安装包路径" class="headerlink" title="3. 搜索安装包路径"></a>3. 搜索安装包路径</h1><p>whereis 安装包<br>如：whereis vim<br>    whereis tree</p>
+<h1 id="4-编辑器"><a href="#4-编辑器" class="headerlink" title="4. 编辑器"></a>4. 编辑器</h1><p>yum instsall vim</p>
+<h1 id="5-树形目录"><a href="#5-树形目录" class="headerlink" title="5. 树形目录"></a>5. 树形目录</h1><p>yun install tree</p>
+<h1 id="6-通用下载方式"><a href="#6-通用下载方式" class="headerlink" title="6. 通用下载方式"></a>6. 通用下载方式</h1><p>yum install wget</p>
+<h1 id="7-上传下载下工具"><a href="#7-上传下载下工具" class="headerlink" title="7. 上传下载下工具"></a>7. 上传下载下工具</h1><p>yum install lrzsz</p>
+<h1 id="8-CentOS6-中文乱码解决"><a href="#8-CentOS6-中文乱码解决" class="headerlink" title="8. CentOS6 中文乱码解决"></a>8. CentOS6 中文乱码解决</h1><h2 id="8-1-安装语言包"><a href="#8-1-安装语言包" class="headerlink" title="8.1 安装语言包"></a>8.1 安装语言包</h2><p>yum groupinstall chinese-support</p>
+<h2 id="8-2-设置字符集"><a href="#8-2-设置字符集" class="headerlink" title="8.2 设置字符集"></a>8.2 设置字符集</h2><h3 id="8-2-1临时生效-好像不管用"><a href="#8-2-1临时生效-好像不管用" class="headerlink" title="8.2.1临时生效(好像不管用)"></a>8.2.1临时生效(好像不管用)</h3><p>export LANG=”zh_CN.UTF-8” ## 设置为中文<br>export LANG=”en-US.UTF-8” ## 设置为英文</p>
+<h3 id="8-2-2永久生效"><a href="#8-2-2永久生效" class="headerlink" title="8.2.2永久生效"></a>8.2.2永久生效</h3><p>vi /etc/sysconfig/i18n(最好reboot下)<br>LANG =”zh_CN.UTF-8”</p>
 <p>或者<br>vi /etc/profile配置文件，添加一行<br>export LANG=”zh_CN.UTF-8”<br>重新载入<br>./etc/profile</p>
 <p>查看当前字符集<br>echo $LANG</p>
-<h1 id="CentOS7中英文乱码解决"><a href="#CentOS7中英文乱码解决" class="headerlink" title="CentOS7中英文乱码解决"></a>CentOS7中英文乱码解决</h1><h2 id="1-安装中文库"><a href="#1-安装中文库" class="headerlink" title="1 安装中文库"></a>1 安装中文库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum groupinstall &quot;fonts&quot;</span><br></pre></td></tr></table></figure>
-<h2 id="2-检查是否有中文语言包"><a href="#2-检查是否有中文语言包" class="headerlink" title="2 检查是否有中文语言包"></a>2 检查是否有中文语言包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locale -a</span><br></pre></td></tr></table></figure>
-<h2 id="3-查看当前系统语言环境"><a href="#3-查看当前系统语言环境" class="headerlink" title="3 查看当前系统语言环境"></a>3 查看当前系统语言环境</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locale</span><br></pre></td></tr></table></figure>
-<h2 id="4-修改本机语言环境"><a href="#4-修改本机语言环境" class="headerlink" title="4 修改本机语言环境"></a>4 修改本机语言环境</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">locale -a | grep &quot;zh_CN&quot;</span><br><span class="line"></span><br><span class="line">一个一个试。目前是 zh_CN有效果</span><br><span class="line"></span><br><span class="line">vim &#x2F;etc&#x2F;locale.conf</span><br><span class="line">LANG&#x3D;&quot;zh_CN.UTF-8&quot;</span><br><span class="line">source &#x2F;etc&#x2F;locale.conf</span><br></pre></td></tr></table></figure>
-<h2 id="5-重启系统"><a href="#5-重启系统" class="headerlink" title="5 重启系统"></a>5 重启系统</h2>
+<h1 id="9-CentOS7中英文乱码解决"><a href="#9-CentOS7中英文乱码解决" class="headerlink" title="9. CentOS7中英文乱码解决"></a>9. CentOS7中英文乱码解决</h1><h2 id="9-1-安装中文库"><a href="#9-1-安装中文库" class="headerlink" title="9.1 安装中文库"></a>9.1 安装中文库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum groupinstall &quot;fonts&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="9-2-检查是否有中文语言包"><a href="#9-2-检查是否有中文语言包" class="headerlink" title="9.2 检查是否有中文语言包"></a>9.2 检查是否有中文语言包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locale -a</span><br></pre></td></tr></table></figure>
+<h2 id="9-3-查看当前系统语言环境"><a href="#9-3-查看当前系统语言环境" class="headerlink" title="9.3 查看当前系统语言环境"></a>9.3 查看当前系统语言环境</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locale</span><br></pre></td></tr></table></figure>
+<h2 id="9-4-修改本机语言环境"><a href="#9-4-修改本机语言环境" class="headerlink" title="9.4 修改本机语言环境"></a>9.4 修改本机语言环境</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">locale -a | grep &quot;zh_CN&quot;</span><br><span class="line"></span><br><span class="line">一个一个试。目前是 zh_CN有效果</span><br><span class="line"></span><br><span class="line">vim &#x2F;etc&#x2F;locale.conf</span><br><span class="line">LANG&#x3D;&quot;zh_CN.UTF-8&quot;</span><br><span class="line">source &#x2F;etc&#x2F;locale.conf</span><br></pre></td></tr></table></figure>
+<h2 id="9-5-重启系统"><a href="#9-5-重启系统" class="headerlink" title="9.5 重启系统"></a>9.5 重启系统</h2><p>个人电脑可以，公司还需谨慎。</p>
+
 	
 	
     </div>
@@ -407,6 +435,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-清空文件"><span class="toc-number">1.</span> <span class="toc-text">1. 清空文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-configure-make-make-install"><span class="toc-number">2.</span> <span class="toc-text">2. .&#x2F;configure make make install</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-configure"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 .&#x2F;configure</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-make"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 make</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-make-install"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 make install</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-搜索安装包路径"><span class="toc-number">3.</span> <span class="toc-text">3. 搜索安装包路径</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-编辑器"><span class="toc-number">4.</span> <span class="toc-text">4. 编辑器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-树形目录"><span class="toc-number">5.</span> <span class="toc-text">5. 树形目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-通用下载方式"><span class="toc-number">6.</span> <span class="toc-text">6. 通用下载方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-上传下载下工具"><span class="toc-number">7.</span> <span class="toc-text">7. 上传下载下工具</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-CentOS6-中文乱码解决"><span class="toc-number">8.</span> <span class="toc-text">8. CentOS6 中文乱码解决</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-安装语言包"><span class="toc-number">8.1.</span> <span class="toc-text">8.1 安装语言包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-2-设置字符集"><span class="toc-number">8.2.</span> <span class="toc-text">8.2 设置字符集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-1临时生效-好像不管用"><span class="toc-number">8.2.1.</span> <span class="toc-text">8.2.1临时生效(好像不管用)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-2永久生效"><span class="toc-number">8.2.2.</span> <span class="toc-text">8.2.2永久生效</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-CentOS7中英文乱码解决"><span class="toc-number">9.</span> <span class="toc-text">9. CentOS7中英文乱码解决</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#9-1-安装中文库"><span class="toc-number">9.1.</span> <span class="toc-text">9.1 安装中文库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-2-检查是否有中文语言包"><span class="toc-number">9.2.</span> <span class="toc-text">9.2 检查是否有中文语言包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-3-查看当前系统语言环境"><span class="toc-number">9.3.</span> <span class="toc-text">9.3 查看当前系统语言环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-4-修改本机语言环境"><span class="toc-number">9.4.</span> <span class="toc-text">9.4 修改本机语言环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-5-重启系统"><span class="toc-number">9.5.</span> <span class="toc-text">9.5 重启系统</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -571,15 +612,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -588,10 +641,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -611,11 +660,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -623,15 +672,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">BigData</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">

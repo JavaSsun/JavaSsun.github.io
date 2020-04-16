@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://JavaSsun.github.io">
   <title>1-Nginx的前世今生 | haoran&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Author: haoransunWechat: SHR—97学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。 Nginx的三个主要应用场景 流程解析：一个Web请求从红色的线走下来后，会先经过Nginx,再到应用服务（Tomcat&#x2F;Django），再去访问Redis&#x2F;MySQL这样的数据库，提供基本的数据功能，由此产生一个问题：应用服务由于要求开发效率高">
+  <meta name="description" content="Author: haoransunWechat: SHR—97学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。 1 Nginx的三个主要应用场景 流程解析：一个Web请求从红色的线走下来后，会先经过Nginx,再到应用服务（Tomcat&#x2F;Django），再去访问Redis&#x2F;MySQL这样的数据库，提供基本的数据功能，由此产生一个问题：应用服务由于要求开发效">
 <meta property="og:type" content="article">
 <meta property="og:title" content="1-Nginx的前世今生">
 <meta property="og:url" content="http://javassun.github.io/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/index.html">
 <meta property="og:site_name" content="haoran&#39;s blog">
-<meta property="og:description" content="Author: haoransunWechat: SHR—97学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。 Nginx的三个主要应用场景 流程解析：一个Web请求从红色的线走下来后，会先经过Nginx,再到应用服务（Tomcat&#x2F;Django），再去访问Redis&#x2F;MySQL这样的数据库，提供基本的数据功能，由此产生一个问题：应用服务由于要求开发效率高">
+<meta property="og:description" content="Author: haoransunWechat: SHR—97学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。 1 Nginx的三个主要应用场景 流程解析：一个Web请求从红色的线走下来后，会先经过Nginx,再到应用服务（Tomcat&#x2F;Django），再去访问Redis&#x2F;MySQL这样的数据库，提供基本的数据功能，由此产生一个问题：应用服务由于要求开发效">
 <meta property="og:image" content="http://javassun.github.io/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/2a504457-96be-4e0f-b1cf-ea6144ea59f4.jpg">
 <meta property="og:image" content="http://javassun.github.io/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/e604a666-da3c-4a91-9866-53e81c4ff90f.jpg">
 <meta property="og:image" content="http://javassun.github.io/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/f08f5668-a4bd-4fe4-a790-c25c437b69e3.png">
@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://javassun.github.io/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/20212437-7463-4e77-9fc2-de2c6a5b5700.png">
 <meta property="og:image" content="http://javassun.github.io/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/afa43e4b-c314-4481-a329-a1515a83f24b.jpg">
 <meta property="article:published_time" content="2019-10-15T11:00:56.000Z">
-<meta property="article:modified_time" content="2020-04-14T11:06:05.803Z">
+<meta property="article:modified_time" content="2020-04-16T06:36:53.812Z">
 <meta property="article:author" content="Allen">
 <meta property="article:tag" content="Nginx">
 <meta name="twitter:card" content="summary">
@@ -259,28 +259,52 @@
 
 	<!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Nginx的三个主要应用场景"><span class="toc-number">1.</span> <span class="toc-text">1 Nginx的三个主要应用场景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Nginx出现的缘由"><span class="toc-number">2.</span> <span class="toc-text">2 Nginx出现的缘由</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-互联网的数据量急速增长"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 互联网的数据量急速增长</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-摩尔定律：性能提升"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 摩尔定律：性能提升</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-低效的Apache-：一个连接对应一个进程"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 低效的Apache ：一个连接对应一个进程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Nginx的优点"><span class="toc-number">3.</span> <span class="toc-text">3 Nginx的优点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-Nginx的组成"><span class="toc-number">4.</span> <span class="toc-text">4 Nginx的组成</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-Nginx二进制可执行文件"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 Nginx二进制可执行文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-Nginx-conf配置文件"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 Nginx.conf配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-access-log访问日志"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 access.log访问日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-error-log错误日志"><span class="toc-number">4.4.</span> <span class="toc-text">4.4 error.log错误日志</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-Nginx的版本（nginx-org-开源-nginx-com-商业）"><span class="toc-number">5.</span> <span class="toc-text">5 Nginx的版本（nginx.org:开源 nginx.com:商业）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-编译出适合自己的Nginx"><span class="toc-number">6.</span> <span class="toc-text">6 编译出适合自己的Nginx</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-目录解析"><span class="toc-number">7.</span> <span class="toc-text">7 目录解析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8开始编译"><span class="toc-number">8.</span> <span class="toc-text">8开始编译</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-编译前首先观察configure都支持哪些参数？"><span class="toc-number">8.1.</span> <span class="toc-text">8.1 编译前首先观察configure都支持哪些参数？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-2-编译前的依赖包的安装"><span class="toc-number">8.2.</span> <span class="toc-text">8.2 编译前的依赖包的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-3-生成指定目录下的-Makefile，为下一步编译做准备"><span class="toc-number">8.3.</span> <span class="toc-text">8.3 生成指定目录下的 Makefile，为下一步编译做准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-4-编译"><span class="toc-number">8.4.</span> <span class="toc-text">8.4 编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-5-为什么要知道Nginx的目标文件是放在objs下呢？"><span class="toc-number">8.5.</span> <span class="toc-text">8.5 为什么要知道Nginx的目标文件是放在objs下呢？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-安装（首次安装时，可以使用此命令）"><span class="toc-number">9.</span> <span class="toc-text">9 安装（首次安装时，可以使用此命令）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-安装目录下的目录解析"><span class="toc-number">10.</span> <span class="toc-text">10 安装目录下的目录解析</span></a></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+      
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
       
 	
 		<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
-<h1 id="Nginx的三个主要应用场景"><a href="#Nginx的三个主要应用场景" class="headerlink" title="Nginx的三个主要应用场景"></a>Nginx的三个主要应用场景</h1><p><img src="/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/2a504457-96be-4e0f-b1cf-ea6144ea59f4.jpg" alt></p>
+<h1 id="1-Nginx的三个主要应用场景"><a href="#1-Nginx的三个主要应用场景" class="headerlink" title="1 Nginx的三个主要应用场景"></a>1 Nginx的三个主要应用场景</h1><p><img src="/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/2a504457-96be-4e0f-b1cf-ea6144ea59f4.jpg" alt></p>
 <p><font color="red">流程解析：</font><br>一个<strong>Web</strong>请求从红色的线走下来后，会先经过<strong>Nginx</strong>,再到<strong>应用服务（Tomcat/Django）</strong>，再去访问<strong>Redis/MySQL</strong>这样的数据库，提供基本的数据功能，由此产生一个问题：应用服务由于要求开发效率高，所以它的运行效率很低，它的QPS/TPS/并发都是受限的，所以把这样的很多应用服务组成集群，向用户提供高可用性。当应用出现集群后，需要Nginx具有<strong>反向代理</strong>功能，将动态请求传导给应用服务，而应用服务构成集群，则又出现了两个需求，A：动态扩容。B：容灾。因此，<strong>反向代理</strong>必须具有负载均衡功能；其次，在这样的一个链路中，Nginx处于<strong>企业内网的边缘节点</strong>，随着网络链路的增长，用户体验的时延会增加，因此，如果能把一些所有用户看起来<strong>在一段时间内不变的动态内容缓存到Nginx</strong>中，由Nginx直接向用户提供访问，这样用户时延就会减少很多。反向代理引申出的另一个概念即是 <strong>缓存，加速我们的访问</strong>。（<strong>反向代理</strong>）</p>
 <p>一些<strong>css/js/png</strong>等静态资源，是没有必要经由应用服务访问的，只需要通过本地文件 系统上放置的静态资源，直接由Nginx进行访问即可。（<strong>静态资源</strong>）</p>
 <p>如果应用服务本身的性能有很多问题，但是数据库服务要比应用服务好的多，因为它的业务场景比较简单，并发性能/TPS都要远高于应用服务，因此可以使用Nginx直接访问数据库/Redis这样的数据库服务，利用Nginx强大的并发性能，实现Web防火墙这样复杂的业务功能（<strong>API服务</strong>）</p>
 <a id="more"></a>
-<h1 id="Nginx出现的缘由"><a href="#Nginx出现的缘由" class="headerlink" title="Nginx出现的缘由"></a>Nginx出现的缘由</h1><h2 id="互联网的数据量急速增长"><a href="#互联网的数据量急速增长" class="headerlink" title="互联网的数据量急速增长"></a>互联网的数据量急速增长</h2><p>互联网的快速普及<br>全球化<br>物联网</p>
-<h2 id="摩尔定律：性能提升"><a href="#摩尔定律：性能提升" class="headerlink" title="摩尔定律：性能提升"></a>摩尔定律：性能提升</h2><h2 id="低效的Apache-：一个连接对应一个进程"><a href="#低效的Apache-：一个连接对应一个进程" class="headerlink" title="低效的Apache ：一个连接对应一个进程"></a>低效的Apache ：一个连接对应一个进程</h2><p>当有百万个连接时，Apache并不会建造出百万个进程，就算生成了，进程间的切换会损耗极大的性能。而Nginx可以轻松应对百万级的连接。</p>
-<h1 id="Nginx的优点"><a href="#Nginx的优点" class="headerlink" title="Nginx的优点"></a>Nginx的优点</h1><p>高并发、高性能<br><strong>高并发</strong>往往需要我们对每个连接所使用的内存尽量的少即可达到，具有高并发的同时又能达到<strong>高性能</strong>，需要非常好的设计。Nginx可以达到什么样的标准呢？如现在的主流服务器（32核，64G）可以轻松地达到数千万并发连接，如果是处理简单的静态资源请求，可以达到100W的RPS(REQUEST PER SECOND)<br>可扩展性好<br>主要体现在<strong>模块化设计</strong>，非常的稳定。使其的第三方模块-生态圈非常稳定、丰富。甚至是有Tengene（淘宝修改了Nginx的源源码，做了定制化开发）/OpenResty（Lua语言开发）这样的第三方插件在他们浙之上，又生成了一套生态圈。<br>高可靠性<br>Nginx可以在服务器上持续不间断的运行数年。对于Nginx这样的一个高并发、高性能的反向代理服务器而言，往往运行在企业内网的边缘节点上，此时，若企业想提供<strong>5个9</strong>或更高的服务时，Nginx的宕机可能1年就1s的时间间隙。<br>热部署<br>在不停止服务的情况下，升级Nginx,此功能<strong>非常重要</strong>，因为在Nginx上可能跑了数百万的并发连接。如果是普通服务，则直接kill掉进程再重启即可。但对于Nginx而言，kill掉Nginx进程，会导致操作系统为所有的已建立连接的客户端发送<strong>TCP中的reset复位包</strong>，然而很多客户端是没有办法，很好的处理复位请求的，<strong>在大并发场景下，一些偶然事件就会导致非常恶劣的结果，因此热部署极其重要</strong><br>BSD许可证<br>开源且可商用</p>
-<h1 id="Nginx的组成"><a href="#Nginx的组成" class="headerlink" title="Nginx的组成"></a>Nginx的组成</h1><p><img src="/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/e604a666-da3c-4a91-9866-53e81c4ff90f.jpg" alt></p>
-<h2 id="Nginx二进制可执行文件"><a href="#Nginx二进制可执行文件" class="headerlink" title="Nginx二进制可执行文件"></a>Nginx二进制可执行文件</h2><p>由Nginx自身的官方模块+我们编译的第三方模块一起构建的文件，相当于汽车本身（有完整的系统，所有的功能都由它提供）</p>
-<h2 id="Nginx-conf配置文件"><a href="#Nginx-conf配置文件" class="headerlink" title="Nginx.conf配置文件"></a>Nginx.conf配置文件</h2><p>相当于汽车的驾驶员。</p>
-<h2 id="access-log访问日志"><a href="#access-log访问日志" class="headerlink" title="access.log访问日志"></a>access.log访问日志</h2><p>汽车经过所形成的GPS轨迹。</p>
-<h2 id="error-log错误日志"><a href="#error-log错误日志" class="headerlink" title="error.log错误日志"></a>error.log错误日志</h2><p>黑匣子：定位问题。</p>
-<h1 id="Nginx的版本（nginx-org-开源-nginx-com-商业）"><a href="#Nginx的版本（nginx-org-开源-nginx-com-商业）" class="headerlink" title="Nginx的版本（nginx.org:开源 nginx.com:商业）"></a>Nginx的版本（nginx.org:开源 nginx.com:商业）</h1><p>单数号：最新按本（新功能有待考验）<br>偶数号：稳定版本（一般选择此版本）<br>版本号-feature-bugfix-change<br>openresty.com openresty.org</p>
-<h1 id="编译出适合自己的Nginx"><a href="#编译出适合自己的Nginx" class="headerlink" title="编译出适合自己的Nginx"></a>编译出适合自己的Nginx</h1><p>nginx.org网址 —–&gt; 选择download<br>在选中的版本上 —–&gt; 右键选择复制链接地址<br>在linux系统中  —–&gt; wget 下载地址即可<br><font color="red">ps:Nginx依赖一些第三方软件包，如gcc、gcc-c++、openssl、pcre、zlib,详细见0-Nginx安装过程</font></p>
-<h2 id="目录解析"><a href="#目录解析" class="headerlink" title="目录解析"></a>目录解析</h2><p>解压压缩包： tar -zxvf nginx-xxx.tar.gz<br>进入解压源码包： cd nginx-xxx<br><img src="/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/f08f5668-a4bd-4fe4-a790-c25c437b69e3.png" alt></p>
+<h1 id="2-Nginx出现的缘由"><a href="#2-Nginx出现的缘由" class="headerlink" title="2 Nginx出现的缘由"></a>2 Nginx出现的缘由</h1><h2 id="2-1-互联网的数据量急速增长"><a href="#2-1-互联网的数据量急速增长" class="headerlink" title="2.1 互联网的数据量急速增长"></a>2.1 互联网的数据量急速增长</h2><p>互联网的快速普及<br>全球化<br>物联网</p>
+<h2 id="2-2-摩尔定律：性能提升"><a href="#2-2-摩尔定律：性能提升" class="headerlink" title="2.2 摩尔定律：性能提升"></a>2.2 摩尔定律：性能提升</h2><h2 id="2-3-低效的Apache-：一个连接对应一个进程"><a href="#2-3-低效的Apache-：一个连接对应一个进程" class="headerlink" title="2.3 低效的Apache ：一个连接对应一个进程"></a>2.3 低效的Apache ：一个连接对应一个进程</h2><p>当有百万个连接时，Apache并不会建造出百万个进程，就算生成了，进程间的切换会损耗极大的性能。而Nginx可以轻松应对百万级的连接。</p>
+<h1 id="3-Nginx的优点"><a href="#3-Nginx的优点" class="headerlink" title="3 Nginx的优点"></a>3 Nginx的优点</h1><p>高并发、高性能<br><strong>高并发</strong>往往需要我们对每个连接所使用的内存尽量的少即可达到，具有高并发的同时又能达到<strong>高性能</strong>，需要非常好的设计。Nginx可以达到什么样的标准呢？如现在的主流服务器（32核，64G）可以轻松地达到数千万并发连接，如果是处理简单的静态资源请求，可以达到100W的RPS(REQUEST PER SECOND)<br>可扩展性好<br>主要体现在<strong>模块化设计</strong>，非常的稳定。使其的第三方模块-生态圈非常稳定、丰富。甚至是有Tengene（淘宝修改了Nginx的源源码，做了定制化开发）/OpenResty（Lua语言开发）这样的第三方插件在他们浙之上，又生成了一套生态圈。<br>高可靠性<br>Nginx可以在服务器上持续不间断的运行数年。对于Nginx这样的一个高并发、高性能的反向代理服务器而言，往往运行在企业内网的边缘节点上，此时，若企业想提供<strong>5个9</strong>或更高的服务时，Nginx的宕机可能1年就1s的时间间隙。<br>热部署<br>在不停止服务的情况下，升级Nginx,此功能<strong>非常重要</strong>，因为在Nginx上可能跑了数百万的并发连接。如果是普通服务，则直接kill掉进程再重启即可。但对于Nginx而言，kill掉Nginx进程，会导致操作系统为所有的已建立连接的客户端发送<strong>TCP中的reset复位包</strong>，然而很多客户端是没有办法，很好的处理复位请求的，<strong>在大并发场景下，一些偶然事件就会导致非常恶劣的结果，因此热部署极其重要</strong><br>BSD许可证<br>开源且可商用</p>
+<h1 id="4-Nginx的组成"><a href="#4-Nginx的组成" class="headerlink" title="4 Nginx的组成"></a>4 Nginx的组成</h1><p><img src="/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/e604a666-da3c-4a91-9866-53e81c4ff90f.jpg" alt></p>
+<h2 id="4-1-Nginx二进制可执行文件"><a href="#4-1-Nginx二进制可执行文件" class="headerlink" title="4.1 Nginx二进制可执行文件"></a>4.1 Nginx二进制可执行文件</h2><p>由Nginx自身的官方模块+我们编译的第三方模块一起构建的文件，相当于汽车本身（有完整的系统，所有的功能都由它提供）</p>
+<h2 id="4-2-Nginx-conf配置文件"><a href="#4-2-Nginx-conf配置文件" class="headerlink" title="4.2 Nginx.conf配置文件"></a>4.2 Nginx.conf配置文件</h2><p>相当于汽车的驾驶员。</p>
+<h2 id="4-3-access-log访问日志"><a href="#4-3-access-log访问日志" class="headerlink" title="4.3 access.log访问日志"></a>4.3 access.log访问日志</h2><p>汽车经过所形成的GPS轨迹。</p>
+<h2 id="4-4-error-log错误日志"><a href="#4-4-error-log错误日志" class="headerlink" title="4.4 error.log错误日志"></a>4.4 error.log错误日志</h2><p>黑匣子：定位问题。</p>
+<h1 id="5-Nginx的版本（nginx-org-开源-nginx-com-商业）"><a href="#5-Nginx的版本（nginx-org-开源-nginx-com-商业）" class="headerlink" title="5 Nginx的版本（nginx.org:开源 nginx.com:商业）"></a>5 Nginx的版本（nginx.org:开源 nginx.com:商业）</h1><p>单数号：最新按本（新功能有待考验）<br>偶数号：稳定版本（一般选择此版本）<br>版本号-feature-bugfix-change<br>openresty.com openresty.org</p>
+<h1 id="6-编译出适合自己的Nginx"><a href="#6-编译出适合自己的Nginx" class="headerlink" title="6 编译出适合自己的Nginx"></a>6 编译出适合自己的Nginx</h1><p>nginx.org网址 —–&gt; 选择download<br>在选中的版本上 —–&gt; 右键选择复制链接地址<br>在linux系统中  —–&gt; wget 下载地址即可<br><font color="red">ps:Nginx依赖一些第三方软件包，如gcc、gcc-c++、openssl、pcre、zlib,详细见0-Nginx安装过程</font></p>
+<h1 id="7-目录解析"><a href="#7-目录解析" class="headerlink" title="7 目录解析"></a>7 目录解析</h1><p>解压压缩包： tar -zxvf nginx-xxx.tar.gz<br>进入解压源码包： cd nginx-xxx<br><img src="/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/f08f5668-a4bd-4fe4-a790-c25c437b69e3.png" alt></p>
 <p><strong>auto：</strong> 其中主要有四个子目录（cc:用于编译，lib库、os库对操作系统的判断，types），其他的文件是为了辅助<strong>config</strong>脚本执行时判定 当前的Nginx支持哪些模块、当前的操作系统有哪些特性供Nginx使用。</p>
 <p><strong>CHANGES：</strong> Nginx每一个版本提供了哪些 Features、BugFix、Changes这三类特性。</p>
 <p><strong>CHANGES.ru：</strong> 因为作者是 俄罗斯人，所以提供了一个俄罗斯语言的变更说明书。</p>
@@ -292,7 +316,7 @@
 <p><strong>html：</strong> 提供了两个标准的html文件。如图：<img src="/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/ae1df995-18a4-4490-97e6-93aa397516f7.png" alt><br>一个是发现500错误的时候重定向到当前指定文件。<br>一个是默认的Nginx的欢迎页面。</p>
 <p><strong>man：</strong>Nginx的帮助文件<img src="/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/f5e50c6d-0b16-4494-9580-169a0fe8e3c3.png" alt></p>
 <p><strong>src：</strong>Nginx的源代码。<img src="/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/5d35e8e4-1b4c-482c-ad22-1b7af2a3d92f.png" alt>。即Nginx的框架都在这些源代码中。</p>
-<h2 id="开始编译"><a href="#开始编译" class="headerlink" title="开始编译"></a>开始编译</h2><h2 id="编译前首先观察configure都支持哪些参数？"><a href="#编译前首先观察configure都支持哪些参数？" class="headerlink" title="编译前首先观察configure都支持哪些参数？"></a>编译前首先观察configure都支持哪些参数？</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --help | more</span><br></pre></td></tr></table></figure>
+<h1 id="8开始编译"><a href="#8开始编译" class="headerlink" title="8开始编译"></a>8开始编译</h1><h2 id="8-1-编译前首先观察configure都支持哪些参数？"><a href="#8-1-编译前首先观察configure都支持哪些参数？" class="headerlink" title="8.1 编译前首先观察configure都支持哪些参数？"></a>8.1 编译前首先观察configure都支持哪些参数？</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --help | more</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/b42567c1-87be-482a-86b1-b3779ec76e2c.png" alt><br><img src="/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/727a8526-4163-4ed7-9c65-72dcaf6cf2ce.png" alt><br><img src="/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/bdf16353-460a-49e4-9991-85b84e615d49.png" alt><br><strong>此处主要分为3大块参数内容</strong>：</p>
 <ul>
 <li><p>确定Nginx执行中会去找哪些目录下的文件作为它的辅助文件；如：使用动态模块，则 –modules-path=PATH 就会起作用；确定Nginx.log文件放在那里，则 –lock-path=PATH会起作用；然而，<font color="red">如果没有任何变动的话，只需要指定 –prefix=PATH即可,所有的其他的文件会在prefix目录下建立相应的文件夹</font>。</p>
@@ -302,19 +326,19 @@
 <li><p>确定Nginx编译时所需要的一些特殊参数。如 –with-cc=Path –with-cpp=Path 就是使用gcc编译时需要加一些什么样的优化参数；–with-debug 打印debug级别的日志，–with-pcre –with-zlib 这是需要加一些第三方的模块等等。</p>
 </li>
 </ul>
-<h2 id="编译前的依赖包的安装"><a href="#编译前的依赖包的安装" class="headerlink" title="编译前的依赖包的安装"></a>编译前的依赖包的安装</h2><p>参看 附件 + 0篇内容，此处省略。。。。</p>
-<h2 id="生成指定目录下的-Makefile，为下一步编译做准备"><a href="#生成指定目录下的-Makefile，为下一步编译做准备" class="headerlink" title="生成指定目录下的 Makefile，为下一步编译做准备"></a>生成指定目录下的 Makefile，为下一步编译做准备</h2><p>配置 Nginx的安装目录   /home/geek/nginx</p>
+<h2 id="8-2-编译前的依赖包的安装"><a href="#8-2-编译前的依赖包的安装" class="headerlink" title="8.2 编译前的依赖包的安装"></a>8.2 编译前的依赖包的安装</h2><p>参看 附件 + 0篇内容，此处省略。。。。</p>
+<h2 id="8-3-生成指定目录下的-Makefile，为下一步编译做准备"><a href="#8-3-生成指定目录下的-Makefile，为下一步编译做准备" class="headerlink" title="8.3 生成指定目录下的 Makefile，为下一步编译做准备"></a>8.3 生成指定目录下的 Makefile，为下一步编译做准备</h2><p>配置 Nginx的安装目录   /home/geek/nginx</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">目标目录不存在，会自动创建</span><br><span class="line">.&#x2F;configure --prefix&#x3D;&#x2F;home&#x2F;geek&#x2F;nginx</span><br><span class="line">如果没有任何报错，则Nginx编译成功，如下图</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/30d9368f-43a9-4413-bef9-08f8311a1657.png" alt></p>
 <p>在 ./configure 成功后，会生成一些中间文件，存储在 /objs 文件夹下。<br><img src="/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/14168daf-02ec-4203-812a-efc660721862.png" alt><br><strong>最重要的是会生成<font color="red"> ngx_modules.c：它决定了我们执行编译时有哪些模块，会被编译到Nginx中</font></strong>。</p>
 <p><strong>所有被编译的模块都会列出来，最后形成一份 ngx_modules[] 数组</strong> <img src="/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/20212437-7463-4e77-9fc2-de2c6a5b5700.png" alt></p>
-<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@haoransun nginx-1.14.2]# make</span><br><span class="line">编译完成后，如果没有错误，就可以看到生成了大量的中间文件，如下图，他们都在 objs文件夹下。</span><br></pre></td></tr></table></figure>
+<h2 id="8-4-编译"><a href="#8-4-编译" class="headerlink" title="8.4 编译"></a>8.4 编译</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@haoransun nginx-1.14.2]# make</span><br><span class="line">编译完成后，如果没有错误，就可以看到生成了大量的中间文件，如下图，他们都在 objs文件夹下。</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/afa43e4b-c314-4481-a329-a1515a83f24b.jpg" alt></p>
-<h3 id="为什么要知道Nginx的目标文件是放在objs下呢？"><a href="#为什么要知道Nginx的目标文件是放在objs下呢？" class="headerlink" title="为什么要知道Nginx的目标文件是放在objs下呢？"></a>为什么要知道Nginx的目标文件是放在objs下呢？</h3><p>如果是做<font color="red">Nginx版本升级</font>，此时不能执行** make install** ，而是需要从这里将目标文件 Nginx<br>拷贝到安装目录中，</p>
+<h2 id="8-5-为什么要知道Nginx的目标文件是放在objs下呢？"><a href="#8-5-为什么要知道Nginx的目标文件是放在objs下呢？" class="headerlink" title="8.5 为什么要知道Nginx的目标文件是放在objs下呢？"></a>8.5 为什么要知道Nginx的目标文件是放在objs下呢？</h2><p>如果是做<font color="red">Nginx版本升级</font>，此时不能执行** make install** ，而是需要从这里将目标文件 Nginx<br>拷贝到安装目录中，</p>
 <p>C语言编译时生成的所有重要文件，都会存放在 *<em>objs/src目录 *</em>中。</p>
 <p>如果使用了动态模块，则动态模块编译生成的<strong>so</strong>动态文件，也会放在<strong>objs 目录</strong>中。</p>
-<h2 id="安装（首次安装时，可以使用此命令）"><a href="#安装（首次安装时，可以使用此命令）" class="headerlink" title="安装（首次安装时，可以使用此命令）"></a>安装（首次安装时，可以使用此命令）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@haoransun nginx-1.14.2]# make install</span><br></pre></td></tr></table></figure>
-<h1 id="安装目录下的目录解析"><a href="#安装目录下的目录解析" class="headerlink" title="安装目录下的目录解析"></a>安装目录下的目录解析</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@haoransun nginx-1.14.2]# cd &#x2F;home&#x2F;geek&#x2F;nginx&#x2F;</span><br><span class="line">ll</span><br><span class="line">drwxr-xr-x. 2 root root 4096 5月  30 07:43 conf</span><br><span class="line">drwxr-xr-x. 2 root root 4096 5月  30 07:43 html</span><br><span class="line">drwxr-xr-x. 2 root root 4096 5月  30 07:43 logs</span><br><span class="line">drwxr-xr-x. 2 root root 4096 5月  30 07:43 sbin</span><br></pre></td></tr></table></figure>
+<h1 id="9-安装（首次安装时，可以使用此命令）"><a href="#9-安装（首次安装时，可以使用此命令）" class="headerlink" title="9 安装（首次安装时，可以使用此命令）"></a>9 安装（首次安装时，可以使用此命令）</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@haoransun nginx-1.14.2]# make install</span><br></pre></td></tr></table></figure>
+<h1 id="10-安装目录下的目录解析"><a href="#10-安装目录下的目录解析" class="headerlink" title="10 安装目录下的目录解析"></a>10 安装目录下的目录解析</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@haoransun nginx-1.14.2]# cd &#x2F;home&#x2F;geek&#x2F;nginx&#x2F;</span><br><span class="line">ll</span><br><span class="line">drwxr-xr-x. 2 root root 4096 5月  30 07:43 conf</span><br><span class="line">drwxr-xr-x. 2 root root 4096 5月  30 07:43 html</span><br><span class="line">drwxr-xr-x. 2 root root 4096 5月  30 07:43 logs</span><br><span class="line">drwxr-xr-x. 2 root root 4096 5月  30 07:43 sbin</span><br></pre></td></tr></table></figure>
 
 	
 	
@@ -441,6 +465,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Nginx的三个主要应用场景"><span class="toc-number">1.</span> <span class="toc-text">1 Nginx的三个主要应用场景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Nginx出现的缘由"><span class="toc-number">2.</span> <span class="toc-text">2 Nginx出现的缘由</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-互联网的数据量急速增长"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 互联网的数据量急速增长</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-摩尔定律：性能提升"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 摩尔定律：性能提升</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-低效的Apache-：一个连接对应一个进程"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 低效的Apache ：一个连接对应一个进程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Nginx的优点"><span class="toc-number">3.</span> <span class="toc-text">3 Nginx的优点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-Nginx的组成"><span class="toc-number">4.</span> <span class="toc-text">4 Nginx的组成</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-Nginx二进制可执行文件"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 Nginx二进制可执行文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-Nginx-conf配置文件"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 Nginx.conf配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-access-log访问日志"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 access.log访问日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-error-log错误日志"><span class="toc-number">4.4.</span> <span class="toc-text">4.4 error.log错误日志</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-Nginx的版本（nginx-org-开源-nginx-com-商业）"><span class="toc-number">5.</span> <span class="toc-text">5 Nginx的版本（nginx.org:开源 nginx.com:商业）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-编译出适合自己的Nginx"><span class="toc-number">6.</span> <span class="toc-text">6 编译出适合自己的Nginx</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-目录解析"><span class="toc-number">7.</span> <span class="toc-text">7 目录解析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8开始编译"><span class="toc-number">8.</span> <span class="toc-text">8开始编译</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-编译前首先观察configure都支持哪些参数？"><span class="toc-number">8.1.</span> <span class="toc-text">8.1 编译前首先观察configure都支持哪些参数？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-2-编译前的依赖包的安装"><span class="toc-number">8.2.</span> <span class="toc-text">8.2 编译前的依赖包的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-3-生成指定目录下的-Makefile，为下一步编译做准备"><span class="toc-number">8.3.</span> <span class="toc-text">8.3 生成指定目录下的 Makefile，为下一步编译做准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-4-编译"><span class="toc-number">8.4.</span> <span class="toc-text">8.4 编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-5-为什么要知道Nginx的目标文件是放在objs下呢？"><span class="toc-number">8.5.</span> <span class="toc-text">8.5 为什么要知道Nginx的目标文件是放在objs下呢？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-安装（首次安装时，可以使用此命令）"><span class="toc-number">9.</span> <span class="toc-text">9 安装（首次安装时，可以使用此命令）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-安装目录下的目录解析"><span class="toc-number">10.</span> <span class="toc-text">10 安装目录下的目录解析</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -605,15 +642,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -622,10 +671,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -645,11 +690,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -657,15 +702,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">BigData</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">

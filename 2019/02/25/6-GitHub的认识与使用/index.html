@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://JavaSsun.github.io">
   <title>6-GitHub的认识与使用 | haoran&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Author: haoransunWechat: SHR—97图片来源：极客时间，需个人购买教程。 1.GitHub为什么会火">
+  <meta name="description" content="Author: haoransunWechat: SHR—97图片来源：极客时间，需个人购买教程。 1 GitHub为什么会火">
 <meta property="og:type" content="article">
 <meta property="og:title" content="6-GitHub的认识与使用">
 <meta property="og:url" content="http://javassun.github.io/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="haoran&#39;s blog">
-<meta property="og:description" content="Author: haoransunWechat: SHR—97图片来源：极客时间，需个人购买教程。 1.GitHub为什么会火">
+<meta property="og:description" content="Author: haoransunWechat: SHR—97图片来源：极客时间，需个人购买教程。 1 GitHub为什么会火">
 <meta property="og:image" content="http://javassun.github.io/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/53d51f84-9a62-4dde-9be4-7cbb9d0b1dae.jpg">
 <meta property="og:image" content="http://javassun.github.io/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/fbc94ced-1d7f-4a8d-9efb-22dbc218846e.jpg">
 <meta property="og:image" content="http://javassun.github.io/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/7dbd21e1-01d8-4279-b7dd-0b5735565315.jpg">
@@ -44,7 +44,7 @@
 <meta property="og:image" content="http://javassun.github.io/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/32809d24-79a6-47e3-8abe-dcafff4219d9.jpg">
 <meta property="og:image" content="http://javassun.github.io/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/142f6b99-9f3e-49e6-8dd1-fe543d886344.jpg">
 <meta property="article:published_time" content="2019-02-25T09:58:51.000Z">
-<meta property="article:modified_time" content="2020-04-14T06:11:21.335Z">
+<meta property="article:modified_time" content="2020-04-16T05:58:17.885Z">
 <meta property="article:author" content="Allen">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
@@ -274,13 +274,37 @@
 
 	<!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-GitHub为什么会火"><span class="toc-number">1.</span> <span class="toc-text">1 GitHub为什么会火</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-GitHub都有哪些核心功能"><span class="toc-number">2.</span> <span class="toc-text">2 GitHub都有哪些核心功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-怎么快速淘到感兴趣的开源项目"><span class="toc-number">3.</span> <span class="toc-text">3 怎么快速淘到感兴趣的开源项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-怎样在GitHub上搭建个人博客"><span class="toc-number">4.</span> <span class="toc-text">4 怎样在GitHub上搭建个人博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-开源项目怎么保证代码质量"><span class="toc-number">5.</span> <span class="toc-text">5 开源项目怎么保证代码质量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-为何需要组织类型的仓库"><span class="toc-number">6.</span> <span class="toc-text">6 为何需要组织类型的仓库</span></a></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+      
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
       
 	
 		<p>Author: haoransun<br>Wechat: SHR—97<br>图片来源：极客时间，需个人购买教程。</p>
-<h2 id="1-GitHub为什么会火"><a href="#1-GitHub为什么会火" class="headerlink" title="1.GitHub为什么会火"></a>1.GitHub为什么会火</h2><p><img src="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/53d51f84-9a62-4dde-9be4-7cbb9d0b1dae.jpg" alt></p>
+<h2 id="1-GitHub为什么会火"><a href="#1-GitHub为什么会火" class="headerlink" title="1 GitHub为什么会火"></a>1 GitHub为什么会火</h2><p><img src="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/53d51f84-9a62-4dde-9be4-7cbb9d0b1dae.jpg" alt></p>
 <a id="more"></a>
 <hr>
 <p><img src="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/fbc94ced-1d7f-4a8d-9efb-22dbc218846e.jpg" alt></p>
@@ -290,12 +314,12 @@
 <p><img src="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/68ad18d1-6b50-49fb-82cb-0c64ea04cd9d.jpg" alt></p>
 <hr>
 <p><img src="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/a0c7cf11-f98f-40e9-9a73-b965ec8584c5.jpg" alt></p>
-<h2 id="2-GitHub都有哪些核心功能"><a href="#2-GitHub都有哪些核心功能" class="headerlink" title="2.GitHub都有哪些核心功能"></a>2.GitHub都有哪些核心功能</h2><p><img src="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/89cbfdee-4587-495e-82eb-983f400ed9cc.png" alt></p>
+<h2 id="2-GitHub都有哪些核心功能"><a href="#2-GitHub都有哪些核心功能" class="headerlink" title="2 GitHub都有哪些核心功能"></a>2 GitHub都有哪些核心功能</h2><p><img src="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/89cbfdee-4587-495e-82eb-983f400ed9cc.png" alt></p>
 <hr>
 <p><strong>CI/CD</strong>：持续集成Continuous Integration（CI）和持续交付Continuous Delivery（CD）</p>
 <p><strong>安全开发</strong><br><strong>代码审查</strong><br><strong>应用程序</strong><br><strong>托管代码</strong><br><strong>项目管理</strong><br><strong>团队管理</strong></p>
 <p><img src="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/3cb0ab88-815b-4ad4-9c5b-89f1b59abea5.png" alt></p>
-<h2 id="3-怎么快速淘到感兴趣的开源项目"><a href="#3-怎么快速淘到感兴趣的开源项目" class="headerlink" title="3.怎么快速淘到感兴趣的开源项目"></a>3.怎么快速淘到感兴趣的开源项目</h2><p>通过搜索匹配<br><img src="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/4b02d18e-520c-411a-8f1b-3d38afb83285.png" alt></p>
+<h2 id="3-怎么快速淘到感兴趣的开源项目"><a href="#3-怎么快速淘到感兴趣的开源项目" class="headerlink" title="3 怎么快速淘到感兴趣的开源项目"></a>3 怎么快速淘到感兴趣的开源项目</h2><p>通过搜索匹配<br><img src="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/4b02d18e-520c-411a-8f1b-3d38afb83285.png" alt></p>
 <p>或者使用<strong>高级搜索</strong></p>
 <p><strong>git 最好学习资料 in:readme stars:&gt;1000</strong></p>
 <p><img src="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/a7f07365-78c6-4406-bc0e-a8badd887228.png" alt></p>
@@ -305,7 +329,7 @@
 <p><img src="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/e0a543a9-3b11-4b7b-94e2-71cb628b8f7f.png" alt></p>
 <p>如果不登录去搜索的话，code 后会跟着 ？ 提示必须登录后才能享受代码的功能</p>
 <p><img src="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/1511493f-8f4e-4be8-8bb2-e91d1313ea5c.png" alt></p>
-<h2 id="4-怎样在GitHub上搭建个人博客"><a href="#4-怎样在GitHub上搭建个人博客" class="headerlink" title="4.怎样在GitHub上搭建个人博客"></a>4.怎样在GitHub上搭建个人博客</h2><p><strong>blob easily start in:readme stars:&gt;5000</strong></p>
+<h2 id="4-怎样在GitHub上搭建个人博客"><a href="#4-怎样在GitHub上搭建个人博客" class="headerlink" title="4 怎样在GitHub上搭建个人博客"></a>4 怎样在GitHub上搭建个人博客</h2><p><strong>blob easily start in:readme stars:&gt;5000</strong></p>
 <p>此处以 <a href="https://github.com/barryclark" target="_blank" rel="noopener">barryclark</a>/<strong><a href="https://github.com/barryclark/jekyll-now" target="_blank" rel="noopener">jekyll-now</a></strong> 为例进行搭建。</p>
 <p>按照步骤</p>
 <ol>
@@ -332,12 +356,12 @@
 <p><img src="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/6ff2ad0f-c4c6-47da-85bd-4e5486d8b547.png" alt></p>
 <p>6.个人Blob展示</p>
 <p><img src="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/71e8cffb-3861-4936-a53e-66ce6f73d2a4.png" alt></p>
-<h2 id="5-开源项目怎么保证代码质量"><a href="#5-开源项目怎么保证代码质量" class="headerlink" title="5.开源项目怎么保证代码质量"></a>5.开源项目怎么保证代码质量</h2><p>进入GitHub主页，点击 pull request</p>
+<h2 id="5-开源项目怎么保证代码质量"><a href="#5-开源项目怎么保证代码质量" class="headerlink" title="5 开源项目怎么保证代码质量"></a>5 开源项目怎么保证代码质量</h2><p>进入GitHub主页，点击 pull request</p>
 <p><img src="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/5b9b398f-0281-48b8-a47e-fb6ec287203d.jpg" alt></p>
 <p>被merge吸纳的是紫色的，被拒绝的是红色的</p>
 <p><img src="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/4289a643-491e-4fd5-b8d0-462039459ff2.jpg" alt></p>
 <p>可以看到，有代码审查，有智能监测，owner在做了一系列检查后，才决定是否将他人的request merge到 master上来。</p>
-<h2 id="6-为何需要组织类型的仓库"><a href="#6-为何需要组织类型的仓库" class="headerlink" title="6.为何需要组织类型的仓库"></a>6.为何需要组织类型的仓库</h2><p>在个人 porfile中 会有组织这种类型的仓库。</p>
+<h2 id="6-为何需要组织类型的仓库"><a href="#6-为何需要组织类型的仓库" class="headerlink" title="6 为何需要组织类型的仓库"></a>6 为何需要组织类型的仓库</h2><p>在个人 porfile中 会有组织这种类型的仓库。</p>
 <p><img src="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/8aa1d29e-38ec-447a-9442-a772f0d0ef97.jpg" alt></p>
 <p>举一个例子：<br>现阶段，我可能在A公司工作，A公司有一些公共开源的项目在GitHub上托管。过段时间，又加入到B公司的开源项目中工作。根据组织的成员也在流动中，所以需要组织类型的仓库对成员进行管理。</p>
 <p><img src="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/cf97a418-e69a-4362-aa8c-dd3232217ec2.jpg" alt></p>
@@ -477,6 +501,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-GitHub为什么会火"><span class="toc-number">1.</span> <span class="toc-text">1 GitHub为什么会火</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-GitHub都有哪些核心功能"><span class="toc-number">2.</span> <span class="toc-text">2 GitHub都有哪些核心功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-怎么快速淘到感兴趣的开源项目"><span class="toc-number">3.</span> <span class="toc-text">3 怎么快速淘到感兴趣的开源项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-怎样在GitHub上搭建个人博客"><span class="toc-number">4.</span> <span class="toc-text">4 怎样在GitHub上搭建个人博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-开源项目怎么保证代码质量"><span class="toc-number">5.</span> <span class="toc-text">5 开源项目怎么保证代码质量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-为何需要组织类型的仓库"><span class="toc-number">6.</span> <span class="toc-text">6 为何需要组织类型的仓库</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -641,15 +678,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -658,10 +707,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -681,11 +726,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -693,15 +738,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">BigData</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
