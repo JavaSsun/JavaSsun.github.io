@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://javassun.github.io/2018/08/01/CentOs7%E9%98%B2%E7%81%AB%E5%A2%99%E5%BC%80%E7%AB%AF%E5%8F%A3%E6%B5%8B%E8%AF%95/</loc>
+    
+    <lastmod>2020-05-06T11:05:37.699Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://javassun.github.io/2018/03/25/Vim%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</loc>
+    
+    <lastmod>2020-05-06T10:46:59.413Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://javassun.github.io/2020/01/15/SpringBoot-Docker%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/</loc>
     
     <lastmod>2020-05-06T06:33:32.647Z</lastmod>
@@ -422,23 +436,9 @@
   </url>
   
   <url>
-    <loc>http://javassun.github.io/2018/08/01/CentOs7%E9%98%B2%E7%81%AB%E5%A2%99%E5%BC%80%E7%AB%AF%E5%8F%A3%E6%B5%8B%E8%AF%95/</loc>
-    
-    <lastmod>2020-04-16T05:33:18.759Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://javassun.github.io/2018/03/20/Linux%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B9%B1%E7%A0%81/</loc>
     
     <lastmod>2020-04-16T05:28:09.933Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://javassun.github.io/2018/03/25/Vim%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</loc>
-    
-    <lastmod>2020-04-16T05:24:08.399Z</lastmod>
     
   </url>
   
