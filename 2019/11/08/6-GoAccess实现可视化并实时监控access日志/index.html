@@ -6,23 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://JavaSsun.github.io">
-  <title>8-Nginx配置文件简易解析 | haoran&#39;s blog</title>
+  <title>6-GoAccess实现可视化并实时监控access日志 | haoran&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Author: haoransunWechat: SHR—97学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。 ))">
+  <meta name="description" content="Author: haoransunWechat: SHR—97学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。 前言access日志 记录了用户非常重要的信息，可用它来分析、定位问题，也可用它来分析用户的运营数据，但是如果想要实时分析access 日志，相对比较困难。 GoAccess 这款工具以图形化的方式通过web socket协议，实时的将acces">
 <meta property="og:type" content="article">
-<meta property="og:title" content="8-Nginx配置文件简易解析">
-<meta property="og:url" content="http://javassun.github.io/2019/11/20/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:title" content="6-GoAccess实现可视化并实时监控access日志">
+<meta property="og:url" content="http://javassun.github.io/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/index.html">
 <meta property="og:site_name" content="haoran&#39;s blog">
-<meta property="og:description" content="Author: haoransunWechat: SHR—97学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。 ))">
-<meta property="og:image" content="http://javassun.github.io/2019/11/20/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/0ad1a503df198bdb026ce7e8d83f53b9.png">
-<meta property="og:image" content="http://javassun.github.io/2019/11/20/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/d1820db3ef58dac396c152bf3d460f27.png">
-<meta property="og:image" content="http://javassun.github.io/2019/11/20/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/6432890dbc992690f2068620d9ee7951.png">
-<meta property="article:published_time" content="2019-11-20T10:03:05.000Z">
-<meta property="article:modified_time" content="2020-04-16T06:40:32.855Z">
+<meta property="og:description" content="Author: haoransunWechat: SHR—97学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。 前言access日志 记录了用户非常重要的信息，可用它来分析、定位问题，也可用它来分析用户的运营数据，但是如果想要实时分析access 日志，相对比较困难。 GoAccess 这款工具以图形化的方式通过web socket协议，实时的将acces">
+<meta property="og:image" content="http://javassun.github.io/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/629f3358-d5c5-4889-b24f-bc4e6a87c46b.png">
+<meta property="og:image" content="http://javassun.github.io/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/9f36080a-71ba-4c59-82e8-226d730d87a1.png">
+<meta property="og:image" content="http://javassun.github.io/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/615f6899-491f-4f74-a245-feb5f3a9c0b3.png">
+<meta property="og:image" content="http://javassun.github.io/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/dae8664f-26c8-45d9-b7ae-957833eae1fa.png">
+<meta property="og:image" content="http://javassun.github.io/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/64b3542d-a4d5-41d4-b8bb-718265f77c69.png">
+<meta property="og:image" content="http://javassun.github.io/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/4bfbe716-0e7f-4e7b-b1c6-dcc2ca97c202.png">
+<meta property="article:published_time" content="2019-11-08T12:00:25.000Z">
+<meta property="article:modified_time" content="2020-05-06T16:33:44.061Z">
 <meta property="article:author" content="Allen">
 <meta property="article:tag" content="Nginx">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://javassun.github.io/2019/11/20/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/0ad1a503df198bdb026ce7e8d83f53b9.png">
+<meta name="twitter:image" content="http://javassun.github.io/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/629f3358-d5c5-4889-b24f-bc4e6a87c46b.png">
   
   
     <link rel="icon" href="/assets/icon.png">
@@ -195,14 +198,14 @@
             
 
 <meta charset="utf-8">
-<article id="post-8-Nginx配置文件简易解析" class="article article-type-post " itemscope itemprop="blogPost">
+<article id="post-6-GoAccess实现可视化并实时监控access日志" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      8-Nginx配置文件简易解析
+      6-GoAccess实现可视化并实时监控access日志
     </h1>
   
 
@@ -214,8 +217,8 @@
         </span>
 
 
-<a href="/2019/11/20/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/" class="archive-article-date">
-  	<time datetime="2019-11-20T10:03:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-20</time>
+<a href="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/" class="archive-article-date">
+  	<time datetime="2019-11-08T12:00:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-08</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -226,7 +229,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">949字</span>
+        <span class="post-count">707字</span>
       </span>
     </span>
 
@@ -235,7 +238,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
 </div>
@@ -248,16 +251,67 @@
 
 	<!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用法"><span class="toc-number">2.</span> <span class="toc-text">用法</span></a></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+      
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
       
 	
 		<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
-<p><img src="/2019/11/20/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/0ad1a503df198bdb026ce7e8d83f53b9.png" alt>)<img src="/2019/11/20/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/d1820db3ef58dac396c152bf3d460f27.png" alt>)<img src="/2019/11/20/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/6432890dbc992690f2068620d9ee7951.png" alt></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>access日志</strong> 记录了用户非常重要的信息，可用它来分析、定位问题，也可用它来分析用户的运营数据，但是如果想要实时分析access 日志，相对比较困难。</p>
+<p><strong>GoAccess</strong> 这款工具以图形化的方式通过<strong>web socket</strong>协议，实时的将access日志的变迁反应到浏览器中。方便我们分析问题。</p>
 <a id="more"></a>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p><a href="https://goaccess.io/" target="_blank" rel="noopener">GoAccess</a> 是这个工具的站点。如图所示：<br><img src="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/629f3358-d5c5-4889-b24f-bc4e6a87c46b.png" alt></p>
+<p>现在先看一下之前静态web资源服务器所产生的access log日志格式<br><img src="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/9f36080a-71ba-4c59-82e8-226d730d87a1.png" alt></p>
+<p>现在打开 GoAccess中的 <strong>Get started</strong>快速开始页面，依据文档下载安装。</p>
+<p><img src="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/615f6899-491f-4f74-a245-feb5f3a9c0b3.png" alt></p>
+<p>出现此错误</p>
+<p>下载依赖包即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y GeoIP-devel</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;github.com&#x2F;maxmind&#x2F;geoip-api-c&#x2F;releases&#x2F;download&#x2F;v1.6.11&#x2F;GeoIP-1.6.11.tar.gz</span><br><span class="line">tar -zxvf GeoIP-1.16.11.tar.gz</span><br><span class="line">cd GeoIP-1.16.11</span><br><span class="line">.&#x2F;configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<p>出现错误：<br>configure: error: *** Missing development libraries for ncursesw</p>
+<p>解决方法：<br>要使用–enable-utf8，你需要安装ncursesw，下面是安装命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@haoransun goaccess]# sudo yum install ncurses-devel</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line">#运行用户</span><br><span class="line">user nobody;</span><br><span class="line">#启动进程,通常设置成和cpu的数量相等</span><br><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">#全局错误日志及PID文件</span><br><span class="line">#error_log  logs&#x2F;error.log;</span><br><span class="line">#error_log  logs&#x2F;error.log  notice;</span><br><span class="line">#error_log  logs&#x2F;error.log  info;</span><br><span class="line"></span><br><span class="line">#pid        logs&#x2F;nginx.pid;</span><br><span class="line"></span><br><span class="line">#工作模式及连接数上限</span><br><span class="line">events &#123;</span><br><span class="line">    #epoll是多路复用IO(I&#x2F;O Multiplexing)中的一种方式,</span><br><span class="line">    #仅用于linux2.6以上内核,可以大大提高nginx的性能</span><br><span class="line">    use   epoll; </span><br><span class="line"></span><br><span class="line">    #单个后台worker process进程的最大并发链接数    </span><br><span class="line">    worker_connections  1024;</span><br><span class="line"></span><br><span class="line">    # 并发总数是 worker_processes 和 worker_connections 的乘积</span><br><span class="line">    # nginx作为http服务器的时候</span><br><span class="line">	# 	max_clients &#x3D; worker_processes * worker_connections</span><br><span class="line">    # nginx作为反向代理服务器的时候：</span><br><span class="line">	#	max_clients &#x3D; worker_processes * worker_connections &#x2F; 4  </span><br><span class="line">    # 为什么上面反向代理要除以4，应该说是一个经验值</span><br><span class="line">    # 根据以上条件，正常情况下的Nginx Server可以应付的最大连接数为：4 * 8000 &#x3D; 32000</span><br><span class="line">    # worker_connections 值的设置跟物理内存大小有关</span><br><span class="line">    # 因为并发受IO约束，max_clients的值须小于系统可以打开的最大文件数</span><br><span class="line">    # 而系统可以打开的最大文件数和内存大小成正比，一般1GB内存的机器上可以打开的文件数大约是10万左右</span><br><span class="line">    # 我们来看看360M内存的VPS可以打开的文件句柄数是多少：</span><br><span class="line">    # $ cat &#x2F;proc&#x2F;sys&#x2F;fs&#x2F;file-max</span><br><span class="line">    # 输出 34336</span><br><span class="line">    # 32000 &lt; 34336，即并发连接总数小于系统可以打开的文件句柄总数，这样就在操作系统可以承受的范围之内</span><br><span class="line">    # 所以，worker_connections 的值需根据 worker_processes 进程数目和系统可以打开的最大文件总数进行适当地进行设置</span><br><span class="line">    # 使得并发总数小于操作系统可以打开的最大文件数目</span><br><span class="line">    # 其实质也就是根据主机的物理CPU和内存进行配置</span><br><span class="line">    # 当然，理论上的并发总数可能会和实际有所偏差，因为主机还有其他的工作进程需要消耗系统资源。</span><br><span class="line">    # ulimit -SHn 65535</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    #设定mime类型,类型由mime.type文件定义</span><br><span class="line">    include    mime.types;</span><br><span class="line">    default_type  application&#x2F;octet-stream;</span><br><span class="line">    #设定日志格式</span><br><span class="line">    log_format  main  &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;</span><br><span class="line">                      &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;</span><br><span class="line">                      &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;;</span><br><span class="line"></span><br><span class="line">    access_log  logs&#x2F;access.log  main;</span><br><span class="line"></span><br><span class="line">    #sendfile 指令指定 nginx 是否调用 sendfile 函数（zero copy 方式）来输出文件，</span><br><span class="line">    #对于普通应用，必须设为 on,</span><br><span class="line">    #如果用来进行下载等应用磁盘IO重负载应用，可设置为 off，</span><br><span class="line">    #以平衡磁盘与网络I&#x2F;O处理速度，降低系统的uptime.</span><br><span class="line">    sendfile     on;</span><br><span class="line">    #tcp_nopush     on;</span><br><span class="line"></span><br><span class="line">    #连接超时时间</span><br><span class="line">    #keepalive_timeout  0;</span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line">    tcp_nodelay     on;</span><br><span class="line"></span><br><span class="line">    #开启gzip压缩</span><br><span class="line">    gzip  on;</span><br><span class="line">    gzip_disable &quot;MSIE [1-6].&quot;;</span><br><span class="line"></span><br><span class="line">    #设定请求缓冲</span><br><span class="line">    client_header_buffer_size    128k;</span><br><span class="line">    large_client_header_buffers  4 128k;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    #设定虚拟主机配置</span><br><span class="line">    server &#123;</span><br><span class="line">        #侦听80端口</span><br><span class="line">        listen    80;</span><br><span class="line">        #定义使用 www.nginx.cn访问</span><br><span class="line">        server_name  www.nginx.cn;</span><br><span class="line"></span><br><span class="line">        #定义服务器的默认网站根目录位置</span><br><span class="line">        root html;</span><br><span class="line"></span><br><span class="line">        #设定本虚拟主机的访问日志</span><br><span class="line">        access_log  logs&#x2F;nginx.access.log  main;</span><br><span class="line"></span><br><span class="line">        #默认请求</span><br><span class="line">        location &#x2F; &#123;</span><br><span class="line">            </span><br><span class="line">            #定义首页索引文件的名称</span><br><span class="line">            index index.php index.html index.htm;   </span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        # 定义错误提示页面</span><br><span class="line">        error_page   500 502 503 504 &#x2F;50x.html;</span><br><span class="line">        location &#x3D; &#x2F;50x.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #静态文件，nginx自己处理</span><br><span class="line">        location ~ ^&#x2F;(images|javascript|js|css|flash|media|static)&#x2F; &#123;</span><br><span class="line">            </span><br><span class="line">            #过期30天，静态文件不怎么更新，过期可以设大一点，</span><br><span class="line">            #如果频繁更新，则可以设置得小一点。</span><br><span class="line">            expires 30d;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #PHP 脚本请求全部转发到 FastCGI处理. 使用FastCGI默认配置.</span><br><span class="line">        location ~ .php$ &#123;</span><br><span class="line">            fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">            fastcgi_index index.php;</span><br><span class="line">            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;</span><br><span class="line">            include fastcgi_params;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #禁止访问 .htxxx 文件</span><br><span class="line">            location ~ &#x2F;.ht &#123;</span><br><span class="line">            deny all;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>安装成功后：<br><img src="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/dae8664f-26c8-45d9-b7ae-957833eae1fa.png" alt></p>
+<p>当Nginx所用的access log 的配置没有发生变化时，我们可以使用这种方法：</p>
+<p><img src="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/64b3542d-a4d5-41d4-b8bb-718265f77c69.png" alt></p>
+<p>也就是说，Nginx的 access log非常灵活，我们可以天添加各种不同的各模块的内置变量，</p>
+<p>goaccess 会使用 -o 这个参数去生成一个新的report.html文件，将当前的access.log日志文件内容以 html图表的形式展示出来。</p>
+<p>当 accss.log 变迁的时候，goaccess 会新启一个 web socket进程 通过端口的方式将新的 access.log中的内容推送到我们的客户端。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@haoransun logs]# pwd</span><br><span class="line">&#x2F;home&#x2F;geek&#x2F;nginx&#x2F;logs</span><br><span class="line">[root@haoransun logs]# goaccess host.access.log -o ..&#x2F;html&#x2F;report.html --real-time-html --time-format&#x3D;&#39; %H:%M:%S&#39; --date-format&#x3D;&#39;%d%b%Y&#39; --log-format&#x3D;COMBINED</span><br><span class="line">WebSocket服务器已准备接收来自客户的连接</span><br></pre></td></tr></table></figure>
+
+
+<p>首先制定了 access.log的名字 ， 然后会把它输出到 report.html这个文件中，–real-time-html 即实时更新这个HTML页面，时间、日期、日志格式都已经指定好了。</p>
+<p><img src="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/4bfbe716-0e7f-4e7b-b1c6-dcc2ca97c202.png" alt></p>
+<p>就是说已经打开了一个新的 web socket</p>
+<p>当我们访问这个report.html页面时，会向这个进程发起连接，由这个进程向我们推送日志的最新变更。</p>
+<p>接下来我们要在 nginx配置文件中搭载如下配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">       listen      8080;</span><br><span class="line">       # server_name  localhost;</span><br><span class="line"></span><br><span class="line">       #charset koi8-r;</span><br><span class="line"></span><br><span class="line">       access_log  logs&#x2F;host.access.log  main;</span><br><span class="line">       # 当我们访问 &#x2F;report.html时，需要用 alias 把它重定向到 我们刚刚访问的 report.html中。</span><br><span class="line">       location &#x2F;report.html&#123;</span><br><span class="line">           alias &#x2F;home&#x2F;geek&#x2F;nginx&#x2F;html&#x2F;report.html;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
 	
 	
     </div>
@@ -338,7 +392,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://javassun.github.io/2019/11/20/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://javassun.github.io/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -353,18 +407,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/11/20/HashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/11/09/7-Nginx%E5%AE%89%E8%A3%85%E8%AF%A6%E8%A7%A3/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          HashMap实现原理_探险
+          7-Nginx安装详解
         
       </div>
     </a>
   
   
-    <a href="/2019/11/17/MyBatis%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E9%85%8D%E7%BD%AE/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">MyBatis多数据源配置</div>
+    <a href="/2019/11/05/5-Nginx%E6%90%AD%E5%BB%BA%E5%85%B7%E5%A4%87%E7%BC%93%E5%AD%98%E5%8A%9F%E8%83%BD%E7%9A%84%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">5-Nginx搭建具备缓存功能的反向代理</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -383,6 +437,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用法"><span class="toc-number">2.</span> <span class="toc-text">用法</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -418,7 +485,7 @@ if(true){
   	repo: 'mycomments',
   	owner: 'JavaSsun',
   	admin: ['JavaSsun'],
-  	id: 'Wed Nov 20 2019 18:03:05 GMT+0800',
+  	id: 'Fri Nov 08 2019 20:00:25 GMT+0800',
   	distractionFreeMode: 'true'
 })
 gitalk.render('gitalk-container') 
@@ -539,19 +606,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -563,15 +622,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -583,11 +646,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MyBatis多数据源配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySql</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MyBatis多数据源配置</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -599,11 +666,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Photo</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -615,11 +682,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
+                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
+                <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -631,15 +698,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ZooKeeper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
