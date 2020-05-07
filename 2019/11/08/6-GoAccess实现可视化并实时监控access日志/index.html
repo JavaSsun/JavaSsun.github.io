@@ -8,22 +8,25 @@
   <link rel="dns-prefetch" href="http://JavaSsun.github.io">
   <title>6-GoAccess实现可视化并实时监控access日志 | haoran&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Author: haoransunWechat: SHR—97学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。 前言access日志 记录了用户非常重要的信息，可用它来分析、定位问题，也可用它来分析用户的运营数据，但是如果想要实时分析access 日志，相对比较困难。 GoAccess 这款工具以图形化的方式通过web socket协议，实时的将acces">
+  <meta name="description" content="Author: haoransunWechat: SHR—97 前言access日志 记录了用户非常重要的信息，可用它来分析、定位问题，也可用它来分析用户的运营数据，但是如果想要实时分析access 日志，相对比较困难。使用 cat、awk、sed 等命令做一些简单的日志分析统计，这样分析结果不理想也不全面，方法也极不高效。 GoAccess 这款工具以图形化的方式通过web socket协议，实">
 <meta property="og:type" content="article">
 <meta property="og:title" content="6-GoAccess实现可视化并实时监控access日志">
 <meta property="og:url" content="http://javassun.github.io/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/index.html">
 <meta property="og:site_name" content="haoran&#39;s blog">
-<meta property="og:description" content="Author: haoransunWechat: SHR—97学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。 前言access日志 记录了用户非常重要的信息，可用它来分析、定位问题，也可用它来分析用户的运营数据，但是如果想要实时分析access 日志，相对比较困难。 GoAccess 这款工具以图形化的方式通过web socket协议，实时的将acces">
+<meta property="og:description" content="Author: haoransunWechat: SHR—97 前言access日志 记录了用户非常重要的信息，可用它来分析、定位问题，也可用它来分析用户的运营数据，但是如果想要实时分析access 日志，相对比较困难。使用 cat、awk、sed 等命令做一些简单的日志分析统计，这样分析结果不理想也不全面，方法也极不高效。 GoAccess 这款工具以图形化的方式通过web socket协议，实">
 <meta property="og:image" content="http://javassun.github.io/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/629f3358-d5c5-4889-b24f-bc4e6a87c46b.png">
 <meta property="og:image" content="http://javassun.github.io/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/9f36080a-71ba-4c59-82e8-226d730d87a1.png">
 <meta property="og:image" content="http://javassun.github.io/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/615f6899-491f-4f74-a245-feb5f3a9c0b3.png">
 <meta property="og:image" content="http://javassun.github.io/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/dae8664f-26c8-45d9-b7ae-957833eae1fa.png">
-<meta property="og:image" content="http://javassun.github.io/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/64b3542d-a4d5-41d4-b8bb-718265f77c69.png">
-<meta property="og:image" content="http://javassun.github.io/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/4bfbe716-0e7f-4e7b-b1c6-dcc2ca97c202.png">
+<meta property="og:image" content="http://javassun.github.io/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/5a428874-2d04-42df-ad85-07cbbc719e50.png">
+<meta property="og:image" content="http://javassun.github.io/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/2120efc0-f319-469d-a88e-8639b9f58a17.png">
+<meta property="og:image" content="http://javassun.github.io/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/8378f7b8-273a-4740-8ceb-4d961484c9e7.png">
+<meta property="og:image" content="http://javassun.github.io/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/1d80d359-8e05-421c-9637-e799599b0de8.png">
 <meta property="article:published_time" content="2019-11-08T12:00:25.000Z">
-<meta property="article:modified_time" content="2020-05-06T16:33:44.061Z">
+<meta property="article:modified_time" content="2020-05-07T05:22:33.034Z">
 <meta property="article:author" content="Allen">
 <meta property="article:tag" content="Nginx">
+<meta property="article:tag" content="Tools">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://javassun.github.io/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/629f3358-d5c5-4889-b24f-bc4e6a87c46b.png">
   
@@ -229,7 +232,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">707字</span>
+        <span class="post-count">1.6k字</span>
       </span>
     </span>
 
@@ -238,7 +241,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">7分</span>
       </span>
     </span>
 </div>
@@ -258,7 +261,7 @@
     <div id="toc-article" class="toc-article">
         <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
         <strong class="toc-title">文章目录</strong>
-           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用法"><span class="toc-number">2.</span> <span class="toc-text">用法</span></a></li></ol>
+           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Nginx配置"><span class="toc-number">2.</span> <span class="toc-text">1 Nginx配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-安装GoAccess"><span class="toc-number">3.</span> <span class="toc-text">2 安装GoAccess</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-配置"><span class="toc-number">4.</span> <span class="toc-text">3 配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-命令"><span class="toc-number">5.</span> <span class="toc-text">4 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-控制台模式"><span class="toc-number">6.</span> <span class="toc-text">5 控制台模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-HTML模式"><span class="toc-number">7.</span> <span class="toc-text">6 HTML模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#daemonize"><span class="toc-number">7.1.</span> <span class="toc-text">daemonize</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#crontab"><span class="toc-number">7.2.</span> <span class="toc-text">crontab</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-不足"><span class="toc-number">8.</span> <span class="toc-text">7 不足</span></a></li></ol>
          </div>
    <script type="text/javascript">
     function showToc(){
@@ -280,38 +283,62 @@
     <div class="article-entry" itemprop="articleBody">
       
 	
-		<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>access日志</strong> 记录了用户非常重要的信息，可用它来分析、定位问题，也可用它来分析用户的运营数据，但是如果想要实时分析access 日志，相对比较困难。</p>
+		<p>Author: haoransun<br>Wechat: SHR—97</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>access日志</strong> 记录了用户非常重要的信息，可用它来分析、定位问题，也可用它来分析用户的运营数据，但是如果想要实时分析access 日志，相对比较困难。使用 cat、awk、sed 等命令做一些简单的日志分析统计，这样分析结果不理想也不全面，方法也极不高效。</p>
 <p><strong>GoAccess</strong> 这款工具以图形化的方式通过<strong>web socket</strong>协议，实时的将access日志的变迁反应到浏览器中。方便我们分析问题。</p>
-<a id="more"></a>
-<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p><a href="https://goaccess.io/" target="_blank" rel="noopener">GoAccess</a> 是这个工具的站点。如图所示：<br><img src="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/629f3358-d5c5-4889-b24f-bc4e6a87c46b.png" alt></p>
-<p>现在先看一下之前静态web资源服务器所产生的access log日志格式<br><img src="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/9f36080a-71ba-4c59-82e8-226d730d87a1.png" alt></p>
+<h2 id="1-Nginx配置"><a href="#1-Nginx配置" class="headerlink" title="1 Nginx配置"></a>1 Nginx配置</h2><p>为了提高 GoAccess 分析准确度，需要配置 <code>nginx.conf</code> 的 log_format 项。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log_format  main  &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;</span><br><span class="line">                  &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;</span><br><span class="line">                  &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot; &quot;$request_body&quot;&#39;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-安装GoAccess"><a href="#2-安装GoAccess" class="headerlink" title="2 安装GoAccess"></a>2 安装GoAccess</h2><p><a href="https://goaccess.io/" target="_blank" rel="noopener">GoAccess</a> 是这个工具的站点。如图所示：<br><img src="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/629f3358-d5c5-4889-b24f-bc4e6a87c46b.png" alt></p>
+<p>先看一下之前静态web资源服务器所产生的access log日志格式<br><img src="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/9f36080a-71ba-4c59-82e8-226d730d87a1.png" alt></p>
 <p>现在打开 GoAccess中的 <strong>Get started</strong>快速开始页面，依据文档下载安装。</p>
 <p><img src="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/615f6899-491f-4f74-a245-feb5f3a9c0b3.png" alt></p>
-<p>出现此错误</p>
-<p>下载依赖包即可</p>
+<p>先下载依赖包</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y GeoIP-devel</span><br></pre></td></tr></table></figure>
 <p>或者</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;github.com&#x2F;maxmind&#x2F;geoip-api-c&#x2F;releases&#x2F;download&#x2F;v1.6.11&#x2F;GeoIP-1.6.11.tar.gz</span><br><span class="line">tar -zxvf GeoIP-1.16.11.tar.gz</span><br><span class="line">cd GeoIP-1.16.11</span><br><span class="line">.&#x2F;configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>下载安装包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;tar.goaccess.io&#x2F;goaccess-1.3.tar.gz</span><br><span class="line">tar -xzvf goaccess-1.3.tar.gz</span><br><span class="line">cd goaccess-1.3&#x2F;</span><br><span class="line">.&#x2F;configure --enable-utf8 --enable-geoip&#x3D;legacy --with-openssl  &#x2F;&#x2F;此处出现错误如下 安装下面依赖后回来继续安装即可</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
 <p>出现错误：<br>configure: error: *** Missing development libraries for ncursesw</p>
 <p>解决方法：<br>要使用–enable-utf8，你需要安装ncursesw，下面是安装命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@haoransun goaccess]# sudo yum install ncurses-devel</span><br></pre></td></tr></table></figure>
 
 <p>安装成功后：<br><img src="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/dae8664f-26c8-45d9-b7ae-957833eae1fa.png" alt></p>
-<p>当Nginx所用的access log 的配置没有发生变化时，我们可以使用这种方法：</p>
-<p><img src="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/64b3542d-a4d5-41d4-b8bb-718265f77c69.png" alt></p>
-<p>也就是说，Nginx的 access log非常灵活，我们可以天添加各种不同的各模块的内置变量，</p>
-<p>goaccess 会使用 -o 这个参数去生成一个新的report.html文件，将当前的access.log日志文件内容以 html图表的形式展示出来。</p>
-<p>当 accss.log 变迁的时候，goaccess 会新启一个 web socket进程 通过端口的方式将新的 access.log中的内容推送到我们的客户端。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@haoransun logs]# pwd</span><br><span class="line">&#x2F;home&#x2F;geek&#x2F;nginx&#x2F;logs</span><br><span class="line">[root@haoransun logs]# goaccess host.access.log -o ..&#x2F;html&#x2F;report.html --real-time-html --time-format&#x3D;&#39; %H:%M:%S&#39; --date-format&#x3D;&#39;%d%b%Y&#39; --log-format&#x3D;COMBINED</span><br><span class="line">WebSocket服务器已准备接收来自客户的连接</span><br></pre></td></tr></table></figure>
+<h2 id="3-配置"><a href="#3-配置" class="headerlink" title="3 配置"></a>3 配置</h2><p>安装完成后，默认将配置文件<code>goaccess.conf</code>放置于<code>/usr/local/etc</code>路径，为了统一管理，使用<code>mv /usr/local/etc/goaccess.conf /etc/</code>命令将其移动到<code>/etc</code>目录下。</p>
+<p><img src="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/5a428874-2d04-42df-ad85-07cbbc719e50.png" alt></p>
+<p>对配置文件做一些主要配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;goaccess.conf</span><br><span class="line"></span><br><span class="line">time-format %H:%M:%S</span><br><span class="line">date-format %d&#x2F;%b&#x2F;%Y</span><br><span class="line">log-format %h %^[%d:%t %^] &quot;%r&quot; %s %b &quot;%R&quot; &quot;%u&quot;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/2120efc0-f319-469d-a88e-8639b9f58a17.png" alt></p>
+<p>其中，log-format 与 access.log 的 log_format 格式对应，每个参数以空格或者制表符分割。参数说明如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">%t  匹配time-format格式的时间字段</span><br><span class="line">%d  匹配date-format格式的日期字段</span><br><span class="line">%h  host(客户端ip地址，包括ipv4和ipv6)</span><br><span class="line">%r  来自客户端的请求行</span><br><span class="line">%m  请求的方法</span><br><span class="line">%U  URL路径</span><br><span class="line">%H  请求协议</span><br><span class="line">%s  服务器响应的状态码</span><br><span class="line">%b  服务器返回的内容大小</span><br><span class="line">%R  HTTP请求头的referer字段</span><br><span class="line">%u  用户代理的HTTP请求报头</span><br><span class="line">%D  请求所花费的时间，单位微秒</span><br><span class="line">%T  请求所花费的时间，单位秒</span><br><span class="line">%^  忽略这一字段</span><br></pre></td></tr></table></figure>
 
+<h2 id="4-命令"><a href="#4-命令" class="headerlink" title="4 命令"></a>4 命令</h2><p>查看 GoAccess 命令参数，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ goaccess -h</span><br><span class="line"># 常用参数</span><br><span class="line">-a --agent-list 启用由主机用户代理的列表。为了更快的解析，不启用该项</span><br><span class="line">-d --with-output-resolver 在HTML&#x2F;JSON输出中开启IP解析，会使用GeoIP来进行IP解析</span><br><span class="line">-f --log-file 需要分析的日志文件路径</span><br><span class="line">-p --config-file 配置文件路径</span><br><span class="line">-o --output 输出格式，支持html、json、csv</span><br><span class="line">-m --with-mouse 控制面板支持鼠标点击</span><br><span class="line">-q --no-query-string 忽略请求的参数部分</span><br><span class="line">--real-time-html 实时生成HTML报告</span><br><span class="line">--daemonize 守护进程模式，--real-time-html时使用</span><br></pre></td></tr></table></figure>
+<h2 id="5-控制台模式"><a href="#5-控制台模式" class="headerlink" title="5 控制台模式"></a>5 控制台模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ goaccess -a -d -f &#x2F;home&#x2F;geek&#x2F;nginx&#x2F;logs&#x2F;haoransun.log -p &#x2F;etc&#x2F;goaccess.conf</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/8378f7b8-273a-4740-8ceb-4d961484c9e7.png" alt></p>
+<p>控制台下的操作方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">F1 主帮助页面</span><br><span class="line">F5 重绘主窗口</span><br><span class="line">q 退出</span><br><span class="line">1-15 跳转到对应编号的模块位置 </span><br><span class="line">o 打开当前模块的详细视图</span><br><span class="line">j 当前模块向下滚动</span><br><span class="line">k 当前模块向上滚动</span><br><span class="line">s 对模块排序</span><br><span class="line">&#x2F; 在所有模块中搜索匹配</span><br><span class="line">n 查找下一个出现的位置</span><br><span class="line">g 移动到第一个模块顶部</span><br><span class="line">G 移动到最后一个模块底部</span><br></pre></td></tr></table></figure>
+<h2 id="6-HTML模式"><a href="#6-HTML模式" class="headerlink" title="6 HTML模式"></a>6 HTML模式</h2><p>上游服务器（14）： /home/geek/nginx  其中的 nginx.conf 配置为 127.0.0.1:8080 即仅能本机访问。</p>
+<p>代理服务器（16）： /usr/local/geek/openstry/nginx 其中 nginx.conf 配置了 upstream 来标明上游服务器的ip地址+端口号，同时也设置了相应的缓存，具体查看前几节文章。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">goaccess -a -d -f &#x2F;home&#x2F;geek&#x2F;nginx&#x2F;logs&#x2F;haoransun.log  -p &#x2F;etc&#x2F;goaccess.conf -o &#x2F;home&#x2F;geek&#x2F;nginx&#x2F;html&#x2F;go-access.html</span><br></pre></td></tr></table></figure>
 
-<p>首先制定了 access.log的名字 ， 然后会把它输出到 report.html这个文件中，–real-time-html 即实时更新这个HTML页面，时间、日期、日志格式都已经指定好了。</p>
-<p><img src="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/4bfbe716-0e7f-4e7b-b1c6-dcc2ca97c202.png" alt></p>
-<p>就是说已经打开了一个新的 web socket</p>
-<p>当我们访问这个report.html页面时，会向这个进程发起连接，由这个进程向我们推送日志的最新变更。</p>
-<p>接下来我们要在 nginx配置文件中搭载如下配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">       listen      8080;</span><br><span class="line">       # server_name  localhost;</span><br><span class="line"></span><br><span class="line">       #charset koi8-r;</span><br><span class="line"></span><br><span class="line">       access_log  logs&#x2F;host.access.log  main;</span><br><span class="line">       # 当我们访问 &#x2F;report.html时，需要用 alias 把它重定向到 我们刚刚访问的 report.html中。</span><br><span class="line">       location &#x2F;report.html&#123;</span><br><span class="line">           alias &#x2F;home&#x2F;geek&#x2F;nginx&#x2F;html&#x2F;report.html;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+<p>浏览器输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">192.168.121.100:80&#x2F;go-access.html 即可看到</span><br><span class="line"></span><br><span class="line">上述配置都是在上游nginx服务器中完成的</span><br><span class="line">此处是使用了代理服务器的80端口，由代理服务器替我们到上游服务器获取go-access.log 实时日志以html页面展示</span><br></pre></td></tr></table></figure>
+
+<p>由下图可看到，确实是由 代理服务器替我们拿到的数据<br><img src="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/1d80d359-8e05-421c-9637-e799599b0de8.png" alt></p>
+<h3 id="daemonize"><a href="#daemonize" class="headerlink" title="daemonize"></a>daemonize</h3><p>GoAccess 已经为我们考虑到这点了，它可以以 daemonize 模式运行，并提供创建实时 HTML 的功能，只需要在启动命令后追加<code>--real-time-html --daemonize</code>参数即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">goaccess -a -d -f &#x2F;home&#x2F;geek&#x2F;nginx&#x2F;logs&#x2F;haoransun.log  -p &#x2F;etc&#x2F;goaccess.conf -o &#x2F;home&#x2F;geek&#x2F;nginx&#x2F;html&#x2F;go-access.html --real-time-html --daemonize</span><br><span class="line"></span><br><span class="line"># 监听端口7890</span><br><span class="line">netstat -tunpl |grep &quot;goaccess&quot;</span><br><span class="line">tcp        0      0 0.0.0.0:7890            0.0.0.0:*               LISTEN      13212&#x2F;goaccess</span><br></pre></td></tr></table></figure>
+<p>以守护进程启动 GoAccess 后，使用 Websocket 建立长连接，它默认监听 7890 端口，可以通过<code>--port</code>参数指定端口号。</p>
+<blockquote>
+<p>如果站点启用了 HTTPS, GoAccess 也需要使用 openssl，在配置文件<code>goaccess.conf</code>中配置<code>ssl-cert</code>和<code>ssl-key</code>项，并确保在安装过程中 configure 时已添加<code>--with-openssl</code>项来支持 openssl 。当使用 HTTPS 后 Websocket 通信时也应该使用 wss 协议，需要将<code>ws-url</code>项配置为<code>wss://www.domain.com</code>。</p>
+</blockquote>
+<h3 id="crontab"><a href="#crontab" class="headerlink" title="crontab"></a>crontab</h3><p>在某些场景下，没有这样的实时性要求，可采用 crontab 机制实现定时更新 HTML 报表。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 每天执行</span><br><span class="line"></span><br><span class="line">0 0 1 * * goaccess -a -d -f &#x2F;home&#x2F;geek&#x2F;nginx&#x2F;logs&#x2F;haoransun.log  -p &#x2F;etc&#x2F;goaccess.conf -o &#x2F;home&#x2F;geek&#x2F;nginx&#x2F;html&#x2F;go-access.html 2&gt; &#x2F;home&#x2F;geek&#x2F;nginx&#x2F;logs&#x2F;go-access.log</span><br></pre></td></tr></table></figure>
+<p>当access 日志被切割后，怎么合理使用 GoAccess 分析日志，<code>--keep-db-files</code>这个功能倒是可以尝试，这样就可以只分析新生产的日志文件了。</p>
+<h2 id="7-不足"><a href="#7-不足" class="headerlink" title="7 不足"></a>7 不足</h2><p>尽管 GoAccess 很强大，但是它无法制定自定义监控规则，无法满足对站点更细粒度更全面的监控需求。此时就要使用到 ELK日志平台来分析站点的访问情况和流量分析。</p>
+
 	
 	
     </div>
@@ -327,6 +354,10 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
         		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Tools</a>
+        		</li>
       		
 		</ul>
 	</div>
@@ -338,6 +369,10 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Nginx/Tools//" class="article-tag-list-link color1">Tools</a>
         		</li>
       		
 		</ul>
@@ -445,7 +480,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用法"><span class="toc-number">2.</span> <span class="toc-text">用法</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Nginx配置"><span class="toc-number">2.</span> <span class="toc-text">1 Nginx配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-安装GoAccess"><span class="toc-number">3.</span> <span class="toc-text">2 安装GoAccess</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-配置"><span class="toc-number">4.</span> <span class="toc-text">3 配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-命令"><span class="toc-number">5.</span> <span class="toc-text">4 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-控制台模式"><span class="toc-number">6.</span> <span class="toc-text">5 控制台模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-HTML模式"><span class="toc-number">7.</span> <span class="toc-text">6 HTML模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#daemonize"><span class="toc-number">7.1.</span> <span class="toc-text">daemonize</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#crontab"><span class="toc-number">7.2.</span> <span class="toc-text">crontab</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-不足"><span class="toc-number">8.</span> <span class="toc-text">7 不足</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -606,19 +641,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">源码解析</a>
+                <a href="javascript:void(0)" class="js-tag color1">Tools</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -630,11 +661,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">源码解析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Jar包运行</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MyBatis多数据源配置</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -646,19 +693,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MyBatis多数据源配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -670,10 +713,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
@@ -682,11 +721,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
+                <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
+                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -698,15 +737,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ZooKeeper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
