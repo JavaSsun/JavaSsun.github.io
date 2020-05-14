@@ -1641,10 +1641,14 @@
           
           <category> Jvm </category>
           
+          <category> Tools </category>
+          
       </categories>
       
       
         <tags>
+            
+            <tag> Tools </tag>
             
             <tag> Jvm </tag>
             
