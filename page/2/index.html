@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 72</nav>
+		<nav style="color: #7FFFD4;">总文章数 87</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -192,22 +192,22 @@
             
   
     <meta charset="utf-8">
-<article id="post-ArrayList实现原理-探险" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-20-处理HTTP请求头部流程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/16/ArrayList%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">ArrayList实现原理_探险</a>
+      <a class="article-title" href="/2019/12/09/20-%E5%A4%84%E7%90%86HTTP%E8%AF%B7%E6%B1%82%E5%A4%B4%E9%83%A8%E6%B5%81%E7%A8%8B/">20-处理HTTP请求头部流程</a>
     </h1>
   
 
         
         
 
-<a href="/2019/11/16/ArrayList%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/" class="archive-article-date">
-  	<time datetime="2019-11-16T09:58:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-16</time>
+<a href="/2019/12/09/20-%E5%A4%84%E7%90%86HTTP%E8%AF%B7%E6%B1%82%E5%A4%B4%E9%83%A8%E6%B5%81%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2019-12-09T11:34:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-09</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -218,399 +218,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.9k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">8分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<h1 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h1><p>深入理解Java集合中的源代码，可以帮助我们更好地了解大佬的意图，规避不必要的bug。</p>
-<p>源码中的一段注释，提取关键信息</p>
-<p>Resizable-array implementation of the List interface. Implements all optional list operations, and permits all elements, including null. In addition to implementing the List interface, this class provides methods to manipulate the size of the array that is used internally to store the list. (This class is roughly equivalent to Vector, except that it is unsynchronized.)</p>
-<p>由上文注释可以大概得知：ArrayList是一个动态数组，实现了List接口以及list相关的所有方法，它允许所有元素的插入，包括null。另外，ArrayList和Vector除了线程不同步之外，大致相等。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">源码解析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/16/ArrayList%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-10-OpenResty用Lua语言实现简单服务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/12/10-OpenResty%E7%94%A8Lua%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1/">10-OpenResty用Lua语言实现简单服务</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/11/12/10-OpenResty%E7%94%A8Lua%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1/" class="archive-article-date">
-  	<time datetime="2019-11-12T13:40:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-12</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">329字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
-<h2 id="简单应用"><a href="#简单应用" class="headerlink" title="简单应用"></a>简单应用</h2><p><img src="/2019/11/12/10-OpenResty%E7%94%A8Lua%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1/93c7612e-307f-4fe2-84c8-ac0e13a042e0.png" alt></p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Openresty</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx/Openresty//" class="article-tag-list-link color5">Openresty</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/12/10-OpenResty%E7%94%A8Lua%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-9-SSL-Nginx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/11/9-SSL-Nginx/">9-SSL-Nginx</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/11/11/9-SSL-Nginx/" class="archive-article-date">
-  	<time datetime="2019-11-11T11:40:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-11</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.4k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">8分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>网络安全是当前非常受到关注的一个问题，大部分站点都是通过 <strong>HTTPS</strong> 来实现安全访问。如何将自己的站点改造成 <strong>HTTPS</strong> 站点呢？我们需要了解 <strong>SSL</strong> 协议。</p>
-<h2 id="知识普及"><a href="#知识普及" class="headerlink" title="知识普及"></a>知识普及</h2><ul>
-<li>TLS/SSL 发展历程<br><img src="/2019/11/11/9-SSL-Nginx/c97e2236-9c76-47a7-8101-c6a81360c5d0.jpg" alt></li></ul>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SSL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx/SSL//" class="article-tag-list-link color4">SSL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/11/9-SSL-Nginx/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-8-Nginx配置文件简易解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/10/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/">8-Nginx配置文件简易解析</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/11/10/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/" class="archive-article-date">
-  	<time datetime="2019-11-10T10:03:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-10</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">949字</span>
+        <span class="post-count">1.1k字</span>
       </span>
     </span>
 
@@ -636,393 +244,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
-<p><img src="/2019/11/10/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/0ad1a503df198bdb026ce7e8d83f53b9.png" alt>)<img src="/2019/11/10/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/d1820db3ef58dac396c152bf3d460f27.png" alt>)<img src="/2019/11/10/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/6432890dbc992690f2068620d9ee7951.png" alt></p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/10/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-7-Nginx安装详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/09/7-Nginx%E5%AE%89%E8%A3%85%E8%AF%A6%E8%A7%A3/">7-Nginx安装详解</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/11/09/7-Nginx%E5%AE%89%E8%A3%85%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2019-11-09T11:01:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-09</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.1k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">4分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Nginx是一款轻量级高性能的Web服务器/反向代理服务器，</p>
-<p>并在一个BSD-like 协议下发行。其特点是占有内存少，并发能力强，<br>中国大陆使用nginx网站用户有：百度、京东、新浪、网易、腾讯、淘宝等。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/09/7-Nginx%E5%AE%89%E8%A3%85%E8%AF%A6%E8%A7%A3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-6-GoAccess实现可视化并实时监控access日志" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/">6-GoAccess实现可视化并实时监控access日志</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/" class="archive-article-date">
-  	<time datetime="2019-11-08T12:00:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-08</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.6k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">7分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
 			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>access日志</strong> 记录了用户非常重要的信息，可用它来分析、定位问题，也可用它来分析用户的运营数据，但是如果想要实时分析access 日志，相对比较困难。使用 cat、awk、sed 等命令做一些简单的日志分析统计，这样分析结果不理想也不全面，方法也极不高效。</p>
-<p><strong>GoAccess</strong> 这款工具以图形化的方式通过<strong>web socket</strong>协议，实时的将access日志的变迁反应到浏览器中。方便我们分析问题。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Tools</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">日志</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx/Tools//" class="article-tag-list-link color1">Tools</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx/Tools/日志//" class="article-tag-list-link color3">日志</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-5-Nginx搭建具备缓存功能的反向代理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/05/5-Nginx%E6%90%AD%E5%BB%BA%E5%85%B7%E5%A4%87%E7%BC%93%E5%AD%98%E5%8A%9F%E8%83%BD%E7%9A%84%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">5-Nginx搭建具备缓存功能的反向代理</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/11/05/5-Nginx%E6%90%AD%E5%BB%BA%E5%85%B7%E5%A4%87%E7%BC%93%E5%AD%98%E5%8A%9F%E8%83%BD%E7%9A%84%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" class="archive-article-date">
-  	<time datetime="2019-11-05T11:55:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-05</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.9k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">7分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前面已经展示了<strong>Nginx</strong>如何作为一个静态资源服务器进行工作，我们以此静态资源服务器作为-<strong>上游服务</strong>，再搭建一个Nginx服务，作为<strong>反向代理</strong>，演示当Nginx作为方向代理时，应该如何使用？</p>
-<p>由于上游服务要处理非常复杂的业务逻辑，而且强调开发效率，因此它的性能并不怎么样，而使用了Nginx作为反向代理之后，可以由一台Nginx将请求用负载均衡算法代理给多台上游服务器工作，这样就实现了水平扩展，在用户无感知的情况下，我们可以添加更多的上游服务器，来提高性能。当上游服务器出现问题时，Nginx可以自动的将请求由有问题、出现灾难的服务器转交给正常的服务器，</p>
+<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在HTTP模块开始处理用户请求之前，首先要Nginx框架先对客户端建立连接，接收用户发来的 <strong>HTTP Line</strong>，如方法、URL等，再去接收到所有的<strong>Header</strong>，根据Header信息，才能决定使用哪些配置块，让HTTP模块怎样处理请求。因此，有必要看一看 Nginx框架如何建立连接、接收HTTP请求。</p>
 	
 	
     </div>
@@ -1057,7 +281,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/05/5-Nginx%E6%90%AD%E5%BB%BA%E5%85%B7%E5%A4%87%E7%BC%93%E5%AD%98%E5%8A%9F%E8%83%BD%E7%9A%84%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/12/09/20-%E5%A4%84%E7%90%86HTTP%E8%AF%B7%E6%B1%82%E5%A4%B4%E9%83%A8%E6%B5%81%E7%A8%8B/">展开全文 >></a>
         </p>
       
 
@@ -1091,22 +315,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-4-Nginx搭建静态资源Web服务器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-19-Nginx中Listen指令用法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/">4-Nginx搭建静态资源Web服务器</a>
+      <a class="article-title" href="/2019/12/08/19-Nginx%E4%B8%ADListen%E6%8C%87%E4%BB%A4%E7%94%A8%E6%B3%95/">19-Nginx中Listen指令用法</a>
     </h1>
   
 
         
         
 
-<a href="/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="archive-article-date">
-  	<time datetime="2019-11-01T10:53:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-01</time>
+<a href="/2019/12/08/19-Nginx%E4%B8%ADListen%E6%8C%87%E4%BB%A4%E7%94%A8%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2019-12-08T12:34:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-08</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1117,252 +341,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.4k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font>`</p>
-<h2 id="1-上传静态资源到Nginx目录中"><a href="#1-上传静态资源到Nginx目录中" class="headerlink" title="1 上传静态资源到Nginx目录中"></a>1 上传静态资源到Nginx目录中</h2><p>如这里新建了一个dlib目录，里面存放静态资源<br><img src="/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/534bed34-738b-47df-9819-997373f35987.png" alt></p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-3-Nginx命令行演示-重载-热部署-切割" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/20/3-Nginx%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%BC%94%E7%A4%BA-%E9%87%8D%E8%BD%BD-%E7%83%AD%E9%83%A8%E7%BD%B2-%E5%88%87%E5%89%B2/">3-Nginx命令行演示-重载-热部署-切割</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/10/20/3-Nginx%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%BC%94%E7%A4%BA-%E9%87%8D%E8%BD%BD-%E7%83%AD%E9%83%A8%E7%BD%B2-%E5%88%87%E5%89%B2/" class="archive-article-date">
-  	<time datetime="2019-10-20T11:00:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-20</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.5k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
-<h1 id="1-检查80端口是否被占用"><a href="#1-检查80端口是否被占用" class="headerlink" title="1 检查80端口是否被占用"></a>1 检查80端口是否被占用</h1><p>yum install net-tools<br>netstat -ano | grep 80</p>
-<h1 id="2-Nginx命令行"><a href="#2-Nginx命令行" class="headerlink" title="2 Nginx命令行"></a>2 Nginx命令行</h1><p><img src="/2019/10/20/3-Nginx%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%BC%94%E7%A4%BA-%E9%87%8D%E8%BD%BD-%E7%83%AD%E9%83%A8%E7%BD%B2-%E5%88%87%E5%89%B2/48cac2e3-d525-4835-88aa-ce13207e19d7.jpg" alt></p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/20/3-Nginx%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%BC%94%E7%A4%BA-%E9%87%8D%E8%BD%BD-%E7%83%AD%E9%83%A8%E7%BD%B2-%E5%88%87%E5%89%B2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-2-Nginx配置语法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/17/2-Nginx%E9%85%8D%E7%BD%AE%E8%AF%AD%E6%B3%95/">2-Nginx配置语法</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/10/17/2-Nginx%E9%85%8D%E7%BD%AE%E8%AF%AD%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2019-10-17T11:47:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-17</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">305字</span>
+        <span class="post-count">196字</span>
       </span>
     </span>
 
@@ -1388,8 +367,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
-<h1 id="1-Nginx-配置语法"><a href="#1-Nginx-配置语法" class="headerlink" title="1 Nginx 配置语法"></a>1 Nginx 配置语法</h1><p><img src="/2019/10/17/2-Nginx%E9%85%8D%E7%BD%AE%E8%AF%AD%E6%B3%95/f6f8a64a-ed92-4f0c-90f7-c498e28692f0.jpg" alt></p>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>每一个请求进入Nginx开始处理之前，都首先需要<strong>监听端口</strong>，以使得Nginx与客户端建立起<strong>TCP连接</strong>，监听端口的指令为<strong>listen</strong>指令，它是放在<strong>server</strong>配置块下的，通过监听的端口或是地址已经可以决定由哪些可以匹配上我们TCP资源组监听的地址链接对应的server块去处理相关的请求。</p>
 	
 	
     </div>
@@ -1424,7 +404,999 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/17/2-Nginx%E9%85%8D%E7%BD%AE%E8%AF%AD%E6%B3%95/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/12/08/19-Nginx%E4%B8%ADListen%E6%8C%87%E4%BB%A4%E7%94%A8%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-18-Nginx冲突的配置指令以谁为准" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/08/18-Nginx%E5%86%B2%E7%AA%81%E7%9A%84%E9%85%8D%E7%BD%AE%E6%8C%87%E4%BB%A4%E4%BB%A5%E8%B0%81%E4%B8%BA%E5%87%86/">18-Nginx冲突的配置指令以谁为准</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/12/08/18-Nginx%E5%86%B2%E7%AA%81%E7%9A%84%E9%85%8D%E7%BD%AE%E6%8C%87%E4%BB%A4%E4%BB%A5%E8%B0%81%E4%B8%BA%E5%87%86/" class="archive-article-date">
+  	<time datetime="2019-12-08T10:34:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-08</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">689字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>正式开始学习<strong>HTTP模块</strong>之前，先要谈一谈指令的<strong>嵌套结构</strong>，每一个HTTP模块出现的指令，可能出现的<strong>Context(上下文)</strong>，既可以在<strong>location</strong>中，也可以在<strong>server</strong>中，或是<strong>http</strong>中，当一个指令出现在多个<strong>配置块</strong>中时，它们的值可能是冲突的，到底以谁为准呢？或者在某个配置块下发现没有这个指令，但是在启动时却发现生效了，这样的机制是怎么实现的呢？还有很多的<strong>第三方模块</strong>可能不是很守规矩的去遵循官方制定的规则，这个时候我们应该怎样去判断配置指令到底是怎样生效，发生冲突时如何解决冲突呢？</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/08/18-Nginx%E5%86%B2%E7%AA%81%E7%9A%84%E9%85%8D%E7%BD%AE%E6%8C%87%E4%BB%A4%E4%BB%A5%E8%B0%81%E4%B8%BA%E5%87%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-17-Nginx动态模块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/07/17-Nginx%E5%8A%A8%E6%80%81%E6%A8%A1%E5%9D%97/">17-Nginx动态模块</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/12/07/17-Nginx%E5%8A%A8%E6%80%81%E6%A8%A1%E5%9D%97/" class="archive-article-date">
+  	<time datetime="2019-12-07T10:34:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-07</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">825字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>动态模块</strong>可以在使用Nginx中升级Nginx时减少编译环节。本文主要讲的是动态模块编译及使用的流程，再用一个例子来演示。</p>
+<h2 id="动态模块-减少编译环节"><a href="#动态模块-减少编译环节" class="headerlink" title="动态模块-减少编译环节"></a>动态模块-减少编译环节</h2><p><img src="/2019/12/07/17-Nginx%E5%8A%A8%E6%80%81%E6%A8%A1%E5%9D%97/cdfe3da9-95c0-4ebf-91da-bbe142dd4f6e.jpg" alt></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/07/17-Nginx%E5%8A%A8%E6%80%81%E6%A8%A1%E5%9D%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-16-Nginx容器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/06/16-Nginx%E5%AE%B9%E5%99%A8/">16-Nginx容器</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/12/06/16-Nginx%E5%AE%B9%E5%99%A8/" class="archive-article-date">
+  	<time datetime="2019-12-06T12:13:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-06</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">798字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Nginx容器是许多Nginx高级功能的基础，即使我们不需要去编写第三方模块或是去查看Nginx的源代码，但需要变更Nginx配置文件，已达到最大化的性能，也需要理解Nginx容器。</p>
+<h2 id="Nginx容器"><a href="#Nginx容器" class="headerlink" title="Nginx容器"></a>Nginx容器</h2><p><img src="/2019/12/06/16-Nginx%E5%AE%B9%E5%99%A8/292d9b9f-1801-49d5-b829-d0cf04868461.jpg" alt></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/06/16-Nginx%E5%AE%B9%E5%99%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-15-Worker集成协同工作的关键" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/06/15-Worker%E9%9B%86%E6%88%90%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%85%B3%E9%94%AE/">15-Worker集成协同工作的关键</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/12/06/15-Worker%E9%9B%86%E6%88%90%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%85%B3%E9%94%AE/" class="archive-article-date">
+  	<time datetime="2019-12-06T10:13:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-06</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">832字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Nginx是一个多进程程序，不同的Worker进程间如果想要共享数据，只能通过共享内存来通讯。那么Nginx中的共享内存如何使用的呢？这个问题值得研究。</p>
+<h2 id="Nginx进程间通讯方式"><a href="#Nginx进程间通讯方式" class="headerlink" title="Nginx进程间通讯方式"></a>Nginx进程间通讯方式</h2><p><img src="/2019/12/06/15-Worker%E9%9B%86%E6%88%90%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%85%B3%E9%94%AE/0af09836-ba26-4f41-96af-e3fb0d421a2b.jpg" alt></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/06/15-Worker%E9%9B%86%E6%88%90%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%85%B3%E9%94%AE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-14-Nginx连接池处理网络请求-内存池对性能的影响" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/05/14-Nginx%E8%BF%9E%E6%8E%A5%E6%B1%A0%E5%A4%84%E7%90%86%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82-%E5%86%85%E5%AD%98%E6%B1%A0%E5%AF%B9%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D/">14-Nginx连接池处理网络请求-内存池对性能的影响</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/12/05/14-Nginx%E8%BF%9E%E6%8E%A5%E6%B1%A0%E5%A4%84%E7%90%86%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82-%E5%86%85%E5%AD%98%E6%B1%A0%E5%AF%B9%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D/" class="archive-article-date">
+  	<time datetime="2019-12-05T10:13:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-05</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">844字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前谈到的Nginx中的读写事件，这些网络读写事件究竟是怎样的应用到Nginx上的呢？</p>
+<p>Nginx使用了<strong>连接池</strong>来增加它对资源的利用率。</p>
+<h2 id="Nginx通过连接池处理网络请求"><a href="#Nginx通过连接池处理网络请求" class="headerlink" title="Nginx通过连接池处理网络请求"></a>Nginx通过连接池处理网络请求</h2><p><strong>连接池</strong><br><img src="/2019/12/05/14-Nginx%E8%BF%9E%E6%8E%A5%E6%B1%A0%E5%A4%84%E7%90%86%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82-%E5%86%85%E5%AD%98%E6%B1%A0%E5%AF%B9%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D/8b0e0f0d-eddf-4830-9dfa-ac9f3c6acf40.jpg" alt></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/05/14-Nginx%E8%BF%9E%E6%8E%A5%E6%B1%A0%E5%A4%84%E7%90%86%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82-%E5%86%85%E5%AD%98%E6%B1%A0%E5%AF%B9%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-13-Nginx模块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/04/13-Nginx%E6%A8%A1%E5%9D%97/">13-Nginx模块</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/12/04/13-Nginx%E6%A8%A1%E5%9D%97/" class="archive-article-date">
+  	<time datetime="2019-12-04T13:13:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-04</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">581字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Nginx之所以有如此多的特性，是因为有大量的第三方开发者在为它开发模块。Nginx之所以有这么丰富的生态圈，是因为它的模块设计十分优良。如TCP协议一样，从上个世纪70年代设计至今，没有做过大的变动。Nginx同样如此，从2004年发布后，没有发生过大的变化。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/04/13-Nginx%E6%A8%A1%E5%9D%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-12-网络收发与Nginx事件模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/03/12-%E7%BD%91%E7%BB%9C%E6%94%B6%E5%8F%91%E4%B8%8ENginx%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/">12-网络收发与Nginx事件模型</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/12/03/12-%E7%BD%91%E7%BB%9C%E6%94%B6%E5%8F%91%E4%B8%8ENginx%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/" class="archive-article-date">
+  	<time datetime="2019-12-03T12:13:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.6k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">5分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Nginx是一个<strong>事件驱动</strong>的框架。事件主要指的是<strong>网络事件</strong>。Nginx每个连接会自然对应两个网络事件，<strong>读事件</strong> 与 <strong>写事件</strong>。因此，我们在深入了解Nginx的各种原理以及它在极端场景下的各种错误处理时，必须首先理解什么是网络事件。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/03/12-%E7%BD%91%E7%BB%9C%E6%94%B6%E5%8F%91%E4%B8%8ENginx%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-11-Nginx架构-相关流程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/02/11-Nginx%E6%9E%B6%E6%9E%84-%E7%9B%B8%E5%85%B3%E6%B5%81%E7%A8%8B/">11-Nginx架构_相关流程</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/12/02/11-Nginx%E6%9E%B6%E6%9E%84-%E7%9B%B8%E5%85%B3%E6%B5%81%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2019-12-02T11:13:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-02</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2.7k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">9分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>为什么要讨论Nginx的架构技术呢？</strong></p>
+<p>因为Nginx运行在企业内网的最外层-边缘节点，它处理的流量是其他应用服务器的几个数量级。任何一种问题在不同的场景下解决方式不尽相同。因此，Nginx处理问题时的难度会被放大，我们有必要熟知:</p>
+<p><font color="red">为什么Nginx采用<strong>Master-Worker</strong>这样一种架构模型</font><br><font color="red">为什么Worker进程的数量要与CPU的核数相匹配</font><br><font color="red">在多个Worker之间共享数据时，为什么在TLS或者限流、限速场景下的共享方式是有所不同的。</font></p>
+<p>这些都需要我们对Nginx架构有一个清晰的了解。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/02/11-Nginx%E6%9E%B6%E6%9E%84-%E7%9B%B8%E5%85%B3%E6%B5%81%E7%A8%8B/">展开全文 >></a>
         </p>
       
 
@@ -1459,7 +1431,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1572,19 +1544,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Openresty</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1596,15 +1568,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码解析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1620,6 +1592,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MyBatis多数据源配置</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySql</a>
               </li>
              
@@ -1632,15 +1608,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MyBatis多数据源配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1664,11 +1636,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
+                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
+                <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1680,11 +1652,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Quartz</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Quartz</a>
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">

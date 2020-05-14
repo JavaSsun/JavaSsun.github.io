@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 72</nav>
+		<nav style="color: #7FFFD4;">总文章数 87</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -844,149 +844,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-LinkedHashMap实现原理-探险" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-25-Nginx变量原理-应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/28/LinkedHashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">LinkedHashMap实现原理_探险</a>
+      <a class="article-title" href="/2019/12/13/25-Nginx%E5%8F%98%E9%87%8F%E5%8E%9F%E7%90%86-%E5%BA%94%E7%94%A8/">25-Nginx变量原理-应用</a>
     </h1>
   
 
         
         
 
-<a href="/2019/11/28/LinkedHashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/" class="archive-article-date">
-  	<time datetime="2019-11-28T10:30:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-28</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.7k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">7分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<h1 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h1><p>深入理解Java集合中的源代码，可以帮助我们更好地了解大佬的意图，规避不必要的bug。</p>
-<p>源码中的一段注释，提取关键信息<br>Hash table and linked list implementation of the Map interface, with predictable iteration order. This implementation differs from HashMap in that it maintains a doubly-linked list running through all of its entries. This linked list defines the iteration ordering, which is normally the order in which keys were inserted into the map (insertion-order). Note that insertion order is not affected if a key is re-inserted into the map. (A key k is reinserted into a map m if m.put(k, v) is invoked when m.containsKey(k) would return true immediately prior to the invocation.)</p>
-<p>从注释中，我们可以先了解到 LinkedHashMap 是通过哈希表和链表实现的，它通过 维护一个链表来保证对哈希表迭代时的有序性，而这个有序是指键值对插入的顺序。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">源码解析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/28/LinkedHashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-HashTable实现原理-探险" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/22/HashTable%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">HashTable实现原理_探险</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/11/22/HashTable%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/" class="archive-article-date">
-  	<time datetime="2019-11-22T05:28:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-22</time>
+<a href="/2019/12/13/25-Nginx%E5%8F%98%E9%87%8F%E5%8E%9F%E7%90%86-%E5%BA%94%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2019-12-13T12:10:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-13</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1006,7 +879,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
 </div>
@@ -1023,8 +896,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<h1 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h1><p>深入理解Java集合中的源代码，可以帮助我们更好地了解大佬的意图，规避不必要的bug。</p>
-<p>Hashtable 可以说已经具有一定的历史了，现在也很少使用到 Hashtable 了，更多的是使 用 HashMap 或 ConcurrentHashMap。HashTable 是一个线程安全的哈希表，它通过使用 synchronized 关键字来对方法进行加锁，从而保证了线程安全。但这也导致了在单线程 环境中效率低下等问题。Hashtable 与 HashMap 不同，它不允许插入 null 值和 null 键。</p>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Nginx中变量是一个非常强大的工具，可以在nginx.conf配置文件中，通过变量去修改各个模块处理请求的方式。因此，<strong>变量是一个解耦工具</strong>。它同样可以在 openresty 中 lua 语言中大有用处。</p>
 	
 	
     </div>
@@ -1038,11 +912,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">源码解析</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
         		</li>
       		
 		</ul>
@@ -1054,7 +924,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
+        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
         		</li>
       		
 		</ul>
@@ -1063,7 +933,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/22/HashTable%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/12/13/25-Nginx%E5%8F%98%E9%87%8F%E5%8E%9F%E7%90%86-%E5%BA%94%E7%94%A8/">展开全文 >></a>
         </p>
       
 
@@ -1097,22 +967,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-HashMap实现原理-探险" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-24-详解HTTP过滤模块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/20/HashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">HashMap实现原理_探险</a>
+      <a class="article-title" href="/2019/12/12/24-%E8%AF%A6%E8%A7%A3HTTP%E8%BF%87%E6%BB%A4%E6%A8%A1%E5%9D%97/">24-详解HTTP过滤模块</a>
     </h1>
   
 
         
         
 
-<a href="/2019/11/20/HashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/" class="archive-article-date">
-  	<time datetime="2019-11-20T12:05:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-20</time>
+<a href="/2019/12/12/24-%E8%AF%A6%E8%A7%A3HTTP%E8%BF%87%E6%BB%A4%E6%A8%A1%E5%9D%97/" class="archive-article-date">
+  	<time datetime="2019-12-12T11:10:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-12</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1123,7 +993,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.3k字</span>
+        <span class="post-count">606字</span>
       </span>
     </span>
 
@@ -1132,7 +1002,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">19分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
 </div>
@@ -1149,9 +1019,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<h1 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h1><p>深入理解Java集合中的源代码，可以帮助我们更好地了解大佬的意图，规避不必要的bug。</p>
-<p>源码中的一段注释，提取关键信息<br>Hash table based implementation of the Map interface. This implementation provides all of the optional map operations, and permits null values and the null key. (The HashMap class is roughly equivalent to Hashtable, except that it is unsynchronized and permits nulls.) This class makes no guarantees as to the order of the map; in particular, it does not guarantee that the order will remain constant over time.</p>
-<p>大致意思是：这个哈希表是基于 Map 接口的实现的，它允许 null 值和 null 键，它不是线程同步的，同时也不保证有序。</p>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上文介绍了HTTP模块的11个阶段，在<strong>content</strong>阶段会生成返回给用户的响应内容，这部分响应内容还需要再做加工处理的，这就需要用到<strong>HTTP过滤模块</strong>，因此，它是处于 <strong>Log</strong>阶段之前，<strong>content</strong>阶段之后去介入请求的处理。</p>
 	
 	
     </div>
@@ -1165,11 +1035,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">源码解析</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
         		</li>
       		
 		</ul>
@@ -1181,7 +1047,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
+        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
         		</li>
       		
 		</ul>
@@ -1190,7 +1056,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/20/HashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/12/12/24-%E8%AF%A6%E8%A7%A3HTTP%E8%BF%87%E6%BB%A4%E6%A8%A1%E5%9D%97/">展开全文 >></a>
         </p>
       
 
@@ -1224,22 +1090,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-MyBatis多数据源配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-23-详解HTTP请求的11个阶段" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/17/MyBatis%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E9%85%8D%E7%BD%AE/">MyBatis多数据源配置</a>
+      <a class="article-title" href="/2019/12/11/23-%E8%AF%A6%E8%A7%A3HTTP%E8%AF%B7%E6%B1%82%E7%9A%8411%E4%B8%AA%E9%98%B6%E6%AE%B5/">23-详解HTTP请求的11个阶段</a>
     </h1>
   
 
         
         
 
-<a href="/2019/11/17/MyBatis%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2019-11-17T13:26:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-17</time>
+<a href="/2019/12/11/23-%E8%AF%A6%E8%A7%A3HTTP%E8%AF%B7%E6%B1%82%E7%9A%8411%E4%B8%AA%E9%98%B6%E6%AE%B5/" class="archive-article-date">
+  	<time datetime="2019-12-11T11:10:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-11</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1250,7 +1116,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.1k字</span>
+        <span class="post-count">6.5k字</span>
       </span>
     </span>
 
@@ -1259,7 +1125,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6分</span>
+        <span class="post-count">24分</span>
       </span>
     </span>
 </div>
@@ -1276,7 +1142,10 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>多数据源，一般都来解决主从模式或者业务比较复杂需要连接不同的分库来支持业务。我们遇到的情况是后者，网上找了很多，大都是根据 Jpa 来做多数据源解决方案，要不就是老的 Spring 多数据源解决方案，还有的是利用 Aop 动态切换，过于复杂，当前已Mybatis Xml为例，简单配置。</p>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>除<strong>HTTP过滤模块</strong> 和 <strong>只提供变量的Nginx模块</strong>之外，所有的HTTP模块必须从Nginx定义好的<strong>11</strong>个阶段进行请求处理。每一个HTTP模块何时生效，有没有机会生效，都要看一个请求究竟处理到哪一个阶段。Nginx是如何定义这11个处理阶段的呢？</p>
+<h2 id="HTTP请求处理时的11个阶段"><a href="#HTTP请求处理时的11个阶段" class="headerlink" title="HTTP请求处理时的11个阶段"></a>HTTP请求处理时的11个阶段</h2><p><img src="/2019/12/11/23-%E8%AF%A6%E8%A7%A3HTTP%E8%AF%B7%E6%B1%82%E7%9A%8411%E4%B8%AA%E9%98%B6%E6%AE%B5/_u6355_u83B7.PNG" alt></p>
 	
 	
     </div>
@@ -1290,7 +1159,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">MyBatis多数据源配置</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
         		</li>
       		
 		</ul>
@@ -1302,7 +1171,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/MyBatis//" class="article-tag-list-link color3">MyBatis</a>
+        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
         		</li>
       		
 		</ul>
@@ -1311,7 +1180,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/17/MyBatis%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E9%85%8D%E7%BD%AE/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/12/11/23-%E8%AF%A6%E8%A7%A3HTTP%E8%AF%B7%E6%B1%82%E7%9A%8411%E4%B8%AA%E9%98%B6%E6%AE%B5/">展开全文 >></a>
         </p>
       
 
@@ -1345,22 +1214,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-LinkList实现原理-探险" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-22-如何找到处理请求的Server指令块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/17/LinkList%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">LinkList实现原理_探险</a>
+      <a class="article-title" href="/2019/12/10/22-%E5%A6%82%E4%BD%95%E6%89%BE%E5%88%B0%E5%A4%84%E7%90%86%E8%AF%B7%E6%B1%82%E7%9A%84Server%E6%8C%87%E4%BB%A4%E5%9D%97/">22-如何找到处理请求的Server指令块</a>
     </h1>
   
 
         
         
 
-<a href="/2019/11/17/LinkList%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/" class="archive-article-date">
-  	<time datetime="2019-11-17T11:10:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-17</time>
+<a href="/2019/12/10/22-%E5%A6%82%E4%BD%95%E6%89%BE%E5%88%B0%E5%A4%84%E7%90%86%E8%AF%B7%E6%B1%82%E7%9A%84Server%E6%8C%87%E4%BB%A4%E5%9D%97/" class="archive-article-date">
+  	<time datetime="2019-12-10T12:10:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-10</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1371,7 +1240,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.5k字</span>
+        <span class="post-count">326字</span>
       </span>
     </span>
 
@@ -1380,7 +1249,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">11分</span>
+        <span class="post-count">1分</span>
       </span>
     </span>
 </div>
@@ -1397,12 +1266,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<h1 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h1><p>深入理解Java集合中的源代码，可以帮助我们更好地了解大佬的意图，规避不必要的bug。</p>
-<p>源码中的一段注释，提取关键信息</p>
-<p>Doubly-linked list implementation of the List and Deque interfaces. Implements all optional list operations, and permits all elements (including null).</p>
-<p>All of the operations perform as could be expected for a doubly-linked list. Operations that index into the list will traverse the list from the beginning or the end, whichever is closer to the specified index.</p>
-<p>Note that this implementation is not synchronized. If multiple threads access a linked list concurrently, and at least one of the threads modifies the list structurally, it must be synchronized externally. (A structural modification is any operation that adds or deletes one or more elements; merely setting the value of an element is not a structural modification.) This is typically accomplished by synchronizing on some object that naturally encapsulates the list</p>
-<p>由上述注释中可以大概得知： LinkedList 是由一个双向链表来实现的，它允许插入所有元素，包括 null，同时，它是线程不同步的。</p>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在Nginx-HTTP模块处理请求之前，要确保它的指令可以被正确解析。即我们知道，为了处理这个请求，我们知道到底使用那个指令的值。因为前卫提到指令的配置是可以出现在多个配置项中的，首先确保这个请求是被哪一个<strong>server块</strong>处理，因此，要先介绍一个配置指令 <strong>server_name</strong>，server_name可以保证我们在处理11个阶段的HTTP模块处理之前，先决定哪一个Server块被使用。</p>
 	
 	
     </div>
@@ -1416,11 +1282,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">源码解析</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
         		</li>
       		
 		</ul>
@@ -1432,7 +1294,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
+        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
         		</li>
       		
 		</ul>
@@ -1441,7 +1303,130 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/17/LinkList%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/12/10/22-%E5%A6%82%E4%BD%95%E6%89%BE%E5%88%B0%E5%A4%84%E7%90%86%E8%AF%B7%E6%B1%82%E7%9A%84Server%E6%8C%87%E4%BB%A4%E5%9D%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-21-Nginx中的正则表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/09/21-Nginx%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">21-Nginx中的正则表达式</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/12/09/21-Nginx%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2019-12-09T15:34:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-09</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">140字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>当在Nginx中确定使用哪一个域名处理用户请求时，或者location中匹配哪些URL时，又或者重写URL时，都可以用到<strong>正则表达式</strong>，它可以让我们匹配到的功能更为强大。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/09/21-Nginx%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">展开全文 >></a>
         </p>
       
 
@@ -1476,7 +1461,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1589,19 +1574,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Openresty</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1613,15 +1598,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码解析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1637,6 +1622,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MyBatis多数据源配置</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySql</a>
               </li>
              
@@ -1649,15 +1638,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MyBatis多数据源配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1681,11 +1666,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
+                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
+                <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1697,11 +1682,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Quartz</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Quartz</a>
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">

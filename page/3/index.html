@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 72</nav>
+		<nav style="color: #7FFFD4;">总文章数 87</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -192,22 +192,22 @@
             
   
     <meta charset="utf-8">
-<article id="post-1-Nginx的前世今生" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-LinkedHashMap实现原理-探险" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/">1-Nginx的前世今生</a>
+      <a class="article-title" href="/2019/11/28/LinkedHashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">LinkedHashMap实现原理_探险</a>
     </h1>
   
 
         
         
 
-<a href="/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/" class="archive-article-date">
-  	<time datetime="2019-10-15T11:00:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-15</time>
+<a href="/2019/11/28/LinkedHashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/" class="archive-article-date">
+  	<time datetime="2019-11-28T10:30:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-28</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -218,7 +218,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.5k字</span>
+        <span class="post-count">1.7k字</span>
       </span>
     </span>
 
@@ -227,7 +227,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">9分</span>
+        <span class="post-count">7分</span>
       </span>
     </span>
 </div>
@@ -244,12 +244,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
-<p><a href="http://openresty.org/download/agentzh-nginx-tutorials-zhcn.html" target="_blank" rel="noopener">章亦春文档</a></p>
-<h1 id="1-Nginx的三个主要应用场景"><a href="#1-Nginx的三个主要应用场景" class="headerlink" title="1 Nginx的三个主要应用场景"></a>1 Nginx的三个主要应用场景</h1><p><img src="/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/2a504457-96be-4e0f-b1cf-ea6144ea59f4.jpg" alt></p>
-<p><font color="red">流程解析：</font><br>一个<strong>Web</strong>请求从红色的线走下来后，会先经过<strong>Nginx</strong>,再到<strong>应用服务（Tomcat/Django）</strong>，再去访问<strong>Redis/MySQL</strong>这样的数据库，提供基本的数据功能，由此产生一个问题：应用服务由于要求开发效率高，所以它的运行效率很低，它的QPS/TPS/并发都是受限的，所以把这样的很多应用服务组成集群，向用户提供高可用性。当应用出现集群后，需要Nginx具有<strong>反向代理</strong>功能，将动态请求传导给应用服务，而应用服务构成集群，则又出现了两个需求，A：动态扩容。B：容灾。因此，<strong>反向代理</strong>必须具有负载均衡功能；其次，在这样的一个链路中，Nginx处于<strong>企业内网的边缘节点</strong>，随着网络链路的增长，用户体验的时延会增加，因此，如果能把一些所有用户看起来<strong>在一段时间内不变的动态内容缓存到Nginx</strong>中，由Nginx直接向用户提供访问，这样用户时延就会减少很多。反向代理引申出的另一个概念即是 <strong>缓存，加速我们的访问</strong>。（<strong>反向代理</strong>）</p>
-<p>一些<strong>css/js/png</strong>等静态资源，是没有必要经由应用服务访问的，只需要通过本地文件 系统上放置的静态资源，直接由Nginx进行访问即可。（<strong>静态资源</strong>）</p>
-<p>如果应用服务本身的性能有很多问题，但是数据库服务要比应用服务好的多，因为它的业务场景比较简单，并发性能/TPS都要远高于应用服务，因此可以使用Nginx直接访问数据库/Redis这样的数据库服务，利用Nginx强大的并发性能，实现Web防火墙这样复杂的业务功能（<strong>API服务</strong>）</p>
+			<h1 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h1><p>深入理解Java集合中的源代码，可以帮助我们更好地了解大佬的意图，规避不必要的bug。</p>
+<p>源码中的一段注释，提取关键信息<br>Hash table and linked list implementation of the Map interface, with predictable iteration order. This implementation differs from HashMap in that it maintains a doubly-linked list running through all of its entries. This linked list defines the iteration ordering, which is normally the order in which keys were inserted into the map (insertion-order). Note that insertion order is not affected if a key is re-inserted into the map. (A key k is reinserted into a map m if m.put(k, v) is invoked when m.containsKey(k) would return true immediately prior to the invocation.)</p>
+<p>从注释中，我们可以先了解到 LinkedHashMap 是通过哈希表和链表实现的，它通过 维护一个链表来保证对哈希表迭代时的有序性，而这个有序是指键值对插入的顺序。</p>
 	
 	
     </div>
@@ -263,256 +260,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/15/1-Nginx%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-0-Nginx访问日志配置及信息详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/11/0-Nginx%E8%AE%BF%E9%97%AE%E6%97%A5%E5%BF%97%E9%85%8D%E7%BD%AE%E5%8F%8A%E4%BF%A1%E6%81%AF%E8%AF%A6%E8%A7%A3/">0-Nginx访问日志配置及信息详解</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/10/11/0-Nginx%E8%AE%BF%E9%97%AE%E6%97%A5%E5%BF%97%E9%85%8D%E7%BD%AE%E5%8F%8A%E4%BF%A1%E6%81%AF%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2019-10-11T10:39:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-11</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.5k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">10分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>通过访问日志，可以知晓用户的地址，网站的哪些部分最受欢迎。用户的浏览时间，对大多数用户的浏览器做出针对性优化。</p>
-<p>Nginx会把每个用户访问的日志信息记录到指定的日志文件里，供网站管理员分析用户浏览行为等，此功能又ngx_http_log_module 模块负责。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/11/0-Nginx%E8%AE%BF%E9%97%AE%E6%97%A5%E5%BF%97%E9%85%8D%E7%BD%AE%E5%8F%8A%E4%BF%A1%E6%81%AF%E8%AF%A6%E8%A7%A3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-Swagger2学习与集成" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/09/Swagger2%E5%AD%A6%E4%B9%A0%E4%B8%8E%E9%9B%86%E6%88%90/">Swagger2学习与集成</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/10/09/Swagger2%E5%AD%A6%E4%B9%A0%E4%B8%8E%E9%9B%86%E6%88%90/" class="archive-article-date">
-  	<time datetime="2019-10-09T11:32:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-09</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">674字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h1 id="1-Swagger2介绍"><a href="#1-Swagger2介绍" class="headerlink" title="1 Swagger2介绍"></a>1 Swagger2介绍</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;现在都奉行<strong>前后端分离</strong>和<strong>微服务</strong>大行其道，分微服务及前后端分离后，前后端开发的沟通成本就增加了。所以一款强大的<strong>RestFul API</strong> 文档则十分重要，而目前在后端领域，基本上就是<font color="red">Swagger</font>的天下了。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Swagger</strong>是一款RestFul接口的文档在线自动生成、功能测试功能框架。一个规范和完整的框架，用于生成、描述、调用和可视化RestFul风格的Web服务，加上Swagger-ui，可以有很好的呈现。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Swagger2</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">源码解析</a>
         		</li>
       		
 		</ul>
@@ -524,7 +276,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Swagger//" class="article-tag-list-link color3">Swagger</a>
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -533,7 +285,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/09/Swagger2%E5%AD%A6%E4%B9%A0%E4%B8%8E%E9%9B%86%E6%88%90/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/11/28/LinkedHashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">展开全文 >></a>
         </p>
       
 
@@ -567,22 +319,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-2018-2019工作总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-HashTable实现原理-探险" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/15/2018-2019%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93/">2018-2019工作总结</a>
+      <a class="article-title" href="/2019/11/22/HashTable%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">HashTable实现原理_探险</a>
     </h1>
   
 
         
         
 
-<a href="/2019/09/15/2018-2019%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2019-09-15T11:18:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-15</time>
+<a href="/2019/11/22/HashTable%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/" class="archive-article-date">
+  	<time datetime="2019-11-22T05:28:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-22</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -593,7 +345,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">11.7k字</span>
+        <span class="post-count">1.4k字</span>
       </span>
     </span>
 
@@ -602,7 +354,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">64分</span>
+        <span class="post-count">6分</span>
       </span>
     </span>
 </div>
@@ -619,9 +371,8 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h1 id="1-判断一个点是否在不规则多边形内部"><a href="#1-判断一个点是否在不规则多边形内部" class="headerlink" title="1  判断一个点是否在不规则多边形内部"></a>1  判断一个点是否在不规则多边形内部</h1><p>用途：<br>用于判断企业是否落在指定区域内</p>
-<p>以一个点做射线，计算它与多边形边界的交点个数<br>       奇数个：在多边形内部<br>       偶数个：在多边形外部<br>推论：<br>如果点在多边形内部，射线第一次穿越边界一定是穿出多边形。<br>如果点在多边形外部，射线第一次穿越边界一定是进入多边形。</p>
+			<h1 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h1><p>深入理解Java集合中的源代码，可以帮助我们更好地了解大佬的意图，规避不必要的bug。</p>
+<p>Hashtable 可以说已经具有一定的历史了，现在也很少使用到 Hashtable 了，更多的是使 用 HashMap 或 ConcurrentHashMap。HashTable 是一个线程安全的哈希表，它通过使用 synchronized 关键字来对方法进行加锁，从而保证了线程安全。但这也导致了在单线程 环境中效率低下等问题。Hashtable 与 HashMap 不同，它不允许插入 null 值和 null 键。</p>
 	
 	
     </div>
@@ -635,118 +386,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">搬砖结晶</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/15/2018-2019%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-复杂度分析-下部" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/12/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-%E4%B8%8B%E9%83%A8/">复杂度分析-下部</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/08/12/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-%E4%B8%8B%E9%83%A8/" class="archive-article-date">
-  	<time datetime="2019-08-12T14:00:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-12</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.6k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">13分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h1 id="1-浅析最好、最坏、平均、均摊时间复杂度"><a href="#1-浅析最好、最坏、平均、均摊时间复杂度" class="headerlink" title="1 浅析最好、最坏、平均、均摊时间复杂度"></a>1 浅析最好、最坏、平均、均摊时间复杂度</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">最好情况时间法则度</font>(best case time complexity)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">最坏情况时间复杂度</font>(worst case time complexity)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">平均情况时间复杂度</font>(average case time complexity)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">均摊时间复杂度</font>(amortized time complexity)</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
+      		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">源码解析</a>
         		</li>
       		
 		</ul>
@@ -758,7 +402,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -767,7 +411,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/12/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-%E4%B8%8B%E9%83%A8/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/11/22/HashTable%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">展开全文 >></a>
         </p>
       
 
@@ -801,22 +445,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-复杂度分析-上部" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-HashMap实现原理-探险" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/10/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-%E4%B8%8A%E9%83%A8/">复杂度分析-上部</a>
+      <a class="article-title" href="/2019/11/20/HashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">HashMap实现原理_探险</a>
     </h1>
   
 
         
         
 
-<a href="/2019/08/10/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-%E4%B8%8A%E9%83%A8/" class="archive-article-date">
-  	<time datetime="2019-08-10T13:00:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
+<a href="/2019/11/20/HashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/" class="archive-article-date">
+  	<time datetime="2019-11-20T12:05:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-20</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -827,7 +471,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">5k字</span>
+        <span class="post-count">4.3k字</span>
       </span>
     </span>
 
@@ -853,10 +497,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;众所周知，数据结构与算法本身解决的是“快”和“省”的问题，即如何让代码运行得更快，如何让代码更省存储空间。所以，<font color="red">执行效率</font>是算法一个非常重要的考量指标。</p>
-<h2 id="1-为什么需要复杂度分析？"><a href="#1-为什么需要复杂度分析？" class="headerlink" title="1 为什么需要复杂度分析？"></a>1 为什么需要复杂度分析？</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我将代码跑一遍，通过统计、监控，就能得到算法执行时间个占用的内存大小。为什么要使用空间、时间复杂度分析呢？难道比我实实在在跑一遍得到的数据还要准确吗？</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上述评估算法执行效率的方法是正确的。大部分人称它为<strong>事后统计法</strong>，但它有非常大的局限性。</p>
+			<h1 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h1><p>深入理解Java集合中的源代码，可以帮助我们更好地了解大佬的意图，规避不必要的bug。</p>
+<p>源码中的一段注释，提取关键信息<br>Hash table based implementation of the Map interface. This implementation provides all of the optional map operations, and permits null values and the null key. (The HashMap class is roughly equivalent to Hashtable, except that it is unsynchronized and permits nulls.) This class makes no guarantees as to the order of the map; in particular, it does not guarantee that the order will remain constant over time.</p>
+<p>大致意思是：这个哈希表是基于 Map 接口的实现的，它允许 null 值和 null 键，它不是线程同步的，同时也不保证有序。</p>
 	
 	
     </div>
@@ -870,7 +513,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">源码解析</a>
         		</li>
       		
 		</ul>
@@ -882,7 +529,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -891,7 +538,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/10/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-%E4%B8%8A%E9%83%A8/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/11/20/HashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">展开全文 >></a>
         </p>
       
 
@@ -925,22 +572,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-数据结构与算法概览" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-MyBatis多数据源配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/">数据结构与算法概览</a>
+      <a class="article-title" href="/2019/11/17/MyBatis%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E9%85%8D%E7%BD%AE/">MyBatis多数据源配置</a>
     </h1>
   
 
         
         
 
-<a href="/2019/08/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/" class="archive-article-date">
-  	<time datetime="2019-08-08T12:00:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-08</time>
+<a href="/2019/11/17/MyBatis%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E9%85%8D%E7%BD%AE/" class="archive-article-date">
+  	<time datetime="2019-11-17T13:26:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-17</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -951,7 +598,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">573字</span>
+        <span class="post-count">1.1k字</span>
       </span>
     </span>
 
@@ -960,7 +607,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">6分</span>
       </span>
     </span>
 </div>
@@ -977,9 +624,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h1 id="1-定义"><a href="#1-定义" class="headerlink" title="1 定义"></a>1 定义</h1><p>&nbsp;&nbsp;&nbsp;广义上：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>数据结构</strong>：<font color="red">一组数据的存储结构</font>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>算法</strong>：<font color="red">操作数据的一组方法</font>。<br>&nbsp;&nbsp;&nbsp;狭义上：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;某些<font color="red">著名</font>的数据结构与算法,如队列、栈、堆、二分查找、动态规划等等。</p>
-<h1 id="2-二者关系"><a href="#2-二者关系" class="headerlink" title="2 二者关系"></a>2 二者关系</h1><p>&nbsp;&nbsp;&nbsp;数据结构与算法相辅相成。<font color="red">数据结构是为算法服务的，算法要作用在特定的数据结构之上</font>。因此，孤立而单独的讲解两者毫无意义。<br>&nbsp;&nbsp;&nbsp;比如，因为数组具有随机访问的特点，常用的二分查找算法需要用数组来存储数据。但是我们选择链表这种数据结构，二分查找就无法工作了，因为链表不支持随机访问。<br>&nbsp;&nbsp;&nbsp;数据结构是<font color="red">静态</font>的，它只是组织数据的一种方式。如果不在它的基础上操作、构建算法，孤立存在的数据结构是没有用的。</p>
+			<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>多数据源，一般都来解决主从模式或者业务比较复杂需要连接不同的分库来支持业务。我们遇到的情况是后者，网上找了很多，大都是根据 Jpa 来做多数据源解决方案，要不就是老的 Spring 多数据源解决方案，还有的是利用 Aop 动态切换，过于复杂，当前已Mybatis Xml为例，简单配置。</p>
 	
 	
     </div>
@@ -993,7 +638,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">MyBatis多数据源配置</a>
         		</li>
       		
 		</ul>
@@ -1005,7 +650,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        			<a href="/categories/MyBatis//" class="article-tag-list-link color3">MyBatis</a>
         		</li>
       		
 		</ul>
@@ -1014,7 +659,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/11/17/MyBatis%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E9%85%8D%E7%BD%AE/">展开全文 >></a>
         </p>
       
 
@@ -1048,22 +693,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-3-3-Docker容器用法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-LinkList实现原理-探险" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/10/3-3-Docker%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/">3-3-Docker容器用法</a>
+      <a class="article-title" href="/2019/11/17/LinkList%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">LinkList实现原理_探险</a>
     </h1>
   
 
         
         
 
-<a href="/2019/06/10/3-3-Docker%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2019-06-10T12:15:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-10</time>
+<a href="/2019/11/17/LinkList%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/" class="archive-article-date">
+  	<time datetime="2019-11-17T11:10:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-17</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1074,7 +719,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">7.5k字</span>
+        <span class="post-count">2.5k字</span>
       </span>
     </span>
 
@@ -1083,7 +728,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">33分</span>
+        <span class="post-count">11分</span>
       </span>
     </span>
 </div>
@@ -1100,11 +745,12 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>文章出处：<a href="https://blog.csdn.net/xc_zhou/article/details/80952307" target="_blank" rel="noopener">https://blog.csdn.net/xc_zhou/article/details/80952307</a></p>
-<h2 id="1-Docker-容器"><a href="#1-Docker-容器" class="headerlink" title="1 Docker 容器"></a>1 Docker 容器</h2><p>容器是 Docker 又一核心概念。</p>
-<p>简单的说，容器是独立运行的一个或一组应用，以及它们的运行态环境。对应的，虚拟机可以理解为模拟运行的一整套操作系统（提供了运行态环境和其他系统环境）和跑在上面的应用。</p>
-<h2 id="2-启动容器"><a href="#2-启动容器" class="headerlink" title="2 启动容器"></a>2 启动容器</h2><p>启动容器有两种方式，一种是基于镜像新建一个容器并启动，另外一个是将在终止状态（stopped）的容器重新启动。</p>
-<p>因为 Docker 的容器实在太轻量级了，很多时候用户都是随时删除和新创建容器。</p>
+			<h1 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h1><p>深入理解Java集合中的源代码，可以帮助我们更好地了解大佬的意图，规避不必要的bug。</p>
+<p>源码中的一段注释，提取关键信息</p>
+<p>Doubly-linked list implementation of the List and Deque interfaces. Implements all optional list operations, and permits all elements (including null).</p>
+<p>All of the operations perform as could be expected for a doubly-linked list. Operations that index into the list will traverse the list from the beginning or the end, whichever is closer to the specified index.</p>
+<p>Note that this implementation is not synchronized. If multiple threads access a linked list concurrently, and at least one of the threads modifies the list structurally, it must be synchronized externally. (A structural modification is any operation that adds or deletes one or more elements; merely setting the value of an element is not a structural modification.) This is typically accomplished by synchronizing on some object that naturally encapsulates the list</p>
+<p>由上述注释中可以大概得知： LinkedList 是由一个双向链表来实现的，它允许插入所有元素，包括 null，同时，它是线程不同步的。</p>
 	
 	
     </div>
@@ -1118,7 +764,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">源码解析</a>
         		</li>
       		
 		</ul>
@@ -1130,7 +780,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Docker//" class="article-tag-list-link color2">Docker</a>
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -1139,7 +789,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/10/3-3-Docker%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/11/17/LinkList%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">展开全文 >></a>
         </p>
       
 
@@ -1173,22 +823,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-3-2-Docker镜像用法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-ArrayList实现原理-探险" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/05/3-2-Docker%E9%95%9C%E5%83%8F%E7%94%A8%E6%B3%95/">3.2-Docker镜像用法</a>
+      <a class="article-title" href="/2019/11/16/ArrayList%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">ArrayList实现原理_探险</a>
     </h1>
   
 
         
         
 
-<a href="/2019/06/05/3-2-Docker%E9%95%9C%E5%83%8F%E7%94%A8%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2019-06-05T11:37:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-05</time>
+<a href="/2019/11/16/ArrayList%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/" class="archive-article-date">
+  	<time datetime="2019-11-16T09:58:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-16</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1199,7 +849,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">10k字</span>
+        <span class="post-count">1.9k字</span>
       </span>
     </span>
 
@@ -1208,7 +858,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">39分</span>
+        <span class="post-count">8分</span>
       </span>
     </span>
 </div>
@@ -1225,10 +875,10 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>文章出处：<a href="https://blog.csdn.net/xc_zhou/article/details/80952307" target="_blank" rel="noopener">https://blog.csdn.net/xc_zhou/article/details/80952307</a></p>
-<h2 id="1-使用-Dockerfile-定制镜像"><a href="#1-使用-Dockerfile-定制镜像" class="headerlink" title="1 使用 Dockerfile 定制镜像"></a>1 使用 Dockerfile 定制镜像</h2><p>从刚才的学习中，我们可以了解到，镜像的定制实际上就是定制每一层所添加的配置、文件。如果我们可以把每一层修改、安装、构建、操作的命令都写入一个脚本，用这个脚本来构建、定制镜像，那么之前提及的无法重复的问题、镜像构建透明性的问题、体积的问题就都会解决。这个脚本就是 Dockerfile。</p>
-<p>Dockerfile 是一个文本文件，其内包含了一条条的<strong>指令(Instruction)</strong>，每一条指令构建一层，因此每一条指令的内容，就是描述该层应当如何构建。</p>
-<p>还以之前定制 <code>nginx</code> 镜像为例，这次我们使用 Dockerfile 来定制。</p>
+			<h1 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h1><p>深入理解Java集合中的源代码，可以帮助我们更好地了解大佬的意图，规避不必要的bug。</p>
+<p>源码中的一段注释，提取关键信息</p>
+<p>Resizable-array implementation of the List interface. Implements all optional list operations, and permits all elements, including null. In addition to implementing the List interface, this class provides methods to manipulate the size of the array that is used internally to store the list. (This class is roughly equivalent to Vector, except that it is unsynchronized.)</p>
+<p>由上文注释可以大概得知：ArrayList是一个动态数组，实现了List接口以及list相关的所有方法，它允许所有元素的插入，包括null。另外，ArrayList和Vector除了线程不同步之外，大致相等。</p>
 	
 	
     </div>
@@ -1242,7 +892,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">源码解析</a>
         		</li>
       		
 		</ul>
@@ -1254,7 +908,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Docker//" class="article-tag-list-link color2">Docker</a>
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -1263,7 +917,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/05/3-2-Docker%E9%95%9C%E5%83%8F%E7%94%A8%E6%B3%95/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/11/16/ArrayList%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">展开全文 >></a>
         </p>
       
 
@@ -1297,22 +951,153 @@
 
   
     <meta charset="utf-8">
-<article id="post-3-1-Docker用法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-10-OpenResty用Lua语言实现简单服务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/24/3-1-Docker%E7%94%A8%E6%B3%95/">3.1-Docker用法</a>
+      <a class="article-title" href="/2019/11/12/10-OpenResty%E7%94%A8Lua%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1/">10-OpenResty用Lua语言实现简单服务</a>
     </h1>
   
 
         
         
 
-<a href="/2019/05/24/3-1-Docker%E7%94%A8%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2019-05-24T09:34:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-24</time>
+<a href="/2019/11/12/10-OpenResty%E7%94%A8Lua%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1/" class="archive-article-date">
+  	<time datetime="2019-11-12T13:40:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-12</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">329字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
+<h2 id="简单应用"><a href="#简单应用" class="headerlink" title="简单应用"></a>简单应用</h2><p><img src="/2019/11/12/10-OpenResty%E7%94%A8Lua%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1/93c7612e-307f-4fe2-84c8-ac0e13a042e0.png" alt></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Openresty</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Nginx/Openresty//" class="article-tag-list-link color5">Openresty</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/12/10-OpenResty%E7%94%A8Lua%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-9-SSL-Nginx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/11/9-SSL-Nginx/">9-SSL-Nginx</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/11/11/9-SSL-Nginx/" class="archive-article-date">
+  	<time datetime="2019-11-11T11:40:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-11</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1332,7 +1117,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">9分</span>
+        <span class="post-count">8分</span>
       </span>
     </span>
 </div>
@@ -1350,7 +1135,10 @@
     <div class="article-entry" itemprop="articleBody">
       
 			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h2 id="1-开启docker服务"><a href="#1-开启docker服务" class="headerlink" title="1 开启docker服务"></a>1 开启docker服务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">启动并加入开机启动</span><br><span class="line"></span><br><span class="line">sudo systemctl start docker</span><br><span class="line">sudo systemctl enable docker</span><br><span class="line"></span><br><span class="line">验证安装是否成功</span><br><span class="line">docker version</span><br><span class="line"></span><br><span class="line">有 client 和 server两部分即表示安装成功。</span><br></pre></td></tr></table></figure>
+<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>网络安全是当前非常受到关注的一个问题，大部分站点都是通过 <strong>HTTPS</strong> 来实现安全访问。如何将自己的站点改造成 <strong>HTTPS</strong> 站点呢？我们需要了解 <strong>SSL</strong> 协议。</p>
+<h2 id="知识普及"><a href="#知识普及" class="headerlink" title="知识普及"></a>知识普及</h2><ul>
+<li>TLS/SSL 发展历程<br><img src="/2019/11/11/9-SSL-Nginx/c97e2236-9c76-47a7-8101-c6a81360c5d0.jpg" alt></li></ul>
 	
 	
     </div>
@@ -1364,7 +1152,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SSL</a>
         		</li>
       		
 		</ul>
@@ -1376,7 +1168,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Docker//" class="article-tag-list-link color2">Docker</a>
+        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Nginx/SSL//" class="article-tag-list-link color4">SSL</a>
         		</li>
       		
 		</ul>
@@ -1385,7 +1181,252 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/24/3-1-Docker%E7%94%A8%E6%B3%95/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/11/11/9-SSL-Nginx/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-8-Nginx配置文件简易解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/10/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/">8-Nginx配置文件简易解析</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/11/10/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/" class="archive-article-date">
+  	<time datetime="2019-11-10T10:03:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-10</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">949字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
+<p><img src="/2019/11/10/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/0ad1a503df198bdb026ce7e8d83f53b9.png" alt>)<img src="/2019/11/10/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/d1820db3ef58dac396c152bf3d460f27.png" alt>)<img src="/2019/11/10/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/6432890dbc992690f2068620d9ee7951.png" alt></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/10/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-7-Nginx安装详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/09/7-Nginx%E5%AE%89%E8%A3%85%E8%AF%A6%E8%A7%A3/">7-Nginx安装详解</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/11/09/7-Nginx%E5%AE%89%E8%A3%85%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
+  	<time datetime="2019-11-09T11:01:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-09</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.1k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">4分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Nginx是一款轻量级高性能的Web服务器/反向代理服务器，</p>
+<p>并在一个BSD-like 协议下发行。其特点是占有内存少，并发能力强，<br>中国大陆使用nginx网站用户有：百度、京东、新浪、网易、腾讯、淘宝等。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/09/7-Nginx%E5%AE%89%E8%A3%85%E8%AF%A6%E8%A7%A3/">展开全文 >></a>
         </p>
       
 
@@ -1420,7 +1461,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1533,19 +1574,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Openresty</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1557,15 +1598,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码解析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1581,6 +1622,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MyBatis多数据源配置</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySql</a>
               </li>
              
@@ -1593,15 +1638,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MyBatis多数据源配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1625,11 +1666,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
+                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
+                <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1641,11 +1682,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Quartz</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Quartz</a>
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
