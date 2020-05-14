@@ -6,22 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://JavaSsun.github.io">
-  <title>Map-Reduce学习 | haoran&#39;s blog</title>
+  <title>JVM（四）：Jvm调优-命令 | haoran&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Author: haoransunWechat: SHR—97 Map-Reduce的过程与MongoDB如出一辙（如下图） 1 Map-Reduce简介&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;MapReduce是一种编程模型，用于大规模数据集（大于1TB）的并行运算。该运算充分利用Hadoop存储节点（DateNode）所在物理主机的CPU、内存、网络以及少许磁盘完成分布式计">
+  <meta name="description" content="转载自纯洁的微笑 前言运用jvm自带的命令可以方便的在生产监控和打印堆栈的日志信息帮忙我们来定位问题！虽然jvm调优成熟的工具已经有很多：jconsole、大名鼎鼎的VisualVM，IBM的Memory Analyzer等等，但是在生产环境出现问题的时候，一方面工具的使用会有所限制，另一方面喜欢装X的我们，总喜欢在出现问题的时候在终端输入一些命令来解决。所有的工具几乎都是依赖于jdk的接口和底层">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Map-Reduce学习">
-<meta property="og:url" content="http://javassun.github.io/2018/12/20/Map-Reduce%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:title" content="JVM（四）：Jvm调优-命令">
+<meta property="og:url" content="http://javassun.github.io/2019/01/01/JVM%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9AJvm%E8%B0%83%E4%BC%98-%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="haoran&#39;s blog">
-<meta property="og:description" content="Author: haoransunWechat: SHR—97 Map-Reduce的过程与MongoDB如出一辙（如下图） 1 Map-Reduce简介&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;MapReduce是一种编程模型，用于大规模数据集（大于1TB）的并行运算。该运算充分利用Hadoop存储节点（DateNode）所在物理主机的CPU、内存、网络以及少许磁盘完成分布式计">
-<meta property="og:image" content="http://javassun.github.io/2018/12/20/Map-Reduce%E5%AD%A6%E4%B9%A0/b8211209-31ef-425b-b480-9765994698c9.jpg">
-<meta property="og:image" content="http://javassun.github.io/2018/12/20/Map-Reduce%E5%AD%A6%E4%B9%A0/wpsA77A.tmp.jpg">
-<meta property="article:published_time" content="2018-12-20T12:43:43.000Z">
-<meta property="article:modified_time" content="2020-04-16T06:23:20.094Z">
+<meta property="og:description" content="转载自纯洁的微笑 前言运用jvm自带的命令可以方便的在生产监控和打印堆栈的日志信息帮忙我们来定位问题！虽然jvm调优成熟的工具已经有很多：jconsole、大名鼎鼎的VisualVM，IBM的Memory Analyzer等等，但是在生产环境出现问题的时候，一方面工具的使用会有所限制，另一方面喜欢装X的我们，总喜欢在出现问题的时候在终端输入一些命令来解决。所有的工具几乎都是依赖于jdk的接口和底层">
+<meta property="og:image" content="http://javassun.github.io/2019/01/01/JVM%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9AJvm%E8%B0%83%E4%BC%98-%E5%91%BD%E4%BB%A4/374b1b07-692f-465d-8abe-6a9a73308a02.jpg">
+<meta property="og:image" content="http://javassun.github.io/2019/01/01/JVM%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9AJvm%E8%B0%83%E4%BC%98-%E5%91%BD%E4%BB%A4/f94f68dc-b02d-4fe9-9e42-90fe379a3aa8.jpg">
+<meta property="article:published_time" content="2019-01-01T11:04:03.000Z">
+<meta property="article:modified_time" content="2020-05-14T19:18:03.221Z">
 <meta property="article:author" content="Allen">
-<meta property="article:tag" content="BigData">
+<meta property="article:tag" content="Jvm">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://javassun.github.io/2018/12/20/Map-Reduce%E5%AD%A6%E4%B9%A0/b8211209-31ef-425b-b480-9765994698c9.jpg">
+<meta name="twitter:image" content="http://javassun.github.io/2019/01/01/JVM%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9AJvm%E8%B0%83%E4%BC%98-%E5%91%BD%E4%BB%A4/374b1b07-692f-465d-8abe-6a9a73308a02.jpg">
   
   
     <link rel="icon" href="/assets/icon.png">
@@ -80,7 +80,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 87</nav>
+		<nav style="color: #7FFFD4;">总文章数 96</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -194,14 +194,14 @@
             
 
 <meta charset="utf-8">
-<article id="post-Map-Reduce学习" class="article article-type-post " itemscope itemprop="blogPost">
+<article id="post-JVM（四）：Jvm调优-命令" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Map-Reduce学习
+      JVM（四）：Jvm调优-命令
     </h1>
   
 
@@ -213,8 +213,8 @@
         </span>
 
 
-<a href="/2018/12/20/Map-Reduce%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2018-12-20T12:43:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-20</time>
+<a href="/2019/01/01/JVM%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9AJvm%E8%B0%83%E4%BC%98-%E5%91%BD%E4%BB%A4/" class="archive-article-date">
+  	<time datetime="2019-01-01T11:04:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-01</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -225,7 +225,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.6k字</span>
+        <span class="post-count">4.6k字</span>
       </span>
     </span>
 
@@ -234,7 +234,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">9分</span>
+        <span class="post-count">20分</span>
       </span>
     </span>
 </div>
@@ -254,7 +254,7 @@
     <div id="toc-article" class="toc-article">
         <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
         <strong class="toc-title">文章目录</strong>
-           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Map-Reduce简介"><span class="toc-number">1.</span> <span class="toc-text">1 Map-Reduce简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Map-Reduce计算过程"><span class="toc-number">2.</span> <span class="toc-text">2 Map-Reduce计算过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-举例"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-搭建YARN计算环境"><span class="toc-number">3.</span> <span class="toc-text">3 搭建YARN计算环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-掌握Map-Reduce编程模型"><span class="toc-number">4.</span> <span class="toc-text">4 掌握Map-Reduce编程模型</span></a></li></ol>
+           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jps"><span class="toc-number">2.</span> <span class="toc-text">jps</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令格式"><span class="toc-number">2.1.</span> <span class="toc-text">命令格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#option参数"><span class="toc-number">2.2.</span> <span class="toc-text">option参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例"><span class="toc-number">2.3.</span> <span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jstat"><span class="toc-number">3.</span> <span class="toc-text">jstat</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令格式-1"><span class="toc-number">3.1.</span> <span class="toc-text">命令格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数"><span class="toc-number">3.2.</span> <span class="toc-text">参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#option-参数总览"><span class="toc-number">3.2.1.</span> <span class="toc-text">option 参数总览</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#option-参数详解"><span class="toc-number">3.2.2.</span> <span class="toc-text">option 参数详解</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#class"><span class="toc-number">3.2.2.1.</span> <span class="toc-text">-class</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#compiler"><span class="toc-number">3.2.2.2.</span> <span class="toc-text">-compiler</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#gc"><span class="toc-number">3.2.2.3.</span> <span class="toc-text">-gc</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#gccapacity"><span class="toc-number">3.2.2.4.</span> <span class="toc-text">-gccapacity</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#gcutil"><span class="toc-number">3.2.2.5.</span> <span class="toc-text">-gcutil</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#gccause"><span class="toc-number">3.2.2.6.</span> <span class="toc-text">-gccause</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#gcnew"><span class="toc-number">3.2.2.7.</span> <span class="toc-text">-gcnew</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#gcnewcapacity"><span class="toc-number">3.2.2.8.</span> <span class="toc-text">-gcnewcapacity</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#gcold"><span class="toc-number">3.2.2.9.</span> <span class="toc-text">-gcold</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#gcoldcapacity"><span class="toc-number">3.2.2.10.</span> <span class="toc-text">-gcoldcapacity</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#gcpermcapacity"><span class="toc-number">3.2.2.11.</span> <span class="toc-text">-gcpermcapacity</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#printcompilation"><span class="toc-number">3.2.2.12.</span> <span class="toc-text">-printcompilation</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jmap"><span class="toc-number">4.</span> <span class="toc-text">jmap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令格式-2"><span class="toc-number">4.1.</span> <span class="toc-text">命令格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#option参数-1"><span class="toc-number">4.2.</span> <span class="toc-text">option参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例-1"><span class="toc-number">4.3.</span> <span class="toc-text">示例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#dump"><span class="toc-number">4.3.0.1.</span> <span class="toc-text">-dump</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#finalizerinfo"><span class="toc-number">4.3.0.2.</span> <span class="toc-text">-finalizerinfo</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#heap"><span class="toc-number">4.3.0.3.</span> <span class="toc-text">-heap</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#histo"><span class="toc-number">4.3.0.4.</span> <span class="toc-text">-histo</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#permstat"><span class="toc-number">4.3.0.5.</span> <span class="toc-text">-permstat</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#F"><span class="toc-number">4.3.0.6.</span> <span class="toc-text">-F</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jhat"><span class="toc-number">5.</span> <span class="toc-text">jhat</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令格式-3"><span class="toc-number">5.1.</span> <span class="toc-text">命令格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数-1"><span class="toc-number">5.2.</span> <span class="toc-text">参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例-2"><span class="toc-number">5.3.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析"><span class="toc-number">5.4.</span> <span class="toc-text">分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jstack"><span class="toc-number">6.</span> <span class="toc-text">jstack</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令格式-4"><span class="toc-number">6.1.</span> <span class="toc-text">命令格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#option参数-2"><span class="toc-number">6.2.</span> <span class="toc-text">option参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例-3"><span class="toc-number">6.3.</span> <span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jinfo"><span class="toc-number">7.</span> <span class="toc-text">jinfo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令格式-5"><span class="toc-number">7.1.</span> <span class="toc-text">命令格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#option参数-3"><span class="toc-number">7.2.</span> <span class="toc-text">option参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例-4"><span class="toc-number">7.3.</span> <span class="toc-text">示例</span></a></li></ol></li></ol>
          </div>
    <script type="text/javascript">
     function showToc(){
@@ -276,17 +276,301 @@
     <div class="article-entry" itemprop="articleBody">
       
 	
-		<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><font color="red">Map-Reduce的过程与MongoDB如出一辙</font>（如下图）<br><img src="/2018/12/20/Map-Reduce%E5%AD%A6%E4%B9%A0/b8211209-31ef-425b-b480-9765994698c9.jpg" alt></p>
-<h2 id="1-Map-Reduce简介"><a href="#1-Map-Reduce简介" class="headerlink" title="1 Map-Reduce简介"></a>1 Map-Reduce简介</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>MapReduce</strong>是一种编程模型，用于大规模数据集（大于<strong>1TB</strong>）的并行运算。该运算充分利用<strong>Hadoop</strong>存储节点（<strong>DateNode</strong>）所在物理主机的CPU、内存、网络以及少许磁盘完成分布式计算。通过在<strong>DateNode</strong>所在的主机上启动<strong>NodeManager</strong>进程，该进程负责启动计算任务。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>MapReduce</strong>计算框架将分布式计算分为两个阶段：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Map</strong>阶段：在任务计算初期，计算框架会提前计算好任务切片（对数据做区域划分），然后<font color="red">根据切片数目</font>启动MapTask，对切片所映射的数据做局部的分析/计算，将计算的临时结果存储到对应物理主机的磁盘（<strong>MapTask</strong>的溢写）。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Reduce</strong>阶段：在<strong>Map</strong>阶段的所有操作完成计算任务后，计算框架会选择若干机器（手动指定）执行ReduceTask，完成对<strong>Map</strong>阶段计算数据的汇总（<strong>shuffle</strong><font color="red">洗牌</font>）。</p>
+		<p>转载自<a href="http://www.ityouknow.com/jvm/2017/09/03/jvm-command.html" target="_blank" rel="noopener">纯洁的微笑</a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>运用jvm自带的命令可以方便的在生产监控和打印堆栈的日志信息帮忙我们来定位问题！虽然jvm调优成熟的工具已经有很多：jconsole、大名鼎鼎的VisualVM，IBM的Memory Analyzer等等，但是在生产环境出现问题的时候，一方面工具的使用会有所限制，另一方面喜欢装X的我们，总喜欢在出现问题的时候在终端输入一些命令来解决。所有的工具几乎都是依赖于jdk的接口和底层的这些命令，研究这些命令的使用也让我们更能了解jvm构成和特性。</p>
+<p>Sun JDK监控和故障处理命令有jps jstat jmap jhat jstack jinfo下面做一一介绍</p>
 <a id="more"></a>
-<h2 id="2-Map-Reduce计算过程"><a href="#2-Map-Reduce计算过程" class="headerlink" title="2 Map-Reduce计算过程"></a>2 Map-Reduce计算过程</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">修路的故事</font>：我们要修一条从<font color="red">西藏</font>到<font color="red">上海</font>的高速公路，由<strong>西北</strong>到<strong>东南</strong>；首先呢，这个工程量是十分巨大的，我们不能让一个工程队去修这条路，（从理论上来讲，是可行的，从祖父到重孙….）但是周期太长，中间会不会发生变故，还不好说。所以一个大的工程出现后，要有一个合理的时间规划，假如期限是1年内搞定，那怎么办呢？此时就需要路段区间同时施工，但区间同时施工又会产生一个问题，这个事儿该由谁来主持呢？史某一个人来主持吗？不可能，修路这种东西，尤其是跨地区修路，是非常难的。每个省、市。区都有自己的特殊的东西，如：钉子户的解决，拆迁的成本等。修路是一个国家的大事，不是某个人可以单独解决的。这就由每个地区的国土资源部来审核、主持。但是跨地区呢？由中央国土资源管理中心来审核、主持各个地区的国土资源部。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提议：修一条从西藏到上海的路，带动周边经济。中央的国土资源部拿到这个请求后，会开会商讨，觉得此事儿可行，靠谱。中央会下发文件，给该工程起代号。中央可以审批，但是有一个前提：就是在我审批之后，未来这个路的具体修法不可能让国家领导人来操心吧，所以：中央审批完成后，会由第一人做三件事，<strong>1.</strong> <font color="red">具体的施工区间（这条路会经过哪些省份、地区）路段</font>（方便各国土资源部进行各自的土地划量，区间同时作业）。<strong>2.</strong> 当地具体该怎么修这条路呢，是修水泥路呢？还是沥漆呢？路面有多宽，多厚？需不需要修建  绿化带呢？即<font color="red">修路的标准要定好</font>。<strong>3.</strong><font color="red">路段的对接标准</font>:各个工程队都不傻，都会只负责各自的划分区域，那些交接的区域该怎么对接呢？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在整理好上述三件事后，要将文件进行公示，<font color="red">即所有人都能看到</font> <strong>4</strong>.将文件详情上传给中央后，中央说：修吧。<strong>5.</strong> 中央会让河南省的国土资源部推荐一个人，即<font color="red">工程总监</font>，全权负责西藏到上海的修路事宜。 当地的（河南省）的国土资源部会选举、指派一个<font color="red">工程总监</font>作为<font color="red">负责人</font><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这个负责人可能一晚上都睡不好觉了，因为这是一个大项目，搞砸了咋笨呢？此人心里会思考：这么大的工程量我该怎样去检测、去实施呢？<strong>6.</strong><font color="red">修路的管理规范定制好</font>，每隔多长时间，<font color="red">各个工程队要向我汇报各个区间的施工进度</font>，有什么难题向我汇报，我要知道工程的施工进度（假如说在施工期间，某个施工队因为技术达不到而修不了某一区间段内的路，要及时通报我，我会从其他地方抽调专业的施工队来帮助你修路）；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这个工程总监想了一夜终于想好后，紧接着该第七步路。<strong>7.</strong> 工程总监从网上下载<font color="red">初期的公示文件</font>：因为要看路段从哪到哪，经过哪些区域，需要哪一个地区的国土资源部配合我的工作等详细信息；<strong>8.</strong> 一切就绪后，负责人就开始<font color="red">向中央申请资金</font>了，<strong>9.</strong> 工程总监将资金、工程区间段的图纸、施工信息等下发给拨给各个地区的<font color="red">国土资源部</font>，交给他们去具体的修路。<strong>10.</strong> 各地区国土资源部拿到拨款后，会在<font color="red">当地进行招标</font>，(带动当地经济，肥水不流外人田)  钱已经给到了<font color="red">工程队</font>。<font color="red">工程队</font>拿到钱后，并不是立马开始修路的，他要去根据<font color="red">公示文件</font>去判断区间范围和修路标准，<strong>11.</strong> 各地区中标<font color="red">工程队开始施工修路</font>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在<font color="red">施工期间</font>要注意的事项：各个地区开始同时施工，施工的第一阶段，<font color="blue">所有的工程队只修自己所负责的区间段，按照既定的标准去修就OK了</font>；各个施工队汇报工程进度时，汇报对象不再是当地政府，而是<font color="red">工程总监</font>，可能出现的状况：当地政府指定了某一个施工队，但是没有考虑施工的具体难易，本地的工程队儿干不了，向工程总监反馈，工程总监考虑从其他地区调工程队来（不到万不得已，不会调，因为有人力、物力、财力流失浪费）；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">当所有的工程队把自己所下发的区间段修完后，工程总监就知道了</font>，此时路段该对接了，第一阶段的Map，因为有公示文件订好了，照着干就行，工程总监干预不了，而第二阶段的Reduce阶段则由<strong>工程总监</strong>说了算。（不可能让某一个区域的个人去做对接，效率太慢，也不可能让所有的工程队都参与对接，浪费资源）由工程总监去指定若干个工程队去进行工程的对接（原来1000,现在改为10个或不等个）。</p>
-<h3 id="2-1-举例"><a href="#2-1-举例" class="headerlink" title="2.1 举例"></a>2.1 举例</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>1. Client JVM</strong><font color="red">(提议人)</font>，向<strong>ResourceManager</strong><font color="red">(中央国土资源中心)</font>进行<strong>Job</strong><font color="red">(提议)</font>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>2. ResourceManager</strong>会下发一个文件<strong>get new application(授权)</strong>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>3. Client JVM<font color="red">(客户端)</font></strong> 要<strong>copy job resource</strong><font color="red">(公示自己的文件)</font>，工程所用到的资源：路段信息、施工标准、运行上下文等。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>4. Client JVM</strong><font color="red">(提议人)</font>，向<strong>ResourceManager</strong><font color="red">(中央)</font>进行<strong>submit applications</strong><font color="red">(施工文档的提交)</font>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>5a. ResourceManager</strong><font color="red">(中央)</font>会<strong>start container</strong><font color="red">(下发命令)</font>，给地方的<strong>NodeManager</strong><font color="red">(国土资源中心)</font>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>5b. NodeManager</strong><font color="red">(当地政府)</font>除了找工程队外，还要选举、启动<strong>MRAppMaster</strong><font color="red">(工程总监)</font>，<strong>MRAppMaster只有一个</strong>。所有的地方政府都要听他的。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>6. MRAppMaster</strong><font color="red">(工程总监)</font> <strong>Initialize Job</strong><font color="red">(初始化Job)</font>，即相当于先将任务的<font color="red">监测进程</font>启动好。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>7. MRAppMaster</strong><font color="red">(工程总监)</font> <strong>retrieve input splits</strong><font color="red">(查看输入切片，相当于区域路段信息，)</font>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>8. MRAppMaster</strong><font color="red">(工程总监)</font> <strong>allocate resources</strong><font color="red">(拨款,请求资源：Cpu、内存等)</font> from <strong>ResourceManager</strong>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>9a. MRAppMaster</strong><font color="red">(工程总监)</font>会<strong>start container</strong><font color="red">(发号指令)</font>给<strong>NodeManager</strong><font color="red">(地方政府)</font>，去跟地方国土资源中心说：中央给你拨了那么多款，你去把路给我修好了。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>9b. NodeManagerr</strong><font color="red">(地方政府)</font>会<strong>launch</strong><font color="red">(启动)</font>一个本地的<strong>YarnChild</strong><font color="red">(工程队)</font>,此处的YarnChild是一个统称，它既可以是MapTask(区域施工)，也可以工程对接（Reduce Task）.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>10. YarnChild</strong><font color="red">(工程队)</font>会<strong>retrieve job resources</strong><font color="red">(查询确认自己的到底要修那条路，施工。对接标准如何，取决于启动的是区间作业工程队，还是工程对接工程队)</font>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>11. YarnChild</strong><font color="red">(工程队)</font><strong>run</strong> 任务，第一阶段一定是<strong>MapTask</strong>,这个任务量取决于有多少个<strong>切片</strong>（splits），第二阶段由<strong>MRAppMaster</strong>去找寻指定的<strong>NodeManager</strong>启动<strong>ReduceTask</strong>。<br><font color="red">路修完后：工程总监<strong>MRAppMaster</strong>、YarnChild<strong>工程队</strong>的头衔头没有了，当地政府还存在，所以整个<strong>Yarn框架</strong>的核心进程就两个：<strong>ResourceManager</strong>和<strong>NodeManager</strong>，MRAppMaster和YarnChild属于计算过程中的进程，用完就回收。</font></p>
-<p><img src="/2018/12/20/Map-Reduce%E5%AD%A6%E4%B9%A0/wpsA77A.tmp.jpg" alt><br><strong>ResourceManager</strong>：资源管理中心，管理<strong>NodeManager</strong>、分配任务资源<br><strong>NodeManager</strong>：启动<strong>MRAppMaster</strong>、<strong>YarnChild</strong><br><font color="red">以上两个是Yarn框架的常驻内存进程。</font><br><strong>MRAppMaster</strong>：监测任务运行（一个任务，只有一个）<br><strong>YarnChild</strong>：MapTask或者ReduceTask的总称，具体计算进程。<br><strong>YarnChild</strong>进程数目：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>MapTask</strong>：切片控制（数据逻辑映射区间）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>ReduceTask</strong>：程序手动指定。</p>
-<h2 id="3-搭建YARN计算环境"><a href="#3-搭建YARN计算环境" class="headerlink" title="3 搭建YARN计算环境"></a>3 搭建YARN计算环境</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS ~]# cp &#x2F;usr&#x2F;hadoop-2.6.0&#x2F;etc&#x2F;hadoop&#x2F;mapred-site.xml.template &#x2F;usr&#x2F;hadoop-2.6.0&#x2F;etc&#x2F;hadoop&#x2F;mapred-site.xml</span><br><span class="line"></span><br><span class="line">[root@CentOS ~]# vi &#x2F;usr&#x2F;hadoop-2.6.0&#x2F;etc&#x2F;hadoop&#x2F;mapred-site.xml</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">        &lt;name&gt;mapreduce.framework.name&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;yarn&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line"></span><br><span class="line">[root@CentOS ~]# vi &#x2F;usr&#x2F;hadoop-2.6.0&#x2F;etc&#x2F;hadoop&#x2F;yarn-site.xml</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.nodemanager.aux-services&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;mapreduce_shuffle&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.hostname&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;CentOS&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line"></span><br><span class="line">启动Yarn</span><br><span class="line">[root@CentOS ~]# start-yarn.sh</span><br><span class="line">[root@CentOS ~]# jps</span><br><span class="line">1628 SecondaryNameNode</span><br><span class="line">1780 ResourceManager</span><br><span class="line">1447 DataNode</span><br><span class="line">1905 Jps</span><br><span class="line">1363 NameNode</span><br><span class="line">1863 NodeManager</span><br></pre></td></tr></table></figure>
+<h2 id="jps"><a href="#jps" class="headerlink" title="jps"></a>jps</h2><p>JVM Process Status Tool,显示指定系统内所有的HotSpot虚拟机进程。</p>
+<h3 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jps [options] [hostid]</span><br></pre></td></tr></table></figure>
 
-<p>访问：<a href="http://centos:8088/cluster" target="_blank" rel="noopener">http://centos:8088/cluster</a> 即可看到MapReduce的界面化管理。<br><a href="https://www.jianshu.com/p/20ed705ed5b6?utm_campaign" target="_blank" rel="noopener">参考文档</a></p>
-<h2 id="4-掌握Map-Reduce编程模型"><a href="#4-掌握Map-Reduce编程模型" class="headerlink" title="4 掌握Map-Reduce编程模型"></a>4 掌握<strong>Map-Reduce</strong>编程模型</h2><p>未完待续</p>
+<h3 id="option参数"><a href="#option参数" class="headerlink" title="option参数"></a>option参数</h3><blockquote>
+<ul>
+<li>-l : 输出主类全名或jar路径</li>
+<li>-q : 只输出LVMID</li>
+<li>-m : 输出JVM启动时传递给main()的参数</li>
+<li>-v : 输出JVM启动时显示指定的JVM参数</li>
+</ul>
+</blockquote>
+<p>其中[option]、[hostid]参数也可以不写。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ jps -l -m</span><br><span class="line">  28920 org.apache.catalina.startup.Bootstrap start</span><br><span class="line">  11589 org.apache.catalina.startup.Bootstrap start</span><br><span class="line">  25816 sun.tools.jps.Jps -l -m</span><br></pre></td></tr></table></figure>
+
+<h2 id="jstat"><a href="#jstat" class="headerlink" title="jstat"></a>jstat</h2><p>jstat(JVM statistics Monitoring)是用于监视虚拟机运行时状态信息的命令，它可以显示出虚拟机进程中的类装载、内存、垃圾收集、JIT编译等运行数据。</p>
+<h3 id="命令格式-1"><a href="#命令格式-1" class="headerlink" title="命令格式"></a>命令格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jstat [option] LVMID [interval] [count]</span><br></pre></td></tr></table></figure>
+
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><blockquote>
+<ul>
+<li>[option] : 操作参数</li>
+<li>LVMID : 本地虚拟机进程ID</li>
+<li>[interval] : 连续输出的时间间隔</li>
+<li>[count] : 连续输出的次数</li>
+</ul>
+</blockquote>
+<h4 id="option-参数总览"><a href="#option-参数总览" class="headerlink" title="option 参数总览"></a>option 参数总览</h4><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Displays…</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>class</td>
+<td>class loader的行为统计。Statistics on the behavior of the class loader.</td>
+</tr>
+<tr>
+<td>compiler</td>
+<td>HotSpt JIT编译器行为统计。Statistics of the behavior of the HotSpot Just-in-Time compiler.</td>
+</tr>
+<tr>
+<td>gc</td>
+<td>垃圾回收堆的行为统计。Statistics of the behavior of the garbage collected heap.</td>
+</tr>
+<tr>
+<td>gccapacity</td>
+<td>各个垃圾回收代容量(young,old,perm)和他们相应的空间统计。Statistics of the capacities of the generations and their corresponding spaces.</td>
+</tr>
+<tr>
+<td>gcutil</td>
+<td>垃圾回收统计概述。Summary of garbage collection statistics.</td>
+</tr>
+<tr>
+<td>gccause</td>
+<td>垃圾收集统计概述（同-gcutil），附加最近两次垃圾回收事件的原因。Summary of garbage collection statistics (same as -gcutil), with the cause of the last and</td>
+</tr>
+<tr>
+<td>gcnew</td>
+<td>新生代行为统计。Statistics of the behavior of the new generation.</td>
+</tr>
+<tr>
+<td>gcnewcapacity</td>
+<td>新生代与其相应的内存空间的统计。Statistics of the sizes of the new generations and its corresponding spaces.</td>
+</tr>
+<tr>
+<td>gcold</td>
+<td>年老代和永生代行为统计。Statistics of the behavior of the old and permanent generations.</td>
+</tr>
+<tr>
+<td>gcoldcapacity</td>
+<td>年老代行为统计。Statistics of the sizes of the old generation.</td>
+</tr>
+<tr>
+<td>gcpermcapacity</td>
+<td>永生代行为统计。Statistics of the sizes of the permanent generation.</td>
+</tr>
+<tr>
+<td>printcompilation</td>
+<td>HotSpot编译方法统计。HotSpot compilation method statistics.</td>
+</tr>
+</tbody></table>
+<h4 id="option-参数详解"><a href="#option-参数详解" class="headerlink" title="option 参数详解"></a>option 参数详解</h4><h5 id="class"><a href="#class" class="headerlink" title="-class"></a>-class</h5><p>监视类装载、卸载数量、总空间以及耗费的时间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ jstat -class 11589</span><br><span class="line"> Loaded  Bytes  Unloaded  Bytes     Time   </span><br><span class="line">  7035  14506.3     0     0.0       3.67</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>Loaded : 加载class的数量</li>
+<li>Bytes : class字节大小</li>
+<li>Unloaded : 未加载class的数量</li>
+<li>Bytes : 未加载class的字节大小</li>
+<li>Time : 加载时间</li>
+</ul>
+</blockquote>
+<h5 id="compiler"><a href="#compiler" class="headerlink" title="-compiler"></a>-compiler</h5><p>输出JIT编译过的方法数量耗时等</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ jstat -compiler 1262</span><br><span class="line">Compiled Failed Invalid   Time   FailedType FailedMethod</span><br><span class="line">    2573      1       0    47.60          1 org&#x2F;apache&#x2F;catalina&#x2F;loader&#x2F;WebappClassLoader findResourceInternal</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>Compiled : 编译数量</li>
+<li>Failed : 编译失败数量</li>
+<li>Invalid : 无效数量</li>
+<li>Time : 编译耗时</li>
+<li>FailedType : 失败类型</li>
+<li>FailedMethod : 失败方法的全限定名</li>
+</ul>
+</blockquote>
+<h5 id="gc"><a href="#gc" class="headerlink" title="-gc"></a>-gc</h5><p>垃圾回收堆的行为统计，<strong>常用命令</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ jstat -gc 1262</span><br><span class="line"> S0C    S1C     S0U     S1U   EC       EU        OC         OU        PC       PU         YGC    YGCT    FGC    FGCT     GCT   </span><br><span class="line">26112.0 24064.0 6562.5  0.0   564224.0 76274.5   434176.0   388518.3  524288.0 42724.7    320    6.417   1      0.398    6.815</span><br></pre></td></tr></table></figure>
+
+<p><strong>C即Capacity 总容量，U即Used 已使用的容量</strong></p>
+<blockquote>
+<ul>
+<li>S0C : survivor0区的总容量</li>
+<li>S1C : survivor1区的总容量</li>
+<li>S0U : survivor0区已使用的容量</li>
+<li>S1U : survivor1区已使用的容量</li>
+<li>EC : Eden区的总容量</li>
+<li>EU : Eden区已使用的容量</li>
+<li>OC : Old区的总容量</li>
+<li>OU : Old区已使用的容量</li>
+<li>PC 当前perm的容量 (KB)</li>
+<li>PU perm的使用 (KB)</li>
+<li>YGC : 新生代垃圾回收次数</li>
+<li>YGCT : 新生代垃圾回收时间</li>
+<li>FGC : 老年代垃圾回收次数</li>
+<li>FGCT : 老年代垃圾回收时间</li>
+<li>GCT : 垃圾回收总消耗时间</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ jstat -gc 1262 2000 20</span><br></pre></td></tr></table></figure>
+
+<p>这个命令意思就是每隔2000ms输出1262的gc情况，一共输出20次</p>
+<h5 id="gccapacity"><a href="#gccapacity" class="headerlink" title="-gccapacity"></a>-gccapacity</h5><p>同-gc，不过还会输出Java堆各区域使用到的最大、最小空间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ jstat -gccapacity 1262</span><br><span class="line"> NGCMN    NGCMX     NGC    S0C   S1C       EC         OGCMN      OGCMX      OGC        OC       PGCMN    PGCMX     PGC      PC         YGC    FGC </span><br><span class="line">614400.0 614400.0 614400.0 26112.0 24064.0 564224.0   434176.0   434176.0   434176.0   434176.0 524288.0 1048576.0 524288.0 524288.0    320     1</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>NGCMN : 新生代占用的最小空间</li>
+<li>NGCMX : 新生代占用的最大空间</li>
+<li>OGCMN : 老年代占用的最小空间</li>
+<li>OGCMX : 老年代占用的最大空间</li>
+<li>OGC：当前年老代的容量 (KB)</li>
+<li>OC：当前年老代的空间 (KB)</li>
+<li>PGCMN : perm占用的最小空间</li>
+<li>PGCMX : perm占用的最大空间</li>
+</ul>
+</blockquote>
+<h5 id="gcutil"><a href="#gcutil" class="headerlink" title="-gcutil"></a>-gcutil</h5><p>同-gc，不过输出的是已使用空间占总空间的百分比</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ jstat -gcutil 28920</span><br><span class="line">  S0     S1     E      O      P     YGC     YGCT    FGC    FGCT     GCT   </span><br><span class="line"> 12.45   0.00  33.85   0.00   4.44  4       0.242     0    0.000    0.242</span><br></pre></td></tr></table></figure>
+
+<h5 id="gccause"><a href="#gccause" class="headerlink" title="-gccause"></a>-gccause</h5><p>垃圾收集统计概述（同-gcutil），附加最近两次垃圾回收事件的原因</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ jstat -gccause 28920</span><br><span class="line">  S0     S1     E      O      P       YGC     YGCT    FGC    FGCT     GCT    LGCC                 GCC                 </span><br><span class="line"> 12.45   0.00  33.85   0.00   4.44      4    0.242     0    0.000    0.242   Allocation Failure   No GC</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>LGCC：最近垃圾回收的原因</li>
+<li>GCC：当前垃圾回收的原因</li>
+</ul>
+</blockquote>
+<h5 id="gcnew"><a href="#gcnew" class="headerlink" title="-gcnew"></a>-gcnew</h5><p>统计新生代的行为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ jstat -gcnew 28920</span><br><span class="line"> S0C      S1C      S0U        S1U  TT  MTT  DSS      EC        EU         YGC     YGCT  </span><br><span class="line"> 419392.0 419392.0 52231.8    0.0  6   6    209696.0 3355520.0 1172246.0  4       0.242</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>TT：Tenuring threshold(提升阈值)</li>
+<li>MTT：最大的tenuring threshold</li>
+<li>DSS：survivor区域大小 (KB)</li>
+</ul>
+</blockquote>
+<h5 id="gcnewcapacity"><a href="#gcnewcapacity" class="headerlink" title="-gcnewcapacity"></a>-gcnewcapacity</h5><p>新生代与其相应的内存空间的统计</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ jstat -gcnewcapacity 28920</span><br><span class="line">  NGCMN      NGCMX       NGC      S0CMX     S0C     S1CMX     S1C       ECMX        EC        YGC   FGC </span><br><span class="line"> 4194304.0  4194304.0  4194304.0 419392.0 419392.0 419392.0 419392.0  3355520.0  3355520.0     4     0</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>NGC:当前年轻代的容量 (KB)</li>
+<li>S0CMX:最大的S0空间 (KB)</li>
+<li>S0C:当前S0空间 (KB)</li>
+<li>ECMX:最大eden空间 (KB)</li>
+<li>EC:当前eden空间 (KB)</li>
+</ul>
+</blockquote>
+<h5 id="gcold"><a href="#gcold" class="headerlink" title="-gcold"></a>-gcold</h5><p>统计旧生代的行为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ jstat -gcold 28920</span><br><span class="line">   PC       PU        OC           OU       YGC    FGC    FGCT     GCT   </span><br><span class="line">1048576.0  46561.7   6291456.0     0.0      4      0      0.000    0.242</span><br></pre></td></tr></table></figure>
+
+<h5 id="gcoldcapacity"><a href="#gcoldcapacity" class="headerlink" title="-gcoldcapacity"></a>-gcoldcapacity</h5><p>统计旧生代的大小和空间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ jstat -gcoldcapacity 28920</span><br><span class="line">   OGCMN       OGCMX        OGC         OC         YGC   FGC    FGCT     GCT   </span><br><span class="line">  6291456.0   6291456.0   6291456.0   6291456.0     4     0    0.000    0.242</span><br></pre></td></tr></table></figure>
+
+<h5 id="gcpermcapacity"><a href="#gcpermcapacity" class="headerlink" title="-gcpermcapacity"></a>-gcpermcapacity</h5><p>永生代行为统计</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ jstat -gcpermcapacity 28920</span><br><span class="line">    PGCMN      PGCMX       PGC         PC      YGC   FGC    FGCT     GCT   </span><br><span class="line"> 1048576.0  2097152.0  1048576.0  1048576.0     4     0    0.000    0.242</span><br></pre></td></tr></table></figure>
+
+<h5 id="printcompilation"><a href="#printcompilation" class="headerlink" title="-printcompilation"></a>-printcompilation</h5><p>hotspot编译方法统计</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ jstat -printcompilation 28920</span><br><span class="line">    Compiled  Size  Type Method</span><br><span class="line">    1291      78     1    java&#x2F;util&#x2F;ArrayList indexOf</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>Compiled：被执行的编译任务的数量</li>
+<li>Size：方法字节码的字节数</li>
+<li>Type：编译类型</li>
+<li>Method：编译方法的类名和方法名。类名使用”/” 代替 “.” 作为空间分隔符. 方法名是给出类的方法名. 格式是一致于HotSpot - XX:+PrintComplation 选项</li>
+</ul>
+</blockquote>
+<h2 id="jmap"><a href="#jmap" class="headerlink" title="jmap"></a>jmap</h2><p>jmap(JVM Memory Map)命令用于生成heap dump文件，如果不使用这个命令，还阔以使用-XX:+HeapDumpOnOutOfMemoryError参数来让虚拟机出现OOM的时候·自动生成dump文件。 jmap不仅能生成dump文件，还可以查询finalize执行队列、Java堆和永久代的详细信息，如当前使用率、当前使用的是哪种收集器等。</p>
+<h3 id="命令格式-2"><a href="#命令格式-2" class="headerlink" title="命令格式"></a>命令格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmap [option] LVMID</span><br></pre></td></tr></table></figure>
+
+<h3 id="option参数-1"><a href="#option参数-1" class="headerlink" title="option参数"></a>option参数</h3><blockquote>
+<ul>
+<li>dump : 生成堆转储快照</li>
+<li>finalizerinfo : 显示在F-Queue队列等待Finalizer线程执行finalizer方法的对象</li>
+<li>heap : 显示Java堆详细信息</li>
+<li>histo : 显示堆中对象的统计信息</li>
+<li>permstat : to print permanent generation statistics</li>
+<li>F : 当-dump没有响应时，强制生成dump快照</li>
+</ul>
+</blockquote>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><h5 id="dump"><a href="#dump" class="headerlink" title="-dump"></a>-dump</h5><p>常用格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-dump::live,format&#x3D;b,file&#x3D;&lt;filename&gt; pid</span><br></pre></td></tr></table></figure>
+
+<p>dump堆到文件,format指定输出格式，live指明是活着的对象,file指定文件名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ jmap -dump:live,format&#x3D;b,file&#x3D;dump.hprof 28920</span><br><span class="line">  Dumping heap to &#x2F;home&#x2F;xxx&#x2F;dump.hprof ...</span><br><span class="line">  Heap dump file created</span><br></pre></td></tr></table></figure>
+
+<p>dump.hprof这个后缀是为了后续可以直接用MAT(Memory Anlysis Tool)打开。</p>
+<h5 id="finalizerinfo"><a href="#finalizerinfo" class="headerlink" title="-finalizerinfo"></a>-finalizerinfo</h5><p>打印等待回收对象的信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ jmap -finalizerinfo 28920</span><br><span class="line">  Attaching to process ID 28920, please wait...</span><br><span class="line">  Debugger attached successfully.</span><br><span class="line">  Server compiler detected.</span><br><span class="line">  JVM version is 24.71-b01</span><br><span class="line">  Number of objects pending for finalization: 0</span><br></pre></td></tr></table></figure>
+
+<p>可以看到当前F-QUEUE队列中并没有等待Finalizer线程执行finalizer方法的对象。</p>
+<h5 id="heap"><a href="#heap" class="headerlink" title="-heap"></a>-heap</h5><p>打印heap的概要信息，GC使用的算法，heap的配置及wise heap的使用情况,可以用此来判断内存目前的使用情况以及垃圾回收情况</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">$ jmap -heap 28920</span><br><span class="line">  Attaching to process ID 28920, please wait...</span><br><span class="line">  Debugger attached successfully.</span><br><span class="line">  Server compiler detected.</span><br><span class="line">  JVM version is 24.71-b01  </span><br><span class="line"></span><br><span class="line">  using thread-local object allocation.</span><br><span class="line">  Parallel GC with 4 thread(s)&#x2F;&#x2F;GC 方式  </span><br><span class="line"></span><br><span class="line">  Heap Configuration: &#x2F;&#x2F;堆内存初始化配置</span><br><span class="line">     MinHeapFreeRatio &#x3D; 0 &#x2F;&#x2F;对应jvm启动参数-XX:MinHeapFreeRatio设置JVM堆最小空闲比率(default 40)</span><br><span class="line">     MaxHeapFreeRatio &#x3D; 100 &#x2F;&#x2F;对应jvm启动参数 -XX:MaxHeapFreeRatio设置JVM堆最大空闲比率(default 70)</span><br><span class="line">     MaxHeapSize      &#x3D; 2082471936 (1986.0MB) &#x2F;&#x2F;对应jvm启动参数-XX:MaxHeapSize&#x3D;设置JVM堆的最大大小</span><br><span class="line">     NewSize          &#x3D; 1310720 (1.25MB)&#x2F;&#x2F;对应jvm启动参数-XX:NewSize&#x3D;设置JVM堆的‘新生代’的默认大小</span><br><span class="line">     MaxNewSize       &#x3D; 17592186044415 MB&#x2F;&#x2F;对应jvm启动参数-XX:MaxNewSize&#x3D;设置JVM堆的‘新生代’的最大大小</span><br><span class="line">     OldSize          &#x3D; 5439488 (5.1875MB)&#x2F;&#x2F;对应jvm启动参数-XX:OldSize&#x3D;&lt;value&gt;:设置JVM堆的‘老生代’的大小</span><br><span class="line">     NewRatio         &#x3D; 2 &#x2F;&#x2F;对应jvm启动参数-XX:NewRatio&#x3D;:‘新生代’和‘老生代’的大小比率</span><br><span class="line">     SurvivorRatio    &#x3D; 8 &#x2F;&#x2F;对应jvm启动参数-XX:SurvivorRatio&#x3D;设置年轻代中Eden区与Survivor区的大小比值 </span><br><span class="line">     PermSize         &#x3D; 21757952 (20.75MB)  &#x2F;&#x2F;对应jvm启动参数-XX:PermSize&#x3D;&lt;value&gt;:设置JVM堆的‘永生代’的初始大小</span><br><span class="line">     MaxPermSize      &#x3D; 85983232 (82.0MB)&#x2F;&#x2F;对应jvm启动参数-XX:MaxPermSize&#x3D;&lt;value&gt;:设置JVM堆的‘永生代’的最大大小</span><br><span class="line">     G1HeapRegionSize &#x3D; 0 (0.0MB)  </span><br><span class="line"></span><br><span class="line">  Heap Usage:&#x2F;&#x2F;堆内存使用情况</span><br><span class="line">  PS Young Generation</span><br><span class="line">  Eden Space:&#x2F;&#x2F;Eden区内存分布</span><br><span class="line">     capacity &#x3D; 33030144 (31.5MB)&#x2F;&#x2F;Eden区总容量</span><br><span class="line">     used     &#x3D; 1524040 (1.4534378051757812MB)  &#x2F;&#x2F;Eden区已使用</span><br><span class="line">     free     &#x3D; 31506104 (30.04656219482422MB)  &#x2F;&#x2F;Eden区剩余容量</span><br><span class="line">     4.614088270399305% used &#x2F;&#x2F;Eden区使用比率</span><br><span class="line">  From Space:  &#x2F;&#x2F;其中一个Survivor区的内存分布</span><br><span class="line">     capacity &#x3D; 5242880 (5.0MB)</span><br><span class="line">     used     &#x3D; 0 (0.0MB)</span><br><span class="line">     free     &#x3D; 5242880 (5.0MB)</span><br><span class="line">     0.0% used</span><br><span class="line">  To Space:  &#x2F;&#x2F;另一个Survivor区的内存分布</span><br><span class="line">     capacity &#x3D; 5242880 (5.0MB)</span><br><span class="line">     used     &#x3D; 0 (0.0MB)</span><br><span class="line">     free     &#x3D; 5242880 (5.0MB)</span><br><span class="line">     0.0% used</span><br><span class="line">  PS Old Generation &#x2F;&#x2F;当前的Old区内存分布</span><br><span class="line">     capacity &#x3D; 86507520 (82.5MB)</span><br><span class="line">     used     &#x3D; 0 (0.0MB)</span><br><span class="line">     free     &#x3D; 86507520 (82.5MB)</span><br><span class="line">     0.0% used</span><br><span class="line">  PS Perm Generation&#x2F;&#x2F;当前的 “永生代” 内存分布</span><br><span class="line">     capacity &#x3D; 22020096 (21.0MB)</span><br><span class="line">     used     &#x3D; 2496528 (2.3808746337890625MB)</span><br><span class="line">     free     &#x3D; 19523568 (18.619125366210938MB)</span><br><span class="line">     11.337498256138392% used  </span><br><span class="line"></span><br><span class="line">  670 interned Strings occupying 43720 bytes.</span><br></pre></td></tr></table></figure>
+
+<p>可以很清楚的看到Java堆中各个区域目前的情况。</p>
+<h5 id="histo"><a href="#histo" class="headerlink" title="-histo"></a>-histo</h5><p>打印堆的对象统计，包括对象数、内存大小等等 （因为在dump:live前会进行full gc，如果带上live则只统计活对象，因此不加live的堆大小要大于加live堆的大小 ）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ jmap -histo:live 28920 | more</span><br><span class="line"> num     #instances         #bytes  class name</span><br><span class="line">----------------------------------------------</span><br><span class="line">   1:         83613       12012248  &lt;constMethodKlass&gt;</span><br><span class="line">   2:         23868       11450280  [B</span><br><span class="line">   3:         83613       10716064  &lt;methodKlass&gt;</span><br><span class="line">   4:         76287       10412128  [C</span><br><span class="line">   5:          8227        9021176  &lt;constantPoolKlass&gt;</span><br><span class="line">   6:          8227        5830256  &lt;instanceKlassKlass&gt;</span><br><span class="line">   7:          7031        5156480  &lt;constantPoolCacheKlass&gt;</span><br><span class="line">   8:         73627        1767048  java.lang.String</span><br><span class="line">   9:          2260        1348848  &lt;methodDataKlass&gt;</span><br><span class="line">  10:          8856         849296  java.lang.Class</span><br><span class="line">  ....</span><br></pre></td></tr></table></figure>
+
+<p>仅仅打印了前10行</p>
+<p><code>xml class name</code>是对象类型，说明如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">B  byte</span><br><span class="line">C  char</span><br><span class="line">D  double</span><br><span class="line">F  float</span><br><span class="line">I  int</span><br><span class="line">J  long</span><br><span class="line">Z  boolean</span><br><span class="line">[  数组，如[I表示int[]</span><br><span class="line">[L+类名 其他对象</span><br></pre></td></tr></table></figure>
+
+<h5 id="permstat"><a href="#permstat" class="headerlink" title="-permstat"></a>-permstat</h5><p>打印Java堆内存的永久保存区域的类加载器的智能统计信息。对于每个类加载器而言，它的名称、活跃度、地址、父类加载器、它所加载的类的数量和大小都会被打印。此外，包含的字符串数量和大小也会被打印。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ jmap -permstat 28920</span><br><span class="line">  Attaching to process ID 28920, please wait...</span><br><span class="line">  Debugger attached successfully.</span><br><span class="line">  Server compiler detected.</span><br><span class="line">  JVM version is 24.71-b01</span><br><span class="line">  finding class loader instances ..done.</span><br><span class="line">  computing per loader stat ..done.</span><br><span class="line">  please wait.. computing liveness.liveness analysis may be inaccurate ...</span><br><span class="line"></span><br><span class="line">  class_loader            classes bytes   parent_loader           alive?  type  </span><br><span class="line">  &lt;bootstrap&gt;             3111    18154296          null          live    &lt;internal&gt;</span><br><span class="line">  0x0000000600905cf8      1       1888    0x0000000600087f08      dead    sun&#x2F;reflect&#x2F;DelegatingClassLoader@0x00000007800500a0</span><br><span class="line">  0x00000006008fcb48      1       1888    0x0000000600087f08      dead    sun&#x2F;reflect&#x2F;DelegatingClassLoader@0x00000007800500a0</span><br><span class="line">  0x00000006016db798      0       0       0x00000006008d3fc0      dead    java&#x2F;util&#x2F;ResourceBundle$RBClassLoader@0x0000000780626ec0</span><br><span class="line">  0x00000006008d6810      1       3056      null          dead    sun&#x2F;reflect&#x2F;DelegatingClassLoader@0x00000007800500a0</span><br></pre></td></tr></table></figure>
+
+<h5 id="F"><a href="#F" class="headerlink" title="-F"></a>-F</h5><p>强制模式。如果指定的pid没有响应，请使用jmap -dump或jmap -histo选项。此模式下，不支持live子选项。</p>
+<h2 id="jhat"><a href="#jhat" class="headerlink" title="jhat"></a>jhat</h2><p>jhat(JVM Heap Analysis Tool)命令是与jmap搭配使用，用来分析jmap生成的dump，jhat内置了一个微型的HTTP/HTML服务器，生成dump的分析结果后，可以在浏览器中查看。在此要注意，一般不会直接在服务器上进行分析，因为jhat是一个耗时并且耗费硬件资源的过程，一般把服务器生成的dump文件复制到本地或其他机器上进行分析。</p>
+<h3 id="命令格式-3"><a href="#命令格式-3" class="headerlink" title="命令格式"></a>命令格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jhat [dumpfile]</span><br></pre></td></tr></table></figure>
+
+<h3 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h3><blockquote>
+<ul>
+<li>-stack false|true 关闭对象分配调用栈跟踪(tracking object allocation call stack)。 如果分配位置信息在堆转储中不可用. 则必须将此标志设置为 false. 默认值为 true.&gt;</li>
+<li>-refs false|true 关闭对象引用跟踪(tracking of references to objects)。 默认值为 true. 默认情况下, 返回的指针是指向其他特定对象的对象,如反向链接或输入引用(referrers or incoming references), 会统计/计算堆中的所有对象。&gt;</li>
+<li>-port port-number 设置 jhat HTTP server 的端口号. 默认值 7000.&gt;</li>
+<li>-exclude exclude-file 指定对象查询时需要排除的数据成员列表文件(a file that lists data members that should be excluded from the reachable objects query)。 例如, 如果文件列列出了 java.lang.String.value , 那么当从某个特定对象 Object o 计算可达的对象列表时, 引用路径涉及 java.lang.String.value 的都会被排除。&gt;</li>
+<li>-baseline exclude-file 指定一个基准堆转储(baseline heap dump)。 在两个 heap dumps 中有相同 object ID 的对象会被标记为不是新的(marked as not being new). 其他对象被标记为新的(new). 在比较两个不同的堆转储时很有用.&gt;</li>
+<li>-debug int 设置 debug 级别. 0 表示不输出调试信息。 值越大则表示输出更详细的 debug 信息.&gt;</li>
+<li>-version 启动后只显示版本信息就退出&gt;</li>
+<li>-J&lt; flag &gt; 因为 jhat 命令实际上会启动一个JVM来执行, 通过 -J 可以在启动JVM时传入一些启动参数. 例如, -J-Xmx512m 则指定运行 jhat 的Java虚拟机使用的最大堆内存为 512 MB. 如果需要使用多个JVM启动参数,则传入多个 -Jxxxxxx.</li>
+</ul>
+</blockquote>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ jhat -J-Xmx512m dump.hprof</span><br><span class="line">  eading from dump.hprof...</span><br><span class="line">  Dump file created Fri Mar 11 17:13:42 CST 2016</span><br><span class="line">  Snapshot read, resolving...</span><br><span class="line">  Resolving 271678 objects...</span><br><span class="line">  Chasing references, expect 54 dots......................................................</span><br><span class="line">  Eliminating duplicate references......................................................</span><br><span class="line">  Snapshot resolved.</span><br><span class="line">  Started HTTP server on port 7000</span><br><span class="line">  Server is ready.</span><br></pre></td></tr></table></figure>
+
+<p>中间的-J-Xmx512m是在dump快照很大的情况下分配512M内存去启动HTTP服务器，运行完之后就可在浏览器打开Http://localhost:7000进行快照分析 堆快照分析主要在最后面的Heap Histogram里，里面根据class列出了dump的时候所有存活对象。</p>
+<p><strong>分析同样一个dump快照，MAT需要的额外内存比jhat要小的多的多，所以建议使用MAT来进行分析，当然也看个人偏好。</strong></p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>打开浏览器Http://localhost:7000，该页面提供了几个查询功能可供使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">All classes including platform</span><br><span class="line">Show all members of the rootset</span><br><span class="line">Show instance counts for all classes (including platform)</span><br><span class="line">Show instance counts for all classes (excluding platform)</span><br><span class="line">Show heap histogram</span><br><span class="line">Show finalizer summary</span><br><span class="line">Execute Object Query Language (OQL) query</span><br></pre></td></tr></table></figure>
+
+<p>一般查看堆异常情况主要看这个两个部分： Show instance counts for all classes (excluding platform)，平台外的所有对象信息。如下图：</p>
+<p><img src="/2019/01/01/JVM%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9AJvm%E8%B0%83%E4%BC%98-%E5%91%BD%E4%BB%A4/374b1b07-692f-465d-8abe-6a9a73308a02.jpg" alt></p>
+<p>Show heap histogram 以树状图形式展示堆情况。如下图：</p>
+<p><img src="/2019/01/01/JVM%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9AJvm%E8%B0%83%E4%BC%98-%E5%91%BD%E4%BB%A4/f94f68dc-b02d-4fe9-9e42-90fe379a3aa8.jpg" alt></p>
+<p>具体排查时需要结合代码，观察是否大量应该被回收的对象在一直被引用或者是否有占用内存特别大的对象无法被回收。</p>
+<p><strong>一般情况，会down到客户端用工具来分析</strong></p>
+<h2 id="jstack"><a href="#jstack" class="headerlink" title="jstack"></a>jstack</h2><p>jstack用于生成java虚拟机当前时刻的线程快照。线程快照是当前java虚拟机内每一条线程正在执行的方法堆栈的集合，生成线程快照的主要目的是定位线程出现长时间停顿的原因，如线程间死锁、死循环、请求外部资源导致的长时间等待等。 线程出现停顿的时候通过jstack来查看各个线程的调用堆栈，就可以知道没有响应的线程到底在后台做什么事情，或者等待什么资源。 如果java程序崩溃生成core文件，jstack工具可以用来获得core文件的java stack和native stack的信息，从而可以轻松地知道java程序是如何崩溃和在程序何处发生问题。另外，jstack工具还可以附属到正在运行的java程序中，看到当时运行的java程序的java stack和native stack的信息, 如果现在运行的java程序呈现hung的状态，jstack是非常有用的。</p>
+<h3 id="命令格式-4"><a href="#命令格式-4" class="headerlink" title="命令格式"></a>命令格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jstack [option] LVMID</span><br></pre></td></tr></table></figure>
+
+<h3 id="option参数-2"><a href="#option参数-2" class="headerlink" title="option参数"></a>option参数</h3><blockquote>
+<ul>
+<li>-F : 当正常输出请求不被响应时，强制输出线程堆栈</li>
+<li>-l : 除堆栈外，显示关于锁的附加信息</li>
+<li>-m : 如果调用到本地方法的话，可以显示C/C++的堆栈</li>
+</ul>
+</blockquote>
+<h3 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">$ jstack -l 11494|more</span><br><span class="line">2016-07-28 13:40:04</span><br><span class="line">Full thread dump Java HotSpot(TM) 64-Bit Server VM (24.71-b01 mixed mode):</span><br><span class="line"></span><br><span class="line">&quot;Attach Listener&quot; daemon prio&#x3D;10 tid&#x3D;0x00007febb0002000 nid&#x3D;0x6b6f waiting on condition [0x0000000000000000]</span><br><span class="line">   java.lang.Thread.State: RUNNABLE</span><br><span class="line"></span><br><span class="line">   Locked ownable synchronizers:</span><br><span class="line">        - None</span><br><span class="line"></span><br><span class="line">&quot;http-bio-8005-exec-2&quot; daemon prio&#x3D;10 tid&#x3D;0x00007feb94028000 nid&#x3D;0x7b8c waiting on condition [0x00007fea8f56e000]</span><br><span class="line">   java.lang.Thread.State: WAITING (parking)</span><br><span class="line">        at sun.misc.Unsafe.park(Native Method)</span><br><span class="line">        - parking to wait for  &lt;0x00000000cae09b80&gt; (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)</span><br><span class="line">        at java.util.concurrent.locks.LockSupport.park(LockSupport.java:186)</span><br><span class="line">        at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2043)</span><br><span class="line">        at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)</span><br><span class="line">        at org.apache.tomcat.util.threads.TaskQueue.take(TaskQueue.java:104)</span><br><span class="line">        at org.apache.tomcat.util.threads.TaskQueue.take(TaskQueue.java:32)</span><br><span class="line">        at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1068)</span><br><span class="line">        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)</span><br><span class="line">        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)</span><br><span class="line">        at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)</span><br><span class="line">        at java.lang.Thread.run(Thread.java:745)</span><br><span class="line"></span><br><span class="line">   Locked ownable synchronizers:</span><br><span class="line">        - None</span><br><span class="line">      .....</span><br></pre></td></tr></table></figure>
+
+<h2 id="jinfo"><a href="#jinfo" class="headerlink" title="jinfo"></a>jinfo</h2><p>jinfo(JVM Configuration info)这个命令作用是实时查看和调整虚拟机运行参数。 之前的jps -v口令只能查看到显示指定的参数，如果想要查看未被显示指定的参数的值就要使用jinfo口令</p>
+<h3 id="命令格式-5"><a href="#命令格式-5" class="headerlink" title="命令格式"></a>命令格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jinfo [option] [args] LVMID</span><br></pre></td></tr></table></figure>
+
+<h3 id="option参数-3"><a href="#option参数-3" class="headerlink" title="option参数"></a>option参数</h3><blockquote>
+<ul>
+<li>-flag : 输出指定args参数的值</li>
+<li>-flags : 不需要args参数，输出所有JVM参数的值</li>
+<li>-sysprops : 输出系统属性，等同于System.getProperties()</li>
+</ul>
+</blockquote>
+<h3 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ jinfo -flags 11494</span><br><span class="line">-XX:CMSInitiatingOccupancyFraction&#x3D;80</span><br></pre></td></tr></table></figure>
 
 	
 	
@@ -301,7 +585,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">BigData</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Jvm</a>
         		</li>
       		
 		</ul>
@@ -313,7 +597,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/大数据//" class="article-tag-list-link color4">大数据</a>
+        			<a href="/categories/Jvm//" class="article-tag-list-link color4">Jvm</a>
         		</li>
       		
 		</ul>
@@ -368,7 +652,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://javassun.github.io/2018/12/20/Map-Reduce%E5%AD%A6%E4%B9%A0/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://javassun.github.io/2019/01/01/JVM%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9AJvm%E8%B0%83%E4%BC%98-%E5%91%BD%E4%BB%A4/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -383,18 +667,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/12/20/%E5%BA%94%E7%94%A8%E6%9E%B6%E6%9E%84%E6%BC%94%E5%8F%98%E8%BF%87%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/01/02/JVM%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9AGC%E5%88%86%E6%9E%90/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          应用架构演变过程
+          JVM（五）：GC分析
         
       </div>
     </a>
   
   
-    <a href="/2018/12/10/Hadoop%E5%AD%A6%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hadoop学习</div>
+    <a href="/2019/01/01/JVM%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9AGC%E7%AE%97%E6%B3%95-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JVM（三）：GC算法_垃圾收集器</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -421,7 +705,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Map-Reduce简介"><span class="toc-number">1.</span> <span class="toc-text">1 Map-Reduce简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Map-Reduce计算过程"><span class="toc-number">2.</span> <span class="toc-text">2 Map-Reduce计算过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-举例"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-搭建YARN计算环境"><span class="toc-number">3.</span> <span class="toc-text">3 搭建YARN计算环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-掌握Map-Reduce编程模型"><span class="toc-number">4.</span> <span class="toc-text">4 掌握Map-Reduce编程模型</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jps"><span class="toc-number">2.</span> <span class="toc-text">jps</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令格式"><span class="toc-number">2.1.</span> <span class="toc-text">命令格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#option参数"><span class="toc-number">2.2.</span> <span class="toc-text">option参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例"><span class="toc-number">2.3.</span> <span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jstat"><span class="toc-number">3.</span> <span class="toc-text">jstat</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令格式-1"><span class="toc-number">3.1.</span> <span class="toc-text">命令格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数"><span class="toc-number">3.2.</span> <span class="toc-text">参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#option-参数总览"><span class="toc-number">3.2.1.</span> <span class="toc-text">option 参数总览</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#option-参数详解"><span class="toc-number">3.2.2.</span> <span class="toc-text">option 参数详解</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#class"><span class="toc-number">3.2.2.1.</span> <span class="toc-text">-class</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#compiler"><span class="toc-number">3.2.2.2.</span> <span class="toc-text">-compiler</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#gc"><span class="toc-number">3.2.2.3.</span> <span class="toc-text">-gc</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#gccapacity"><span class="toc-number">3.2.2.4.</span> <span class="toc-text">-gccapacity</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#gcutil"><span class="toc-number">3.2.2.5.</span> <span class="toc-text">-gcutil</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#gccause"><span class="toc-number">3.2.2.6.</span> <span class="toc-text">-gccause</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#gcnew"><span class="toc-number">3.2.2.7.</span> <span class="toc-text">-gcnew</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#gcnewcapacity"><span class="toc-number">3.2.2.8.</span> <span class="toc-text">-gcnewcapacity</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#gcold"><span class="toc-number">3.2.2.9.</span> <span class="toc-text">-gcold</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#gcoldcapacity"><span class="toc-number">3.2.2.10.</span> <span class="toc-text">-gcoldcapacity</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#gcpermcapacity"><span class="toc-number">3.2.2.11.</span> <span class="toc-text">-gcpermcapacity</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#printcompilation"><span class="toc-number">3.2.2.12.</span> <span class="toc-text">-printcompilation</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jmap"><span class="toc-number">4.</span> <span class="toc-text">jmap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令格式-2"><span class="toc-number">4.1.</span> <span class="toc-text">命令格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#option参数-1"><span class="toc-number">4.2.</span> <span class="toc-text">option参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例-1"><span class="toc-number">4.3.</span> <span class="toc-text">示例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#dump"><span class="toc-number">4.3.0.1.</span> <span class="toc-text">-dump</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#finalizerinfo"><span class="toc-number">4.3.0.2.</span> <span class="toc-text">-finalizerinfo</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#heap"><span class="toc-number">4.3.0.3.</span> <span class="toc-text">-heap</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#histo"><span class="toc-number">4.3.0.4.</span> <span class="toc-text">-histo</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#permstat"><span class="toc-number">4.3.0.5.</span> <span class="toc-text">-permstat</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#F"><span class="toc-number">4.3.0.6.</span> <span class="toc-text">-F</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jhat"><span class="toc-number">5.</span> <span class="toc-text">jhat</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令格式-3"><span class="toc-number">5.1.</span> <span class="toc-text">命令格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数-1"><span class="toc-number">5.2.</span> <span class="toc-text">参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例-2"><span class="toc-number">5.3.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析"><span class="toc-number">5.4.</span> <span class="toc-text">分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jstack"><span class="toc-number">6.</span> <span class="toc-text">jstack</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令格式-4"><span class="toc-number">6.1.</span> <span class="toc-text">命令格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#option参数-2"><span class="toc-number">6.2.</span> <span class="toc-text">option参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例-3"><span class="toc-number">6.3.</span> <span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jinfo"><span class="toc-number">7.</span> <span class="toc-text">jinfo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令格式-5"><span class="toc-number">7.1.</span> <span class="toc-text">命令格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#option参数-3"><span class="toc-number">7.2.</span> <span class="toc-text">option参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例-4"><span class="toc-number">7.3.</span> <span class="toc-text">示例</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -461,7 +745,7 @@ if(true){
   	repo: 'mycomments',
   	owner: 'JavaSsun',
   	admin: ['JavaSsun'],
-  	id: 'Thu Dec 20 2018 20:43:43 GMT+0800',
+  	id: 'Tue Jan 01 2019 19:04:03 GMT+0800',
   	distractionFreeMode: 'true'
 })
 gitalk.render('gitalk-container') 
@@ -606,6 +890,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
@@ -614,7 +902,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+                <a href="javascript:void(0)" class="js-tag color4">Jvm</a>
               </li>
              
               <li class="article-tag-list-item">
