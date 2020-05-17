@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 96</nav>
+		<nav style="color: #7FFFD4;">总文章数 152</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -192,22 +192,22 @@
             
   
     <meta charset="utf-8">
-<article id="post-复杂度分析-上部" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-数据结构与算法第二阶段学习图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/10/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-%E4%B8%8A%E9%83%A8/">复杂度分析-上部</a>
+      <a class="article-title" href="/2019/09/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%E5%AD%A6%E4%B9%A0%E5%9B%BE/">数据结构与算法第二阶段学习图</a>
     </h1>
   
 
         
         
 
-<a href="/2019/08/10/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-%E4%B8%8A%E9%83%A8/" class="archive-article-date">
-  	<time datetime="2019-08-10T13:00:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
+<a href="/2019/09/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%E5%AD%A6%E4%B9%A0%E5%9B%BE/" class="archive-article-date">
+  	<time datetime="2019-09-16T12:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -218,749 +218,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">5k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">19分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;众所周知，数据结构与算法本身解决的是“快”和“省”的问题，即如何让代码运行得更快，如何让代码更省存储空间。所以，<font color="red">执行效率</font>是算法一个非常重要的考量指标。</p>
-<h2 id="1-为什么需要复杂度分析？"><a href="#1-为什么需要复杂度分析？" class="headerlink" title="1 为什么需要复杂度分析？"></a>1 为什么需要复杂度分析？</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我将代码跑一遍，通过统计、监控，就能得到算法执行时间个占用的内存大小。为什么要使用空间、时间复杂度分析呢？难道比我实实在在跑一遍得到的数据还要准确吗？</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上述评估算法执行效率的方法是正确的。大部分人称它为<strong>事后统计法</strong>，但它有非常大的局限性。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/10/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-%E4%B8%8A%E9%83%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-数据结构与算法概览" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/">数据结构与算法概览</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/08/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/" class="archive-article-date">
-  	<time datetime="2019-08-08T12:00:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-08</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">573字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h1 id="1-定义"><a href="#1-定义" class="headerlink" title="1 定义"></a>1 定义</h1><p>&nbsp;&nbsp;&nbsp;广义上：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>数据结构</strong>：<font color="red">一组数据的存储结构</font>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>算法</strong>：<font color="red">操作数据的一组方法</font>。<br>&nbsp;&nbsp;&nbsp;狭义上：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;某些<font color="red">著名</font>的数据结构与算法,如队列、栈、堆、二分查找、动态规划等等。</p>
-<h1 id="2-二者关系"><a href="#2-二者关系" class="headerlink" title="2 二者关系"></a>2 二者关系</h1><p>&nbsp;&nbsp;&nbsp;数据结构与算法相辅相成。<font color="red">数据结构是为算法服务的，算法要作用在特定的数据结构之上</font>。因此，孤立而单独的讲解两者毫无意义。<br>&nbsp;&nbsp;&nbsp;比如，因为数组具有随机访问的特点，常用的二分查找算法需要用数组来存储数据。但是我们选择链表这种数据结构，二分查找就无法工作了，因为链表不支持随机访问。<br>&nbsp;&nbsp;&nbsp;数据结构是<font color="red">静态</font>的，它只是组织数据的一种方式。如果不在它的基础上操作、构建算法，孤立存在的数据结构是没有用的。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-3-3-Docker容器用法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/10/3-3-Docker%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/">3-3-Docker容器用法</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/06/10/3-3-Docker%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2019-06-10T12:15:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-10</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">7.5k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">33分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>文章出处：<a href="https://blog.csdn.net/xc_zhou/article/details/80952307" target="_blank" rel="noopener">https://blog.csdn.net/xc_zhou/article/details/80952307</a></p>
-<h2 id="1-Docker-容器"><a href="#1-Docker-容器" class="headerlink" title="1 Docker 容器"></a>1 Docker 容器</h2><p>容器是 Docker 又一核心概念。</p>
-<p>简单的说，容器是独立运行的一个或一组应用，以及它们的运行态环境。对应的，虚拟机可以理解为模拟运行的一整套操作系统（提供了运行态环境和其他系统环境）和跑在上面的应用。</p>
-<h2 id="2-启动容器"><a href="#2-启动容器" class="headerlink" title="2 启动容器"></a>2 启动容器</h2><p>启动容器有两种方式，一种是基于镜像新建一个容器并启动，另外一个是将在终止状态（stopped）的容器重新启动。</p>
-<p>因为 Docker 的容器实在太轻量级了，很多时候用户都是随时删除和新创建容器。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Docker//" class="article-tag-list-link color2">Docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/10/3-3-Docker%E5%AE%B9%E5%99%A8%E7%94%A8%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-3-2-Docker镜像用法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/05/3-2-Docker%E9%95%9C%E5%83%8F%E7%94%A8%E6%B3%95/">3.2-Docker镜像用法</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/06/05/3-2-Docker%E9%95%9C%E5%83%8F%E7%94%A8%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2019-06-05T11:37:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-05</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">10k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">39分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>文章出处：<a href="https://blog.csdn.net/xc_zhou/article/details/80952307" target="_blank" rel="noopener">https://blog.csdn.net/xc_zhou/article/details/80952307</a></p>
-<h2 id="1-使用-Dockerfile-定制镜像"><a href="#1-使用-Dockerfile-定制镜像" class="headerlink" title="1 使用 Dockerfile 定制镜像"></a>1 使用 Dockerfile 定制镜像</h2><p>从刚才的学习中，我们可以了解到，镜像的定制实际上就是定制每一层所添加的配置、文件。如果我们可以把每一层修改、安装、构建、操作的命令都写入一个脚本，用这个脚本来构建、定制镜像，那么之前提及的无法重复的问题、镜像构建透明性的问题、体积的问题就都会解决。这个脚本就是 Dockerfile。</p>
-<p>Dockerfile 是一个文本文件，其内包含了一条条的<strong>指令(Instruction)</strong>，每一条指令构建一层，因此每一条指令的内容，就是描述该层应当如何构建。</p>
-<p>还以之前定制 <code>nginx</code> 镜像为例，这次我们使用 Dockerfile 来定制。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Docker//" class="article-tag-list-link color2">Docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/05/3-2-Docker%E9%95%9C%E5%83%8F%E7%94%A8%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-3-1-Docker用法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/24/3-1-Docker%E7%94%A8%E6%B3%95/">3.1-Docker用法</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/05/24/3-1-Docker%E7%94%A8%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2019-05-24T09:34:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-24</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.4k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">9分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h2 id="1-开启docker服务"><a href="#1-开启docker服务" class="headerlink" title="1 开启docker服务"></a>1 开启docker服务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">启动并加入开机启动</span><br><span class="line"></span><br><span class="line">sudo systemctl start docker</span><br><span class="line">sudo systemctl enable docker</span><br><span class="line"></span><br><span class="line">验证安装是否成功</span><br><span class="line">docker version</span><br><span class="line"></span><br><span class="line">有 client 和 server两部分即表示安装成功。</span><br></pre></td></tr></table></figure>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Docker//" class="article-tag-list-link color2">Docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/24/3-1-Docker%E7%94%A8%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-2-2-Docker启动报错" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/23/2-2-Docker%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/">2.2-Docker启动报错</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/05/23/2-2-Docker%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/" class="archive-article-date">
-  	<time datetime="2019-05-23T10:32:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-23</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.3k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>出处：<a href="https://mp.weixin.qq.com/s/2GNKmRJtBGHhUyVBRbRgeA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/2GNKmRJtBGHhUyVBRbRgeA</a></p>
-<h2 id="1-Docker虚拟化故障"><a href="#1-Docker虚拟化故障" class="headerlink" title="1 Docker虚拟化故障"></a>1 Docker虚拟化故障</h2><p>Docker虚拟化主要有三类故障：<br><strong>应用故障：</strong>应用执行状态与预期不一致。</p>
-<p><strong>容器故障：</strong>无法正确创建、停止、更新容器等。</p>
-<p><strong>集群故障：</strong>集群创建失败、更新失败、无法连接等。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Docker//" class="article-tag-list-link color2">Docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/23/2-2-Docker%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-2-Docker安装与部署" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/18/2-Docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/">2.1-Docker安装与部署</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/05/18/2-Docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/" class="archive-article-date">
-  	<time datetime="2019-05-18T11:29:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-18</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">425字</span>
+        <span class="post-count">11字</span>
       </span>
     </span>
 
@@ -986,8 +244,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h2 id="1-系统要求"><a href="#1-系统要求" class="headerlink" title="1 系统要求"></a>1 系统要求</h2><p>Docker 需要安装在 CentOS 7 64 位的平台，并且内核版本不低于 3.10. CentOS 7.× 满足要求的最低内核版本要求，但由于 CentOS 7 内核版本比较低，部分功能（如 <code>overlay2</code> 存储层驱动）无法使用，并且部分功能可能不太稳定。所以建议大家升级到最新的 CentOS 版本,并且内核也更新到最新的稳定版本.</p>
+			<p>第二阶段学习知识点汇总。</p>
 	
 	
     </div>
@@ -1001,7 +258,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -1013,7 +270,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Docker//" class="article-tag-list-link color2">Docker</a>
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -1022,7 +279,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/18/2-Docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/09/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%E5%AD%A6%E4%B9%A0%E5%9B%BE/">展开全文 >></a>
         </p>
       
 
@@ -1056,22 +313,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-NIO学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-数据结构与算法第一阶段学习图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/15/NIO%E5%AD%A6%E4%B9%A0/">NIO学习</a>
+      <a class="article-title" href="/2019/09/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E5%AD%A6%E4%B9%A0%E5%9B%BE/">数据结构与算法第一阶段学习图</a>
     </h1>
   
 
         
         
 
-<a href="/2019/05/15/NIO%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2019-05-15T12:01:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-15</time>
+<a href="/2019/09/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E5%AD%A6%E4%B9%A0%E5%9B%BE/" class="archive-article-date">
+  	<time datetime="2019-09-16T12:16:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1082,7 +339,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.2k字</span>
+        <span class="post-count">11字</span>
       </span>
     </span>
 
@@ -1091,7 +348,128 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">4分</span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>第一阶段学习知识点汇总。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E5%AD%A6%E4%B9%A0%E5%9B%BE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-2018-2019工作总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/15/2018-2019%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93/">2018-2019工作总结</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/09/15/2018-2019%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93/" class="archive-article-date">
+  	<time datetime="2019-09-15T11:18:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-15</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">11.7k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">64分</span>
       </span>
     </span>
 </div>
@@ -1109,7 +487,8 @@
     <div class="article-entry" itemprop="articleBody">
       
 			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h2 id="一、高并发互联网应用架构设计"><a href="#一、高并发互联网应用架构设计" class="headerlink" title="一、高并发互联网应用架构设计"></a>一、高并发互联网应用架构设计</h2><p><img src="/2019/05/15/NIO%E5%AD%A6%E4%B9%A0/428003e0-81bd-46c5-9fd9-a97c25281220.jpg" alt></p>
+<h1 id="1-判断一个点是否在不规则多边形内部"><a href="#1-判断一个点是否在不规则多边形内部" class="headerlink" title="1  判断一个点是否在不规则多边形内部"></a>1  判断一个点是否在不规则多边形内部</h1><p>用途：<br>用于判断企业是否落在指定区域内</p>
+<p>以一个点做射线，计算它与多边形边界的交点个数<br>       奇数个：在多边形内部<br>       偶数个：在多边形外部<br>推论：<br>如果点在多边形内部，射线第一次穿越边界一定是穿出多边形。<br>如果点在多边形外部，射线第一次穿越边界一定是进入多边形。</p>
 	
 	
     </div>
@@ -1123,36 +502,17 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NIO</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络编程</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">搬砖结晶</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/网络编程//" class="article-tag-list-link color5">网络编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/15/NIO%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/09/15/2018-2019%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93/">展开全文 >></a>
         </p>
       
 
@@ -1186,22 +546,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-1-Docker缘由" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-52-算法实战（五）-如何用学过的数据结构和算法实现一个短网址系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/">1-Docker缘由</a>
+      <a class="article-title" href="/2019/09/14/52-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%94%EF%BC%89-%E5%A6%82%E4%BD%95%E7%94%A8%E5%AD%A6%E8%BF%87%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%9F%AD%E7%BD%91%E5%9D%80%E7%B3%BB%E7%BB%9F/">52-算法实战（五）_如何用学过的数据结构和算法实现一个短网址系统</a>
     </h1>
   
 
         
         
 
-<a href="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/" class="archive-article-date">
-  	<time datetime="2019-05-12T12:23:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-12</time>
+<a href="/2019/09/14/52-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%94%EF%BC%89-%E5%A6%82%E4%BD%95%E7%94%A8%E5%AD%A6%E8%BF%87%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%9F%AD%E7%BD%91%E5%9D%80%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
+  	<time datetime="2019-09-14T13:16:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-14</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1212,7 +572,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">8.8k字</span>
+        <span class="post-count">4.6k字</span>
       </span>
     </span>
 
@@ -1221,7 +581,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">30分</span>
+        <span class="post-count">15分</span>
       </span>
     </span>
 </div>
@@ -1238,8 +598,12 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>作者：雪雁<br><a href="https://www.cnblogs.com/codelove/p/10030439.html" target="_blank" rel="noopener">文章转载出自这里</a>：<a href="https://www.cnblogs.com/codelove/" target="_blank" rel="noopener">https://www.cnblogs.com/codelove/</a></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>随着生产力的发展尤其是弹性架构的广泛应用（如微服务），许多一流开发者都将应用托管到了应用容器上，如Google、微软、亚马逊、阿里、京东、新浪等等。</p>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>短网址服务你用过吗？如果我们在微博里发布一条带网址的信息，微博会把里面的网址转化成一个更短的网址。我们只要访问这个短网址，就相当于访问原始的网址。比如下面这两个网址，尽管长度不同，但是都可以跳转到我的一个 GitHub 开源项目里。其中，第二个网址就是通过新浪提供的短网址服务生成的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">原始网址：https:&#x2F;&#x2F;github.com&#x2F;wangzheng0822&#x2F;ratelimiter4j</span><br><span class="line">短网址：http:&#x2F;&#x2F;t.cn&#x2F;EtR9QEG</span><br></pre></td></tr></table></figure>
+
+<p>从功能上讲，短网址服务其实非常简单，就是把一个长的网址转化成一个短的网址。作为一名软件工程师，你是否思考过，这样一个简单的功能，是如何实现的呢？底层都依赖了哪些数据结构和算法呢？短网址服务整体介绍</p>
 	
 	
     </div>
@@ -1253,7 +617,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -1265,7 +629,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Docker//" class="article-tag-list-link color2">Docker</a>
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -1274,7 +638,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/09/14/52-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%94%EF%BC%89-%E5%A6%82%E4%BD%95%E7%94%A8%E5%AD%A6%E8%BF%87%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%9F%AD%E7%BD%91%E5%9D%80%E7%B3%BB%E7%BB%9F/">展开全文 >></a>
         </p>
       
 
@@ -1308,22 +672,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-0-Docker配置国内免费registry-mirror" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-51-算法实战（四）-剖析微服务接口鉴权限流背后的数据结构和算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/08/0-Docker%E9%85%8D%E7%BD%AE%E5%9B%BD%E5%86%85%E5%85%8D%E8%B4%B9registry-mirror/">0-Docker配置国内免费registry_mirror</a>
+      <a class="article-title" href="/2019/09/09/51-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E5%9B%9B%EF%BC%89-%E5%89%96%E6%9E%90%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E9%99%90%E6%B5%81%E8%83%8C%E5%90%8E%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">51-算法实战（四）_剖析微服务接口鉴权限流背后的数据结构和算法</a>
     </h1>
   
 
         
         
 
-<a href="/2019/05/08/0-Docker%E9%85%8D%E7%BD%AE%E5%9B%BD%E5%86%85%E5%85%8D%E8%B4%B9registry-mirror/" class="archive-article-date">
-  	<time datetime="2019-05-08T11:23:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
+<a href="/2019/09/09/51-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E5%9B%9B%EF%BC%89-%E5%89%96%E6%9E%90%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E9%99%90%E6%B5%81%E8%83%8C%E5%90%8E%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2019-09-09T12:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-09</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1334,7 +698,385 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.1k字</span>
+        <span class="post-count">4.3k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">14分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><a href="https://github.com/wangzheng0822/ratelimiter4j" target="_blank" rel="noopener">限流开发库/框架-java</a></p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>微服务是最近几年才兴起的概念。简单点讲，就是把复杂的大应用，解耦拆分成几个小的应用。这样做的好处有很多。比如，这样有利于团队组织架构的拆分，毕竟团队越大协作的难度越大；再比如，每个应用都可以独立运维，独立扩容，独立上线，各个应用之间互不影响。不用像原来那样，一个小功能上线，整个大应用都要重新发布。</p>
+<p>不过，有利就有弊。大应用拆分成微服务之后，服务之间的调用关系变得更复杂，平台的整体复杂熵升高，出错的概率、debug 问题的难度都高了好几个数量级。所以，为了解决这些问题，<strong>服务治理</strong>便成了微服务的一个技术重点。</p>
+<p>所谓服务治理，简单点讲，就是管理微服务，保证平台整体正常、平稳地运行。服务治理涉及的内容比较多，比如鉴权、限流、降级、熔断、监控告警等等。这些服务治理功能的实现，底层依赖大量的数据结构和算法。今天，就拿其中的鉴权和限流这两个功能，看看它们的实现过程中都要用到哪些数据结构和算法。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/09/51-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E5%9B%9B%EF%BC%89-%E5%89%96%E6%9E%90%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E9%99%90%E6%B5%81%E8%83%8C%E5%90%8E%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-50-算法实战（三）-剖析高性能队列Disruptor背后的数据结构和算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/06/50-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89-%E5%89%96%E6%9E%90%E9%AB%98%E6%80%A7%E8%83%BD%E9%98%9F%E5%88%97Disruptor%E8%83%8C%E5%90%8E%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">50-算法实战（三）_剖析高性能队列Disruptor背后的数据结构和算法</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/09/06/50-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89-%E5%89%96%E6%9E%90%E9%AB%98%E6%80%A7%E8%83%BD%E9%98%9F%E5%88%97Disruptor%E8%83%8C%E5%90%8E%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2019-09-06T13:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-06</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">3.3k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">12分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><a href="https://github.com/LMAX-Exchange/disruptor" target="_blank" rel="noopener">Disruptor源码</a>。</p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Disruptor 你是否听说过呢？它是一种内存消息队列。从功能上讲，它其实有点儿类似 Kafka。不过，和 Kafka 不同的是，Disruptor 是线程之间用于消息传递的队列。它在 Apache Storm、Camel、Log4j 2 等很多知名项目中都有广泛应用。</p>
+<p>之所以如此受青睐，主要还是因为它的性能表现非常优秀。它比 Java 中另外一个非常常用的内存消息队列 ArrayBlockingQueue（ABS）的性能，要高一个数量级，可以算得上是最快的内存消息队列了。它还因此获得过 Oracle 官方的 Duke 大奖。</p>
+<p>如此高性能的内存消息队列，在设计和实现上，必然有它独到的地方。今天，我们就来一块儿看下，<font color="red">Disruptor 是如何做到如此高性能的？其底层依赖了哪些数据结构和算法？</font></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/06/50-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89-%E5%89%96%E6%9E%90%E9%AB%98%E6%80%A7%E8%83%BD%E9%98%9F%E5%88%97Disruptor%E8%83%8C%E5%90%8E%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-49-算法实战（二）-剖析搜索引擎背后的经典数据结构和算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/02/49-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89-%E5%89%96%E6%9E%90%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E8%83%8C%E5%90%8E%E7%9A%84%E7%BB%8F%E5%85%B8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">49-算法实战（二）_剖析搜索引擎背后的经典数据结构和算法</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/09/02/49-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89-%E5%89%96%E6%9E%90%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E8%83%8C%E5%90%8E%E7%9A%84%E7%BB%8F%E5%85%B8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2019-09-02T12:18:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">5.8k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">19分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><a href="https://github.com/kkzfl22/searchEngine" target="_blank" rel="noopener">搜索引擎微代码-java实现</a></p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>像百度、Google 这样的搜索引擎，在我们平时的工作、生活中，几乎天天都会用到。如果我们把搜索引擎也当作一个互联网产品的话，那它跟社交、电商这些类型的产品相比，有一个非常大的区别，那就是，它是一个技术驱动的产品。所谓技术驱动是指，搜索引擎实现起来，技术难度非常大，技术的好坏直接决定了这个产品的核心竞争力。</p>
+<p>在搜索引擎的设计与实现中，会用到大量的算法。有很多针对特定问题的算法，也有很多我们之前讲到的基础算法。所以，百度、Google 这样的搜索引擎公司，在面试的时候，会格外重视考察候选人的算法能力。</p>
+<p><font color="red">今天借助搜索引擎，这样一个非常有技术含量的产品，来给你展示一下，数据结构和算法是如何应用在其中的。</font></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/02/49-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89-%E5%89%96%E6%9E%90%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E8%83%8C%E5%90%8E%E7%9A%84%E7%BB%8F%E5%85%B8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-48-算法实战（一）-剖析Redis常用数据类型对应的数据结构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/25/48-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89-%E5%89%96%E6%9E%90Redis%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%AF%B9%E5%BA%94%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">48-算法实战（一）_剖析Redis常用数据类型对应的数据结构</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/08/25/48-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89-%E5%89%96%E6%9E%90Redis%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%AF%B9%E5%BA%94%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="archive-article-date">
+  	<time datetime="2019-08-25T12:09:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-25</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">3k字</span>
       </span>
     </span>
 
@@ -1361,9 +1103,13 @@
     <div class="article-entry" itemprop="articleBody">
       
 			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于国内特殊的网络环境，往往我们从 <strong><a href="https://hub.docker.com/" target="_blank" rel="noopener">Docker Hub</a></strong>中拉取镜像并不能成功，而且速度特别慢。</p>
-<p>那么我们可以给Docker配置一个国内的registry mirror，当我们需要的镜像在mirror中则直接返回，如果没有则从Docker Hub中拉取。<font color="red">是否使用registry mirror对Docker用户来说是透明的</font>。</p>
-<p>DaoCloud在国内提供了首个Docker Hub镜像服务，而且免费，大大提高了国内Docker用户的使用热情。</p>
+<p><a href="https://github.com/antirez/redis" target="_blank" rel="noopener">Redis-源码</a></p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="Redis-数据库介绍"><a href="#Redis-数据库介绍" class="headerlink" title="Redis 数据库介绍"></a>Redis 数据库介绍</h2><p>Redis 是一种键值（Key-Value）数据库。相对于关系型数据库（比如 MySQL），Redis 也被叫作<strong>非关系型数据库</strong>。</p>
+<p>像 MySQL 这样的关系型数据库，表的结构比较复杂，会包含很多字段，可以通过 SQL 语句，来实现非常复杂的查询需求。而 Redis 中只包含“键”和“值”两部分，只能通过“键”来查询“值”。正是因为这样简单的存储结构，也让 Redis 的读写效率非常高。</p>
+<p>除此之外，Redis 主要是作为内存数据库来使用，也就是说，数据是存储在内存中的。尽管它经常被用作内存数据库，但是，它也支持将数据存储在硬盘中。这一点，我们后面会介绍。</p>
+<p>Redis 中，键的数据类型是字符串，但是为了丰富数据存储的方式，方便开发者使用，值的数据类型有很多，常用的数据类型有这样几种，它们分别是字符串、列表、字典、集合、有序集合。</p>
+<p>“字符串（string）”这种数据类型非常简单，对应到数据结构里，就是<strong>字符串</strong>。你应该非常熟悉，这里我就不多介绍了。我们着重看下，其他四种比较复杂点的数据类型，看看它们底层都依赖了哪些数据结构。</p>
 	
 	
     </div>
@@ -1377,7 +1123,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -1389,7 +1135,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Docker//" class="article-tag-list-link color2">Docker</a>
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -1398,7 +1144,255 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/08/0-Docker%E9%85%8D%E7%BD%AE%E5%9B%BD%E5%86%85%E5%85%8D%E8%B4%B9registry-mirror/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/08/25/48-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89-%E5%89%96%E6%9E%90Redis%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%AF%B9%E5%BA%94%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-47-并行算法-如何利用并行处理提高算法的执行效率" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/20/47-%E5%B9%B6%E8%A1%8C%E7%AE%97%E6%B3%95-%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E5%B9%B6%E8%A1%8C%E5%A4%84%E7%90%86%E6%8F%90%E9%AB%98%E7%AE%97%E6%B3%95%E7%9A%84%E6%89%A7%E8%A1%8C%E6%95%88%E7%8E%87/">47-并行算法_如何利用并行处理提高算法的执行效率</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/08/20/47-%E5%B9%B6%E8%A1%8C%E7%AE%97%E6%B3%95-%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E5%B9%B6%E8%A1%8C%E5%A4%84%E7%90%86%E6%8F%90%E9%AB%98%E7%AE%97%E6%B3%95%E7%9A%84%E6%89%A7%E8%A1%8C%E6%95%88%E7%8E%87/" class="archive-article-date">
+  	<time datetime="2019-08-20T13:09:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-20</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2.8k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">9分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>时间复杂度是衡量算法执行效率的一种标准。但是，时间复杂度并不能跟性能划等号。在真实的软件开发中，即便在不降低时间复杂度的情况下，也可以通过一些优化手段，提升代码的执行效率。毕竟，对于实际的软件开发来说，即便是像 10%、20% 这样微小的性能提升，也是非常可观的。</p>
+<p>算法的目的就是为了提高代码执行的效率。那<strong>当算法无法再继续优化的情况下，我们该如何来进一步提高执行效率呢？</strong>我们今天就讲一种非常简单但又非常好用的优化方法，那就是并行计算。今天，我就通过几个例子，给你展示一下，<font color="red">如何借助并行计算的处理思想对算法进行改造？</font></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/20/47-%E5%B9%B6%E8%A1%8C%E7%AE%97%E6%B3%95-%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E5%B9%B6%E8%A1%8C%E5%A4%84%E7%90%86%E6%8F%90%E9%AB%98%E7%AE%97%E6%B3%95%E7%9A%84%E6%89%A7%E8%A1%8C%E6%95%88%E7%8E%87/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-46-索引-如何在海量数据中快速查找某个数据" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/16/46-%E7%B4%A2%E5%BC%95-%E5%A6%82%E4%BD%95%E5%9C%A8%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%AB%E9%80%9F%E6%9F%A5%E6%89%BE%E6%9F%90%E4%B8%AA%E6%95%B0%E6%8D%AE/">46-索引_如何在海量数据中快速查找某个数据</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/08/16/46-%E7%B4%A2%E5%BC%95-%E5%A6%82%E4%BD%95%E5%9C%A8%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%AB%E9%80%9F%E6%9F%A5%E6%89%BE%E6%9F%90%E4%B8%AA%E6%95%B0%E6%8D%AE/" class="archive-article-date">
+  	<time datetime="2019-08-16T12:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2.8k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">9分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在前文我们讲了 MySQL 数据库索引的实现原理。MySQL 底层依赖的是 B+ 树这种数据结构。<font color="red">那类似 Redis 这样的 Key-Value 数据库中的索引，又是怎么实现的呢？底层依赖的又是什么数据结构呢？</font></p>
+<p>今天，就来讲一下索引这种常用的技术解决思路，底层往往会依赖哪些数据结构。同时，通过索引这个应用场景，也带你回顾一下，之前我们学过的几种支持动态集合的数据结构。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/16/46-%E7%B4%A2%E5%BC%95-%E5%A6%82%E4%BD%95%E5%9C%A8%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%AB%E9%80%9F%E6%9F%A5%E6%89%BE%E6%9F%90%E4%B8%AA%E6%95%B0%E6%8D%AE/">展开全文 >></a>
         </p>
       
 
@@ -1433,7 +1427,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1574,15 +1568,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码解析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1622,11 +1616,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color4">Swagger2</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Swagger2</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">

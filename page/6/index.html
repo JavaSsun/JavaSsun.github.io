@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 96</nav>
+		<nav style="color: #7FFFD4;">总文章数 152</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -192,22 +192,22 @@
             
   
     <meta charset="utf-8">
-<article id="post-Idea常用插件及个性化配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-45-搜索-如何用A星搜索算法实现游戏中的寻路功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/">Idea常用插件及个性化配置</a>
+      <a class="article-title" href="/2019/08/13/45-%E6%90%9C%E7%B4%A2-%E5%A6%82%E4%BD%95%E7%94%A8A%E6%98%9F%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E5%AF%BB%E8%B7%AF%E5%8A%9F%E8%83%BD/">45-搜索_如何用A*搜索算法实现游戏中的寻路功能</a>
     </h1>
   
 
         
         
 
-<a href="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2019-04-19T11:23:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-19</time>
+<a href="/2019/08/13/45-%E6%90%9C%E7%B4%A2-%E5%A6%82%E4%BD%95%E7%94%A8A%E6%98%9F%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E5%AF%BB%E8%B7%AF%E5%8A%9F%E8%83%BD/" class="archive-article-date">
+  	<time datetime="2019-08-13T13:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -218,226 +218,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.7k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-	
-		<h1 id="Idea常用插件"><a href="#Idea常用插件" class="headerlink" title="Idea常用插件"></a>Idea常用插件</h1><h2 id="1-阿里代码规约检查"><a href="#1-阿里代码规约检查" class="headerlink" title="1 阿里代码规约检查"></a>1 阿里代码规约检查</h2><p>Alibaba Java Coding Guidelines</p>
-<h2 id="2-lombok"><a href="#2-lombok" class="headerlink" title="2 lombok"></a>2 lombok</h2><p>一个在编译阶段修改增强Java类的工具，使用方式基于注解，常用于:</p>
-<ul>
-<li>为Java POJO生成属性对应的getter,setter等</li>
-<li>为Java POJO生成builder构造器模式的实现</li>
-<li>为Java类自动添加其他重复性代码，比如日志记录的声明代码可以通过@Slf4j注解添加</li>
-</ul>
-<p>项目中是否引入Lombok一直是个存在争议，它的主要优势在于消除Java类的部分臃肿代码，提高开发效率，降低代码维护成本；缺点是需要IDE插件支持，需要团队统一规范，另外某些注解生成的隐性实现可能导致问题跟踪调试困难。</p>
-<p>第一步 下载插件<br><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/6b41d245-56a5-477e-9bc5-41a1b73cdf7f.png" alt></p>
-<p>开启编译，防止编译时出错<br><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/963fd399-a722-4f50-b2c1-c5d6331ec897.png" alt></p>
-<p>使用前需引入依赖<br>第二步：引入 lombok</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.projectlombok&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;lombok&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.18.8&lt;&#x2F;version&gt;</span><br><span class="line">    &lt;scope&gt;provided&lt;&#x2F;scope&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
-<p>使用：</p>
-<ul>
-<li><p><strong>@Data</strong>：注解在类上；提供类所有属性的 getting 和 setting 方法，此外还提供了equals、canEqual、hashCode、toString 方法,相当于同时加上以下注解@Setter @Getter,@ToString,@EqualsAndHashCode</p>
-</li>
-<li><p>@Setter、@Getter：注解在类和属性上；为属性提供 setting、getting 方法</p>
-</li>
-<li><p>@ToString：生成toString方法，默认情况下，会输出类名、所有属性，属性按照顺序输出，以逗号分割。</p>
-</li>
-<li><p>@EqualsAndHashCode：实现equals()方法和hashCode()方法</p>
-</li>
-<li><p><strong>@Builder</strong>：构建 建造者模式</p>
-</li>
-<li><p><strong>@NonNull</strong>：该注解快速判断是否为空,如果为空,则抛出java.lang.NullPointerException</p>
-</li>
-<li><p>@Synchronized：该注解自动添加到同步机制,有趣的是,生成的代码并不是直接锁方法,而是锁代码块， 作用范围是方法上</p>
-</li>
-<li><p>@Log4j ：注解在类上；为类提供一个 属性名为log 的 log4j 日志对象</p>
-</li>
-<li><p><strong>@NoArgsConstructor</strong>：注解在类上；为类提供一个无参的构造方法</p>
-</li>
-<li><p>@RequiredArgsConstructor：_注解在类上；为类提供一个部分参的构造方法(使用类中所有带有@NonNull注解的或者带有final修饰的成员变量生成对应的构造方法)</p>
-</li>
-<li><p><strong>@AllArgsConstructor</strong>：注解在类上；为类提供一个全参的构造方法</p>
-</li>
-<li><p>@Cleanup：用于确保已分配的资源被释放,如IO的连接关闭</p>
-</li>
-<li><p>@SneakyThrows：抛异常</p>
-</li>
-<li><p>@Accessors(chain = true)：使用链式结构</p>
-</li>
-</ul>
-<h2 id="3-Free-Mybatis-plugin"><a href="#3-Free-Mybatis-plugin" class="headerlink" title="3 Free Mybatis plugin"></a>3 Free Mybatis plugin</h2><p><strong>Free Mybatis plugin</strong> 方便于在Mapper接口与XML文件之间进行跳转。<br><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/a3f8ca1f-fab4-4cdf-a3b1-4850634b4d17.jpg" alt></p>
-<h2 id="4-Maven-Helper"><a href="#4-Maven-Helper" class="headerlink" title="4 Maven Helper"></a>4 Maven Helper</h2><p>手动打依赖树，使用 mvn dependency : tree 查看太过于繁琐。</p>
-<p>Maven Helper是一个将maven依赖树可视化的插件，可以方便的查看依赖以及处理依赖冲突问题。对经常使用maven的同学来说可以说是神器。</p>
-<p>安装好后，在 pom.xmlwe文件底部会多出一个 <strong>Dependency Analyzer</strong>选项<br><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/7db0ae9c-0721-424e-8ff6-ab30c72b934f.jpg" alt></p>
-<p>点开后：<br><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/9538d5c0-930b-462d-a2c4-ffe66d59d836.jpg" alt></p>
-<p>找到冲突，点击右键，然后选择<strong>Exclude</strong>即可排除冲突版本的Jar包。</p>
-<p>除此之外，还可以用Idea自带的——————Maven依赖结构图，打开Maven窗口，选择Dependencies，然后点击那个图标（Show Dependencies）或者使用快捷键（Ctrl+Alt+Shift+U），即可打开Maven依赖关系结构图</p>
-<p><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/70199fe8-e8f3-4359-a8ea-8072b950f91e.jpg" alt></p>
-<p>在图中，我们可以看到有一些红色的实线，这些红色实线就是依赖冲突，蓝色实线则是正常的依赖。</p>
-<p><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/3d90c5ad-10b7-47ad-9c68-6df72f2d4ac6.jpg" alt></p>
-<h2 id="5-GsonFormat"><a href="#5-GsonFormat" class="headerlink" title="5 GsonFormat"></a>5 GsonFormat</h2><p>GsonFormat插件将JSONObject格式的字符串解析成实体，自动生成实体类。</p>
-<p>自定义个javaBean(无任何内容，就一个空的类)</p>
-<p>复制你要解析的json</p>
-<p>然后alt+insert弹出如下界面 或者使用快捷键 alt+s</p>
-<p>通过快捷键调出该插件<br><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/f4855842-db99-434b-8eee-634ea1e3dec3.png" alt></p>
-<p>粘贴到如下界面：<br><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/045a4ed2-faf5-4494-ba29-fb4f6478b63a.jpg" alt></p>
-<p>点击ok,自动生成对应javaBean的代码：<br><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/42f62daf-8b8d-4e72-932c-196b1e218cf9.png" alt></p>
-<h2 id="6-GenerateAllSetter"><a href="#6-GenerateAllSetter" class="headerlink" title="6 GenerateAllSetter"></a>6 GenerateAllSetter</h2><p>方法： 在实例上 使用  alt + enter</p>
-<p>GenerateAllSetter是一键调用一个对象的所有set方法并且赋予默认值的插件。在对象字段 多的时候非常方便，相当给力。<br><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/cecc423d-87d8-4999-be78-947ac0090cd4.jpg" alt></p>
-<h2 id="7-BashSupport"><a href="#7-BashSupport" class="headerlink" title="7 BashSupport"></a>7 BashSupport</h2><p>一个可以编写调试shell脚本的插件。</p>
-<p>使用插件执行脚本<br><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/573c64f8-6302-451c-929c-e4e9168b1a17.png" alt></p>
-<h2 id="8-PlantUml"><a href="#8-PlantUml" class="headerlink" title="8  PlantUml"></a>8  PlantUml</h2><p>PlantUml是一个画类图、时序图等的一个插件。<br><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/ec4fed5a-e3b3-44d4-ba34-37cc528c43a5.jpg" alt></p>
-<h2 id="9-Mybatis-log-plugin"><a href="#9-Mybatis-log-plugin" class="headerlink" title="9 Mybatis-log-plugin"></a>9 Mybatis-log-plugin</h2><p>开发的项目一般都少不了日志系统，而我们在书写mysql语句的时候，参数的对应，往往有时候会忽略，mybatis自己控制的参数编译对应，个人感觉有点反人类，我们可以使用这个插件变成自己比较直观的对应~</p>
-<p>选中需要转换的mybatis log日志，然后点击右键，选择Restore sql from slection</p>
-<p><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/01296088-a0b1-4b9b-b532-803a2a464f32.jpg" alt></p>
-<p><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/2cf0bc35-cadc-4257-a5b4-e48a0138bc85.jpg" alt></p>
-<h2 id="9-Activate-power-mode或者Intellij-power-mode-II"><a href="#9-Activate-power-mode或者Intellij-power-mode-II" class="headerlink" title="9 Activate-power-mode或者Intellij_power_mode_II"></a>9 Activate-power-mode或者Intellij_power_mode_II</h2><p>个人感觉 没啥实用。</p>
-<p><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/20181029180853386.gif" alt></p>
-<p><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/20181029180908797.gif" alt></p>
-<h1 id="Idea-个人习惯配置"><a href="#Idea-个人习惯配置" class="headerlink" title="Idea 个人习惯配置"></a>Idea 个人习惯配置</h1><h2 id="1-全局-默认-vs-当前"><a href="#1-全局-默认-vs-当前" class="headerlink" title="1 全局(默认) vs 当前"></a>1 全局(默认) vs 当前</h2><p><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/36bf81b8-0e9a-489c-b926-522f644df29f.jpg" alt></p>
-<h2 id="2-全局JDK（默认配置）"><a href="#2-全局JDK（默认配置）" class="headerlink" title="2 全局JDK（默认配置）"></a>2 全局JDK（默认配置）</h2><p>具体步骤：顶部工具栏  File -&gt;Other Settins -&gt; Default Project Structure -&gt; SDKs -&gt; JDK</p>
-<p><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/88efb046-ae74-4693-9636-1052abbf1e53.jpg" alt></p>
-<h2 id="3-全局-Maven-默认配置"><a href="#3-全局-Maven-默认配置" class="headerlink" title="3 全局 Maven(默认配置)"></a>3 全局 Maven(默认配置)</h2><p>具体步骤：顶部工具栏  File -&gt;Other Settings -&gt; Default Settings -&gt; Build &amp; Tools -&gt; Maven</p>
-<p><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/c39b5ad9-2240-46de-a80d-238fdfa44929.jpg" alt></p>
-<p>Maven配置文件</p>
-<p><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/dfc2de6d-d0f3-41b5-bbfe-c4849560bc43.jpg" alt></p>
-<p>Idea Maven神器</p>
-<p><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/eca92eff-d2e7-4120-9a4d-e14b862e2755.jpg" alt></p>
-<h2 id="4-配置Git"><a href="#4-配置Git" class="headerlink" title="4 配置Git"></a>4 配置Git</h2><p>具体步骤：顶部工具栏  File -&gt;Other Settings -&gt; Default Settings -&gt; Version Control -&gt; Git</p>
-<p><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/e985cecb-db9d-4c3b-bf1a-8895cf8e7ec6.jpg" alt></p>
-<h2 id="5-自动导包和只能移除-默认配置"><a href="#5-自动导包和只能移除-默认配置" class="headerlink" title="5 自动导包和只能移除(默认配置)"></a>5 自动导包和只能移除(默认配置)</h2><p>具体步骤：顶部工具栏  File -&gt;Other Settings -&gt; Default Settings -&gt; Auto Import</p>
-<p><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/622053f5-c434-4650-92fa-6a76fbd17656.jpg" alt></p>
-<h2 id="7-Tomcat-Server"><a href="#7-Tomcat-Server" class="headerlink" title="7 Tomcat Server"></a>7 Tomcat Server</h2><p>配置Tomcat方法： File -&gt; Settings -&gt; Deployment -&gt; Application Servers -&gt; Tomcat Server</p>
-<p><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/47e4f3f2-a15e-45ea-9d24-b7bcc9cb671b.jpg" alt></p>
-<h2 id="8-SpringBoot-在IDEA中实现热部署"><a href="#8-SpringBoot-在IDEA中实现热部署" class="headerlink" title="8 SpringBoot 在IDEA中实现热部署"></a>8 SpringBoot 在IDEA中实现热部署</h2><h3 id="1-开启Idea自动编译-静态"><a href="#1-开启Idea自动编译-静态" class="headerlink" title="1 开启Idea自动编译(静态)"></a>1 开启Idea自动编译(静态)</h3><p>具体步骤：顶部工具栏  File -&gt;Other Settings -&gt; Default Settings -&gt; Auto Import</p>
-<p>说明：开启自动编译之后，结合Ctrl+Shift+F9 会有热更新效果。</p>
-<p><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/f73b541d-257c-45c1-bf73-cf0733c268a7.jpg" alt></p>
-<h3 id="2-开启Idea自动编译（Runtime-动态"><a href="#2-开启Idea自动编译（Runtime-动态" class="headerlink" title="2 开启Idea自动编译（Runtime)(动态)"></a>2 开启Idea自动编译（Runtime)(动态)</h3><p><strong>动态</strong><br>具体步骤： 敲击 Ctrl + Shift + Alt + /  然后双击Shift搜索进入Registry 勾选自动编译并调整延时参数。<br><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/17bd9c5d-fdd3-4c62-8d15-8b47b54bc9ca.jpg" alt></p>
-<ul>
-<li><p>compiler.automake.allow.when.app.running -&gt; 自动编译</p>
-</li>
-<li><p>compile.document.save.trigger.delay -&gt; 自动更新文件</p>
-</li>
-</ul>
-<p>第二个 它主要是针对静态文件如JS CSS的更新，将延迟时间减少后，直接按F5刷新页面就能看到效果！<br><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/2eee77bf-d3dd-44c9-a02a-4b7cee835e13.jpg" alt></p>
-<h3 id="3-开启Idea热部署策略-重要"><a href="#3-开启Idea热部署策略-重要" class="headerlink" title="3 开启Idea热部署策略(重要)"></a>3 开启Idea热部署策略(重要)</h3><p>具体步骤：顶部菜单- &gt;Edit Configurations-&gt;SpringBoot插件-&gt;目标项目-&gt;勾选热更新。</p>
-<p><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/6ea010c3-9cc3-42a8-afd7-ff16c5d935ba.jpg" alt></p>
-<h3 id="4-在项目添加热部署插件（可选）"><a href="#4-在项目添加热部署插件（可选）" class="headerlink" title="4 在项目添加热部署插件（可选）"></a>4 在项目添加热部署插件（可选）</h3><p>如果因为旧项目十分臃肿，导致每次都自动热重启很慢而影响开发效率，笔者建议直接在POM移除<code>spring-boot-devtools</code>依赖，然后使用Control+Shift+F9进行手工免启动快速更新！！</p>
-<p>具体步骤：在POM文件添加热部署插件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-devtools&lt;&#x2F;artifactId&gt;</span><br><span class="line">            &lt;scope&gt;runtime&lt;&#x2F;scope&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-关闭浏览器缓存-重要"><a href="#5-关闭浏览器缓存-重要" class="headerlink" title="5 关闭浏览器缓存(重要)"></a>5 关闭浏览器缓存(重要)</h3><p>打开谷歌浏览器，打开F12的Network选项栏，然后勾选【✅】Disable cache 。、<br><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/c11b086a-4714-4bf2-8eb6-c21967514511.jpg" alt></p>
-<h2 id="9-调整字体类型和字体大小"><a href="#9-调整字体类型和字体大小" class="headerlink" title="9 调整字体类型和字体大小"></a>9 调整字体类型和字体大小</h2><p><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/0a9450ae-f0f5-4e4c-9a4f-110c7011eba2.jpg" alt></p>
-<h2 id="10-打开常用工具栏"><a href="#10-打开常用工具栏" class="headerlink" title="10 打开常用工具栏"></a>10 打开常用工具栏</h2><p>具体步骤：顶部导航栏 - View -&gt; 勾选 Toolbar &amp; Tool Buttons</p>
-<p><img src="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/b5d4d1d4-712a-4325-bd16-1f65b9ad88de.jpg" alt></p>
-
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">IDEA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/19/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-JWT学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/09/JWT%E5%AD%A6%E4%B9%A0/">JWT学习</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/04/09/JWT%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2019-04-09T11:27:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.9k字</span>
+        <span class="post-count">3.5k字</span>
       </span>
     </span>
 
@@ -463,11 +244,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p> 文章出处： JSON Web Token–摘自<a href="http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html" target="_blank" rel="noopener">阮一峰</a></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>JSON Web Token</strong>(缩写 JWT)是目前最流行的跨域认证解决方案。</p>
-<h1 id="1-跨域认证的问题"><a href="#1-跨域认证的问题" class="headerlink" title="1 跨域认证的问题"></a>1 跨域认证的问题</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;互联网离不开用户认证，一般流程是下面这样。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">用户向服务器发送用户名和密码。</span><br><span class="line">服务器验证通过后，在当前会话（session）里面保存相关数据，比如用户角色、登录时间等。</span><br><span class="line">服务器向用户返回一个 session_id，写入用户的Cookie。</span><br><span class="line">用户随后的每一次请求，都会通过Cookie，将 session_id 回传服务器。</span><br><span class="line">服务器收到 session_id ，找到前期保存的数据，由此得知用户的身份。</span><br></pre></td></tr></table></figure>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这种模式的问题在于：扩展性（scaling）不好。单机当然没有问题，如果是服务器集群，或者跨域的服务导向架构，就要求 session 数据共享，每台服务器都能够读取 session。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;举例来说，A网站和B网站是同一家公司的关联服务。现在要求，用户只要在其中一个网站登录，再访问另一个网站就会自动登录，请问怎么实现？</p>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>魔兽世界、仙剑奇侠传这类 MMRPG 游戏，不知道你有没有玩过？在这些游戏中，有一个非常重要的功能，那就是人物角色自动寻路。<font color="red">当人物处于游戏地图中的某个位置的时候，我们用鼠标点击另外一个相对较远的位置，人物就会自动地绕过障碍物走过去。玩过这么多游戏，不知你是否思考过，这个功能是怎么实现的呢？</font></p>
 	
 	
     </div>
@@ -481,11 +260,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Jwt</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -497,7 +272,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Jwt//" class="article-tag-list-link color4">Jwt</a>
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -506,7 +281,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/09/JWT%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/08/13/45-%E6%90%9C%E7%B4%A2-%E5%A6%82%E4%BD%95%E7%94%A8A%E6%98%9F%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E5%AF%BB%E8%B7%AF%E5%8A%9F%E8%83%BD/">展开全文 >></a>
         </p>
       
 
@@ -540,22 +315,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-Git常见200-条命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-44-B加树-MySQL数据库索引是如何实现的" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/28/Git%E5%B8%B8%E8%A7%81200-%E6%9D%A1%E5%91%BD%E4%BB%A4/">Git常见200+条命令</a>
+      <a class="article-title" href="/2019/08/10/44-B%E5%8A%A0%E6%A0%91-MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/">44-B+树_MySQL数据库索引是如何实现的</a>
     </h1>
   
 
         
         
 
-<a href="/2019/03/28/Git%E5%B8%B8%E8%A7%81200-%E6%9D%A1%E5%91%BD%E4%BB%A4/" class="archive-article-date">
-  	<time datetime="2019-03-28T11:05:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-28</time>
+<a href="/2019/08/10/44-B%E5%8A%A0%E6%A0%91-MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/" class="archive-article-date">
+  	<time datetime="2019-08-10T12:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -566,7 +341,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.4k字</span>
+        <span class="post-count">4.6k字</span>
       </span>
     </span>
 
@@ -575,7 +350,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">14分</span>
+        <span class="post-count">16分</span>
       </span>
     </span>
 </div>
@@ -593,8 +368,8 @@
     <div class="article-entry" itemprop="articleBody">
       
 			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h2 id="新建"><a href="#新建" class="headerlink" title="新建"></a>新建</h2><p>创建一个新的 git 版本库。这个版本库的配置、存储等信息会被保存到.git 文件夹中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 初始化当前项目</span><br><span class="line">$ git init</span><br><span class="line"></span><br><span class="line"># 新建一个目录，将其初始化为Git代码库</span><br><span class="line">$ git init [project-name]</span><br><span class="line"></span><br><span class="line"># 在指定目录创建一个空的 Git 仓库。运行这个命令会创建一个名为 directory，只包含 .git 子目录的空目录。</span><br><span class="line"></span><br><span class="line">$ git init --bare &lt;directory&gt;</span><br><span class="line"></span><br><span class="line"># 下载一个项目和它的整个代码历史</span><br><span class="line"># 这个命令就是将一个版本库拷贝到另一个目录中，同时也将分支都拷贝到新的版本库中。这样就可以在新的版本库中提交到远程分支</span><br><span class="line">$ git clone [url]</span><br></pre></td></tr></table></figure>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为一个软件开发工程师，你对数据库肯定再熟悉不过了。作为主流的数据存储系统，它在我们的业务开发中，有着举足轻重的地位。在工作中，为了加速数据库中数据的查找速度，我们常用的处理思路是，对表中数据创建索引。那你是否思考过，<font color="red">数据库索引是如何实现的呢？底层使用的是什么数据结构和算法呢？</font></p>
 	
 	
     </div>
@@ -608,7 +383,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -620,7 +395,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -629,7 +404,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/28/Git%E5%B8%B8%E8%A7%81200-%E6%9D%A1%E5%91%BD%E4%BB%A4/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/08/10/44-B%E5%8A%A0%E6%A0%91-MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/">展开全文 >></a>
         </p>
       
 
@@ -663,22 +438,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-8-GitLab简单操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-43-向量空间-如何实现一个简单的音乐推荐系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/25/8-GitLab%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/">8-GitLab简单操作</a>
+      <a class="article-title" href="/2019/08/08/43-%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E9%9F%B3%E4%B9%90%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">43-向量空间_如何实现一个简单的音乐推荐系统</a>
     </h1>
   
 
         
         
 
-<a href="/2019/03/25/8-GitLab%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/" class="archive-article-date">
-  	<time datetime="2019-03-25T11:04:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-25</time>
+<a href="/2019/08/08/43-%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E9%9F%B3%E4%B9%90%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
+  	<time datetime="2019-08-08T11:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-08</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -689,7 +464,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">243字</span>
+        <span class="post-count">2.5k字</span>
       </span>
     </span>
 
@@ -698,129 +473,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97<br>图片来源：极客时间，需个人购买教程。</p>
-<h2 id="1-国内为什么普遍使用GitLab"><a href="#1-国内为什么普遍使用GitLab" class="headerlink" title="1 国内为什么普遍使用GitLab"></a>1 国内为什么普遍使用GitLab</h2><p><a href="https://about.gitlab.com/" target="_blank" rel="noopener">https://about.gitlab.com/</a><br>大公司有能力自己基于GitLab做二次开发，有利于将代码保存在自己手中。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/25/8-GitLab%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-Maven打Jar包-服务器运行jar" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/19/Maven%E6%89%93Jar%E5%8C%85-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E8%A1%8Cjar/">Maven打Jar包-服务器运行Spring-Boot-jar</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/03/19/Maven%E6%89%93Jar%E5%8C%85-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E8%A1%8Cjar/" class="archive-article-date">
-  	<time datetime="2019-03-19T11:23:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-19</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.1k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">4分</span>
+        <span class="post-count">8分</span>
       </span>
     </span>
 </div>
@@ -838,11 +491,8 @@
     <div class="article-entry" itemprop="articleBody">
       
 			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h1 id="1-推荐run方式：-前后不能有空格"><a href="#1-推荐run方式：-前后不能有空格" class="headerlink" title="1 推荐run方式：(=前后不能有空格)"></a>1 推荐run方式：(=前后不能有空格)</h1><font color="red">
-[root@haoransun src]# nohup java -jar -Dserver.port=8888 demo-0.0.1-SNAPSHOT.jar >config.log 2>&1 &
-</font>
-
-<h1 id="2-查看端口、进程"><a href="#2-查看端口、进程" class="headerlink" title="2 查看端口、进程"></a>2 查看端口、进程</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep java</span><br><span class="line"></span><br><span class="line">netstat -anp | grep port</span><br></pre></td></tr></table></figure>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>很多人都喜爱听歌，以前我们用 MP3 听歌，现在直接通过音乐 App 在线就能听歌。而且，各种音乐 App 的功能越来越强大，不仅可以自己选歌听，还可以根据你听歌的口味偏好，给你推荐可能会喜爱的音乐，而且有时候，推荐的音乐还非常适合你的口味，甚至会惊艳到你！如此智能的一个功能，你知道它是怎么实现的吗？</p>
 	
 	
     </div>
@@ -856,11 +506,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Jar包运行</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Maven</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -872,7 +518,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Jar包//" class="article-tag-list-link color5">Jar包</a>
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -881,7 +527,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/19/Maven%E6%89%93Jar%E5%8C%85-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E8%A1%8Cjar/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/08/08/43-%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E9%9F%B3%E4%B9%90%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">展开全文 >></a>
         </p>
       
 
@@ -915,22 +561,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-7-基于GitHub进行团队协作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-42-概率统计-如何利用朴素贝叶斯算法过滤垃圾短信" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/">7-基于GitHub进行团队协作</a>
+      <a class="article-title" href="/2019/08/05/42-%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1-%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%AE%97%E6%B3%95%E8%BF%87%E6%BB%A4%E5%9E%83%E5%9C%BE%E7%9F%AD%E4%BF%A1/">42-概率统计_如何利用朴素贝叶斯算法过滤垃圾短信</a>
     </h1>
   
 
         
         
 
-<a href="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/" class="archive-article-date">
-  	<time datetime="2019-03-09T12:01:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-09</time>
+<a href="/2019/08/05/42-%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1-%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%AE%97%E6%B3%95%E8%BF%87%E6%BB%A4%E5%9E%83%E5%9C%BE%E7%9F%AD%E4%BF%A1/" class="archive-article-date">
+  	<time datetime="2019-08-05T12:38:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-05</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -941,373 +587,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.5k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97<br>图片来源：极客时间，需个人购买教程。</p>
-<h2 id="1-创建团队项目"><a href="#1-创建团队项目" class="headerlink" title="1 创建团队项目"></a>1 创建团队项目</h2><p>先在settings中创建组织类型的托管。然后在组织中创建团队的仓库。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-6-GitHub的认识与使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/">6-GitHub的认识与使用</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2019-02-25T09:58:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-25</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">508字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97<br>图片来源：极客时间，需个人购买教程。</p>
-<h2 id="1-GitHub为什么会火"><a href="#1-GitHub为什么会火" class="headerlink" title="1 GitHub为什么会火"></a>1 GitHub为什么会火</h2><p><img src="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/53d51f84-9a62-4dde-9be4-7cbb9d0b1dae.jpg" alt></p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-5-Git集成使用禁忌" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/15/5-Git%E9%9B%86%E6%88%90%E4%BD%BF%E7%94%A8%E7%A6%81%E5%BF%8C/">5-Git集成使用禁忌</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/02/15/5-Git%E9%9B%86%E6%88%90%E4%BD%BF%E7%94%A8%E7%A6%81%E5%BF%8C/" class="archive-article-date">
-  	<time datetime="2019-02-15T11:57:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-15</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">173字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h2 id="1-禁止向集成分支执行push-f-操作"><a href="#1-禁止向集成分支执行push-f-操作" class="headerlink" title="1.禁止向集成分支执行push -f 操作"></a>1.禁止向集成分支执行push -f 操作</h2><p><strong>git push -f：会强制推送，对团队造成危害（虽然远程仓库有特殊机制制止这种变更）</strong></p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/15/5-Git%E9%9B%86%E6%88%90%E4%BD%BF%E7%94%A8%E7%A6%81%E5%BF%8C/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-国内地图坐标系转换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/08/%E5%9B%BD%E5%86%85%E5%9C%B0%E5%9B%BE%E5%9D%90%E6%A0%87%E7%B3%BB%E8%BD%AC%E6%8D%A2/">国内地图坐标系转换</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/02/08/%E5%9B%BD%E5%86%85%E5%9C%B0%E5%9B%BE%E5%9D%90%E6%A0%87%E7%B3%BB%E8%BD%AC%E6%8D%A2/" class="archive-article-date">
-  	<time datetime="2019-02-08T12:00:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-08</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.2k字</span>
+        <span class="post-count">4.4k字</span>
       </span>
     </span>
 
@@ -1333,11 +613,11 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>文章出处<br><a href="https://blog.csdn.net/m0_37738114/article/details/80452485" target="_blank" rel="noopener">https://blog.csdn.net/m0_37738114/article/details/80452485</a></p>
-<h2 id="一、国内常用坐标系"><a href="#一、国内常用坐标系" class="headerlink" title="一、国内常用坐标系"></a>一、国内常用坐标系</h2><p>1、WGS-84坐标系：地心坐标系，GPS原始坐标体系<br>在中国，任何一个地图产品都<font color="red">不允许使用<a href="https://www.baidu.com/s?wd=GPS%E5%9D%90%E6%A0%87&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao" target="_blank" rel="noopener">GPS坐标</a></font>，据说是为了保密。</p>
-<p>2、GCJ-02 坐标系：国测局坐标，火星坐标系<br>1）国测局02年发布的坐标体系，它是一种对经纬度数据的加密算法，即加入随机的偏差。<br>2）互联网地图在国内必须至少使用GCJ-02进行首次加密，不允许直接使用WGS-84坐标下的地理数据，同时任何坐标系均不可转换为WGS-84坐标。<br>3）是国内最广泛使用的坐标体系，高德、腾讯、Google中国地图都使用它。</p>
-<p>3、CGCS2000坐标系：国家大地坐标系<br>该坐标系是通过中国GPS 连续运行基准站、 空间大地控制网以及天文大地网与空间地网联合平差建立的地心大地坐标系统。</p>
-<p>4、BD-09坐标系<br>百度中国地图所采用的坐标系，由GCJ-02进行进一步的偏移算法得到。</p>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><a href="https://www.jianshu.com/p/5cf3a155b2f0" target="_blank" rel="noopener">参考-朴素贝叶斯分类算法</a></p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一节我们讲到，如何用位图、布隆过滤器，来过滤重复的数据。今天，我们再讲一个跟过滤相关的问题，如何过滤垃圾短信？</p>
+<p>垃圾短信和骚扰电话，我想每个人都收到过吧？买房、贷款、投资理财、开发票，各种垃圾短信和骚扰电话，不胜其扰。<font color="red">如果你是一名手机应用开发工程师，让你实现一个简单的垃圾短信过滤功能以及骚扰电话拦截功能，该用什么样的数据结构和算法实现呢？</font></p>
 	
 	
     </div>
@@ -1351,7 +631,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">地图坐标转换</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -1363,7 +643,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Tools//" class="article-tag-list-link color1">Tools</a>
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -1372,7 +652,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/08/%E5%9B%BD%E5%86%85%E5%9C%B0%E5%9B%BE%E5%9D%90%E6%A0%87%E7%B3%BB%E8%BD%AC%E6%8D%A2/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/08/05/42-%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1-%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%AE%97%E6%B3%95%E8%BF%87%E6%BB%A4%E5%9E%83%E5%9C%BE%E7%9F%AD%E4%BF%A1/">展开全文 >></a>
         </p>
       
 
@@ -1406,22 +686,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-4-Git多人单分支集成协作时的常见场景" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-41-位图-如何实现网页爬虫中的URL去重功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/08/4-Git%E5%A4%9A%E4%BA%BA%E5%8D%95%E5%88%86%E6%94%AF%E9%9B%86%E6%88%90%E5%8D%8F%E4%BD%9C%E6%97%B6%E7%9A%84%E5%B8%B8%E8%A7%81%E5%9C%BA%E6%99%AF/">4-Git多人单分支集成协作时的常见场景</a>
+      <a class="article-title" href="/2019/08/02/41-%E4%BD%8D%E5%9B%BE-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BD%91%E9%A1%B5%E7%88%AC%E8%99%AB%E4%B8%AD%E7%9A%84URL%E5%8E%BB%E9%87%8D%E5%8A%9F%E8%83%BD/">41-位图_如何实现网页爬虫中的URL去重功能</a>
     </h1>
   
 
         
         
 
-<a href="/2019/02/08/4-Git%E5%A4%9A%E4%BA%BA%E5%8D%95%E5%88%86%E6%94%AF%E9%9B%86%E6%88%90%E5%8D%8F%E4%BD%9C%E6%97%B6%E7%9A%84%E5%B8%B8%E8%A7%81%E5%9C%BA%E6%99%AF/" class="archive-article-date">
-  	<time datetime="2019-02-08T10:55:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-08</time>
+<a href="/2019/08/02/41-%E4%BD%8D%E5%9B%BE-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BD%91%E9%A1%B5%E7%88%AC%E8%99%AB%E4%B8%AD%E7%9A%84URL%E5%8E%BB%E9%87%8D%E5%8A%9F%E8%83%BD/" class="archive-article-date">
+  	<time datetime="2019-08-02T11:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-02</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1432,7 +712,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.2k字</span>
+        <span class="post-count">4.5k字</span>
       </span>
     </span>
 
@@ -1441,7 +721,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">4分</span>
+        <span class="post-count">15分</span>
       </span>
     </span>
 </div>
@@ -1458,9 +738,12 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97<br>图片来源：极客时间，需个人购买教程。</p>
-<h2 id="1-不同人修改不同文件如何处理"><a href="#1-不同人修改不同文件如何处理" class="headerlink" title="1.不同人修改不同文件如何处理"></a>1.不同人修改不同文件如何处理</h2><p><strong>JavaSsun用户修改 readme文件</strong><br><strong>haoran用户修改index文件</strong><br><strong>远端仓库新建一个名字为 feature/add_git_commands的分支</strong></p>
-<p>为了在单机模拟两个人做操作，需要从远端克隆一个 命名为 git_learning_02 以 JavaSsun为用户的仓库</p>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><a href="https://mp.weixin.qq.com/s/xxauNrJY9HlVNvLrL5j2hg" target="_blank" rel="noopener">参考-Bitmap算法</a></p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>网页爬虫是搜索引擎中的非常重要的系统，负责爬取几十亿、上百亿的网页。爬虫的工作原理是，通过解析已经爬取页面中的网页链接，然后再爬取这些链接对应的网页。而<font color="red">同一个网页链接有可能被包含在多个页面中，这就会导致爬虫在爬取的过程中，重复爬取相同的网页。如果你是一名负责爬虫的工程师，你会如何避免这些重复的爬取呢？</font></p>
+<p>最容易想到的方法就是，我们记录已经爬取的网页链接（也就是 URL），在爬取一个新的网页之前，我们拿它的链接，在已经爬取的网页链接列表中搜索。如果存在，那就说明这个网页已经被爬取过了；如果不存在，那就说明这个网页还没有被爬取过，可以继续去爬取。等爬取到这个网页之后，我们将这个网页的链接添加到已经爬取的网页链接列表了。</p>
+<p>思路非常简单，我想你应该很容易就能想到。不过，我们该如何记录已经爬取的网页链接呢？需要用什么样的数据结构呢？</p>
 	
 	
     </div>
@@ -1474,7 +757,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -1486,7 +769,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -1495,7 +778,633 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/08/4-Git%E5%A4%9A%E4%BA%BA%E5%8D%95%E5%88%86%E6%94%AF%E9%9B%86%E6%88%90%E5%8D%8F%E4%BD%9C%E6%97%B6%E7%9A%84%E5%B8%B8%E8%A7%81%E5%9C%BA%E6%99%AF/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/08/02/41-%E4%BD%8D%E5%9B%BE-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BD%91%E9%A1%B5%E7%88%AC%E8%99%AB%E4%B8%AD%E7%9A%84URL%E5%8E%BB%E9%87%8D%E5%8A%9F%E8%83%BD/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-40-最短路径-地图软件是如何计算出最优出行路径的" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/28/40-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84-%E5%9C%B0%E5%9B%BE%E8%BD%AF%E4%BB%B6%E6%98%AF%E5%A6%82%E4%BD%95%E8%AE%A1%E7%AE%97%E5%87%BA%E6%9C%80%E4%BC%98%E5%87%BA%E8%A1%8C%E8%B7%AF%E5%BE%84%E7%9A%84/">40-最短路径_地图软件是如何计算出最优出行路径的</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/07/28/40-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84-%E5%9C%B0%E5%9B%BE%E8%BD%AF%E4%BB%B6%E6%98%AF%E5%A6%82%E4%BD%95%E8%AE%A1%E7%AE%97%E5%87%BA%E6%9C%80%E4%BC%98%E5%87%BA%E8%A1%8C%E8%B7%AF%E5%BE%84%E7%9A%84/" class="archive-article-date">
+  	<time datetime="2019-07-28T11:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-28</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">5.1k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">18分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>基础篇的时候，我们学习了图的两种搜索算法，深度优先搜索和广度优先搜索。这两种算法主要是针对无权图的搜索算法。针对有权图，也就是图中的每条边都有一个权重，我们该如何计算两点之间的最短路径（经过的边的权重和最小）呢？今天，我们就从地图软件的路线规划问题讲起，带你看看常用的<strong>最短路径算法</strong>（Shortest Path Algorithm）。</p>
+<p>像 Google 地图、百度地图、高德地图这样的地图软件，我想你应该经常使用吧？如果想从家开车到公司，你只需要输入起始、结束地址，地图就会给你规划一条最优出行路线。这里的最优，有很多种定义，比如最短路线、最少用时路线、最少红绿灯路线等等。<font color="red">作为一名软件开发工程师，你是否思考过，地图软件的最优路线是如何计算出来的吗？底层依赖了什么算法呢？</font></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/28/40-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84-%E5%9C%B0%E5%9B%BE%E8%BD%AF%E4%BB%B6%E6%98%AF%E5%A6%82%E4%BD%95%E8%AE%A1%E7%AE%97%E5%87%BA%E6%9C%80%E4%BC%98%E5%87%BA%E8%A1%8C%E8%B7%AF%E5%BE%84%E7%9A%84/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-39-拓扑排序-如何确定代码源文件的编译依赖关系" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/24/39-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F-%E5%A6%82%E4%BD%95%E7%A1%AE%E5%AE%9A%E4%BB%A3%E7%A0%81%E6%BA%90%E6%96%87%E4%BB%B6%E7%9A%84%E7%BC%96%E8%AF%91%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB/">39-拓扑排序_如何确定代码源文件的编译依赖关系</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/07/24/39-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F-%E5%A6%82%E4%BD%95%E7%A1%AE%E5%AE%9A%E4%BB%A3%E7%A0%81%E6%BA%90%E6%96%87%E4%BB%B6%E7%9A%84%E7%BC%96%E8%AF%91%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB/" class="archive-article-date">
+  	<time datetime="2019-07-24T12:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-24</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">3k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">11分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>基础篇</strong>：开篇问题 - 知识讲解 - 回答开篇 - 总结 - 课后思考</p>
+<p><strong>高级篇</strong>：问题阐述 - 算法解析 - 总结引申 - 课后思考</p>
+<p><strong>如何确定代码源文件的编译依赖关系？</strong></p>
+<p>我们知道，一个完整的项目往往会包含很多代码源文件。编译器在编译整个项目的时候，需要按照依赖关系，依次编译每个源文件。比如，A.cpp 依赖 B.cpp，那在编译的时候，编译器需要先编译 B.cpp，才能编译 A.cpp。</p>
+<p>编译器通过分析源文件或者程序员事先写好的编译配置文件（比如 Makefile 文件），来获取这种局部的依赖关系。<font color="red">那编译器又该如何通过源文件两两之间的局部依赖关系，确定一个全局的编译顺序呢？</font></p>
+<p><img src="/2019/07/24/39-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F-%E5%A6%82%E4%BD%95%E7%A1%AE%E5%AE%9A%E4%BB%A3%E7%A0%81%E6%BA%90%E6%96%87%E4%BB%B6%E7%9A%84%E7%BC%96%E8%AF%91%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB/700bec14-3e73-4781-9d56-a809025f954f.jpg" alt></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/24/39-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F-%E5%A6%82%E4%BD%95%E7%A1%AE%E5%AE%9A%E4%BB%A3%E7%A0%81%E6%BA%90%E6%96%87%E4%BB%B6%E7%9A%84%E7%BC%96%E8%AF%91%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-38-动态规划实战-如何实现搜索引擎中的拼写纠错功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/20/38-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%9E%E6%88%98-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%B8%AD%E7%9A%84%E6%8B%BC%E5%86%99%E7%BA%A0%E9%94%99%E5%8A%9F%E8%83%BD/">38-动态规划实战_如何实现搜索引擎中的拼写纠错功能</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/07/20/38-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%9E%E6%88%98-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%B8%AD%E7%9A%84%E6%8B%BC%E5%86%99%E7%BA%A0%E9%94%99%E5%8A%9F%E8%83%BD/" class="archive-article-date">
+  	<time datetime="2019-07-20T11:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-20</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">4.7k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">18分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在<strong>Trie 树</strong>那节我们讲过，利用 Trie 树，可以实现搜索引擎的关键词提示功能，这样可以节省用户输入搜索关键词的时间。实际上，搜索引擎在用户体验方面的优化还有很多，比如你可能经常会用的拼写纠错功能。</p>
+<p>当你在搜索框中，一不小心输错单词时，搜索引擎会非常智能地检测出你的拼写错误，并且用对应的正确单词来进行搜索。作为一名软件开发工程师，你是否想过，这个功能是怎么实现的呢？</p>
+<p><img src="/2019/07/20/38-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%9E%E6%88%98-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%B8%AD%E7%9A%84%E6%8B%BC%E5%86%99%E7%BA%A0%E9%94%99%E5%8A%9F%E8%83%BD/77e66acb-3e4a-45d0-bb19-067b0061ebf7.jpg" alt></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/20/38-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%9E%E6%88%98-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%B8%AD%E7%9A%84%E6%8B%BC%E5%86%99%E7%BA%A0%E9%94%99%E5%8A%9F%E8%83%BD/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-37-动态规划理论-一篇文章带你彻底搞懂最优子结结构-无后效性-重复子问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/13/37-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%90%86%E8%AE%BA-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%B8%A6%E4%BD%A0%E5%BD%BB%E5%BA%95%E6%90%9E%E6%87%82%E6%9C%80%E4%BC%98%E5%AD%90%E7%BB%93%E7%BB%93%E6%9E%84-%E6%97%A0%E5%90%8E%E6%95%88%E6%80%A7-%E9%87%8D%E5%A4%8D%E5%AD%90%E9%97%AE%E9%A2%98/">37-动态规划理论_一篇文章带你彻底搞懂最优子结结构_无后效性_重复子问题</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/07/13/37-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%90%86%E8%AE%BA-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%B8%A6%E4%BD%A0%E5%BD%BB%E5%BA%95%E6%90%9E%E6%87%82%E6%9C%80%E4%BC%98%E5%AD%90%E7%BB%93%E7%BB%93%E6%9E%84-%E6%97%A0%E5%90%8E%E6%95%88%E6%80%A7-%E9%87%8D%E5%A4%8D%E5%AD%90%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2019-07-13T10:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-13</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">5.1k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">18分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一节，通过两个非常经典的问题，向你展示了用动态规划解决问题的过程。现在你对动态规划应该有了一个初步的认识。</p>
+<p>今天，主要讲动态规划的一些理论知识。学完这节内容，可以帮你解决这样几个问题：什么样的问题可以用动态规划解决？解决动态规划问题的一般思考过程是什么样的？贪心、分治、回溯、动态规划这四种算法思想又有什么区别和联系？</p>
+<p>理论的东西都比较抽象，不过你不用担心，本文会结合具体的例子来讲解，争取让你这次就能真正理解这些知识点，也为后面的应用和实战做好准备。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/13/37-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%90%86%E8%AE%BA-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%B8%A6%E4%BD%A0%E5%BD%BB%E5%BA%95%E6%90%9E%E6%87%82%E6%9C%80%E4%BC%98%E5%AD%90%E7%BB%93%E7%BB%93%E6%9E%84-%E6%97%A0%E5%90%8E%E6%95%88%E6%80%A7-%E9%87%8D%E5%A4%8D%E5%AD%90%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-36-初识动态规划-如何巧妙解解决“双十一”购物时的凑单问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/09/36-%E5%88%9D%E8%AF%86%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E5%A6%82%E4%BD%95%E5%B7%A7%E5%A6%99%E8%A7%A3%E8%A7%A3%E5%86%B3%E2%80%9C%E5%8F%8C%E5%8D%81%E4%B8%80%E2%80%9D%E8%B4%AD%E7%89%A9%E6%97%B6%E7%9A%84%E5%87%91%E5%8D%95%E9%97%AE%E9%A2%98/">36-初识动态规划_如何巧妙解解决“双十一”购物时的凑单问题</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/07/09/36-%E5%88%9D%E8%AF%86%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E5%A6%82%E4%BD%95%E5%B7%A7%E5%A6%99%E8%A7%A3%E8%A7%A3%E5%86%B3%E2%80%9C%E5%8F%8C%E5%8D%81%E4%B8%80%E2%80%9D%E8%B4%AD%E7%89%A9%E6%97%B6%E7%9A%84%E5%87%91%E5%8D%95%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2019-07-09T12:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-09</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">6.1k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">24分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>淘宝的“双十一”购物节有各种促销活动，比如“满 200 元减 50 元”。假设你女朋友的购物车中有 n 个（n&gt;100）想买的商品，她希望从里面选几个，在凑够满减条件的前提下，让选出来的商品价格总和最大程度地接近满减条件（200 元），这样就可以极大限度地“薅羊毛”。作为程序员的你，能不能编个代码来帮她搞定呢？</p>
+<p>要想高效地解决这个问题，就要用到我们今天讲的动态规划（Dynamic Programming）。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/09/36-%E5%88%9D%E8%AF%86%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E5%A6%82%E4%BD%95%E5%B7%A7%E5%A6%99%E8%A7%A3%E8%A7%A3%E5%86%B3%E2%80%9C%E5%8F%8C%E5%8D%81%E4%B8%80%E2%80%9D%E8%B4%AD%E7%89%A9%E6%97%B6%E7%9A%84%E5%87%91%E5%8D%95%E9%97%AE%E9%A2%98/">展开全文 >></a>
         </p>
       
 
@@ -1530,7 +1439,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1671,15 +1580,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码解析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1719,11 +1628,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color4">Swagger2</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Swagger2</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
