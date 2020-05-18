@@ -6,19 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://JavaSsun.github.io">
-  <title>MyBatis多数据源配置 | haoran&#39;s blog</title>
+  <title>MyBatis初始化做了什么 | haoran&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言多数据源，一般都来解决主从模式或者业务比较复杂需要连接不同的分库来支持业务。我们遇到的情况是后者，网上找了很多，大都是根据 Jpa 来做多数据源解决方案，要不就是老的 Spring 多数据源解决方案，还有的是利用 Aop 动态切换，过于复杂，当前已Mybatis Xml为例，简单配置。">
+  <meta name="description" content="一、 MyBatis的初始化做了什么任何框架的初始化，无非是加载自己运行时所需要的配置信息。 MyBatis的配置信息，大概包含以下信息，其高层级结构如下： 123456789101112131415161718192021&lt;configuration&gt; 配置    &lt;properties&gt; 属性    &lt;settings&gt; 设置    &lt;typeAlia">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MyBatis多数据源配置">
-<meta property="og:url" content="http://javassun.github.io/2019/11/17/MyBatis%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:title" content="MyBatis初始化做了什么">
+<meta property="og:url" content="http://javassun.github.io/2019/01/21/MyBatis%E5%88%9D%E5%A7%8B%E5%8C%96%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/index.html">
 <meta property="og:site_name" content="haoran&#39;s blog">
-<meta property="og:description" content="前言多数据源，一般都来解决主从模式或者业务比较复杂需要连接不同的分库来支持业务。我们遇到的情况是后者，网上找了很多，大都是根据 Jpa 来做多数据源解决方案，要不就是老的 Spring 多数据源解决方案，还有的是利用 Aop 动态切换，过于复杂，当前已Mybatis Xml为例，简单配置。">
-<meta property="article:published_time" content="2019-11-17T13:26:57.000Z">
-<meta property="article:modified_time" content="2020-05-18T15:58:09.198Z">
+<meta property="og:description" content="一、 MyBatis的初始化做了什么任何框架的初始化，无非是加载自己运行时所需要的配置信息。 MyBatis的配置信息，大概包含以下信息，其高层级结构如下： 123456789101112131415161718192021&lt;configuration&gt; 配置    &lt;properties&gt; 属性    &lt;settings&gt; 设置    &lt;typeAlia">
+<meta property="og:image" content="http://javassun.github.io/2019/01/21/MyBatis%E5%88%9D%E5%A7%8B%E5%8C%96%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/f88a67be-0c20-45f4-8581-231673ebc1ee.jpg">
+<meta property="og:image" content="http://javassun.github.io/2019/01/21/MyBatis%E5%88%9D%E5%A7%8B%E5%8C%96%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/43538d13-f13b-43cd-8143-ed40ea994efa.jpg">
+<meta property="og:image" content="http://javassun.github.io/2019/01/21/MyBatis%E5%88%9D%E5%A7%8B%E5%8C%96%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/2662fbcf-a9c6-4db5-a25e-801c6e41937f.jpg">
+<meta property="og:image" content="http://javassun.github.io/2019/01/21/MyBatis%E5%88%9D%E5%A7%8B%E5%8C%96%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/e103ad8e-ae18-4210-b4e9-2f388e87e7ab.png">
+<meta property="article:published_time" content="2019-01-21T12:22:50.000Z">
+<meta property="article:modified_time" content="2020-05-18T17:48:57.600Z">
 <meta property="article:author" content="Allen">
 <meta property="article:tag" content="MyBatis">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://javassun.github.io/2019/01/21/MyBatis%E5%88%9D%E5%A7%8B%E5%8C%96%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/f88a67be-0c20-45f4-8581-231673ebc1ee.jpg">
   
   
     <link rel="icon" href="/assets/icon.png">
@@ -77,7 +82,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 186</nav>
+		<nav style="color: #7FFFD4;">总文章数 190</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -191,14 +196,14 @@
             
 
 <meta charset="utf-8">
-<article id="post-MyBatis多数据源配置" class="article article-type-post " itemscope itemprop="blogPost">
+<article id="post-MyBatis初始化做了什么" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      MyBatis多数据源配置
+      MyBatis初始化做了什么
     </h1>
   
 
@@ -210,8 +215,8 @@
         </span>
 
 
-<a href="/2019/11/17/MyBatis%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2019-11-17T13:26:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-17</time>
+<a href="/2019/01/21/MyBatis%E5%88%9D%E5%A7%8B%E5%8C%96%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/" class="archive-article-date">
+  	<time datetime="2019-01-21T12:22:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-21</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -222,7 +227,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.1k字</span>
+        <span class="post-count">2k字</span>
       </span>
     </span>
 
@@ -231,7 +236,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6分</span>
+        <span class="post-count">8分</span>
       </span>
     </span>
 </div>
@@ -251,7 +256,7 @@
     <div id="toc-article" class="toc-article">
         <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
         <strong class="toc-title">文章目录</strong>
-           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置文件"><span class="toc-number">2.</span> <span class="toc-text">配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据源配置"><span class="toc-number">3.</span> <span class="toc-text">数据源配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dao-层和-xml层"><span class="toc-number">4.</span> <span class="toc-text">dao 层和 xml层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-number">5.</span> <span class="toc-text">测试</span></a></li></ol>
+           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、-MyBatis的初始化做了什么"><span class="toc-number">1.</span> <span class="toc-text">一、 MyBatis的初始化做了什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MyBatis初始化基本过程"><span class="toc-number">2.</span> <span class="toc-text">MyBatis初始化基本过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建Configuration对象的过程"><span class="toc-number">3.</span> <span class="toc-text">创建Configuration对象的过程</span></a></li></ol>
          </div>
    <script type="text/javascript">
     function showToc(){
@@ -273,26 +278,100 @@
     <div class="article-entry" itemprop="articleBody">
       
 	
-		<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>多数据源，一般都来解决主从模式或者业务比较复杂需要连接不同的分库来支持业务。我们遇到的情况是后者，网上找了很多，大都是根据 Jpa 来做多数据源解决方案，要不就是老的 Spring 多数据源解决方案，还有的是利用 Aop 动态切换，过于复杂，当前已Mybatis Xml为例，简单配置。</p>
+		<h2 id="一、-MyBatis的初始化做了什么"><a href="#一、-MyBatis的初始化做了什么" class="headerlink" title="一、 MyBatis的初始化做了什么"></a>一、 MyBatis的初始化做了什么</h2><p>任何框架的初始化，无非是加载自己运行时所需要的配置信息。</p>
+<p>MyBatis的配置信息，大概包含以下信息，其高层级结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt; 配置</span><br><span class="line"></span><br><span class="line">    &lt;properties&gt; 属性</span><br><span class="line"></span><br><span class="line">    &lt;settings&gt; 设置</span><br><span class="line"></span><br><span class="line">    &lt;typeAliases&gt; 类型命名</span><br><span class="line"></span><br><span class="line">    &lt;typeHandlers&gt; 类型处理器</span><br><span class="line"></span><br><span class="line">    &lt;objectFactory&gt; 对象工厂</span><br><span class="line"></span><br><span class="line">    &lt;plugins&gt; 插件</span><br><span class="line"></span><br><span class="line">    &lt;environments&gt; 环境</span><br><span class="line"></span><br><span class="line">    &lt;environment&gt; 环境变量</span><br><span class="line"></span><br><span class="line">    &lt;transactionManager&gt; 事务管理器</span><br><span class="line"></span><br><span class="line">    &lt;dataSource&gt; 数据源</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>Pom 包就不贴了比较简单该依赖的就依赖，主要是数据库这边的配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mybatis.config-location&#x3D;classpath:mybatis&#x2F;mybatis-config.xml</span><br><span class="line"></span><br><span class="line">spring.datasource.test1.jdbc-url&#x3D;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;test1?serverTimezone&#x3D;UTC&amp;useUnicode&#x3D;true&amp;characterEncoding&#x3D;utf-8&amp;useSSL&#x3D;true</span><br><span class="line">spring.datasource.test1.username&#x3D;root</span><br><span class="line">spring.datasource.test1.password&#x3D;root</span><br><span class="line">spring.datasource.test1.driver-class-name&#x3D;com.mysql.cj.jdbc.Driver</span><br><span class="line"></span><br><span class="line">spring.datasource.test2.jdbc-url&#x3D;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;test2?serverTimezone&#x3D;UTC&amp;useUnicode&#x3D;true&amp;characterEncoding&#x3D;utf-8&amp;useSSL&#x3D;true</span><br><span class="line">spring.datasource.test2.username&#x3D;root</span><br><span class="line">spring.datasource.test2.password&#x3D;root</span><br><span class="line">spring.datasource.test2.driver-class-name&#x3D;com.mysql.cj.jdbc.Driver</span><br></pre></td></tr></table></figure>
+<p>MyBatis的上述配置信息会配置在XML配置文件中(mybatis-config.xml)，那么，这些信息被加载进入MyBatis内部，MyBatis是怎样维护的呢？</p>
+<p>MyBatis采用了一个非常直白和简单的方式—使用 <code>org.apache.ibatis.session.Configuration</code> 对象作为一个所有配置信息的容器，Configuration对象的组织结构和XML配置文件的组织结构几乎完全一样（当然，Configuration对象的功能并不限于此，它还负责创建一些MyBatis内部使用的对象，如Executor等）。如下图所示：</p>
+<p><img src="/2019/01/21/MyBatis%E5%88%9D%E5%A7%8B%E5%8C%96%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/f88a67be-0c20-45f4-8581-231673ebc1ee.jpg" alt></p>
+<p>MyBatis根据初始化好Configuration信息，这时候用户就可以使用MyBatis进行数据库操作了。</p>
+<p><font color="red">可以这么说，MyBatis初始化的过程，就是创建 Configuration对象的过程。</font></p>
+<blockquote>
+<p>MyBatis的初始化可以有两种方式：</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>基于XML配置文件：基于XML配置文件的方式是将MyBatis的所有配置信息放在XML文件中，MyBatis通过加载并XML配置文件，将配置文信息组装成内部的Configuration对象</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>基于Java API：这种方式不使用XML配置文件，需要MyBatis使用者在Java代码中，手动创建Configuration对象，然后将配置参数set 进入Configuration对象中</li>
+</ul>
+</blockquote>
+<p>接下来我们将通过 基于XML配置文件方式的MyBatis初始化，深入探讨MyBatis是如何通过配置文件构建Configuration对象，并使用它的。</p>
+<p><strong>MyBatis基于XML配置文件创建Configuration对象的过程</strong></p>
+<p>现在就从使用MyBatis的简单例子入手，深入分析一下MyBatis是怎样完成初始化的，都初始化了什么。看以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">String resource &#x3D; &quot;mybatis-config.xml&quot;;</span><br><span class="line"></span><br><span class="line">InputStream inputStream &#x3D; Resources.getResourceAsStream(resource);</span><br><span class="line"></span><br><span class="line">SqlSessionFactory sqlSessionFactory &#x3D; new SqlSessionFactoryBuilder().build(inputStream);</span><br><span class="line"></span><br><span class="line">SqlSession sqlSession &#x3D; sqlSessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">List list &#x3D; sqlSession.selectList(&quot;com.foo.bean.BlogMapper.queryAllBlogInfo&quot;);</span><br></pre></td></tr></table></figure>
 
-<p>一个 test1 库和一个 test2 库，其中 test1 位主库，在使用的过程中必须指定主库，不然会报错</p>
-<h2 id="数据源配置"><a href="#数据源配置" class="headerlink" title="数据源配置"></a>数据源配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@MapperScan(basePackages &#x3D; &quot;com.neo.mapper.test1&quot;, sqlSessionTemplateRef  &#x3D; &quot;test1SqlSessionTemplate&quot;)</span><br><span class="line">public class DataSource1Config &#123;</span><br><span class="line"></span><br><span class="line">    @Bean(name &#x3D; &quot;test1DataSource&quot;)</span><br><span class="line">    @ConfigurationProperties(prefix &#x3D; &quot;spring.datasource.test1&quot;)</span><br><span class="line">    @Primary</span><br><span class="line">    public DataSource testDataSource() &#123;</span><br><span class="line">        return DataSourceBuilder.create().build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Bean(name &#x3D; &quot;test1SqlSessionFactory&quot;)</span><br><span class="line">    @Primary</span><br><span class="line">    public SqlSessionFactory testSqlSessionFactory(@Qualifier(&quot;test1DataSource&quot;) DataSource dataSource) throws Exception &#123;</span><br><span class="line">        SqlSessionFactoryBean bean &#x3D; new SqlSessionFactoryBean();</span><br><span class="line">        bean.setDataSource(dataSource);</span><br><span class="line">        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(&quot;classpath:mybatis&#x2F;mapper&#x2F;test1&#x2F;*.xml&quot;));</span><br><span class="line">        return bean.getObject();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Bean(name &#x3D; &quot;test1TransactionManager&quot;)</span><br><span class="line">    @Primary</span><br><span class="line">    public DataSourceTransactionManager testTransactionManager(@Qualifier(&quot;test1DataSource&quot;) DataSource dataSource) &#123;</span><br><span class="line">        return new DataSourceTransactionManager(dataSource);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Bean(name &#x3D; &quot;test1SqlSessionTemplate&quot;)</span><br><span class="line">    @Primary</span><br><span class="line">    public SqlSessionTemplate testSqlSessionTemplate(@Qualifier(&quot;test1SqlSessionFactory&quot;) SqlSessionFactory sqlSessionFactory) throws Exception &#123;</span><br><span class="line">        return new SqlSessionTemplate(sqlSessionFactory);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有过MyBatis使用经验的读者会知道，上述语句的作用是执行<code>com.foo.bean.BlogMapper.queryAllBlogInfo</code> 定义的SQL语句，返回一个List结果集。总的来说，上述代码经历了<strong>mybatis初始化 –&gt;创建SqlSession –&gt;执行SQL语句</strong> 返回结果三个过程。</p>
+<p>上述代码的功能是根据配置文件mybatis-config.xml 配置文件，创建SqlSessionFactory对象，然后产生SqlSession，执行SQL语句。而mybatis的初始化就发生在第三句：<br><code>SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);</code></p>
+<p>现在就让我们看看第三句到底发生了什么。</p>
+<h2 id="MyBatis初始化基本过程"><a href="#MyBatis初始化基本过程" class="headerlink" title="MyBatis初始化基本过程"></a>MyBatis初始化基本过程</h2><p>SqlSessionFactoryBuilder根据传入的数据流生成Configuration对象，然后根据Configuration对象创建默认的SqlSessionFactory实例。</p>
+<p>初始化的基本过程如下序列图所示：</p>
+<p><img src="/2019/01/21/MyBatis%E5%88%9D%E5%A7%8B%E5%8C%96%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/43538d13-f13b-43cd-8143-ed40ea994efa.jpg" alt></p>
+<blockquote>
+<p>由上图所示，mybatis初始化要经过简单的以下几步：</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>调用SqlSessionFactoryBuilder对象的build(inputStream)方法；</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>SqlSessionFactoryBuilder会根据输入流inputStream等信息创建XMLConfigBuilder对象;</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li>SqlSessionFactoryBuilder调用XMLConfigBuilder对象的parse()方法；</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="4">
+<li>XMLConfigBuilder对象返回Configuration对象；</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="5">
+<li>SqlSessionFactoryBuilder根据Configuration对象创建一个DefaultSessionFactory对象；</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="6">
+<li>SqlSessionFactoryBuilder返回 DefaultSessionFactory对象给Client，供Client使用。</li>
+</ol>
+</blockquote>
+<p>SqlSessionFactoryBuilder相关的代码如下所示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">public SqlSessionFactory build(InputStream inputStream)</span><br><span class="line">&#123;</span><br><span class="line">    return build(inputStream, null, null);</span><br><span class="line">&#125;</span><br><span class="line">public SqlSessionFactory build(InputStream inputStream, String environment, Properties properties)</span><br><span class="line">&#123;</span><br><span class="line">    try</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F;2\. 创建XMLConfigBuilder对象用来解析XML配置文件，生成Configuration对象</span><br><span class="line">        XMLConfigBuilder parser &#x3D; new XMLConfigBuilder(inputStream, environment, properties);</span><br><span class="line">        &#x2F;&#x2F;3\. 将XML配置文件内的信息解析成Java对象Configuration对象</span><br><span class="line">        Configuration config &#x3D; parser.parse();</span><br><span class="line">        &#x2F;&#x2F;4\. 根据Configuration对象创建出SqlSessionFactory对象</span><br><span class="line">        return build(config);</span><br><span class="line">    &#125;</span><br><span class="line">    catch (Exception e)</span><br><span class="line">    &#123;</span><br><span class="line">        throw ExceptionFactory.wrapException(&quot;Error building SqlSession.&quot;, e);</span><br><span class="line">    &#125;</span><br><span class="line">    finally</span><br><span class="line">    &#123;</span><br><span class="line">        ErrorContext.instance().reset();</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            inputStream.close();</span><br><span class="line">        &#125;</span><br><span class="line">        catch (IOException e)</span><br><span class="line">        &#123;</span><br><span class="line">            &#x2F;&#x2F; Intentionally ignore. Prefer previous error.</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;从此处可以看出，MyBatis内部通过Configuration对象来创建SqlSessionFactory,用户也可以自己通过API构造好Configuration对象，调用此方法创建SqlSessionFactory</span><br><span class="line">public SqlSessionFactory build(Configuration config)</span><br><span class="line">&#123;</span><br><span class="line">    return new DefaultSqlSessionFactory(config);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>最关键的地方就是这块了，一层一层注入,首先创建 DataSource，然后创建 SqlSessionFactory 再创建事务，最后包装到 SqlSessionTemplate 中。其中需要指定分库的 mapper 文件地址，以及分库dao层代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@MapperScan(basePackages &#x3D; &quot;com.neo.mapper.test1&quot;, sqlSessionTemplateRef  &#x3D; &quot;test1SqlSessionTemplate&quot;)</span><br></pre></td></tr></table></figure>
+<p>上述的初始化过程中，涉及到了以下几个对象：</p>
+<ul>
+<li><p>SqlSessionFactoryBuilder ： SqlSessionFactory的构造器，用于创建SqlSessionFactory，采用了Builder设计模式</p>
+</li>
+<li><p>Configuration ：该对象是mybatis-config.xml文件中所有mybatis配置信息</p>
+</li>
+<li><p>SqlSessionFactory：SqlSession工厂类，以工厂形式创建SqlSession对象，采用了Factory工厂设计模式</p>
+</li>
+<li><p>XmlConfigParser ：负责将mybatis-config.xml配置文件解析成Configuration对象，共SqlSessonFactoryBuilder使用，创建SqlSessionFactory</p>
+</li>
+</ul>
+<h2 id="创建Configuration对象的过程"><a href="#创建Configuration对象的过程" class="headerlink" title="创建Configuration对象的过程"></a>创建Configuration对象的过程</h2><p>接着上述的 MyBatis初始化基本过程讨论，当SqlSessionFactoryBuilder执行build()方法，调用了XMLConfigBuilder的parse()方法，然后返回了Configuration对象。那么parse()方法是如何处理XML文件，生成Configuration对象的呢？</p>
+<p>1. XMLConfigBuilder会将XML配置文件的信息转换为Document对象，而XML配置定义文件DTD转换成XMLMapperEntityResolver对象，然后将二者封装到XpathParser对象中，XpathParser的作用是提供根据Xpath表达式获取基本的DOM节点Node信息的操作。如图所示：</p>
+<p><img src="/2019/01/21/MyBatis%E5%88%9D%E5%A7%8B%E5%8C%96%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/2662fbcf-a9c6-4db5-a25e-801c6e41937f.jpg" alt></p>
+<p>2. 之后XMLConfigBuilder调用parse()方法：会从XPathParser中取出 <configuration>节点对应的Node对象，然后解析此Node节点的子Node：properties, settings, typeAliases,typeHandlers, objectFactory, objectWrapperFactory, plugins, environments,databaseIdProvider, mappers</configuration></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">  public Configuration parse()</span><br><span class="line">  &#123;</span><br><span class="line">      if (parsed)</span><br><span class="line">      &#123;</span><br><span class="line">          throw new BuilderException(&quot;Each XMLConfigBuilder can only be used once.&quot;);</span><br><span class="line">      &#125;</span><br><span class="line">      parsed &#x3D; true;</span><br><span class="line">      &#x2F;&#x2F;源码中没有这一句，只有 parseConfiguration(parser.evalNode(&quot;&#x2F;configuration&quot;));</span><br><span class="line">      &#x2F;&#x2F;为了让读者看得更明晰，源码拆分为以下两句</span><br><span class="line">      XNode configurationNode &#x3D; parser.evalNode(&quot;&#x2F;configuration&quot;);</span><br><span class="line">      parseConfiguration(configurationNode);</span><br><span class="line">      return configuration;</span><br><span class="line">  &#125;</span><br><span class="line">  &#x2F;*</span><br><span class="line">  解析 &quot;&#x2F;configuration&quot;节点下的子节点信息，然后将解析的结果设置到Configuration对象中</span><br><span class="line">  *&#x2F;</span><br><span class="line">private void parseConfiguration(XNode root) &#123;</span><br><span class="line">  try &#123;</span><br><span class="line">    &#x2F;&#x2F;1.首先处理properties 节点 </span><br><span class="line">    propertiesElement(root.evalNode(&quot;properties&quot;)); &#x2F;&#x2F;issue #117 read properties first</span><br><span class="line">    &#x2F;&#x2F;2.处理typeAliases</span><br><span class="line">    typeAliasesElement(root.evalNode(&quot;typeAliases&quot;));</span><br><span class="line">    &#x2F;&#x2F;3.处理插件</span><br><span class="line">    pluginElement(root.evalNode(&quot;plugins&quot;));</span><br><span class="line">    &#x2F;&#x2F;4.处理objectFactory</span><br><span class="line">    objectFactoryElement(root.evalNode(&quot;objectFactory&quot;));</span><br><span class="line">    &#x2F;&#x2F;5.objectWrapperFactory</span><br><span class="line">    objectWrapperFactoryElement(root.evalNode(&quot;objectWrapperFactory&quot;));</span><br><span class="line">    &#x2F;&#x2F;6.settings</span><br><span class="line">    settingsElement(root.evalNode(&quot;settings&quot;));</span><br><span class="line">    &#x2F;&#x2F;7.处理environments</span><br><span class="line">    environmentsElement(root.evalNode(&quot;environments&quot;)); &#x2F;&#x2F; read it after objectFactory and objectWrapperFactory issue #631</span><br><span class="line">    &#x2F;&#x2F;8.database</span><br><span class="line">    databaseIdProviderElement(root.evalNode(&quot;databaseIdProvider&quot;));</span><br><span class="line">    &#x2F;&#x2F;9\. typeHandlers</span><br><span class="line">    typeHandlerElement(root.evalNode(&quot;typeHandlers&quot;));</span><br><span class="line">    &#x2F;&#x2F;10 mappers</span><br><span class="line">    mapperElement(root.evalNode(&quot;mappers&quot;));</span><br><span class="line">  &#125; catch (Exception e) &#123;</span><br><span class="line">    throw new BuilderException(&quot;Error parsing SQL Mapper Configuration. Cause: &quot; + e, e);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>这块的注解就是指明了扫描 dao 层，并且给 dao 层注入指定的 SqlSessionTemplate。所有<code>@Bean</code>都需要按照命名指定正确。</p>
-<h2 id="dao-层和-xml层"><a href="#dao-层和-xml层" class="headerlink" title="dao 层和 xml层"></a>dao 层和 xml层</h2><p>dao 层和 xml 需要按照库来分在不同的目录，比如：test1 库 dao 层在 <code>com.neo.mapper.test1</code> 包下，test2 库在<code>com.neo.mapper.test2</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public interface User1Mapper &#123;</span><br><span class="line">    List&lt;UserEntity&gt; getAll();</span><br><span class="line">    UserEntity getOne(Long id);</span><br><span class="line">    void insert(UserEntity user);</span><br><span class="line">    void update(UserEntity user);</span><br><span class="line">    void delete(Long id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3. 然后将这些值解析出来设置到Configuration对象中。</p>
+<p>解析子节点的过程这里就不一一介绍了，用户可以参照MyBatis源码仔细揣摩，我们就看上述的environmentsElement(root.evalNode(“environments”)); 方法是如何将environments的信息解析出来，设置到Configuration对象中的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">   解析environments节点，并将结果设置到Configuration对象中</span><br><span class="line">   注意：创建envronment时，如果SqlSessionFactoryBuilder指定了特定的环境（即数据源）；</span><br><span class="line">         则返回指定环境（数据源）的Environment对象，否则返回默认的Environment对象；</span><br><span class="line">         这种方式实现了MyBatis可以连接多数据源</span><br><span class="line">*&#x2F;</span><br><span class="line">private void environmentsElement(XNode context) throws Exception</span><br><span class="line">&#123;</span><br><span class="line">    if (context !&#x3D; null)</span><br><span class="line">    &#123;</span><br><span class="line">        if (environment &#x3D;&#x3D; null)</span><br><span class="line">        &#123;</span><br><span class="line">            environment &#x3D; context.getStringAttribute(&quot;default&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        for (XNode child : context.getChildren())</span><br><span class="line">        &#123;</span><br><span class="line">            String id &#x3D; child.getStringAttribute(&quot;id&quot;);</span><br><span class="line">            if (isSpecifiedEnvironment(id))</span><br><span class="line">            &#123;</span><br><span class="line">                &#x2F;&#x2F;1.创建事务工厂 TransactionFactory</span><br><span class="line">                TransactionFactory txFactory &#x3D; transactionManagerElement(child.evalNode(&quot;transactionManager&quot;));</span><br><span class="line">                DataSourceFactory dsFactory &#x3D; dataSourceElement(child.evalNode(&quot;dataSource&quot;));</span><br><span class="line">                &#x2F;&#x2F;2.创建数据源DataSource</span><br><span class="line">                DataSource dataSource &#x3D; dsFactory.getDataSource();</span><br><span class="line">                &#x2F;&#x2F;3\. 构造Environment对象</span><br><span class="line">                Environment.Builder environmentBuilder &#x3D; new Environment.Builder(id)</span><br><span class="line">                .transactionFactory(txFactory)</span><br><span class="line">                .dataSource(dataSource);</span><br><span class="line">                &#x2F;&#x2F;4\. 将创建的Envronment对象设置到configuration 对象中</span><br><span class="line">                configuration.setEnvironment(environmentBuilder.build());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">private boolean isSpecifiedEnvironment(String id)</span><br><span class="line">&#123;</span><br><span class="line">    if (environment &#x3D;&#x3D; null)</span><br><span class="line">    &#123;</span><br><span class="line">        throw new BuilderException(&quot;No environment specified.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    else if (id &#x3D;&#x3D; null)</span><br><span class="line">    &#123;</span><br><span class="line">        throw new BuilderException(&quot;Environment requires an id attribute.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    else if (environment.equals(id))</span><br><span class="line">    &#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>xml 层</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&lt;mapper namespace&#x3D;&quot;com.neo.mapper.test1.User1Mapper&quot; &gt;</span><br><span class="line">    &lt;resultMap id&#x3D;&quot;BaseResultMap&quot; type&#x3D;&quot;com.neo.model.User&quot; &gt;</span><br><span class="line">        &lt;id column&#x3D;&quot;id&quot; property&#x3D;&quot;id&quot; jdbcType&#x3D;&quot;BIGINT&quot; &#x2F;&gt;</span><br><span class="line">        &lt;result column&#x3D;&quot;userName&quot; property&#x3D;&quot;userName&quot; jdbcType&#x3D;&quot;VARCHAR&quot; &#x2F;&gt;</span><br><span class="line">        &lt;result column&#x3D;&quot;passWord&quot; property&#x3D;&quot;passWord&quot; jdbcType&#x3D;&quot;VARCHAR&quot; &#x2F;&gt;</span><br><span class="line">        &lt;result column&#x3D;&quot;user_sex&quot; property&#x3D;&quot;userSex&quot; javaType&#x3D;&quot;com.neo.enums.UserSexEnum&quot;&#x2F;&gt;</span><br><span class="line">        &lt;result column&#x3D;&quot;nick_name&quot; property&#x3D;&quot;nickName&quot; jdbcType&#x3D;&quot;VARCHAR&quot; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;resultMap&gt;</span><br><span class="line"></span><br><span class="line">    &lt;sql id&#x3D;&quot;Base_Column_List&quot; &gt;</span><br><span class="line">        id, userName, passWord, user_sex, nick_name</span><br><span class="line">    &lt;&#x2F;sql&gt;</span><br><span class="line"></span><br><span class="line">    &lt;select id&#x3D;&quot;getAll&quot; resultMap&#x3D;&quot;BaseResultMap&quot;  &gt;</span><br><span class="line">       SELECT </span><br><span class="line">       &lt;include refid&#x3D;&quot;Base_Column_List&quot; &#x2F;&gt;</span><br><span class="line">     FROM users</span><br><span class="line">    &lt;&#x2F;select&gt;</span><br><span class="line"></span><br><span class="line">    &lt;select id&#x3D;&quot;getOne&quot; parameterType&#x3D;&quot;java.lang.Long&quot; resultMap&#x3D;&quot;BaseResultMap&quot; &gt;</span><br><span class="line">        SELECT </span><br><span class="line">       &lt;include refid&#x3D;&quot;Base_Column_List&quot; &#x2F;&gt;</span><br><span class="line">     FROM users</span><br><span class="line">     WHERE id &#x3D; #&#123;id&#125;</span><br><span class="line">    &lt;&#x2F;select&gt;</span><br><span class="line"></span><br><span class="line">    &lt;insert id&#x3D;&quot;insert&quot; parameterType&#x3D;&quot;com.neo.model.User&quot; &gt;</span><br><span class="line">       INSERT INTO </span><br><span class="line">          users</span><br><span class="line">          (userName,passWord,user_sex) </span><br><span class="line">        VALUES</span><br><span class="line">          (#&#123;userName&#125;, #&#123;passWord&#125;, #&#123;userSex&#125;)</span><br><span class="line">    &lt;&#x2F;insert&gt;</span><br><span class="line"></span><br><span class="line">    &lt;update id&#x3D;&quot;update&quot; parameterType&#x3D;&quot;com.neo.model.User&quot; &gt;</span><br><span class="line">       UPDATE </span><br><span class="line">          users </span><br><span class="line">       SET </span><br><span class="line">        &lt;if test&#x3D;&quot;userName !&#x3D; null&quot;&gt;userName &#x3D; #&#123;userName&#125;,&lt;&#x2F;if&gt;</span><br><span class="line">        &lt;if test&#x3D;&quot;passWord !&#x3D; null&quot;&gt;passWord &#x3D; #&#123;passWord&#125;,&lt;&#x2F;if&gt;</span><br><span class="line">        nick_name &#x3D; #&#123;nickName&#125;</span><br><span class="line">       WHERE </span><br><span class="line">          id &#x3D; #&#123;id&#125;</span><br><span class="line">    &lt;&#x2F;update&gt;</span><br><span class="line"></span><br><span class="line">    &lt;delete id&#x3D;&quot;delete&quot; parameterType&#x3D;&quot;java.lang.Long&quot; &gt;</span><br><span class="line">       DELETE FROM</span><br><span class="line">           users </span><br><span class="line">       WHERE </span><br><span class="line">           id &#x3D;#&#123;id&#125;</span><br><span class="line">    &lt;&#x2F;delete&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;mapper&gt;</span><br></pre></td></tr></table></figure>
+<p>4.\ 返回Configuration对象</p>
+<p>将上述的MyBatis初始化基本过程的序列图细化</p>
+<p><img src="/2019/01/21/MyBatis%E5%88%9D%E5%A7%8B%E5%8C%96%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/e103ad8e-ae18-4210-b4e9-2f388e87e7ab.png" alt></p>
 
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>测试可以使用 SpringBootTest,也可以放到 Controller中，这里只贴 Controller 层的使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class UserController &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private User1Mapper user1Mapper;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private User2Mapper user2Mapper;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;&#x2F;getUsers&quot;)</span><br><span class="line">    public List&lt;UserEntity&gt; getUsers() &#123;</span><br><span class="line">        List&lt;UserEntity&gt; users&#x3D;user1Mapper.getAll();</span><br><span class="line">        return users;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;&#x2F;getUser&quot;)</span><br><span class="line">    public UserEntity getUser(Long id) &#123;</span><br><span class="line">        UserEntity user&#x3D;user2Mapper.getOne(id);</span><br><span class="line">        return user;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;&#x2F;add&quot;)</span><br><span class="line">    public void save(UserEntity user) &#123;</span><br><span class="line">        user2Mapper.insert(user);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(value&#x3D;&quot;update&quot;)</span><br><span class="line">    public void update(UserEntity user) &#123;</span><br><span class="line">        user2Mapper.update(user);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(value&#x3D;&quot;&#x2F;delete&#x2F;&#123;id&#125;&quot;)</span><br><span class="line">    public void delete(@PathVariable(&quot;id&quot;) Long id) &#123;</span><br><span class="line">        user1Mapper.delete(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 	
 	
     </div>
@@ -373,7 +452,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://javassun.github.io/2019/11/17/MyBatis%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E9%85%8D%E7%BD%AE/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://javassun.github.io/2019/01/21/MyBatis%E5%88%9D%E5%A7%8B%E5%8C%96%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -388,18 +467,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/11/20/HashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/01/23/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-MyBatis%E6%95%B0%E6%8D%AE%E6%BA%90%E4%B8%8E%E8%BF%9E%E6%8E%A5%E6%B1%A0/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          HashMap实现原理_探险
+          源码分析-MyBatis数据源与连接池
         
       </div>
     </a>
   
   
-    <a href="/2019/11/17/LinkList%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">LinkList实现原理_探险</div>
+    <a href="/2019/01/20/3-Git%E4%B8%8EGitHub%E7%AE%80%E5%8D%95%E5%90%8C%E6%AD%A5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">3-Git与GitHub简单同步</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -426,7 +505,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置文件"><span class="toc-number">2.</span> <span class="toc-text">配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据源配置"><span class="toc-number">3.</span> <span class="toc-text">数据源配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dao-层和-xml层"><span class="toc-number">4.</span> <span class="toc-text">dao 层和 xml层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-number">5.</span> <span class="toc-text">测试</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、-MyBatis的初始化做了什么"><span class="toc-number">1.</span> <span class="toc-text">一、 MyBatis的初始化做了什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MyBatis初始化基本过程"><span class="toc-number">2.</span> <span class="toc-text">MyBatis初始化基本过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建Configuration对象的过程"><span class="toc-number">3.</span> <span class="toc-text">创建Configuration对象的过程</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -466,7 +545,7 @@ if(true){
   	repo: 'mycomments',
   	owner: 'JavaSsun',
   	admin: ['JavaSsun'],
-  	id: 'Sun Nov 17 2019 21:26:57 GMT+0800',
+  	id: 'Mon Jan 21 2019 20:22:50 GMT+0800',
   	distractionFreeMode: 'true'
 })
 gitalk.render('gitalk-container') 
@@ -583,7 +662,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Elasticsearch</a>
+                <a href="javascript:void(0)" class="js-tag color3">MQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -595,7 +674,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MQ</a>
+                <a href="javascript:void(0)" class="js-tag color4">Elasticsearch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -639,15 +718,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码解析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -683,11 +762,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Swagger2</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color4">Swagger2</a>
               </li>
              
               <li class="article-tag-list-item">
