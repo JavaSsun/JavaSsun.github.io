@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://javassun.github.io/2019/11/17/MyBatis%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E9%85%8D%E7%BD%AE/</loc>
+    
+    <lastmod>2020-05-18T15:58:09.198Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://javassun.github.io/2018/05/05/Netty%E7%9F%A5%E5%A4%9A%E5%B0%91/</loc>
     
     <lastmod>2020-05-18T12:50:58.506Z</lastmod>
@@ -922,13 +929,6 @@
     <loc>http://javassun.github.io/2020/01/15/SpringBoot-Docker%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/</loc>
     
     <lastmod>2020-05-06T06:33:32.647Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://javassun.github.io/2019/11/17/MyBatis%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E9%85%8D%E7%BD%AE/</loc>
-    
-    <lastmod>2020-05-06T06:33:28.629Z</lastmod>
     
   </url>
   
