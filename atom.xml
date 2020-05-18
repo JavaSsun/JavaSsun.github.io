@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://javassun.github.io/"/>
-  <updated>2020-05-06T06:33:23.548Z</updated>
+  <updated>2020-05-18T07:46:30.881Z</updated>
   <id>http://javassun.github.io/</id>
   
   <author>
@@ -15,6 +15,45 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>8-如何设计一个消息队列</title>
+    <link href="http://javassun.github.io/2020/04/11/8-%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
+    <id>http://javassun.github.io/2020/04/11/8-%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</id>
+    <published>2020-04-11T11:44:16.000Z</published>
+    <updated>2020-05-18T07:46:30.881Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-面试官心里分析"><a href="#1-面试官心里分析" class="headerlink" title="1. 面试官心里分析"></a>1. 面试官心里分析</h2><p>如果让你写一个消息队列，该如何进行架构设计啊？说一下你的思路</p><p>其实聊到这个问题，一般面试官要考察两块：</p><ul><li><p>你有没有对某一个消息队列做过较为深入的原理的了解，或者从整体了解把握住一个mq的架构原理</p></li><li><p>看看你的设计能力，给你一个常见的系统，就是消息队列系统，看看你能不能从全局把握一下整体架构设计，给出一些关键点出来</p></li></ul><p>说实话，遇到类似此类问题，大部分人基本都会蒙，因为平时从来没有思考过类似的问题，大多数人就是平时埋头用，从来不去思考背后的一些东西。类似的问题，如果让你来设计一个spring框架你会怎么做？如果让你来设计一个dubbo框架你会怎么做？如果让你来设计一个mybatis框架你会怎么做？</p><a id="more"></a><h2 id="2-面试题剖析"><a href="#2-面试题剖析" class="headerlink" title="2. 面试题剖析"></a>2. 面试题剖析</h2><p>其实回答这类问题，说白了，起码不求你看过那技术的源码，起码你大概知道那个技术的基本原理，核心组成部分，基本架构构成，然后参照一些开源的技术把一个系统设计出来的思路说一下就好。</p><p>比如说这个消息队列系统，我们来从以下几个角度来考虑一下</p><h3 id="1-支持可伸缩性"><a href="#1-支持可伸缩性" class="headerlink" title="1 支持可伸缩性"></a>1 支持可伸缩性</h3><p>首先这个mq得支持可伸缩性吧，就是需要的时候快速扩容，就可以增加吞吐量和容量，那怎么搞？设计个分布式的系统呗，参照一下kafka的设计理念，broker -&gt; topic -&gt; partition，每个partition放一个机器，就存一部分数据。如果现在资源不够了，简单啊，给topic增加partition，然后做数据迁移，增加机器，不就可以存放更多数据，提供更高的吞吐量了？</p><h3 id="2-落地磁盘"><a href="#2-落地磁盘" class="headerlink" title="2 落地磁盘"></a>2 落地磁盘</h3><p>其次你得考虑一下这个mq的数据要不要落地磁盘吧？那肯定要了，落磁盘，才能保证别进程挂了数据就丢了。那落磁盘的时候怎么落啊？顺序写，这样就没有磁盘随机读写的寻址开销，磁盘顺序读写的性能是很高的，这就是kafka的思路。</p><h3 id="3-可用性"><a href="#3-可用性" class="headerlink" title="3 可用性"></a>3 可用性</h3><p>其次你考虑一下你的mq的可用性啊？这个事儿，具体参考我们之前可用性那个环节讲解的kafka的高可用保障机制。多副本 -&gt; leader &amp; follower -&gt; broker挂了重新选举leader即可对外服务。</p><h3 id="4-支持数据0丢失"><a href="#4-支持数据0丢失" class="headerlink" title="4 支持数据0丢失"></a>4 支持数据0丢失</h3><p>能不能支持数据0丢失啊？可以的，参考我们之前说的那个kafka数据零丢失方案</p><p>其实一个mq肯定是很复杂的，面试官问你这个问题，其实是个开放题，他就是看看你有没有从架构角度整体构思和设计的思维以及能力。确实这个问题可以刷掉一大批人，因为大部分人平时不思考这些东西。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>一般而言，如果一个面试官水平还算不错，会沿着从浅入深的环节深入挖一个点。比如一些大牛面试官，其实按照这个思路可以一直问下去，除了这里的7个问题之外，甚至能挑着你熟悉的一个mq一直问到源码级别非常底层。还可能会结合项目来仔细问，可能会先让你给我详细说说你的业务细节，然后将你的业务跟这些mq的问题场景结合起来，看看你每个细节是怎么处理的。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-面试官心里分析&quot;&gt;&lt;a href=&quot;#1-面试官心里分析&quot; class=&quot;headerlink&quot; title=&quot;1. 面试官心里分析&quot;&gt;&lt;/a&gt;1. 面试官心里分析&lt;/h2&gt;&lt;p&gt;如果让你写一个消息队列，该如何进行架构设计啊？说一下你的思路&lt;/p&gt;
+&lt;p&gt;其实聊到这个问题，一般面试官要考察两块：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;你有没有对某一个消息队列做过较为深入的原理的了解，或者从整体了解把握住一个mq的架构原理&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;看看你的设计能力，给你一个常见的系统，就是消息队列系统，看看你能不能从全局把握一下整体架构设计，给出一些关键点出来&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;说实话，遇到类似此类问题，大部分人基本都会蒙，因为平时从来没有思考过类似的问题，大多数人就是平时埋头用，从来不去思考背后的一些东西。类似的问题，如果让你来设计一个spring框架你会怎么做？如果让你来设计一个dubbo框架你会怎么做？如果让你来设计一个mybatis框架你会怎么做？&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="MQ" scheme="http://JavaSsun.github.io/categories/MQ/"/>
+    
+      <category term="面试" scheme="http://JavaSsun.github.io/categories/MQ/%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="系统架构" scheme="http://JavaSsun.github.io/categories/MQ/%E9%9D%A2%E8%AF%95/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="面试" scheme="http://JavaSsun.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="系统架构" scheme="http://JavaSsun.github.io/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/"/>
+    
+      <category term="MQ" scheme="http://JavaSsun.github.io/tags/MQ/"/>
+    
+  </entry>
   
   <entry>
     <title>RabbitMQ详解</title>
@@ -105,11 +144,11 @@
       <category term="日志" scheme="http://JavaSsun.github.io/categories/ELK/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/%E6%97%A5%E5%BF%97/"/>
     
     
+      <category term="系统架构" scheme="http://JavaSsun.github.io/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/"/>
+    
       <category term="日志" scheme="http://JavaSsun.github.io/tags/%E6%97%A5%E5%BF%97/"/>
     
       <category term="ELK" scheme="http://JavaSsun.github.io/tags/ELK/"/>
-    
-      <category term="系统架构" scheme="http://JavaSsun.github.io/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/"/>
     
   </entry>
   
@@ -141,11 +180,11 @@
       <category term="日志" scheme="http://JavaSsun.github.io/categories/ELK/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/%E6%97%A5%E5%BF%97/"/>
     
     
+      <category term="系统架构" scheme="http://JavaSsun.github.io/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/"/>
+    
       <category term="日志" scheme="http://JavaSsun.github.io/tags/%E6%97%A5%E5%BF%97/"/>
     
       <category term="ELK" scheme="http://JavaSsun.github.io/tags/ELK/"/>
-    
-      <category term="系统架构" scheme="http://JavaSsun.github.io/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/"/>
     
   </entry>
   
@@ -204,6 +243,39 @@
       <category term="Docker" scheme="http://JavaSsun.github.io/tags/Docker/"/>
     
       <category term="SpringBoot" scheme="http://JavaSsun.github.io/tags/SpringBoot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>1-Hystrix知多少</title>
+    <link href="http://javassun.github.io/2020/01/01/1-Hystrix%E7%9F%A5%E5%A4%9A%E5%B0%91/"/>
+    <id>http://javassun.github.io/2020/01/01/1-Hystrix%E7%9F%A5%E5%A4%9A%E5%B0%91/</id>
+    <published>2020-01-01T07:38:15.000Z</published>
+    <updated>2020-05-18T08:55:20.501Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一般来说，互联网的面试，一般都会考察你，什么是分布式系统，高并发，简单的高可用问题。限流、熔断、降级，在分布式的系统架构中，微服务架构中，其实都是最常见、基础和简单的保障系统高可用的手法。dubbo去开发了，spring cloud去开发了，在这个系统的接口调用中，我们是用hystrix去实现一整套的高可用保障机制，基于hystrix去做了限流、熔断和降级。</p><p>hystrix是国外的netflix开源的，netflix是国外很大的视频网站，系统非常复杂，微服务架构，多达几千个服务，为自己的场景，经过大量的工业验证，线上生产环境的实践，产出和开源了高可用相关的一个框架，熔断框架，hystrix。</p><p>hystrix未来或已经成为国内的高可用的限流、熔断和降级这一块的事实上的标准，spring cloud微服务框架，就是集成了hystrix来做微服务架构中的限流、降级和熔断的。</p><a id="more"></a><h2 id="1-连环炮"><a href="#1-连环炮" class="headerlink" title="1. 连环炮"></a>1. 连环炮</h2><h3 id="1-1-高可用架构"><a href="#1-1-高可用架构" class="headerlink" title="1.1 高可用架构"></a>1.1 高可用架构</h3><h3 id="1-2-限流"><a href="#1-2-限流" class="headerlink" title="1.2 限流"></a>1.2 限流</h3><p>如何限流？在工作中是怎么做的？说一下具体的实现？</p><h3 id="1-3-熔断"><a href="#1-3-熔断" class="headerlink" title="1.3 熔断"></a>1.3 熔断</h3><p>如何进行熔断？熔断框架都有哪些？具体实现原理知道吗？</p><h3 id="1-4-降级"><a href="#1-4-降级" class="headerlink" title="1.4 降级"></a>1.4 降级</h3><p>如何进行降级？</p><h2 id="2-hystrix与高可用系统架构：资源隔离-限流-熔断-降级-运维监控"><a href="#2-hystrix与高可用系统架构：资源隔离-限流-熔断-降级-运维监控" class="headerlink" title="2. hystrix与高可用系统架构：资源隔离+限流+熔断+降级+运维监控"></a>2. hystrix与高可用系统架构：资源隔离+限流+熔断+降级+运维监控</h2><h3 id="1、hystrix是什么？"><a href="#1、hystrix是什么？" class="headerlink" title="1、hystrix是什么？"></a>1、hystrix是什么？</h3><p>netflix（国外最大的类似于，爱奇艺，优酷）视频网站，五六年前，也是，感觉自己的系统，整个网站，经常出故障，可用性不太高</p><p>有时候一些vip会员不能支付，有时候看视频就卡顿，看不了视频。。。</p><p>影响公司的收入。。。</p><p>五六年前，netflix，api team，提升高可用性，开发了一个框架，类似于spring，mybatis，hibernate，等等这种框架</p><p>高可用性的框架，hystrix</p><p>hystrix，框架，提供了高可用相关的各种各样的功能，然后确保说在hystrix的保护下，整个系统可以长期处于高可用的状态，100%，99.99999%</p><p>最理想的状况下，软件的故障，就不应该说导致整个系统的崩溃，服务器硬件的一些故障，服务的冗余</p><p>唯一有可能导致系统彻底崩溃，就是类似于之前，支付宝的那个事故，工人施工，挖断了电缆，导致几个机房都停电</p><p>不可用，和产生一些故障或者bug的区别</p><h3 id="2、高可用系统架构"><a href="#2、高可用系统架构" class="headerlink" title="2、高可用系统架构"></a>2、高可用系统架构</h3><p>资源隔离、限流、熔断、降级、运维监控</p><p><strong>资源隔离</strong>：让你的系统里，某一块东西，在故障的情况下，不会耗尽系统所有的资源，比如线程资源</p><p>实际的项目中的一个case，有一块东西，是要用多线程做一些事情，小伙伴做项目的时候，没有太留神，资源隔离，那块代码，在遇到一些故障的情况下，每个线程在跑的时候，因为那个bug，直接就死循环了，导致那块东西启动了大量的线程，每个线程都死循环</p><p>最终导致我的系统资源耗尽，崩溃，不工作，不可用，废掉了</p><p>资源隔离，那一块代码，最多最多就是用掉10个线程，不能再多了，就废掉了，限定好的一些资源</p><p><strong>限流</strong>：高并发的流量涌入进来，比如说突然间一秒钟100万QPS，废掉了，10万QPS进入系统，其他90万QPS被拒绝了</p><p><strong>熔断</strong>：系统后端的一些依赖，出了一些故障，比如说mysql挂掉了，每次请求都是报错的，熔断了，后续的请求过来直接不接收了，拒绝访问，10分钟之后再尝试去看看mysql恢复没有</p><p><strong>降级</strong>：mysql挂了，系统发现了，自动降级，从内存里存的少量数据中，去提取一些数据出来</p><p><strong>运维监控</strong>：监控+报警+优化，各种异常的情况，有问题就及时报警，优化一些系统的配置和参数，或者代码。</p><p><strong>小结</strong></p><p>hystrix对系统进行各种高可用性的系统加固，来应对各种不可用的情况</p><h2 id="2-hystrix要解决的分布式系统可用性问题以及其设计原则"><a href="#2-hystrix要解决的分布式系统可用性问题以及其设计原则" class="headerlink" title="2. hystrix要解决的分布式系统可用性问题以及其设计原则"></a>2. hystrix要解决的分布式系统可用性问题以及其设计原则</h2><p><strong>分布式系统以及其中的故障和hystrix</strong></p><p><img src="/2020/01/01/1-Hystrix%E7%9F%A5%E5%A4%9A%E5%B0%91/76133498-34a0-4806-a404-0ef0e6956377.png" alt></p><h3 id="1、Hystrix到底是什么？"><a href="#1、Hystrix到底是什么？" class="headerlink" title="1、Hystrix到底是什么？"></a>1、Hystrix到底是什么？</h3><p>在分布式系统中，每个服务都可能会调用很多其他服务，被调用的那些服务就是依赖服务，有的时候某些依赖服务出现故障也是很正常的。</p><p>Hystrix可以让我们在分布式系统中对服务间的调用进行控制，加入一些调用延迟或者依赖故障的容错机制。</p><p>Hystrix通过将依赖服务进行资源隔离，进而组织某个依赖服务出现故障的时候，这种故障在整个系统所有的依赖服务调用中进行蔓延，同时Hystrix还提供故障时的fallback降级机制</p><p>总而言之，Hystrix通过这些方法帮助我们提升分布式系统的可用性和稳定性</p><h3 id="2、Hystrix的历史"><a href="#2、Hystrix的历史" class="headerlink" title="2、Hystrix的历史"></a>2、Hystrix的历史</h3><p>hystrix，就是一种高可用保障的一个框架，类似于spring（ioc，mvc），mybatis，activiti，lucene，框架，预先封装好的为了解决某个特定领域的特定问题的一套代码库</p><p>框架，用了框架之后，来解决这个领域的特定的问题，就可以大大减少我们的工作量，提升我们的工作质量和工作效率，框架</p><p>hystrix，高可用性保障的一个框架</p><p>Netflix（可以认为是国外的优酷或者爱奇艺之类的视频网站），API团队从2011年开始做一些提升系统可用性和稳定性的工作，Hystrix就是从那时候开始发展出来的。</p><p>在2012年的时候，Hystrix就变得比较成熟和稳定了，Netflix中，除了API团队以外，很多其他的团队都开始使用Hystrix。</p><p>时至今日，Netflix中每天都有数十亿次的服务间调用，通过Hystrix框架在进行，而Hystrix也帮助Netflix网站提升了整体的可用性和稳定性</p><h3 id="3、初步看一看Hystrix的设计原则是什么？"><a href="#3、初步看一看Hystrix的设计原则是什么？" class="headerlink" title="3、初步看一看Hystrix的设计原则是什么？"></a>3、初步看一看Hystrix的设计原则是什么？</h3><p>hystrix为了实现高可用性的架构，设计hystrix的时候，一些设计原则是什么？？？</p><p>（1）对依赖服务调用时出现的调用延迟和调用失败进行控制和容错保护</p><p>（2）在复杂的分布式系统中，阻止某一个依赖服务的故障在整个系统中蔓延，服务A-&gt;服务B-&gt;服务C，服务C故障了，服务B也故障了，服务A故障了，整套分布式系统全部故障，整体宕机</p><p>（3）提供fail-fast（快速失败）和快速恢复的支持</p><p>（4）提供fallback优雅降级的支持</p><p>（5）支持近实时的监控、报警以及运维操作</p><p>调用延迟+失败，提供容错<br>阻止故障蔓延<br>快速失败+快速恢复<br>降级<br>监控+报警+运维</p><p>完全描述了hystrix的功能，提供整个分布式系统的高可用的架构</p><h3 id="4、Hystrix要解决的问题是什么？"><a href="#4、Hystrix要解决的问题是什么？" class="headerlink" title="4、Hystrix要解决的问题是什么？"></a>4、Hystrix要解决的问题是什么？</h3><p>在复杂的分布式系统架构中，每个服务都有很多的依赖服务，而每个依赖服务都可能会故障</p><p>如果服务没有和自己的依赖服务进行隔离，那么可能某一个依赖服务的故障就会拖垮当前这个服务</p><p>举例来说，某个服务有30个依赖服务，每个依赖服务的可用性非常高，已经达到了99.99%的高可用性</p><p>那么该服务的可用性就是99.99%的30次方，也就是99.7%的可用性</p><p>99.7%的可用性就意味着3%的请求可能会失败，因为3%的时间内系统可能出现了故障不可用了</p><p>对于1亿次访问来说，3%的请求失败，也就意味着300万次请求会失败，也意味着每个月有2个小时的时间系统是不可用的</p><p>在真实生产环境中，可能更加糟糕</p><p>上面也就是说，即使你每个依赖服务都是99.99%高可用性，但是一旦你有几十个依赖服务，还是会导致你每个月都有几个小时是不可用的</p><p>画图分析说，当某一个依赖服务出现了调用延迟或者调用失败时，为什么会拖垮当前这个服务？以及在分布式系统中，故障是如何快速蔓延的？</p><p><img src="/2020/01/01/1-Hystrix%E7%9F%A5%E5%A4%9A%E5%B0%91/430e908e-a25c-4ee3-8280-ecebf71cac28.png" alt></p><h3 id="5、再看Hystrix的更加细节的设计原则是什么？"><a href="#5、再看Hystrix的更加细节的设计原则是什么？" class="headerlink" title="5、再看Hystrix的更加细节的设计原则是什么？"></a>5、再看Hystrix的更加细节的设计原则是什么？</h3><p>（1）阻止任何一个依赖服务耗尽所有的资源，比如tomcat中的所有线程资源</p><p>（2）避免请求排队和积压，采用限流和fail fast来控制故障</p><p>（3）提供fallback降级机制来应对故障</p><p>（4）使用资源隔离技术，比如bulkhead（舱壁隔离技术），swimlane（泳道技术），circuit breaker（短路技术），来限制任何一个依赖服务的故障的影响</p><p>（5）通过近实时的统计/监控/报警功能，来提高故障发现的速度</p><p>（6）通过近实时的属性和配置热修改功能，来提高故障处理和恢复的速度</p><p>（7）保护依赖服务调用的所有故障情况，而不仅仅只是网络故障情况</p><p>调用这个依赖服务的时候，client调用包有bug，阻塞，等等，依赖服务的各种各样的调用的故障，都可以处理</p><h3 id="6、Hystrix是如何实现它的目标的？"><a href="#6、Hystrix是如何实现它的目标的？" class="headerlink" title="6、Hystrix是如何实现它的目标的？"></a>6、Hystrix是如何实现它的目标的？</h3><p>（1）通过HystrixCommand或者HystrixObservableCommand来封装对外部依赖的访问请求，这个访问请求一般会运行在独立的线程中，资源隔离</p><p>（2）对于超出我们设定阈值的服务调用，直接进行超时，不允许其耗费过长时间阻塞住。这个超时时间默认是99.5%的访问时间，但是一般我们可以自己设置一下</p><p>（3）为每一个依赖服务维护一个独立的线程池，或者是semaphore，当线程池已满时，直接拒绝对这个服务的调用</p><p>（4）对依赖服务的调用的成功次数，失败次数，拒绝次数，超时次数，进行统计</p><p>（5）如果对一个依赖服务的调用失败次数超过了一定的阈值，自动进行熔断，在一定时间内对该服务的调用直接降级，一段时间后再自动尝试恢复</p><p>（6）当一个服务调用出现失败，被拒绝，超时，短路等异常情况时，自动调用fallback降级机制</p><p>（7）对属性和配置的修改提供近实时的支持</p><p>画图分析，对依赖进行资源隔离后，如何避免依赖服务调用延迟或失败导致当前服务的故障</p><p><img src="/2020/01/01/1-Hystrix%E7%9F%A5%E5%A4%9A%E5%B0%91/2ba73e70-9465-4327-bb9a-e1a9a487646a.png" alt></p><h2 id="3-电商网站的商品详情页缓存服务业务背景以及框架结构说明"><a href="#3-电商网站的商品详情页缓存服务业务背景以及框架结构说明" class="headerlink" title="3. 电商网站的商品详情页缓存服务业务背景以及框架结构说明"></a>3. 电商网站的商品详情页缓存服务业务背景以及框架结构说明</h2><p>大背景：电商网站，首页，商品详情页，搜索结果页，广告页，促销活动，购物车，订单系统，库存系统，物流系统</p><p>小背景：商品详情页，如何用最快的结果将商品数据填充到一个页面中，然后将页面显示出来</p><p>分布式系统：商品详情页，缓存服务，+底层源数据服务，商品信息服务，店铺信息服务，广告信息服务，推荐信息服务，综合起来组成一个分布式的系统</p><h3 id="1、电商网站的商品详情页系统架构"><a href="#1、电商网站的商品详情页系统架构" class="headerlink" title="1、电商网站的商品详情页系统架构"></a>1、电商网站的商品详情页系统架构</h3><p>（1）小型电商网站的商品详情页系统架构</p><p>（2）大型电商网站的商品详情页系统架构</p><p>（3）页面模板</p><p>举个例子</p><p>将数据动态填充/渲染到一个html模板中，是什么意思呢？</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;title&gt;#&#123;name&#125;的页面&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        商品的价格是：#&#123;price&#125;</span><br><span class="line">        商品的介绍：#&#123;description&#125;</span><br><span class="line">    &lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure><p>上面这个就可以认为是一个页面模板，里面的很多内容是不确定的，#{name}，#{price}，#{description}，这都是一些模板脚本，不确定里面的值是什么？</p><p>将数据填充/渲染到html模板中，是什么意思呢？</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;name&quot;: &quot;iphone7 plus（玫瑰金+32G）&quot;,</span><br><span class="line">    &quot;price&quot;: 5599.50</span><br><span class="line">    &quot;description&quot;: &quot;这个手机特别好用。。。。。。&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;title&gt;iphone7 plus（玫瑰金+32G）的页面&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        商品的价格是：5599.50</span><br><span class="line">        商品的介绍：这个手机特别好用。。。。。。</span><br><span class="line">    &lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure><p>上面这个就是一份填充好数据的一个html页面</p><h3 id="2、缓存服务"><a href="#2、缓存服务" class="headerlink" title="2、缓存服务"></a>2、缓存服务</h3><p>缓存服务，订阅一个MQ的消息变更，如果有消息变更的话，那么就会发送一个网络请求，调用一个底层的对应的源数据服务的接口，去获取变更后的数据</p><p>将获取到的变更后的数据填充到分布式的redis缓存中去</p><p>高可用这一块儿，最可能出现说可用性不高的情况，是什么呢？就是说，在接收到消息之后，可能在调用各种底层依赖服务的接口时，会遇到各种不稳定的情况</p><p>比如底层服务的接口调用超时，200ms，2s都没有返回; 底层服务的接口调用失败，比如说卡了500ms之后，返回一个报错</p><p>在分布式系统中，对于这种大量的底层依赖服务的调用，就可能会出现各种可用性的问题，一旦没有处理好的话</p><p>可能就会导致缓存服务自己本身会挂掉，或者故障掉，就会导致什么呢？不可以对外提供服务，严重情况下，甚至会导致说整个商品详情页显示不出来</p><p>缓存服务接收到变更消息后，去调用各个底层依赖服务时的高可用架构的实现</p><h3 id="3、框架结构"><a href="#3、框架结构" class="headerlink" title="3、框架结构"></a>3、框架结构</h3><p><strong>大型电商网站的详情页系统的架构</strong></p><p><img src="/2020/01/01/1-Hystrix%E7%9F%A5%E5%A4%9A%E5%B0%91/8f197a0b-d589-4320-b220-81f744a29a42.png" alt></p><p><strong>小型电商网站的静态化方案</strong></p><p><img src="/2020/01/01/1-Hystrix%E7%9F%A5%E5%A4%9A%E5%B0%91/56054641-b5a0-4509-b545-a50049446cc0.png" alt></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;一般来说，互联网的面试，一般都会考察你，什么是分布式系统，高并发，简单的高可用问题。限流、熔断、降级，在分布式的系统架构中，微服务架构中，其实都是最常见、基础和简单的保障系统高可用的手法。dubbo去开发了，spring cloud去开发了，在这个系统的接口调用中，我们是用hystrix去实现一整套的高可用保障机制，基于hystrix去做了限流、熔断和降级。&lt;/p&gt;
+&lt;p&gt;hystrix是国外的netflix开源的，netflix是国外很大的视频网站，系统非常复杂，微服务架构，多达几千个服务，为自己的场景，经过大量的工业验证，线上生产环境的实践，产出和开源了高可用相关的一个框架，熔断框架，hystrix。&lt;/p&gt;
+&lt;p&gt;hystrix未来或已经成为国内的高可用的限流、熔断和降级这一块的事实上的标准，spring cloud微服务框架，就是集成了hystrix来做微服务架构中的限流、降级和熔断的。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Hystrix" scheme="http://JavaSsun.github.io/categories/Hystrix/"/>
+    
+      <category term="面试" scheme="http://JavaSsun.github.io/categories/Hystrix/%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="系统架构" scheme="http://JavaSsun.github.io/categories/Hystrix/%E9%9D%A2%E8%AF%95/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="面试" scheme="http://JavaSsun.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="系统架构" scheme="http://JavaSsun.github.io/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/"/>
+    
+      <category term="Hystrix" scheme="http://JavaSsun.github.io/tags/Hystrix/"/>
     
   </entry>
   
@@ -502,56 +574,6 @@
 &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;之前谈到的Nginx中的读写事件，这些网络读写事件究竟是怎样的应用到Nginx上的呢？&lt;/p&gt;
 &lt;p&gt;Nginx使用了&lt;strong&gt;连接池&lt;/strong&gt;来增加它对资源的利用率。&lt;/p&gt;
 &lt;h2 id=&quot;Nginx通过连接池处理网络请求&quot;&gt;&lt;a href=&quot;#Nginx通过连接池处理网络请求&quot; class=&quot;headerlink&quot; title=&quot;Nginx通过连接池处理网络请求&quot;&gt;&lt;/a&gt;Nginx通过连接池处理网络请求&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;连接池&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;/2019/12/05/14-Nginx%E8%BF%9E%E6%8E%A5%E6%B1%A0%E5%A4%84%E7%90%86%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82-%E5%86%85%E5%AD%98%E6%B1%A0%E5%AF%B9%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D/8b0e0f0d-eddf-4830-9dfa-ac9f3c6acf40.jpg&quot; alt&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Nginx" scheme="http://JavaSsun.github.io/categories/Nginx/"/>
-    
-    
-      <category term="Nginx" scheme="http://JavaSsun.github.io/tags/Nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>13-Nginx模块</title>
-    <link href="http://javassun.github.io/2019/12/04/13-Nginx%E6%A8%A1%E5%9D%97/"/>
-    <id>http://javassun.github.io/2019/12/04/13-Nginx%E6%A8%A1%E5%9D%97/</id>
-    <published>2019-12-04T13:13:29.000Z</published>
-    <updated>2020-05-14T11:27:39.901Z</updated>
-    
-    <content type="html"><![CDATA[<p>Author: haoransun<br>Wechat: SHR—97</p><p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Nginx之所以有如此多的特性，是因为有大量的第三方开发者在为它开发模块。Nginx之所以有这么丰富的生态圈，是因为它的模块设计十分优良。如TCP协议一样，从上个世纪70年代设计至今，没有做过大的变动。Nginx同样如此，从2004年发布后，没有发生过大的变化。</p><a id="more"></a><h2 id="Nginx模块就是什么？"><a href="#Nginx模块就是什么？" class="headerlink" title="Nginx模块就是什么？"></a>Nginx模块就是什么？</h2><p><img src="/2019/12/04/13-Nginx%E6%A8%A1%E5%9D%97/4e23e191-595e-4e1c-a473-b1d92c0732e8.jpg" alt></p><p><a href="http://nginx.org/en/docs/" target="_blank" rel="noopener">Nginx开源文档</a>，如 gzip模块文档中，会有它的用法以及内置变量等。<a href="http://nginx.org/en/docs/http/ngx_http_gzip_module.html" target="_blank" rel="noopener">Nginx-gzip</a></p><p><img src="/2019/12/04/13-Nginx%E6%A8%A1%E5%9D%97/f286212a-ebdb-4f32-899d-7d0c6b2173e2.png" alt></p><p>有的第三方模块没有详细说明，可到 安装模块中查找</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;geek&#x2F;nginx&#x2F;nginx-1.16.0</span><br><span class="line"></span><br><span class="line">.&#x2F;configure</span><br><span class="line"></span><br><span class="line">之后会生成 objs文件夹</span><br><span class="line"></span><br><span class="line">cd objs</span><br><span class="line">vim ngx_module.c</span><br><span class="line"></span><br><span class="line">其中是ngx_modules数组，都是被加载进ngx中的模块</span><br></pre></td></tr></table></figure><p><img src="/2019/12/04/13-Nginx%E6%A8%A1%E5%9D%97/cf1f0e17-1b30-4c69-9839-ee34e6908b47.png" alt></p><p>如 gzip模块已经被加载进来，每一个模块在 *<em>/usr/local/geek/nginx/nginx-1.16.0/src/http/modules<br>*</em>中都会有对应的 .c文档</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ngx_http_gzip_filter_module.c</span><br></pre></td></tr></table></figure><p>在每一个源文件中，都会由 ngx_command_t 这样一个唯一的结构体。</p><p>该结构体是一个数组，其中的元素是它所支持的指令名，参数名、参数类型等等参考文档。</p><p><img src="/2019/12/04/13-Nginx%E6%A8%A1%E5%9D%97/8925c799-45a5-4fc5-a28c-4d947eaf2c5a.png" alt></p><p><strong>Nginx模块</strong><br><img src="/2019/12/04/13-Nginx%E6%A8%A1%E5%9D%97/92a824bb-768f-4e0a-94d0-127e5091f5e4.jpg" alt></p><h2 id="Nginx模块的分类"><a href="#Nginx模块的分类" class="headerlink" title="Nginx模块的分类"></a>Nginx模块的分类</h2><p>针对不同的应用场景，Nginx会细分为不同的子模块。在特定的复杂的应用场景下，这些子模块会增加许多新的特性和功能。</p><p><strong>Nginx模块分类</strong><br><img src="/2019/12/04/13-Nginx%E6%A8%A1%E5%9D%97/10ed37f5-43f0-43dd-a089-416575abc55b.jpg" alt></p><p><strong>/usr/local/geek/nginx/nginx-1.16.0/src目录下</strong></p><p><img src="/2019/12/04/13-Nginx%E6%A8%A1%E5%9D%97/fcfe9d98-d06e-44e7-a821-85cfc3d17eef.png" alt></p><p><strong>core目录</strong>：仅仅是Nginx的核心框架代码，并不是Nginx的 Core Module。</p><p><strong>event、http、mail、stream</strong>则是对应的子类型模块。</p><p>以最复杂的<strong>http</strong>为例</p><p><img src="/2019/12/04/13-Nginx%E6%A8%A1%E5%9D%97/6003a348-cd71-423c-b7e7-ed9cf983e0f1.png" alt></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim ngx_http.c</span><br><span class="line"></span><br><span class="line">&#x2F;ngx_module_t </span><br><span class="line">可以看到类型type是 ngx_core_module</span><br></pre></td></tr></table></figure><p><img src="/2019/12/04/13-Nginx%E6%A8%A1%E5%9D%97/f23c4bbb-17b5-470e-b0ab-e81187cd3ee0.png" alt></p><p>官方提供的都是在上述目录下，非官方提供的在 modules目录下。</p><p><img src="/2019/12/04/13-Nginx%E6%A8%A1%E5%9D%97/7f92c21d-6a1b-4770-874e-672773ea4d9b.png" alt></p><p>上述模块大概分为 3 类：</p><p>处理请求、生成响应 + 响应过滤 + 与上游服务器交互（负载均衡等工作）</p><p>响应过滤的名称有<strong>filter</strong>关键字。</p><p>与上游服务器交互的有<strong>upstream</strong>关键字。</p><p>其它模块都是生成响应或为生成响应而工作的。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Author: haoransun&lt;br&gt;Wechat: SHR—97&lt;/p&gt;
-&lt;p&gt;&lt;font color=&quot;red&quot;&gt;学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。&lt;/font&gt;&lt;/p&gt;
-&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;Nginx之所以有如此多的特性，是因为有大量的第三方开发者在为它开发模块。Nginx之所以有这么丰富的生态圈，是因为它的模块设计十分优良。如TCP协议一样，从上个世纪70年代设计至今，没有做过大的变动。Nginx同样如此，从2004年发布后，没有发生过大的变化。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Nginx" scheme="http://JavaSsun.github.io/categories/Nginx/"/>
-    
-    
-      <category term="Nginx" scheme="http://JavaSsun.github.io/tags/Nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>12-网络收发与Nginx事件模型</title>
-    <link href="http://javassun.github.io/2019/12/03/12-%E7%BD%91%E7%BB%9C%E6%94%B6%E5%8F%91%E4%B8%8ENginx%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/"/>
-    <id>http://javassun.github.io/2019/12/03/12-%E7%BD%91%E7%BB%9C%E6%94%B6%E5%8F%91%E4%B8%8ENginx%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/</id>
-    <published>2019-12-03T12:13:29.000Z</published>
-    <updated>2020-05-14T11:27:36.110Z</updated>
-    
-    <content type="html"><![CDATA[<p>Author: haoransun<br>Wechat: SHR—97</p><p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Nginx是一个<strong>事件驱动</strong>的框架。事件主要指的是<strong>网络事件</strong>。Nginx每个连接会自然对应两个网络事件，<strong>读事件</strong> 与 <strong>写事件</strong>。因此，我们在深入了解Nginx的各种原理以及它在极端场景下的各种错误处理时，必须首先理解什么是网络事件。</p><a id="more"></a><h2 id="网络收发"><a href="#网络收发" class="headerlink" title="网络收发"></a>网络收发</h2><p><strong>网络传输</strong><br><img src="/2019/12/03/12-%E7%BD%91%E7%BB%9C%E6%94%B6%E5%8F%91%E4%B8%8ENginx%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/bd0ed4ad-9ab4-4f02-b787-cd11c0157c85.jpg" alt></p><p><strong>TCP流与报文</strong><br><img src="/2019/12/03/12-%E7%BD%91%E7%BB%9C%E6%94%B6%E5%8F%91%E4%B8%8ENginx%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/7f4caf3e-3802-450c-958a-7cce48864829.jpg" alt></p><p><strong>TCP协议与非阻塞接口</strong><br><img src="/2019/12/03/12-%E7%BD%91%E7%BB%9C%E6%94%B6%E5%8F%91%E4%B8%8ENginx%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/04d4fa8e-bcb4-42d2-bd74-5901fab6af91.jpg" alt></p><h2 id="Nginx网络事件实例演示"><a href="#Nginx网络事件实例演示" class="headerlink" title="Nginx网络事件实例演示"></a>Nginx网络事件实例演示</h2><p>访问 116.62.160.193:8080 这是一个之前搭建的Nginx-Web静态资源服务器.</p><p><img src="/2019/12/03/12-%E7%BD%91%E7%BB%9C%E6%94%B6%E5%8F%91%E4%B8%8ENginx%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/e446f920-ae60-4cc9-9698-02daad34ba0f.jpg" alt></p><p>同时要安装 Wireshark网络抓包器。</p><p><img src="/2019/12/03/12-%E7%BD%91%E7%BB%9C%E6%94%B6%E5%8F%91%E4%B8%8ENginx%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/ba356c5e-97af-4987-9957-452919556294.jpg" alt></p><p>TCP三次握手时会发送 <strong>SYN、SYN+ACK、ACK包</strong></p><p><img src="/2019/12/03/12-%E7%BD%91%E7%BB%9C%E6%94%B6%E5%8F%91%E4%B8%8ENginx%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/1442eeeb-7de3-4a6e-a140-b30a86df688d.jpg" alt></p><p><strong>TCP</strong>层主要是做进程与进程间的通讯，本地打开1875端口，远程是8080端口</p><p><img src="/2019/12/03/12-%E7%BD%91%E7%BB%9C%E6%94%B6%E5%8F%91%E4%B8%8ENginx%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/597d3231-48b6-4424-8a89-a25bfad8fbe2.jpg" alt></p><p><strong>IP层</strong>主要解决机器之间互相找到的问题。本地IP是 192.168.74.142，远端Nginx所在IP是 116.62.160.193</p><p><img src="/2019/12/03/12-%E7%BD%91%E7%BB%9C%E6%94%B6%E5%8F%91%E4%B8%8ENginx%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/78f77e0d-0a29-479f-b894-5d946f30d640.jpg" alt></p><h2 id="Nginx事件驱动模型"><a href="#Nginx事件驱动模型" class="headerlink" title="Nginx事件驱动模型"></a>Nginx事件驱动模型</h2><p>在了解了网络事件以及事件分发、收集器后，再来学习Nginx是如何处理事件的。</p><p><strong>Nginx事件循环</strong><br><img src="/2019/12/03/12-%E7%BD%91%E7%BB%9C%E6%94%B6%E5%8F%91%E4%B8%8ENginx%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/875ec507-3b0b-462b-891e-6045caf65664.jpg" alt></p><p>流程：<br>当Nginx刚刚启动时，处于 <strong>WAIT FOR EVENTS ON CONNECTIONS</strong>状态，即我们打开了80、443端口后，等待新的事件进来（如新的客户端连上了Nginx,向我们发起了连接）。这一步对应着 epoll中的 epoll_wait方法。Nginx是处于<strong>Sleep</strong>进程状态。</p><p>当操作系统收到了一个建立连接的TCP握手报文并处理完成后，操作系统就会通知epoll_wait阻塞方法，告之可以往下走了（找操作系统要事件），并且唤醒我们的Nginx-Worker进程。</p><p>Kernel 即操作系统内核会将事件放入到事件队列中。从事件队列中，Nginx可以获取到要处理事件，如 建立连接、TCP请求报文等。取出来后就会处理对应的事件，进入 <strong>PROCESS THE EVENTS QUEUE CIRCLE</strong>，即右边的图。</p><p>队列不为空，就将事件取出来进行处理。在处理事件的过程中可能会生成一些新的事件（如：新连接建立，要设置一个超时时间，超时时间后，浏览器不向我发送新的请求，我就关闭它。又比如：当收完完整的HTTP请求后，可以进行HTTP响应了，这个响应是需要我可以向操作系统的写缓存区中把响应写进来的，要求操作系统尽快把这样一段写的内容发回给浏览器，即期待一个写事件等等）。</p><p>所有的事件处理完成后，又会返回到 <strong>WAIT FOR EVENTS ON CONNECTIONS</strong>状态。</p><p><strong>知道上述流程的好处：</strong><br>一些第三方模块可能会做大量的CPU运算，此类计算任务会导致我处理一个事件的时间非常长，在上述流程图中会导致后续队列中的大量事件长时间得不到处理。从而引发恶性循环，他们的超时时间可能到了，CPU都消耗到处理连接不正常的断开。</p><p>有些第三方模块长时间的消耗大量CPU进行计算任务，这是Nginx不能容忍的。gzip等模块不会一次使用大量的CPU，而是分段使用。</p><h2 id="epoll的优势及原理"><a href="#epoll的优势及原理" class="headerlink" title="epoll的优势及原理"></a>epoll的优势及原理</h2><p>上面讨论到了Nginx事件分发机制，最关键的就是Nginx怎样快速的从操作系统的Kernel中获取到等待处理的事件。这一步经历了很长时间的解决。当下Nginx主要是使用epoll网络事件收集器模型。</p><p><strong>各个模型性能对比</strong><br><img src="/2019/12/03/12-%E7%BD%91%E7%BB%9C%E6%94%B6%E5%8F%91%E4%B8%8ENginx%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/b1948077-bc41-410e-ad9a-78281102880f.jpg" alt></p><p><strong>epoll</strong><br><img src="/2019/12/03/12-%E7%BD%91%E7%BB%9C%E6%94%B6%E5%8F%91%E4%B8%8ENginx%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/9ee0a593-037f-4c48-b96a-6e1583f5bd92.jpg" alt></p><h2 id="Nginx请求切换场景使用epoll带来的争议"><a href="#Nginx请求切换场景使用epoll带来的争议" class="headerlink" title="Nginx请求切换场景使用epoll带来的争议"></a>Nginx请求切换场景使用epoll带来的争议</h2><p><strong>请求切换</strong></p><p>传统服务依赖OS，处理大量连接时很困难。<br>Nginx用户态即可完成切换。除非Nginx-Worker时间片到了（5ms-800ms），才会依赖OS切换，因此往往将Nginx-Worker优先级加到最高（-19），操作系统分配的时间片往往是最大的。这样能比较好的在用户态完成进程切换，使得CPU少做无用功。</p><p><img src="/2019/12/03/12-%E7%BD%91%E7%BB%9C%E6%94%B6%E5%8F%91%E4%B8%8ENginx%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/f88e575b-fd29-4890-90ad-9a1e9a33f41c.jpg" alt></p><h2 id="同步-amp-异步-阻塞-amp-非阻塞之间的区别"><a href="#同步-amp-异步-阻塞-amp-非阻塞之间的区别" class="headerlink" title="同步&amp;异步 阻塞&amp;非阻塞之间的区别"></a>同步&amp;异步 阻塞&amp;非阻塞之间的区别</h2><p>同步是两个对象之间的关系，而阻塞是一个对象的状态。</p><p>阻塞可以是实现同步的一种手段！例如两个东西需要同步，一旦出现不同步情况，我就阻塞快的一方，使双方达到同步。</p><p><strong>阻塞调用</strong><br><img src="/2019/12/03/12-%E7%BD%91%E7%BB%9C%E6%94%B6%E5%8F%91%E4%B8%8ENginx%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/52aa1fc5-cf86-4aff-9cb5-aa70a6c11518.jpg" alt></p><p><strong>非阻塞调用</strong><br><img src="/2019/12/03/12-%E7%BD%91%E7%BB%9C%E6%94%B6%E5%8F%91%E4%B8%8ENginx%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/4f1b1ce6-f00d-4303-83f4-c54520ef08e2.jpg" alt></p><p><strong>非阻塞调用下的同步与异步</strong><br><img src="/2019/12/03/12-%E7%BD%91%E7%BB%9C%E6%94%B6%E5%8F%91%E4%B8%8ENginx%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/03334dfa-1e2a-4510-955a-08cd8528e1c8.jpg" alt></p><p><strong>四种组合方式</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">同步阻塞方式： </span><br><span class="line">发送方发送请求之后一直等待响应。 </span><br><span class="line">接收方处理请求时进行的IO操作如果不能马上等到返回结果，就一直等到返回结果后，才响应发送方，期间不能进行其他工作。</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">同步非阻塞方式： </span><br><span class="line">发送方发送请求之后，一直等待响应。</span><br><span class="line">接受方处理请求时进行的IO操作如果不能马上的得到结果，就立即返回，取做其他事情。 </span><br><span class="line">但是由于没有得到请求处理结果，不响应发送方，发送方一直等待。</span><br><span class="line">当IO操作完成以后，将完成状态和结果通知接收方，接收方再响应发送方，发送方才进入下一次请求过程。（实际不应用）</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">异步阻塞方式：</span><br><span class="line">发送方向接收方请求后，不等待响应，可以继续其他工作。</span><br><span class="line">接收方处理请求时进行IO操作如果不能马上得到结果，就一直等到返回结果后，才响应发送方，期间不能进行其他操作。 （实际不应用）</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">异步非阻塞方式： </span><br><span class="line">发送方向接收方请求后，不等待响应，可以继续其他工作。 </span><br><span class="line">接收方处理请求时进行IO操作如果不能马上得到结果，也不等待，而是马上返回去做其他事情。 </span><br><span class="line">当IO操作完成以后，将完成状态和结果通知接收方，接收方再响应发送方。（效率最高）</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Author: haoransun&lt;br&gt;Wechat: SHR—97&lt;/p&gt;
-&lt;p&gt;&lt;font color=&quot;red&quot;&gt;学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。&lt;/font&gt;&lt;/p&gt;
-&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;Nginx是一个&lt;strong&gt;事件驱动&lt;/strong&gt;的框架。事件主要指的是&lt;strong&gt;网络事件&lt;/strong&gt;。Nginx每个连接会自然对应两个网络事件，&lt;strong&gt;读事件&lt;/strong&gt; 与 &lt;strong&gt;写事件&lt;/strong&gt;。因此，我们在深入了解Nginx的各种原理以及它在极端场景下的各种错误处理时，必须首先理解什么是网络事件。&lt;/p&gt;
     
     </summary>
     

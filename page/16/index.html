@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 154</nav>
+		<nav style="color: #7FFFD4;">总文章数 185</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -192,22 +192,22 @@
             
   
     <meta charset="utf-8">
-<article id="post-Linux定时任务Crontab详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-复杂度分析-下部" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/23/Linux%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1Crontab%E8%AF%A6%E8%A7%A3/">Linux定时任务Crontab详解</a>
+      <a class="article-title" href="/2018/09/29/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-%E4%B8%8B%E9%83%A8/">复杂度分析-下部</a>
     </h1>
   
 
         
         
 
-<a href="/2018/03/23/Linux%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1Crontab%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2018-03-23T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-23</time>
+<a href="/2018/09/29/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-%E4%B8%8B%E9%83%A8/" class="archive-article-date">
+  	<time datetime="2018-09-29T14:00:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-29</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -218,7 +218,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.9k字</span>
+        <span class="post-count">3.6k字</span>
       </span>
     </span>
 
@@ -227,7 +227,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">15分</span>
+        <span class="post-count">13分</span>
       </span>
     </span>
 </div>
@@ -244,8 +244,8 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p><a href="https://www.cnblogs.com/intval/p/5763929.html" target="_blank" rel="noopener">文章出处</a></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Linux系统是由cron（crond）这个系统服务来控制的。Linux系统上面原本就有非常多的计划性工作，因此这个系统服务是默认启动的。另 外, 由于使用者自己也可以设置计划任务，所以， Linux 系统也提供了使用者控制计划任务的命令 :crontab 命令。</p>
+			<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h1 id="1-浅析最好、最坏、平均、均摊时间复杂度"><a href="#1-浅析最好、最坏、平均、均摊时间复杂度" class="headerlink" title="1 浅析最好、最坏、平均、均摊时间复杂度"></a>1 浅析最好、最坏、平均、均摊时间复杂度</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">最好情况时间法则度</font>(best case time complexity)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">最坏情况时间复杂度</font>(worst case time complexity)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">平均情况时间复杂度</font>(average case time complexity)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">均摊时间复杂度</font>(amortized time complexity)</p>
 	
 	
     </div>
@@ -259,7 +259,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -271,7 +271,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -280,7 +280,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/23/Linux%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1Crontab%E8%AF%A6%E8%A7%A3/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/09/29/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-%E4%B8%8B%E9%83%A8/">展开全文 >></a>
         </p>
       
 
@@ -314,22 +314,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-Linux常用插件及乱码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-复杂度分析-上部" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/20/Linux%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B9%B1%E7%A0%81/">Linux常用插件及乱码</a>
+      <a class="article-title" href="/2018/09/28/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-%E4%B8%8A%E9%83%A8/">复杂度分析-上部</a>
     </h1>
   
 
         
         
 
-<a href="/2018/03/20/Linux%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B9%B1%E7%A0%81/" class="archive-article-date">
-  	<time datetime="2018-03-20T10:53:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-20</time>
+<a href="/2018/09/28/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-%E4%B8%8A%E9%83%A8/" class="archive-article-date">
+  	<time datetime="2018-09-28T13:00:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-28</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -340,7 +340,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">799字</span>
+        <span class="post-count">5k字</span>
       </span>
     </span>
 
@@ -349,7 +349,254 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">19分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;众所周知，数据结构与算法本身解决的是“快”和“省”的问题，即如何让代码运行得更快，如何让代码更省存储空间。所以，<font color="red">执行效率</font>是算法一个非常重要的考量指标。</p>
+<h2 id="1-为什么需要复杂度分析？"><a href="#1-为什么需要复杂度分析？" class="headerlink" title="1 为什么需要复杂度分析？"></a>1 为什么需要复杂度分析？</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我将代码跑一遍，通过统计、监控，就能得到算法执行时间个占用的内存大小。为什么要使用空间、时间复杂度分析呢？难道比我实实在在跑一遍得到的数据还要准确吗？</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上述评估算法执行效率的方法是正确的。大部分人称它为<strong>事后统计法</strong>，但它有非常大的局限性。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/28/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-%E4%B8%8A%E9%83%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-数据结构与算法概览" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/">数据结构与算法概览</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2018/09/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/" class="archive-article-date">
+  	<time datetime="2018-09-26T12:00:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-26</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">573字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h1 id="1-定义"><a href="#1-定义" class="headerlink" title="1 定义"></a>1 定义</h1><p>&nbsp;&nbsp;&nbsp;广义上：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>数据结构</strong>：<font color="red">一组数据的存储结构</font>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>算法</strong>：<font color="red">操作数据的一组方法</font>。<br>&nbsp;&nbsp;&nbsp;狭义上：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;某些<font color="red">著名</font>的数据结构与算法,如队列、栈、堆、二分查找、动态规划等等。</p>
+<h1 id="2-二者关系"><a href="#2-二者关系" class="headerlink" title="2 二者关系"></a>2 二者关系</h1><p>&nbsp;&nbsp;&nbsp;数据结构与算法相辅相成。<font color="red">数据结构是为算法服务的，算法要作用在特定的数据结构之上</font>。因此，孤立而单独的讲解两者毫无意义。<br>&nbsp;&nbsp;&nbsp;比如，因为数组具有随机访问的特点，常用的二分查找算法需要用数组来存储数据。但是我们选择链表这种数据结构，二分查找就无法工作了，因为链表不支持随机访问。<br>&nbsp;&nbsp;&nbsp;数据结构是<font color="red">静态</font>的，它只是组织数据的一种方式。如果不在它的基础上操作、构建算法，孤立存在的数据结构是没有用的。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-请求与响应" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/17/%E8%AF%B7%E6%B1%82%E4%B8%8E%E5%93%8D%E5%BA%94/">请求与响应</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2018/09/17/%E8%AF%B7%E6%B1%82%E4%B8%8E%E5%93%8D%E5%BA%94/" class="archive-article-date">
+  	<time datetime="2018-09-17T11:30:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-17</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">713字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
       </span>
     </span>
 </div>
@@ -367,11 +614,9 @@
     <div class="article-entry" itemprop="articleBody">
       
 			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h1 id="1-清空文件"><a href="#1-清空文件" class="headerlink" title="1. 清空文件"></a>1. 清空文件</h1><blockquote>
-<p>filename 或者 : &gt; filename</p>
-</blockquote>
-<h1 id="2-configure-make-make-install"><a href="#2-configure-make-make-install" class="headerlink" title="2. ./configure make make install"></a>2. ./configure make make install</h1><ul>
-<li><p>./configure 检测安装平台的目标特征的。如会检测是不是有CC或者GCC，并不是需要CC或者GCC，它是个shell脚本，生成Makefile,为下一步的编译做准备。</p></li></ul>
+<h1 id="1-Request-Headers"><a href="#1-Request-Headers" class="headerlink" title="1 Request Headers"></a>1 Request Headers</h1><p>origin: 客户端发出请求的地址</p>
+<p>Access-Control-Request-Headers:authorization</p>
+<p>Access-Control-Request-Method:Get</p>
 	
 	
     </div>
@@ -385,7 +630,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
         		</li>
       		
 		</ul>
@@ -397,7 +642,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
+        			<a href="/categories/HTTP//" class="article-tag-list-link color5">HTTP</a>
         		</li>
       		
 		</ul>
@@ -406,7 +651,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/20/Linux%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B9%B1%E7%A0%81/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/09/17/%E8%AF%B7%E6%B1%82%E4%B8%8E%E5%93%8D%E5%BA%94/">展开全文 >></a>
         </p>
       
 
@@ -440,22 +685,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-Linux安装常用软件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-TextRank" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/19/Linux%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/">Linux安装常用软件</a>
+      <a class="article-title" href="/2018/09/01/TextRank/">TextRank基本了解</a>
     </h1>
   
 
         
         
 
-<a href="/2018/03/19/Linux%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" class="archive-article-date">
-  	<time datetime="2018-03-19T11:00:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-19</time>
+<a href="/2018/09/01/TextRank/" class="archive-article-date">
+  	<time datetime="2018-09-01T02:40:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-01</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -466,7 +711,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.5k字</span>
+        <span class="post-count">1.3k字</span>
       </span>
     </span>
 
@@ -475,7 +720,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
 </div>
@@ -492,98 +737,8 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-	
-		<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h1 id="mysql国内镜像下载网址"><a href="#mysql国内镜像下载网址" class="headerlink" title="mysql国内镜像下载网址"></a>mysql国内镜像下载网址</h1><p><a href="https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql57-community-el7/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql57-community-el7/</a></p>
-<h1 id="开源镜像站点汇总"><a href="#开源镜像站点汇总" class="headerlink" title="开源镜像站点汇总"></a>开源镜像站点汇总</h1><p><a href="http://segmentfault.com/a/1190000000375848" target="_blank" rel="noopener">http://segmentfault.com/a/1190000000375848</a></p>
-<p><a href="https://opsx.alibaba.com/mirror/search?q=mysq5.7&lang=zh-CN" target="_blank" rel="noopener">https://opsx.alibaba.com/mirror/search?q=mysq5.7&amp;lang=zh-CN</a></p>
-<p><a href="http://mirrors.ustc.edu.cn/" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/</a></p>
-<h1 id="安装-jdk"><a href="#安装-jdk" class="headerlink" title="安装 jdk"></a>安装 jdk</h1><p><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">java包</a></p>
-<h2 id="手动解压"><a href="#手动解压" class="headerlink" title="手动解压"></a>手动解压</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;geek&#x2F;</span><br><span class="line">make java</span><br><span class="line">[root@haoransun java]# wget https:&#x2F;&#x2F;download.oracle.com&#x2F;otn&#x2F;java&#x2F;jdk&#x2F;8u211-b12&#x2F;478a62b7d4e34b78b671c754eaaf38ab&#x2F;jdk-8u211-linux-x64.tar.gz</span><br><span class="line"></span><br><span class="line">此方式不推荐使用。</span><br><span class="line"></span><br><span class="line">或者直接将jar由 winSCP包传导至Linux指定目录</span><br><span class="line"></span><br><span class="line">配置环境变量</span><br><span class="line">vim &#x2F;etc&#x2F;profile</span><br><span class="line">将下列配置文件添加，保存退出(一定要去掉等号两边的空格)</span><br><span class="line"></span><br><span class="line">export JAVA_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;geek&#x2F;java&#x2F;jdk1.8.0</span><br><span class="line">export PATH&#x3D;$PATH:$JAVA_HOME&#x2F;bin</span><br><span class="line">export CLASSPATH&#x3D;.$JAVA_HOME&#x2F;lib&#x2F;dt.jar:$JAVA_HOME&#x2F;lib</span><br><span class="line">:wq</span><br><span class="line">source &#x2F;etc&#x2F;profile</span><br><span class="line">java -version 或者 jps 验证即可</span><br></pre></td></tr></table></figure>
-
-<p>wget 方式不推荐使用，会出现无法解压的情况，用wget命令直接下载的JDK，这是问题的根源。</p>
-<p>去Oracle官网下载过jdk的童鞋应该都知道，下载之前需要同意Oracle的安装协议，不然不能下载，但是用wget的方式，默认是不同意，虽然能下载下来，但是下载下来的文件会有问题，所以在Linux上解压一直失败。</p>
-<p>后来去官网下载好，然后传到服务器上，再解压就没有问题了。</p>
-<hr>
-<h2 id="yum-安装"><a href="#yum-安装" class="headerlink" title="yum 安装"></a>yum 安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum search java | grep jdk</span><br><span class="line">yum install java-1.8.0-openjdk</span><br><span class="line">默认安装在 &#x2F;usr&#x2F;lib&#x2F;jvm&#x2F;</span><br><span class="line">配置环境变量及验证安装</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="rpm-安装"><a href="#rpm-安装" class="headerlink" title="rpm 安装"></a>rpm 安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh  指定安装包</span><br><span class="line">配置环境变量。验证安装</span><br></pre></td></tr></table></figure>
-
-<h1 id="CentOS7-安装-MySQL5-7"><a href="#CentOS7-安装-MySQL5-7" class="headerlink" title="CentOS7 安装 MySQL5.7"></a>CentOS7 安装 MySQL5.7</h1><p>安装环境：CentOS7 64位 mini版，安装MySQL5.7</p>
-<p>mysql-client和server的区别：<br><strong>本质上的区别是：server是执行一个crud操作，client是发送一个crud操作</strong></p>
-<p>server是把sql语句翻译成对内存和文件的操作，也就是说，server是直接操作文件的。</p>
-<p>而client是对数据库/表进行操作，不是直接对文件进行操作。</p>
-<p>举个例子：<br>①client：我用一个Navicat去链接一个数据库，这个Navicat就是client。</p>
-<p>②server：我有多个mysql服务实例，他们可以位于不同的端口（这句不重要），但是他们是挂载在了宿主机同一个目录下的（这句重要，对内存/文件进行操作了），而且数据共享（这句也不重要）。</p>
-<p>小知识点：</p>
-<p>①sql只是去知道server如何去操作数据。</p>
-<p>②即使C/S在同一台机器上，他们也是通过网络通讯的。</p>
-<h2 id="1-配置-YUM源"><a href="#1-配置-YUM源" class="headerlink" title="1. 配置 YUM源"></a>1. 配置 YUM源</h2><p>在<a href="http://lib.csdn.net/base/14" target="_blank" rel="noopener" title="MySQL知识库">MySQL</a>官网中下载YUM源rpm安装包：<a href="http://dev.mysql.com/downloads/repo/yum/" target="_blank" rel="noopener">http://dev.mysql.com/downloads/repo/yum/</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">下载mysql源安装包</span><br><span class="line">wget http:&#x2F;&#x2F;dev.mysql.com&#x2F;get&#x2F;mysql57-community-release-el7-8.noarch.rpm</span><br><span class="line">安装mysql源</span><br><span class="line">yum localinstall mysql57-community-release-el7-8.noarch.rpm</span><br></pre></td></tr></table></figure>
-<p><strong><font color="red">由于某些原因，下载过慢，可以参考最上方的国内网址进行下载，</font>如下所示：</strong><br><a href="https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql57-community-el7/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql57-community-el7/</a></p>
-<p><img src="/2018/03/19/Linux%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/060fa4bb-b320-4095-bd6c-aab5b5f1f232.png" alt></p>
-<ul>
-<li><strong>1</strong> 右键选择，复制链接地址，到Linux中  wget 链接地址，下载 xxx.rpm安装包<br><img src="/2018/03/19/Linux%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/a7aa735c-9414-4e83-beae-d17b54ce252e.png" alt></li>
-<li><strong>2</strong> sudo rpm -ivh 上述mysql安装包</li>
-<li><strong>3</strong> 安装MySql sudo yum install mysql-server<br><img src="/2018/03/19/Linux%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/adb53ba1-80e5-413e-8cf0-16cd3b40b621.png" alt></li>
-</ul>
-<p>看到上图所示，则表示安装成功。</p>
-<h2 id="2-启动MySQL服务"><a href="#2-启动MySQL服务" class="headerlink" title="2. 启动MySQL服务"></a>2. 启动MySQL服务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld</span><br><span class="line">systemctl status mysqld</span><br></pre></td></tr></table></figure>
-<p>查看MySQL的启动状态<br><img src="/2018/03/19/Linux%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/c8cbc2ec-f7aa-4adb-8729-3abbb7b9396b.png" alt></p>
-<h2 id="3-开机启动"><a href="#3-开机启动" class="headerlink" title="3. 开机启动"></a>3. 开机启动</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable mysqld</span><br><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-修改root默认密码"><a href="#4-修改root默认密码" class="headerlink" title="4. 修改root默认密码"></a>4. 修改root默认密码</h2><p>mysql安装完成之后，在/var/log/mysqld.log文件中给root生成了一个默认密码。通过下面的方式找到root默认密码，然后登录mysql进行修改：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &#39;temporary password&#39; &#x2F;var&#x2F;log&#x2F;mysqld.log</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2018/03/19/Linux%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/5bbf95fd-6e34-40ef-a1c7-ad57bea532e0.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br><span class="line">mysql &gt; ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;Sun@123456!&#39;;</span><br></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; set password for &#39;root&#39;@&#39;localhost&#39;&#x3D;password(&#39;MyNewPass4!&#39;);</span><br></pre></td></tr></table></figure>
-<p>注意：mysql5.7默认安装了密码安全检查插件（validate_password），默认密码检查策略要求密码必须包含：大小写字母、数字和特殊符号，并且长度不能少于8位。否则会提示ERROR 1819 (HY000): Your password does not satisfy the current policy requirements错误，如下图所示：</p>
-<p>通过msyql环境变量可以查看密码策略的相关信息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like &#39;%password%&#39;;</span><br></pre></td></tr></table></figure>
-<p> validate_password_policy：密码策略，默认为MEDIUM策略  validate_password_dictionary_file：密码策略文件，策略为STRONG才需要  validate_password_length：密码最少长度  validate_password_mixed_case_count：大小写字符长度，至少1个  validate_password_number_count ：数字至少1个  validate_password_special_char_count：特殊字符至少1个  _上述参数是默认策略MEDIUM的密码检查规则。</p>
-<p>共有以下几种密码策略：</p>
-<table>
-<thead>
-<tr>
-<th>策略</th>
-<th>检查规则</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>0 or LOW</td>
-<td>Length</td>
-</tr>
-<tr>
-<td>1 or MEDIUM</td>
-<td>Length; numeric, lowercase/uppercase, and special characters</td>
-</tr>
-<tr>
-<td>2 or STRONG</td>
-<td>Length; numeric, lowercase/uppercase, and special characters; dictionary file</td>
-</tr>
-<tr>
-<td>MySQL官网密码策略详细说明：<a href="http://dev.mysql.com/doc/refman/5.7/en/validate-password-options-variables.html#sysvar_validate_password_policy" target="_blank" rel="noopener">http://dev.mysql.com/doc/refman/5.7/en/validate-password-options-variables.html#sysvar_validate_password_policy</a></td>
-<td></td>
-</tr>
-</tbody></table>
-<h4 id="修改密码策略"><a href="#修改密码策略" class="headerlink" title="修改密码策略"></a>修改密码策略</h4><p>在/etc/my.cnf文件添加validate_password_policy配置，指定密码策略</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 选择0（LOW），1（MEDIUM），2（STRONG）其中一种，选择2需要提供密码字典文件</span><br><span class="line">validate_password_policy&#x3D;0</span><br></pre></td></tr></table></figure>
-<p>如果不需要密码策略，添加my.cnf文件中添加如下配置禁用即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">validate_password &#x3D; off</span><br></pre></td></tr></table></figure>
-<p>重新启动mysql服务使配置生效：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart mysqld</span><br></pre></td></tr></table></figure>
-<h2 id="5-添加远程登录用户"><a href="#5-添加远程登录用户" class="headerlink" title="5. 添加远程登录用户"></a>5. 添加远程登录用户</h2><p>默认只允许root帐户在本地登录，如果要在其它机器上连接mysql，必须修改root允许远程连接，或者添加一个允许远程连接的帐户，为了安全起见，我添加一个新的帐户：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; GRANT ALL PRIVILEGES ON *.* TO &#39;sunhaoran&#39;@&#39;%&#39; IDENTIFIED BY &#39;Sun@123456&#39; WITH GRANT OPTION;</span><br></pre></td></tr></table></figure>
-<h2 id="6-配置默认编码为-utf8"><a href="#6-配置默认编码为-utf8" class="headerlink" title="6. 配置默认编码为 utf8"></a>6. 配置默认编码为 utf8</h2><p>修改/etc/my.cnf配置文件，在[mysqld]下添加编码配置，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">character_set_server&#x3D;utf8</span><br><span class="line">init_connect&#x3D;&#39;SET NAMES utf8&#39;</span><br></pre></td></tr></table></figure>
-<p>重新启动mysql服务，查看<a href="http://lib.csdn.net/base/14" target="_blank" rel="noopener" title="MySQL知识库">数据库</a>默认编码如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show variables like &#39;character%&#39;;</span><br></pre></td></tr></table></figure>
-
-
-<p><strong>默认配置文件路径：</strong>  配置文件：/etc/my.cnf  日志文件：/var/log//var/log/mysqld.log  服务启动脚本：/usr/lib/systemd/system/mysqld.service  socket文件：/var/run/mysqld/mysqld.pid</p>
-<h3 id="mysql-基本操作"><a href="#mysql-基本操作" class="headerlink" title="mysql 基本操作"></a>mysql 基本操作</h3><h4 id="客户端访问"><a href="#客户端访问" class="headerlink" title="客户端访问"></a>客户端访问</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p 回车</span><br><span class="line">输入密码回车即可</span><br><span class="line">数据库查看：show databases;</span><br><span class="line">数据库选择：use xx;</span><br></pre></td></tr></table></figure>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<h1 id="一-TextRank算法介绍"><a href="#一-TextRank算法介绍" class="headerlink" title="一. TextRank算法介绍"></a>一. TextRank算法介绍</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;TextRank算法相对来说，是一种很简单的算法。算法的流程类似于Kleinberg的HITS算法，<font color="red">Google</font>的PageRank算法，不得不说GooglePageRank算法的出现引发了搜索引擎的一次变革。PageRank算法成功运用到互联网上来评估网页的重要性，当用户搜索时，返回与搜索问题相关又有质量的网页。TextRank算法可以说借鉴了PageRank算法的思想，也非常成功的运用到文章的引文提取，关键词提取上。当然一个单纯的算法来提取关键词，可能效果并不如意，可以结合其他算法，比如TF-IDF来筛选有力表达主题/文章中心思想的词语。</p>
 	
 	
     </div>
@@ -597,7 +752,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -609,7 +764,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -618,7 +773,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/19/Linux%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/09/01/TextRank/">展开全文 >></a>
         </p>
       
 
@@ -652,22 +807,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-Host-Vm相互ping不同到的解决办法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-Hexo撰写文章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/16/Host-Vm%E7%9B%B8%E4%BA%92ping%E4%B8%8D%E5%90%8C%E5%88%B0%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">Host-Vm相互ping不同到的解决办法</a>
+      <a class="article-title" href="/2018/08/19/Hexo%E6%92%B0%E5%86%99%E6%96%87%E7%AB%A0/">(4)Hexo撰写文章</a>
     </h1>
   
 
         
         
 
-<a href="/2018/03/16/Host-Vm%E7%9B%B8%E4%BA%92ping%E4%B8%8D%E5%90%8C%E5%88%B0%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2018-03-16T11:47:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-16</time>
+<a href="/2018/08/19/Hexo%E6%92%B0%E5%86%99%E6%96%87%E7%AB%A0/" class="archive-article-date">
+  	<time datetime="2018-08-19T03:07:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-19</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -678,7 +833,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">835字</span>
+        <span class="post-count">1.1k字</span>
       </span>
     </span>
 
@@ -687,7 +842,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
 </div>
@@ -704,8 +859,377 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author：haoransun<br>WeChat：SHR—97</p>
-<h2 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;今天总结一下前段时间出现的一些虚拟机问题，之前配置的宿主机ping虚拟机以及虚拟机ping外网没有什么问题，但是后来不知道什么原因突然就ping不通了，经过网上各种找资料，研究了下VM0,1,8的区别，为了防止遗忘在此记录。</p>
+			<p>转载自 <a href="https://blog.csdn.net/wsmrzx/article/details/81477926" target="_blank" rel="noopener">https://blog.csdn.net/wsmrzx/article/details/81477926</a></p>
+<p><img src="/2018/08/19/Hexo%E6%92%B0%E5%86%99%E6%96%87%E7%AB%A0/60bbee39-dccc-48d2-9fb5-149a40253315.png" alt></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Hexo-yilia</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Hexo//" class="article-tag-list-link color5">Hexo</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/19/Hexo%E6%92%B0%E5%86%99%E6%96%87%E7%AB%A0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-Hexo常用命令详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/19/Hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/">(3)Hexo常用命令详解</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2018/08/19/Hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
+  	<time datetime="2018-08-19T01:03:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-19</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">691字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>转载自 <a href="https://blog.csdn.net/wsmrzx/article/details/81477926" target="_blank" rel="noopener">https://blog.csdn.net/wsmrzx/article/details/81477926</a></p>
+<p><strong>Hexo 框架建立的网站中，存在两份重要的配置文件，它们的文件名称都是 _config.yml</strong><br><strong>一份是 站点配置文件，位于 站点根目录 下，用于网站的基础配置</strong><br><strong>另外一份是 主题配置文件，位于 themes 目录 下，用于主题的相关配置</strong><br><strong>不同的主题会有不同的主题配置文件，由主题作者所提供</strong>.</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Hexo-yilia</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Hexo//" class="article-tag-list-link color5">Hexo</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/19/Hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-Hexo配置文件详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/17/Hexo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/">(2)Hexo配置文件详解</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2018/08/17/Hexo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
+  	<time datetime="2018-08-17T04:56:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-17</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">247字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>转载自 <a href="https://blog.csdn.net/wsmrzx/article/details/81477926" target="_blank" rel="noopener">https://blog.csdn.net/wsmrzx/article/details/81477926</a></p>
+<p>Hexo 是一款极为优秀的博客框架，使用 Hexo 搭建一个个人博客后，还需要编写位于站点根目录下的 <code>_config.yml</code> 文件来满足定制化的需求。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Hexo-yilia</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Hexo//" class="article-tag-list-link color5">Hexo</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/17/Hexo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-关于Firewalld二三事" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/15/%E5%85%B3%E4%BA%8EFirewalld%E4%BA%8C%E4%B8%89%E4%BA%8B/">关于Firewalld二三事</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2018/08/15/%E5%85%B3%E4%BA%8EFirewalld%E4%BA%8C%E4%B8%89%E4%BA%8B/" class="archive-article-date">
+  	<time datetime="2018-08-15T12:12:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-15</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">3.3k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">12分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>文章来源：<br><a href="http://www.excelib.com/article/287/show/#u0pW4f" target="_blank" rel="noopener">http://www.excelib.com/article/287/show/#u0pW4f</a></p>
+<h3 id="1-Firewalld简介"><a href="#1-Firewalld简介" class="headerlink" title="1 Firewalld简介"></a>1 Firewalld简介</h3><p>Centos7中默认将原来的防火墙iptables升级为了firewalld，firewalld跟iptables比起来至少有两大好处：</p>
+<ol>
+<li>firewalld可以动态修改单条规则，而不需要像iptables那样，在修改了规则后必须得全部刷新才可以生效；</li>
+<li>firewalld在使用上要比iptables人性化很多，即使不明白“五张表五条链”而且对TCP/IP协议也不理解也可以实现大部分功能。</li></ol>
 	
 	
     </div>
@@ -740,7 +1264,129 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/16/Host-Vm%E7%9B%B8%E4%BA%92ping%E4%B8%8D%E5%90%8C%E5%88%B0%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/08/15/%E5%85%B3%E4%BA%8EFirewalld%E4%BA%8C%E4%B8%89%E4%BA%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-Hexo博客搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/11/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">(1)Hexo博客搭建</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2018/08/11/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="archive-article-date">
+  	<time datetime="2018-08-11T02:47:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-11</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">703字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<h2 id="一-搭建GitHub-Pages"><a href="#一-搭建GitHub-Pages" class="headerlink" title="一 搭建GitHub Pages"></a>一 搭建GitHub Pages</h2><h3 id="1-注册一个GitHub账号，且登录"><a href="#1-注册一个GitHub账号，且登录" class="headerlink" title="1 注册一个GitHub账号，且登录"></a>1 注册一个GitHub账号，且登录</h3><h3 id="2-创建仓库"><a href="#2-创建仓库" class="headerlink" title="2 创建仓库"></a>2 创建仓库</h3><p>1、点击 “NEW”</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Hexo-yilia</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Hexo//" class="article-tag-list-link color5">Hexo</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/11/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">展开全文 >></a>
         </p>
       
 
@@ -775,7 +1421,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/15/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span>
+      <a class="extend prev" rel="prev" href="/page/15/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/17/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -888,6 +1534,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Elasticsearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">系统架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
@@ -904,6 +1570,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Dubbo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Zookeeperer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Tools</a>
               </li>
              
@@ -916,15 +1590,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码解析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -964,10 +1638,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
@@ -980,15 +1650,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SSL</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ELK</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">系统架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1013,10 +1683,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
