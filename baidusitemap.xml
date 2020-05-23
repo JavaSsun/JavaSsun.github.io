@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://JavaSsun.github.io/2018/03/25/Vim%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</loc>
+    <lastmod>2020-05-23</lastmod>
+  </url>  <url>
     <loc>http://JavaSsun.github.io/2020/02/08/Java8%E6%96%B0%E7%89%B9%E6%80%A7/</loc>
     <lastmod>2020-05-23</lastmod>
   </url>  <url>
@@ -563,9 +566,6 @@
     <lastmod>2020-05-06</lastmod>
   </url>  <url>
     <loc>http://JavaSsun.github.io/2019/11/09/7-Nginx%E5%AE%89%E8%A3%85%E8%AF%A6%E8%A7%A3/</loc>
-    <lastmod>2020-05-06</lastmod>
-  </url>  <url>
-    <loc>http://JavaSsun.github.io/2018/03/25/Vim%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</loc>
     <lastmod>2020-05-06</lastmod>
   </url>  <url>
     <loc>http://JavaSsun.github.io/2020/01/15/SpringBoot-Docker%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/</loc>
