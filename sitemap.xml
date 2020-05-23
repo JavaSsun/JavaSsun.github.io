@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://javassun.github.io/2019/09/15/%E5%BC%80%E5%8F%91%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</loc>
+    <loc>http://javassun.github.io/2020/02/08/Java8%E6%96%B0%E7%89%B9%E6%80%A7/</loc>
     
-    <lastmod>2020-05-22T17:37:15.442Z</lastmod>
+    <lastmod>2020-05-23T10:34:25.236Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://javassun.github.io/2018/12/14/MyBatis%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/</loc>
     
-    <lastmod>2020-05-22T17:34:15.272Z</lastmod>
+    <lastmod>2020-05-22T17:41:00.427Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://javassun.github.io/2019/09/15/%E5%BC%80%E5%8F%91%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</loc>
+    
+    <lastmod>2020-05-22T17:37:15.442Z</lastmod>
     
   </url>
   
@@ -1349,13 +1356,6 @@
     <loc>http://javassun.github.io/2019/04/09/JWT%E5%AD%A6%E4%B9%A0/</loc>
     
     <lastmod>2020-04-20T02:37:51.652Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://javassun.github.io/2020/02/08/Java8%E6%96%B0%E7%89%B9%E6%80%A7/</loc>
-    
-    <lastmod>2020-04-16T16:17:20.801Z</lastmod>
     
   </url>
   
