@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://javassun.github.io/2018/12/11/JVM%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AJvm%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/1bb8771d-7414-473a-9222-d417880111b1.jpg">
 <meta property="og:image" content="http://javassun.github.io/2018/12/11/JVM%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AJvm%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/JUtH_20121024_RuntimeDataAreas_5_JConsole.png">
 <meta property="article:published_time" content="2018-12-11T13:04:03.000Z">
-<meta property="article:modified_time" content="2020-05-14T19:11:35.523Z">
+<meta property="article:modified_time" content="2020-05-23T18:45:18.755Z">
 <meta property="article:author" content="Allen">
 <meta property="article:tag" content="Jvm">
 <meta name="twitter:card" content="summary">
@@ -305,9 +305,9 @@
 </blockquote>
 <p><strong>JVM和系统调用之间的关系</strong></p>
 <p><img src="/2018/12/11/JVM%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AJvm%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/fd48e7cf-d12e-4105-9951-ddf343c29f3b.jpg" alt></p>
-<p>方法区和对是所有线程共享的内存区域；而java栈、本地方法栈和程序员计数器是运行是线程私有的内存区域。</p>
+<p>方法区和堆是所有线程共享的内存区域；而java栈、本地方法栈和程序计数器是运行时线程私有的内存区域。</p>
 <h2 id="Java堆（Heap）"><a href="#Java堆（Heap）" class="headerlink" title="Java堆（Heap）"></a>Java堆（Heap）</h2><p>对于大多数应用来说，Java堆（Java Heap）是Java虚拟机所管理的内存中<strong>最大</strong>的一块。Java堆是被所有线程共享的一块内存区域，在虚拟机启动时创建。此内存区域的唯一目的就是存放对象实例，<strong>几乎所有的对象实例都在这里分配内存</strong>。</p>
-<p>ava堆是垃圾收集器管理的主要区域，因此很多时候也被称做“<strong>GC堆</strong>”。如果从内存回收的角度看，由于现在收集器基本都是采用的分代收集算法，所以Java堆中还可以细分为：<strong>新生代和老年代；再细致一点的有Eden空间、From Survivor空间、To Survivor空间等。</strong></p>
+<p>java堆是垃圾收集器管理的主要区域，因此很多时候也被称做“<strong>GC堆</strong>”。如果从内存回收的角度看，由于现在收集器基本都是采用的分代收集算法，所以Java堆中还可以细分为：<strong>新生代和老年代；再细致一点的有Eden空间、From Survivor空间、To Survivor空间等。</strong></p>
 <p>根据Java虚拟机规范的规定，Java堆可以处于物理上不连续的内存空间中，只要逻辑上是连续的即可，就像我们的磁盘空间一样。在实现时，既可以实现成固定大小的，也可以是可扩展的，不过当前主流的虚拟机都是按照可扩展来实现的（通过-Xmx和-Xms控制）。</p>
 <p>如果在堆中没有内存完成实例分配，并且堆也无法再扩展时，将会抛出OutOfMemoryError异常。</p>
 <h2 id="方法区（Method-Area）"><a href="#方法区（Method-Area）" class="headerlink" title="方法区（Method Area）"></a>方法区（Method Area）</h2><p>方法区（Method Area）与Java堆一样，是各个线程共享的内存区域，<strong>它用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。</strong>虽然Java虚拟机规范把方法区描述为堆的一个逻辑部分，但是它却有一个别名叫做Non-Heap（非堆），目的是与Java堆区分开来。</p>
@@ -764,19 +764,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">BigData</a>
+                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">BigData</a>
               </li>
              
               <li class="article-tag-list-item">
