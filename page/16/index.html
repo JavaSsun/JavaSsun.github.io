@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 240</nav>
+		<nav style="color: #7FFFD4;">总文章数 242</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -190,6 +190,255 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <meta charset="utf-8">
+<article id="post-27-深度和广度优先搜索-如何找出社交网络中的三度好友关系" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/13/27-%E6%B7%B1%E5%BA%A6%E5%92%8C%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2-%E5%A6%82%E4%BD%95%E6%89%BE%E5%87%BA%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E4%B8%89%E5%BA%A6%E5%A5%BD%E5%8F%8B%E5%85%B3%E7%B3%BB/">27-深度和广度优先搜索_如何找出社交网络中的三度好友关系</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/02/13/27-%E6%B7%B1%E5%BA%A6%E5%92%8C%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2-%E5%A6%82%E4%BD%95%E6%89%BE%E5%87%BA%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E4%B8%89%E5%BA%A6%E5%A5%BD%E5%8F%8B%E5%85%B3%E7%B3%BB/" class="archive-article-date">
+  	<time datetime="2019-02-13T11:35:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-13</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">3.3k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">12分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一节我们讲了图的表示方法，讲到如何用有向图、无向图来表示一个社交网络。在社交网络中，有一个<strong>六度分割理论</strong>，具体是说，你与世界上的另一个人间隔的关系不会超过六度，也就是说平均只需要六步就可以联系到任何两个互不相识的人。</p>
+<p>一个用户的一度连接用户很好理解，就是他的好友，二度连接用户就是他好友的好友，三度连接用户就是他好友的好友的好友。在社交网络中，我们往往通过用户之间的连接关系，来实现推荐“可能认识的人”这么一个功能。今天的开篇问题就是，<font color="red">&gt;给你一个用户，如何找出这个用户的所有三度（其中包含一度、二度和三度）好友关系？</font></p>
+<p>这就要用到今天要讲的深度优先和广度优先搜索算法。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/13/27-%E6%B7%B1%E5%BA%A6%E5%92%8C%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2-%E5%A6%82%E4%BD%95%E6%89%BE%E5%87%BA%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E4%B8%89%E5%BA%A6%E5%A5%BD%E5%8F%8B%E5%85%B3%E7%B3%BB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-26-图的表示-如何存储微博微信等社交网络中的好友关系" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/10/26-%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA-%E5%A6%82%E4%BD%95%E5%AD%98%E5%82%A8%E5%BE%AE%E5%8D%9A%E5%BE%AE%E4%BF%A1%E7%AD%89%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E5%A5%BD%E5%8F%8B%E5%85%B3%E7%B3%BB/">26-图的表示_如何存储微博微信等社交网络中的好友关系</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/02/10/26-%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA-%E5%A6%82%E4%BD%95%E5%AD%98%E5%82%A8%E5%BE%AE%E5%8D%9A%E5%BE%AE%E4%BF%A1%E7%AD%89%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E5%A5%BD%E5%8F%8B%E5%85%B3%E7%B3%BB/" class="archive-article-date">
+  	<time datetime="2019-02-10T12:17:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-10</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">4k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">13分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>微博、微信、LinkedIn 这些社交软件我想你肯定都玩过吧。在微博中，两个人可以互相关注；在微信中，两个人可以互加好友。那你知道，如何存储微博、微信等这些社交网络的好友关系吗？</p>
+<p>这就要用到我们今天要讲的这种数据结构：图。实际上，涉及图的算法有很多，也非常复杂，比如图的搜索、最短路径、最小生成树、二分图等等。我们今天聚焦在图存储这一方面，后面会分好几篇来依次讲解图相关的算法。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/10/26-%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA-%E5%A6%82%E4%BD%95%E5%AD%98%E5%82%A8%E5%BE%AE%E5%8D%9A%E5%BE%AE%E4%BF%A1%E7%AD%89%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E5%A5%BD%E5%8F%8B%E5%85%B3%E7%B3%BB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
   
     <meta charset="utf-8">
 <article id="post-国内地图坐标系转换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
@@ -1179,257 +1428,9 @@
 
 
   
-    <meta charset="utf-8">
-<article id="post-MyBatis架构与原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/09/MyBatis%E6%9E%B6%E6%9E%84%E4%B8%8E%E5%8E%9F%E7%90%86/">MyBatis架构与原理</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/01/09/MyBatis%E6%9E%B6%E6%9E%84%E4%B8%8E%E5%8E%9F%E7%90%86/" class="archive-article-date">
-  	<time datetime="2019-01-09T13:22:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-09</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.9k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">8分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>MyBatis官方文档<br><a href="http://www.mybatis.org/mybatis-3/zh/" target="_blank" rel="noopener">http://www.mybatis.org/mybatis-3/zh/</a></p>
-<p>MyBatis技术内幕-徐郡明<br><a href="https://book.douban.com/subject/27087564/" target="_blank" rel="noopener">https://book.douban.com/subject/27087564/</a></p>
-<p>文章出处<br><a href="https://www.jianshu.com/p/15781ec742f2" target="_blank" rel="noopener">https://www.jianshu.com/p/15781ec742f2</a></p>
-<h2 id="MyBatis功能架构设计"><a href="#MyBatis功能架构设计" class="headerlink" title="MyBatis功能架构设计"></a>MyBatis功能架构设计</h2><p><img src="/2019/01/09/MyBatis%E6%9E%B6%E6%9E%84%E4%B8%8E%E5%8E%9F%E7%90%86/219f2bb1-8f3e-491d-883a-43ef73b0e891.jpg" alt></p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MyBatis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MyBatis//" class="article-tag-list-link color3">MyBatis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/09/MyBatis%E6%9E%B6%E6%9E%84%E4%B8%8E%E5%8E%9F%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-MyBatis原理概括" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/08/MyBatis%E5%8E%9F%E7%90%86%E6%A6%82%E6%8B%AC/">MyBatis原理概括</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/01/08/MyBatis%E5%8E%9F%E7%90%86%E6%A6%82%E6%8B%AC/" class="archive-article-date">
-  	<time datetime="2019-01-08T12:32:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-08</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.4k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">15分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>MyBatis官方文档<br><a href="http://www.mybatis.org/mybatis-3/zh/" target="_blank" rel="noopener">http://www.mybatis.org/mybatis-3/zh/</a></p>
-<p>MyBatis技术内幕-徐郡明<br><a href="https://book.douban.com/subject/27087564/" target="_blank" rel="noopener">https://book.douban.com/subject/27087564/</a></p>
-<p>文章出处<br><a href="https://segmentfault.com/a/1190000015117926" target="_blank" rel="noopener">https://segmentfault.com/a/1190000015117926</a></p>
-<h2 id="1-MyBatis简介"><a href="#1-MyBatis简介" class="headerlink" title="1. MyBatis简介"></a>1. MyBatis简介</h2><p><strong>MyBatis</strong> 是一款优秀的持久层框架，它支持定制化 SQL、存储过程以及高级映射。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 XML 或注解来配置和映射原生信息，将接口和 Java 的 POJOs(Plain Old Java Objects,普通的 Java对象)映射成数据库中的记录</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MyBatis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MyBatis//" class="article-tag-list-link color3">MyBatis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/08/MyBatis%E5%8E%9F%E7%90%86%E6%A6%82%E6%8B%AC/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/15/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/17/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/15/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/17/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1554,11 +1555,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+                <a href="javascript:void(0)" class="js-tag color3">MQ</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MQ</a>
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1602,15 +1603,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码解析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1630,11 +1631,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+                <a href="javascript:void(0)" class="js-tag color4">Swagger2</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Swagger2</a>
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
               </li>
              
               <li class="article-tag-list-item">
