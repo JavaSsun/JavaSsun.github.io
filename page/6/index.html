@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 242</nav>
+		<nav style="color: #7FFFD4;">总文章数 246</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -1196,22 +1196,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-数据结构与算法第四阶段学习图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-分布式事务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5%E5%AD%A6%E4%B9%A0%E5%9B%BE/">数据结构与算法第四阶段学习图</a>
+      <a class="article-title" href="/2019/09/19/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">分布式事务</a>
     </h1>
   
 
         
         
 
-<a href="/2019/09/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5%E5%AD%A6%E4%B9%A0%E5%9B%BE/" class="archive-article-date">
-  	<time datetime="2019-09-16T13:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
+<a href="/2019/09/19/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" class="archive-article-date">
+  	<time datetime="2019-09-19T09:20:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-19</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1222,7 +1222,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">11字</span>
+        <span class="post-count">4.3k字</span>
       </span>
     </span>
 
@@ -1231,7 +1231,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">15分</span>
       </span>
     </span>
 </div>
@@ -1248,7 +1248,13 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>第四阶段学习知识点汇总。</p>
+			<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>分布式事务指事务的操作位于不同的节点上，需要保证事务的 AICD 特性。</p>
+<p>如在微服务系统中，如果一个业务需要使用到不同的微服务，并且不同的微服务对应不同的数据库。</p>
+<p>例如在下单场景下，库存和订单如果不在同一个节点上，就涉及分布式事务。</p>
+<p>这个业务逻辑涉及到两个微服务，一个是库存服务（库存减一），另一个是订单服务（订单数加一），</p>
+<p><img src="/2019/09/19/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/ad08a359-0997-4b5f-aad2-3a69d0a0d8db.png" alt></p>
+<p>如果在执行这个业务逻辑时没有使用分布式事务，当库存与订单其中一个出现故障时，就很可能出现这样的情况：库存数据库的值减少了1，但是订单数据库没有变化；或是库存没变化，多了一个订单，也就是出现了<strong>数据不一致</strong>现象。</p>
+<p>所以在类似的场合下我们要<strong>使用分布式事务，保证数据的一致性</strong>。</p>
 	
 	
     </div>
@@ -1262,7 +1268,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">系统架构</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">分布式</a>
         		</li>
       		
 		</ul>
@@ -1274,7 +1288,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        			<a href="/categories/分布式//" class="article-tag-list-link color4">分布式</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/分布式/面试//" class="article-tag-list-link color3">面试</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/分布式/面试/系统架构//" class="article-tag-list-link color5">系统架构</a>
         		</li>
       		
 		</ul>
@@ -1283,7 +1305,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5%E5%AD%A6%E4%B9%A0%E5%9B%BE/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/09/19/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">展开全文 >></a>
         </p>
       
 
@@ -1317,22 +1339,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-数据结构与算法第三阶段学习图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-分布式锁" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5%E5%AD%A6%E4%B9%A0%E5%9B%BE/">数据结构与算法第三阶段学习图</a>
+      <a class="article-title" href="/2019/09/18/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/">分布式锁</a>
     </h1>
   
 
         
         
 
-<a href="/2019/09/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5%E5%AD%A6%E4%B9%A0%E5%9B%BE/" class="archive-article-date">
-  	<time datetime="2019-09-16T12:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
+<a href="/2019/09/18/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" class="archive-article-date">
+  	<time datetime="2019-09-18T10:40:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-18</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1343,7 +1365,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">11字</span>
+        <span class="post-count">8.4k字</span>
       </span>
     </span>
 
@@ -1352,7 +1374,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">33分</span>
       </span>
     </span>
 </div>
@@ -1369,7 +1391,12 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>第三阶段学习知识点汇总。</p>
+			<h2 id="1-为什么使用分布式锁？"><a href="#1-为什么使用分布式锁？" class="headerlink" title="1. 为什么使用分布式锁？"></a>1. 为什么使用分布式锁？</h2><p>在讨论这个问题之前，我们先来看一个业务场景：</p>
+<p>系统A是一个电商系统，目前是一台机器部署，系统中有一个用户下订单的接口，但是用户下订单之前一定要去检查一下库存，确保库存足够了才会给用户下单。</p>
+<p>由于系统有一定的并发，所以会预先将商品的库存保存在redis中，用户下单的时候会更新redis的库存。</p>
+<p>此时系统架构如下：</p>
+<p><img src="/2019/09/18/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/59d4312b-b2d7-4e19-8586-1e6c3920b882.jpg" alt></p>
+<p>但是这样一来会产生一个问题：假如某个时刻，redis里面的某个商品库存为1，此时两个请求同时到来，其中一个请求执行到上图的第3步，更新数据库的库存为0，但是第4步还没有执行。</p>
 	
 	
     </div>
@@ -1383,7 +1410,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">系统架构</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">分布式</a>
         		</li>
       		
 		</ul>
@@ -1395,7 +1430,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        			<a href="/categories/分布式//" class="article-tag-list-link color4">分布式</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/分布式/面试//" class="article-tag-list-link color3">面试</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/分布式/面试/系统架构//" class="article-tag-list-link color5">系统架构</a>
         		</li>
       		
 		</ul>
@@ -1404,7 +1447,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5%E5%AD%A6%E4%B9%A0%E5%9B%BE/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/09/18/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/">展开全文 >></a>
         </p>
       
 
@@ -1612,15 +1655,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码解析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1653,6 +1696,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Photo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">分布式</a>
               </li>
              
               <li class="article-tag-list-item">
