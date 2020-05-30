@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 247</nav>
+		<nav style="color: #7FFFD4;">总文章数 253</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -811,22 +811,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-源码分析-MyBatis数据源与连接池" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-Python数据分析工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/23/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-MyBatis%E6%95%B0%E6%8D%AE%E6%BA%90%E4%B8%8E%E8%BF%9E%E6%8E%A5%E6%B1%A0/">源码分析-MyBatis数据源与连接池</a>
+      <a class="article-title" href="/2019/01/30/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/">Python数据分析工具</a>
     </h1>
   
 
         
         
 
-<a href="/2019/01/23/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-MyBatis%E6%95%B0%E6%8D%AE%E6%BA%90%E4%B8%8E%E8%BF%9E%E6%8E%A5%E6%B1%A0/" class="archive-article-date">
-  	<time datetime="2019-01-23T13:15:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-23</time>
+<a href="/2019/01/30/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/" class="archive-article-date">
+  	<time datetime="2019-01-30T13:10:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-30</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -837,7 +837,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">5.2k字</span>
+        <span class="post-count">7.9k字</span>
       </span>
     </span>
 
@@ -846,7 +846,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">23分</span>
+        <span class="post-count">35分</span>
       </span>
     </span>
 </div>
@@ -863,9 +863,11 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>文章出处<br><a href="https://www.jianshu.com/p/45c1f4691c72" target="_blank" rel="noopener">https://www.jianshu.com/p/45c1f4691c72</a></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对于ORM框架而言，数据源的组织是一个非常重要的一部分，这直接影响到框架的性能问题。本文将通过对MyBatis框架的数据源结构进行详尽的分析，并且深入解析MyBatis的连接池。</p>
-<p>本文首先会讲述MyBatis的数据源的分类，然后会介绍数据源是如何加载和使用的。紧接着将分类介绍UNPOOLED、POOLED和JNDI类型的数据源组织；期间我们会重点讲解POOLED类型的数据源和其实现的连接池原理。</p>
+			<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Python、Numpy、Pandas、SciPy、Scikit-Learn、Matplotlib</p>
+<p><img src="/2019/01/30/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/72541e7b-da9a-493f-b6a8-3cd692682869.jpg" alt></p>
+<p><strong>Numpy：</strong>一种开源的数值计算扩展。这种工具可用来存储和处理大型矩阵，比 Python 自身的嵌套列表（nested list structure)结构要高效的多（该结构也可以用来表示矩阵（matrix））。</p>
+<p><strong>Scipy：</strong>一个用于数学、科学、工程领域的常用软件包，可以处理插值、积分、优化、图像处理、常微分方程数值解的求解、信号处理等问题。</p>
+<p><strong>Pandas：</strong>基于 NumPy 的一种工具，该工具是为了解决数据分析任务而创建的。Pandas 纳入了大量库和一些标准的数据模型，提供了高效地操作大型数据集所需的工具。</p>
 	
 	
     </div>
@@ -879,7 +881,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MyBatis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
         		</li>
       		
 		</ul>
@@ -891,7 +893,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/MyBatis//" class="article-tag-list-link color3">MyBatis</a>
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
         		</li>
       		
 		</ul>
@@ -900,7 +902,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/23/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-MyBatis%E6%95%B0%E6%8D%AE%E6%BA%90%E4%B8%8E%E8%BF%9E%E6%8E%A5%E6%B1%A0/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/01/30/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/">展开全文 >></a>
         </p>
       
 
@@ -934,22 +936,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-MyBatis初始化做了什么" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-Python高级篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/21/MyBatis%E5%88%9D%E5%A7%8B%E5%8C%96%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/">MyBatis初始化做了什么</a>
+      <a class="article-title" href="/2019/01/29/Python%E9%AB%98%E7%BA%A7%E7%AF%87/">Python高级篇</a>
     </h1>
   
 
         
         
 
-<a href="/2019/01/21/MyBatis%E5%88%9D%E5%A7%8B%E5%8C%96%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/" class="archive-article-date">
-  	<time datetime="2019-01-21T12:22:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-21</time>
+<a href="/2019/01/29/Python%E9%AB%98%E7%BA%A7%E7%AF%87/" class="archive-article-date">
+  	<time datetime="2019-01-29T11:10:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-29</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -960,7 +962,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2k字</span>
+        <span class="post-count">17.2k字</span>
       </span>
     </span>
 
@@ -969,7 +971,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">8分</span>
+        <span class="post-count">70分</span>
       </span>
     </span>
 </div>
@@ -986,9 +988,14 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<h2 id="一、-MyBatis的初始化做了什么"><a href="#一、-MyBatis的初始化做了什么" class="headerlink" title="一、 MyBatis的初始化做了什么"></a>一、 MyBatis的初始化做了什么</h2><p>任何框架的初始化，无非是加载自己运行时所需要的配置信息。</p>
-<p>MyBatis的配置信息，大概包含以下信息，其高层级结构如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt; 配置</span><br><span class="line"></span><br><span class="line">    &lt;properties&gt; 属性</span><br><span class="line"></span><br><span class="line">    &lt;settings&gt; 设置</span><br><span class="line"></span><br><span class="line">    &lt;typeAliases&gt; 类型命名</span><br><span class="line"></span><br><span class="line">    &lt;typeHandlers&gt; 类型处理器</span><br><span class="line"></span><br><span class="line">    &lt;objectFactory&gt; 对象工厂</span><br><span class="line"></span><br><span class="line">    &lt;plugins&gt; 插件</span><br><span class="line"></span><br><span class="line">    &lt;environments&gt; 环境</span><br><span class="line"></span><br><span class="line">    &lt;environment&gt; 环境变量</span><br><span class="line"></span><br><span class="line">    &lt;transactionManager&gt; 事务管理器</span><br><span class="line"></span><br><span class="line">    &lt;dataSource&gt; 数据源</span><br></pre></td></tr></table></figure>
+			<p>转载自：<br><a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1016959663602400</a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>高级篇涉及内容如下：</p>
+<ul>
+<li>网络编程</li>
+<li>电子邮件</li>
+<li>访问数据库</li>
+<li>Web开发</li>
+<li>异步IO</li></ul>
 	
 	
     </div>
@@ -1002,7 +1009,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MyBatis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
         		</li>
       		
 		</ul>
@@ -1014,7 +1021,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/MyBatis//" class="article-tag-list-link color3">MyBatis</a>
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
         		</li>
       		
 		</ul>
@@ -1023,7 +1030,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/21/MyBatis%E5%88%9D%E5%A7%8B%E5%8C%96%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/01/29/Python%E9%AB%98%E7%BA%A7%E7%AF%87/">展开全文 >></a>
         </p>
       
 
@@ -1057,22 +1064,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-3-Git与GitHub简单同步" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-Python中级篇-下" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/20/3-Git%E4%B8%8EGitHub%E7%AE%80%E5%8D%95%E5%90%8C%E6%AD%A5/">3-Git与GitHub简单同步</a>
+      <a class="article-title" href="/2019/01/28/Python%E4%B8%AD%E7%BA%A7%E7%AF%87-%E4%B8%8B/">Python中级篇_下</a>
     </h1>
   
 
         
         
 
-<a href="/2019/01/20/3-Git%E4%B8%8EGitHub%E7%AE%80%E5%8D%95%E5%90%8C%E6%AD%A5/" class="archive-article-date">
-  	<time datetime="2019-01-20T11:52:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-20</time>
+<a href="/2019/01/28/Python%E4%B8%AD%E7%BA%A7%E7%AF%87-%E4%B8%8B/" class="archive-article-date">
+  	<time datetime="2019-01-28T12:10:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-28</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1083,7 +1090,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">413字</span>
+        <span class="post-count">29.3k字</span>
       </span>
     </span>
 
@@ -1092,7 +1099,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">127分</span>
       </span>
     </span>
 </div>
@@ -1109,8 +1116,15 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97<br>图片来源：极客时间，需个人购买教程。</p>
-<h2 id="1-注册一个GitHub账号"><a href="#1-注册一个GitHub账号" class="headerlink" title="1.注册一个GitHub账号"></a>1.注册一个GitHub账号</h2><p>略<br><img src="/2019/01/20/3-Git%E4%B8%8EGitHub%E7%AE%80%E5%8D%95%E5%90%8C%E6%AD%A5/3f130bd8-80ca-4c71-973a-0c3bd9146ea3.png" alt></p>
+			<p>转载自：<br><a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1016959663602400</a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>中级篇_下涉及内容如下：</p>
+<ul>
+<li>进程和线程</li>
+<li>正则表达式</li>
+<li>常用内建模块</li>
+<li>常用第三方模块</li>
+<li>virtualenv</li>
+<li>图形界面</li></ul>
 	
 	
     </div>
@@ -1124,7 +1138,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
         		</li>
       		
 		</ul>
@@ -1136,7 +1150,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
         		</li>
       		
 		</ul>
@@ -1145,7 +1159,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/20/3-Git%E4%B8%8EGitHub%E7%AE%80%E5%8D%95%E5%90%8C%E6%AD%A5/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/01/28/Python%E4%B8%AD%E7%BA%A7%E7%AF%87-%E4%B8%8B/">展开全文 >></a>
         </p>
       
 
@@ -1179,22 +1193,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-2-Git常用场景" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-Python中级篇-上" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/18/2-Git%E5%B8%B8%E7%94%A8%E5%9C%BA%E6%99%AF/">2-Git常用场景</a>
+      <a class="article-title" href="/2019/01/27/Python%E4%B8%AD%E7%BA%A7%E7%AF%87-%E4%B8%8A/">Python中级篇_上</a>
     </h1>
   
 
         
         
 
-<a href="/2019/01/18/2-Git%E5%B8%B8%E7%94%A8%E5%9C%BA%E6%99%AF/" class="archive-article-date">
-  	<time datetime="2019-01-18T11:05:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-18</time>
+<a href="/2019/01/27/Python%E4%B8%AD%E7%BA%A7%E7%AF%87-%E4%B8%8A/" class="archive-article-date">
+  	<time datetime="2019-01-27T12:20:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-27</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1205,7 +1219,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.5k字</span>
+        <span class="post-count">27.1k字</span>
       </span>
     </span>
 
@@ -1214,7 +1228,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
+        <span class="post-count">113分</span>
       </span>
     </span>
 </div>
@@ -1231,9 +1245,15 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97<br>图片来源：极客时间，需个人购买教程。</p>
-<h2 id="1-删除无用分支"><a href="#1-删除无用分支" class="headerlink" title="1.删除无用分支"></a>1.删除无用分支</h2><p><img src="/2019/01/18/2-Git%E5%B8%B8%E7%94%A8%E5%9C%BA%E6%99%AF/cbe35443-f8b1-43e6-a798-b0828a836ef3.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch -d branch_name             &#x2F;&#x2F; 删除分支(会有提示是否确认删除)</span><br><span class="line">git branch -D branch_name             &#x2F;&#x2F; 删除分支（确认删除情况下）</span><br></pre></td></tr></table></figure>
+			<p>转载自：<br><a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1016959663602400</a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>中级篇_上涉及内容如下：</p>
+<ul>
+<li>模块</li>
+<li>面向对象编程</li>
+<li>面向对象高级编程</li>
+<li>错误、调试和测试</li>
+<li>IO编程</li>
+</ul>
 	
 	
     </div>
@@ -1247,7 +1267,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
         		</li>
       		
 		</ul>
@@ -1259,7 +1279,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
         		</li>
       		
 		</ul>
@@ -1268,7 +1288,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/18/2-Git%E5%B8%B8%E7%94%A8%E5%9C%BA%E6%99%AF/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/01/27/Python%E4%B8%AD%E7%BA%A7%E7%AF%87-%E4%B8%8A/">展开全文 >></a>
         </p>
       
 
@@ -1302,22 +1322,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-1-Git安装及简单操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-Python初级篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/15/1-Git%E5%AE%89%E8%A3%85%E5%8F%8A%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/">1-Git安装及简单操作</a>
+      <a class="article-title" href="/2019/01/26/Python%E5%88%9D%E7%BA%A7%E7%AF%87/">Python初级篇</a>
     </h1>
   
 
         
         
 
-<a href="/2019/01/15/1-Git%E5%AE%89%E8%A3%85%E5%8F%8A%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/" class="archive-article-date">
-  	<time datetime="2019-01-15T12:44:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-15</time>
+<a href="/2019/01/26/Python%E5%88%9D%E7%BA%A7%E7%AF%87/" class="archive-article-date">
+  	<time datetime="2019-01-26T13:20:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-26</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1328,7 +1348,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.6k字</span>
+        <span class="post-count">18.1k字</span>
       </span>
     </span>
 
@@ -1337,7 +1357,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6分</span>
+        <span class="post-count">77分</span>
       </span>
     </span>
 </div>
@@ -1354,12 +1374,26 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p>图片来源：极客时间，需个人购买教程。</p>
-<h2 id="前言-Git下载路径"><a href="#前言-Git下载路径" class="headerlink" title="前言 Git下载路径"></a>前言 Git下载路径</h2><p><a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a></p>
-<h2 id="参考-廖雪峰-Git文档"><a href="#参考-廖雪峰-Git文档" class="headerlink" title="参考 廖雪峰 Git文档"></a>参考 廖雪峰 Git文档</h2><p>廖雪峰 Git文档<br><a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/896043488029600</a></p>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version     &#x2F;&#x2F;可查看版本即安装成功</span><br></pre></td></tr></table></figure>
+			<p>转载自：<br><a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1016959663602400</a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>初级篇涉及内容如下：</p>
+<ul>
+<li><p>数据类型</p>
+</li>
+<li><p>变量</p>
+</li>
+<li><p>常量</p>
+</li>
+<li><p>编码和格式化</p>
+</li>
+<li><p>运算符</p>
+</li>
+<li><p>条件+循环</p>
+</li>
+<li><p>函数</p>
+</li>
+<li><p>高级特性</p>
+</li>
+<li><p>函数式编程</p></li></ul>
 	
 	
     </div>
@@ -1373,7 +1407,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
         		</li>
       		
 		</ul>
@@ -1385,7 +1419,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
         		</li>
       		
 		</ul>
@@ -1394,7 +1428,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/15/1-Git%E5%AE%89%E8%A3%85%E5%8F%8A%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/01/26/Python%E5%88%9D%E7%BA%A7%E7%AF%87/">展开全文 >></a>
         </p>
       
 
@@ -1429,7 +1463,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/15/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/17/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/15/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/17/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1558,15 +1592,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Openresty</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1602,15 +1636,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码解析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1634,11 +1668,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Swagger2</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color4">Swagger2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1670,11 +1704,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
+                <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
+                <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1703,6 +1737,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Netty</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
