@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 253</nav>
+		<nav style="color: #7FFFD4;">总文章数 254</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -190,139 +190,6 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-    <meta charset="utf-8">
-<article id="post-31-误删数据后除了跑路-还能怎么办" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/22/31-%E8%AF%AF%E5%88%A0%E6%95%B0%E6%8D%AE%E5%90%8E%E9%99%A4%E4%BA%86%E8%B7%91%E8%B7%AF-%E8%BF%98%E8%83%BD%E6%80%8E%E4%B9%88%E5%8A%9E/">31-误删数据后除了跑路_还能怎么办</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/10/22/31-%E8%AF%AF%E5%88%A0%E6%95%B0%E6%8D%AE%E5%90%8E%E9%99%A4%E4%BA%86%E8%B7%91%E8%B7%AF-%E8%BF%98%E8%83%BD%E6%80%8E%E4%B9%88%E5%8A%9E/" class="archive-article-date">
-  	<time datetime="2019-10-22T13:15:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-22</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.9k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">13分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在前面几篇文章中，我们介绍了MySQL的高可用架构。当然，传统的高可用架构是不能预防误删数据的，因为主库的一个drop table命令，会通过binlog传给所有从库和级联从库，进而导致整个集群的实例都会执行这个命令。</p>
-<p>虽然我们之前遇到的大多数的数据被删，都是运维同学或者DBA背锅的。但实际上，只要有数据操作权限的同学，都有可能踩到误删数据这条线。</p>
-<p>今天我们就来聊聊误删数据前后，我们可以做些什么，减少误删数据的风险，和由误删数据带来的损失。</p>
-<p>为了找到解决误删数据的更高效的方法，我们需要先对和MySQL相关的误删数据，做下分类：</p>
-<ol>
-<li><p>使用delete语句误删数据行；</p>
-</li>
-<li><p>使用drop table或者truncate table语句误删数据表；</p>
-</li>
-<li><p>使用drop database语句误删数据库；</p>
-</li>
-<li><p>使用rm命令误删整个MySQL实例。</p></li></ol>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/22/31-%E8%AF%AF%E5%88%A0%E6%95%B0%E6%8D%AE%E5%90%8E%E9%99%A4%E4%BA%86%E8%B7%91%E8%B7%AF-%E8%BF%98%E8%83%BD%E6%80%8E%E4%B9%88%E5%8A%9E/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
   
     <meta charset="utf-8">
 <article id="post-3-Nginx命令行演示-重载-热部署-切割" class="article article-type-post  article-index" itemscope itemprop="blogPost">
@@ -1495,6 +1362,127 @@
 
 
   
+    <meta charset="utf-8">
+<article id="post-数据结构与算法第二阶段学习图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%E5%AD%A6%E4%B9%A0%E5%9B%BE/">数据结构与算法第二阶段学习图</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/09/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%E5%AD%A6%E4%B9%A0%E5%9B%BE/" class="archive-article-date">
+  	<time datetime="2019-09-16T12:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">11字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>第二阶段学习知识点汇总。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%E5%AD%A6%E4%B9%A0%E5%9B%BE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
@@ -1642,11 +1630,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color1">Dubbo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Dubbo</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1755,10 +1743,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Quartz</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">

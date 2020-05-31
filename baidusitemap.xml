@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://JavaSsun.github.io/2019/06/17/RocketMQ%E6%8E%A2%E7%B4%A2/</loc>
+    <lastmod>2020-05-31</lastmod>
+  </url>  <url>
+    <loc>http://JavaSsun.github.io/2019/06/08/RabbitMQ%E8%AF%A6%E8%A7%A3/</loc>
+    <lastmod>2020-05-31</lastmod>
+  </url>  <url>
     <loc>http://JavaSsun.github.io/2019/01/29/Python%E9%AB%98%E7%BA%A7%E7%AF%87/</loc>
     <lastmod>2020-05-30</lastmod>
   </url>  <url>
@@ -614,9 +620,6 @@
     <lastmod>2020-05-06</lastmod>
   </url>  <url>
     <loc>http://JavaSsun.github.io/2019/11/09/7-Nginx%E5%AE%89%E8%A3%85%E8%AF%A6%E8%A7%A3/</loc>
-    <lastmod>2020-05-06</lastmod>
-  </url>  <url>
-    <loc>http://JavaSsun.github.io/2020/02/25/RabbitMQ%E8%AF%A6%E8%A7%A3/</loc>
     <lastmod>2020-05-06</lastmod>
   </url>  <url>
     <loc>http://JavaSsun.github.io/2018/03/19/Linux%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/</loc>

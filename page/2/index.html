@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 253</nav>
+		<nav style="color: #7FFFD4;">总文章数 254</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -672,131 +672,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/02/26/RabbitMQ%E5%AE%89%E8%A3%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-RabbitMQ详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/25/RabbitMQ%E8%AF%A6%E8%A7%A3/">RabbitMQ详解</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2020/02/25/RabbitMQ%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2020-02-25T12:22:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-25</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.1k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">13分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>转载<a href="http://www.ityouknow.com/springboot/2016/11/30/spring-boot-rabbitMQ.html" target="_blank" rel="noopener">纯洁的微笑</a></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>RabbitMQ 即一个消息队列，主要是用来实现应用程序的异步和解耦，同时也能起到消息缓冲，消息分发的作用。消息中间件在互联网公司的使用中越来越多，消息中间件最主要的作用是解耦，中间件最标准的用法是生产者生产消息传送到队列，消费者从队列中拿取消息并处理，生产者不用关心是谁来消费，消费者不用关心谁在生产消息，从而达到解耦的目的。在分布式的系统中，消息队列也会被用在很多其它的方面，比如：分布式事务的支持，RPC 的调用等等。</p>
-<h2 id="RabbitMQ-介绍"><a href="#RabbitMQ-介绍" class="headerlink" title="RabbitMQ 介绍"></a>RabbitMQ 介绍</h2><p>RabbitMQ 是实现 AMQP（高级消息队列协议）的消息中间件的一种，最初起源于金融系统，用于在分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现不俗。 RabbitMQ 主要是为了实现系统之间的双向解耦而实现的。当生产者大量产生数据时，消费者无法快速消费，那么需要一个中间层。保存这个数据。</p>
-<p>AMQP，即 Advanced Message Queuing Protocol，高级消息队列协议，是应用层协议的一个开放标准，为面向消息的中间件设计。消息中间件主要用于组件之间的解耦，消息的发送者无需知道消息使用者的存在，反之亦然。AMQP 的主要特征是面向消息、队列、路由（包括点对点和发布/订阅）、可靠性、安全。</p>
-<p>RabbitMQ 是一个开源的 AMQP 实现，服务器端用Erlang语言编写，支持多种客户端，如：Python、Ruby、.NET、Java、JMS、C、PHP、ActionScript、XMPP、STOMP 等，支持 AJAX。用于在分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现不俗。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RabbitMQ</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MQ//" class="article-tag-list-link color3">MQ</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/25/RabbitMQ%E8%AF%A6%E8%A7%A3/">展开全文 >></a>
         </p>
       
 
@@ -1494,6 +1369,130 @@
 
 
   
+    <meta charset="utf-8">
+<article id="post-23-详解HTTP请求的11个阶段" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/11/23-%E8%AF%A6%E8%A7%A3HTTP%E8%AF%B7%E6%B1%82%E7%9A%8411%E4%B8%AA%E9%98%B6%E6%AE%B5/">23-详解HTTP请求的11个阶段</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/12/11/23-%E8%AF%A6%E8%A7%A3HTTP%E8%AF%B7%E6%B1%82%E7%9A%8411%E4%B8%AA%E9%98%B6%E6%AE%B5/" class="archive-article-date">
+  	<time datetime="2019-12-11T11:10:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-11</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">6.5k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">24分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>除<strong>HTTP过滤模块</strong> 和 <strong>只提供变量的Nginx模块</strong>之外，所有的HTTP模块必须从Nginx定义好的<strong>11</strong>个阶段进行请求处理。每一个HTTP模块何时生效，有没有机会生效，都要看一个请求究竟处理到哪一个阶段。Nginx是如何定义这11个处理阶段的呢？</p>
+<h2 id="HTTP请求处理时的11个阶段"><a href="#HTTP请求处理时的11个阶段" class="headerlink" title="HTTP请求处理时的11个阶段"></a>HTTP请求处理时的11个阶段</h2><p><img src="/2019/12/11/23-%E8%AF%A6%E8%A7%A3HTTP%E8%AF%B7%E6%B1%82%E7%9A%8411%E4%B8%AA%E9%98%B6%E6%AE%B5/_u6355_u83B7.PNG" alt></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/11/23-%E8%AF%A6%E8%A7%A3HTTP%E8%AF%B7%E6%B1%82%E7%9A%8411%E4%B8%AA%E9%98%B6%E6%AE%B5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1641,11 +1640,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color1">Dubbo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Dubbo</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1754,10 +1753,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Quartz</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
