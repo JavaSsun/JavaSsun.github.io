@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://javassun.github.io/2018/06/20/MySQL%E5%AE%89%E8%A3%85/ef919150-f486-4b11-ab85-8b482912802a.png">
 <meta property="og:image" content="http://javassun.github.io/2018/06/20/MySQL%E5%AE%89%E8%A3%85/9d2fe1b3-58a1-4611-8ee9-a14596c864d7.png">
 <meta property="article:published_time" content="2018-06-20T11:21:38.000Z">
-<meta property="article:modified_time" content="2020-05-24T06:41:45.271Z">
+<meta property="article:modified_time" content="2020-06-01T17:39:20.537Z">
 <meta property="article:author" content="Allen">
 <meta property="article:tag" content="MySql">
 <meta name="twitter:card" content="summary">
@@ -87,7 +87,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 253</nav>
+		<nav style="color: #7FFFD4;">总文章数 256</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -289,7 +289,9 @@
 <h2 id="1-卸载旧版本Mysql"><a href="#1-卸载旧版本Mysql" class="headerlink" title="1 卸载旧版本Mysql"></a>1 卸载旧版本Mysql</h2><p>采用yum安装mysql后，如果想要完全卸载mysql，可以采用如下方式：</p>
 <p>1、查看mysql安装了哪些东西</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa |grep -i mysql</span><br></pre></td></tr></table></figure>
+
 <a id="more"></a>
+
 <p><img src="/2018/06/20/MySQL%E5%AE%89%E8%A3%85/6e32096d-5801-45f3-ab7d-dfe2d7590b2e.png" alt></p>
 <p>2、开始卸载</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum remove mysql-community-libs-compat-5.7.30-1.el7.x86_64</span><br><span class="line">yum remove mysql-community-libs-5.7.30-1.el7.x86_64</span><br><span class="line">yum remove mysql57-community-release-el7-8.noarch</span><br><span class="line">yum remove mysql-community-common-5.7.30-1.el7.x86_64</span><br></pre></td></tr></table></figure>
@@ -298,6 +300,7 @@
 <p><img src="/2018/06/20/MySQL%E5%AE%89%E8%A3%85/a5e577bb-5ac4-4475-94db-72a031666ee8.png" alt></p>
 <p>4、查找mysql相关目录</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find &#x2F; -name mysql</span><br></pre></td></tr></table></figure>
+
 <p><img src="/2018/06/20/MySQL%E5%AE%89%E8%A3%85/a39a7ff8-f642-40ed-8333-d3941e82a036.png" alt></p>
 <p>5、删除相关目录</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf</span><br></pre></td></tr></table></figure>
@@ -311,8 +314,10 @@
 
 <h2 id="2-下载并安装MySQL官方的-Yum-Repository（MySql5-7）"><a href="#2-下载并安装MySQL官方的-Yum-Repository（MySql5-7）" class="headerlink" title="2 下载并安装MySQL官方的 Yum Repository（MySql5.7）"></a>2 下载并安装MySQL官方的 Yum Repository（MySql5.7）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">cd 到一个特定目录</span><br><span class="line"></span><br><span class="line">[root@localhost ~]# wget -i -c http:&#x2F;&#x2F;dev.mysql.com&#x2F;get&#x2F;mysql57-community-release-el7-10.noarch.rpm</span><br><span class="line"></span><br><span class="line">使用上面的命令就直接下载了安装用的Yum Repository，大概25KB的样子，然后就可以直接yum安装了。</span><br><span class="line">[root@localhost ~]# yum  -y  install  mysql57-community-release-el7-10.noarch.rpm</span><br><span class="line"></span><br><span class="line">之后就开始安装MySQL服务器。</span><br><span class="line">[root@localhost ~]# yum -y install mysql-community-server</span><br></pre></td></tr></table></figure>
 
+
 <p>这步可能会花些时间，安装完成后就会覆盖掉之前的mariadb。<br>至此MySQL就安装完成了，然后是对MySQL的一些设置。</p>
 <h2 id="3-mysql-初始化安装的一些配置"><a href="#3-mysql-初始化安装的一些配置" class="headerlink" title="3 mysql 初始化安装的一些配置"></a>3 mysql 初始化安装的一些配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"># 启动 mysql-serer </span><br><span class="line">systemctl start mysqld.service</span><br><span class="line"></span><br><span class="line"># 查看MySQL运行状态，运行状态如图</span><br><span class="line">systemctl status mysqld.service</span><br><span class="line"></span><br><span class="line"># 或者 查看是否启动成功，即是否存在 3306 端口</span><br><span class="line">netstat -tnlp | grep 3306</span><br><span class="line"></span><br><span class="line"># 查询 root 密码，登录到 mysql </span><br><span class="line">grep &quot;password&quot; &#x2F;var&#x2F;log&#x2F;mysqld.log </span><br><span class="line">mysql -uroot -p</span><br><span class="line"></span><br><span class="line"># 首次操作要求重置密码,必须大小写特殊字符组成,</span><br><span class="line"></span><br><span class="line"># 为了便于测试，此处修改密码策略，对应标题6，生产环境不建议修改</span><br><span class="line">SHOW VARIABLES LIKE &#39;validate_password%&#39;;</span><br><span class="line"></span><br><span class="line"># 修改密码验证策略为 low</span><br><span class="line">set global validate_password_policy&#x3D;LOW;</span><br><span class="line"></span><br><span class="line"># 修改密码验证长度</span><br><span class="line">set global validate_password_length&#x3D;6;</span><br><span class="line"></span><br><span class="line"># 现在 密码设置成 123456也可以</span><br><span class="line">mysql&gt; ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;new password&#39;;</span><br><span class="line"></span><br><span class="line"># 授权远程访问 % 表示所有主机都可以访问</span><br><span class="line">mysql&gt; grant all privileges on *.* to &#39;root&#39;@&#39;%&#39; identified by &#39;password&#39; with grant option; </span><br><span class="line"></span><br><span class="line"># 或者指定IP（下面就是指定 192.168.0.1 IP）</span><br><span class="line">mysql &gt; grant all privileges  on *.* to  &#39;root&#39;@&#39;192.168.0.1&#39;  identified  by  &#39;password&#39;  with  grant  option;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 刷新权限信息</span><br><span class="line">mysql&gt; flush privileges;</span><br><span class="line"></span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+
 
 <h2 id="4-为firewalld添加开放端口"><a href="#4-为firewalld添加开放端口" class="headerlink" title="4 为firewalld添加开放端口"></a>4 为firewalld添加开放端口</h2><p>添加mysql端口3306和Tomcat端口8080</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# firewall-cmd --zone&#x3D;public --add-port&#x3D;3306&#x2F;tcp --permanent</span><br><span class="line"></span><br><span class="line">[root@localhost ~]# firewall-cmd --zone&#x3D;public --add-port&#x3D;8080&#x2F;tcp --permanent</span><br><span class="line"></span><br><span class="line">[root@localhost ~]# firewall-cmd --reload</span><br></pre></td></tr></table></figure>
@@ -321,6 +326,7 @@
 
 <p><img src="/2018/06/20/MySQL%E5%AE%89%E8%A3%85/edfbe6ff-fce1-4c7a-9772-791a2d20b3ac.png" alt></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">vi &#x2F;etc&#x2F;my.cnf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">在末尾添加如下命令</span><br><span class="line"></span><br><span class="line"># add by haoransun</span><br><span class="line">character-set-server&#x3D;utf8</span><br><span class="line">[client]</span><br><span class="line">default-character-set&#x3D;utf8</span><br><span class="line">[mysql]</span><br><span class="line">default-character-set&#x3D;utf8</span><br><span class="line"></span><br><span class="line"># 重启 mysql</span><br><span class="line">systemctl restart mysqld.service </span><br><span class="line"></span><br><span class="line"># 登录Mysql</span><br><span class="line"></span><br><span class="line">mysql -uroot -p</span><br><span class="line"></span><br><span class="line"># 查看是否配置成功</span><br><span class="line">mysql&gt; status;</span><br><span class="line"></span><br><span class="line">Server characterset: utf8 </span><br><span class="line">Db characterset: utf8</span><br><span class="line">Client characterset: utf8 </span><br><span class="line">Conn. characterset: utf8</span><br></pre></td></tr></table></figure>
+
 
 <p><img src="/2018/06/20/MySQL%E5%AE%89%E8%A3%85/67eb3cc0-8599-4e02-90bb-9e88a91ac9a5.png" alt></p>
 <h2 id="6-配置可以使用弱密码（慎用）"><a href="#6-配置可以使用弱密码（慎用）" class="headerlink" title="6 配置可以使用弱密码（慎用）"></a>6 配置可以使用弱密码（慎用）</h2><p>成功修改了密码，最后你还要设置一下过期时间，以防止密码失效。<br>在<code>/etc/my.cnf</code>配置文件中增加</p>
@@ -686,15 +692,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Openresty</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -730,15 +736,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码解析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hexo-yilia</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -758,11 +764,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Swagger2</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color4">Swagger2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -794,19 +800,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">BigData</a>
+                <a href="javascript:void(0)" class="js-tag color4">Jwt</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">BigData</a>
               </li>
              
               <li class="article-tag-list-item">
