@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://JavaSsun.github.io/2020/02/08/Java8%E6%96%B0%E7%89%B9%E6%80%A7/</loc>
+    <lastmod>2020-06-03</lastmod>
+  </url>  <url>
     <loc>http://JavaSsun.github.io/2019/10/29/SpringBoot%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</loc>
     <lastmod>2020-06-01</lastmod>
   </url>  <url>
@@ -80,9 +83,6 @@
     <lastmod>2020-05-24</lastmod>
   </url>  <url>
     <loc>http://JavaSsun.github.io/2018/12/11/JVM%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AJvm%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/</loc>
-    <lastmod>2020-05-23</lastmod>
-  </url>  <url>
-    <loc>http://JavaSsun.github.io/2020/02/08/Java8%E6%96%B0%E7%89%B9%E6%80%A7/</loc>
     <lastmod>2020-05-23</lastmod>
   </url>  <url>
     <loc>http://JavaSsun.github.io/2018/03/25/Vim%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</loc>
