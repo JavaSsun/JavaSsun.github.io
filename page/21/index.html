@@ -59,7 +59,7 @@
 		  <h1 class="header-author"><a href="/">Allen</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">Talk is cheap. Show me the code</p>
+		<p class="header-subtitle">写代码是热爱 ————&gt; 写到世界充满爱</p>
 		
 
 		<nav class="header-menu">
@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 263</nav>
+		<nav style="color: #7FFFD4;">总文章数 267</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -134,7 +134,7 @@
 			  <h1 class="header-author js-header-author">Allen</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>Talk is cheap. Show me the code<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>写代码是热爱 ————&gt; 写到世界充满爱<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -190,6 +190,503 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <meta charset="utf-8">
+<article id="post-JVM（二）：Jvm内存结构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/11/JVM%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AJvm%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/">JVM（二）：Jvm内存结构</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2018/12/11/JVM%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AJvm%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/" class="archive-article-date">
+  	<time datetime="2018-12-11T13:04:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-11</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">3.1k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">11分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>转载自<a href="http://www.ityouknow.com/jvm/2017/08/25/jvm-memory-structure.html" target="_blank" rel="noopener">纯洁的微笑</a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Java 虚拟机是中、高级开发人员必须修炼的知识，有着较高的学习门槛，很多人都不情愿去接触它。可能是觉得学习成本较高又或者是感觉没什么实用性，所以干脆懒得“搭理”它了。其实这种想法是错误的。举个最简单的例子，JVM 基本上是每家招聘公司都会问到的问题，它们会这么无聊问这些不切实际的问题吗？很显然不是。由 JVM 引发的故障问题，无论在我们开发过程中还是生产环境下都是非常常见的。比如 OutOfMemoryError(OOM) 内存溢出问题，你应该遇到过 Tomcat 容器中加载项目过多导致的 OOM 问题，导致 Web 项目无法启动。这就是JVM引发的故障问题。那到底JVM哪里发生内存溢出了呢？为什么会内存溢出呢？如何监控？最重要的就是如何解决问题呢？能解决问题的技术才是最实用最好的技术。然而你对JVM的内存结构都不清楚，就妄想解决JVM引发的故障问题，是不切实际的。了解JVM内存也是为了服务器出现性能问题的时候可以快速的了解那块的内存区域出现问题，以便于快速的解决生产故障。</p>
+<p>先来一张官方图：</p>
+<p><img src="/2018/12/11/JVM%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AJvm%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/94319eb4-b7c4-4c14-9f59-9fb8f5872d13.jpg" alt></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Jvm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Jvm//" class="article-tag-list-link color4">Jvm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/11/JVM%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AJvm%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-JVM（一）：Java类加载机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/10/JVM%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9AJava%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/">JVM（一）：Java类加载机制</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2018/12/10/JVM%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9AJava%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/" class="archive-article-date">
+  	<time datetime="2018-12-10T12:04:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-10</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">5.1k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">18分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>转载自<a href="http://www.ityouknow.com/jvm/2017/08/19/class-loading-principle.html" target="_blank" rel="noopener">纯洁的微笑</a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在介绍<strong>类的加载机制</strong>之前，先来看一看类的加载机制在整个Java运行期间所处的位置。</p>
+<p><img src="/2018/12/10/JVM%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9AJava%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/5c52258c-78ec-4bf9-ba03-4120c03a413d.jpg" alt></p>
+<p>由上图可知，Java文件由编译器编译成.class文件，接下来由<strong>类加载器</strong>将这些.class文件加载进JVM中。类加载器的作用就是类的加载。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Jvm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Jvm//" class="article-tag-list-link color4">Jvm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/10/JVM%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9AJava%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-Map-Reduce学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/20/Map-Reduce%E5%AD%A6%E4%B9%A0/">Map-Reduce学习</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2018/11/20/Map-Reduce%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
+  	<time datetime="2018-11-20T12:43:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-20</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2.6k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">9分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">Map-Reduce的过程与MongoDB如出一辙</font>（如下图）<br><img src="/2018/11/20/Map-Reduce%E5%AD%A6%E4%B9%A0/b8211209-31ef-425b-b480-9765994698c9.jpg" alt></p>
+<h2 id="1-Map-Reduce简介"><a href="#1-Map-Reduce简介" class="headerlink" title="1 Map-Reduce简介"></a>1 Map-Reduce简介</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>MapReduce</strong>是一种编程模型，用于大规模数据集（大于<strong>1TB</strong>）的并行运算。该运算充分利用<strong>Hadoop</strong>存储节点（<strong>DateNode</strong>）所在物理主机的CPU、内存、网络以及少许磁盘完成分布式计算。通过在<strong>DateNode</strong>所在的主机上启动<strong>NodeManager</strong>进程，该进程负责启动计算任务。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>MapReduce</strong>计算框架将分布式计算分为两个阶段：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Map</strong>阶段：在任务计算初期，计算框架会提前计算好任务切片（对数据做区域划分），然后<font color="red">根据切片数目</font>启动MapTask，对切片所映射的数据做局部的分析/计算，将计算的临时结果存储到对应物理主机的磁盘（<strong>MapTask</strong>的溢写）。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Reduce</strong>阶段：在<strong>Map</strong>阶段的所有操作完成计算任务后，计算框架会选择若干机器（手动指定）执行ReduceTask，完成对<strong>Map</strong>阶段计算数据的汇总（<strong>shuffle</strong><font color="red">洗牌</font>）。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">BigData</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/大数据//" class="article-tag-list-link color4">大数据</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/20/Map-Reduce%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-20-二叉树基础下-有了如此高效的散列表—-为什么还需要二叉树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/18/20-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80%E4%B8%8B-%E6%9C%89%E4%BA%86%E5%A6%82%E6%AD%A4%E9%AB%98%E6%95%88%E7%9A%84%E6%95%A3%E5%88%97%E8%A1%A8%E2%80%94-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E9%9C%80%E8%A6%81%E4%BA%8C%E5%8F%89%E6%A0%91/">20-二叉树基础下_有了如此高效的散列表—_为什么还需要二叉树</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2018/11/18/20-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80%E4%B8%8B-%E6%9C%89%E4%BA%86%E5%A6%82%E6%AD%A4%E9%AB%98%E6%95%88%E7%9A%84%E6%95%A3%E5%88%97%E8%A1%A8%E2%80%94-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E9%9C%80%E8%A6%81%E4%BA%8C%E5%8F%89%E6%A0%91/" class="archive-article-date">
+  	<time datetime="2018-11-18T13:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-18</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">4.2k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">15分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><a href="https://mp.weixin.qq.com/s/ONKJyusGCIE2ctwT9uLv9g" target="_blank" rel="noopener">参考文章</a></p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一节我们学习了树、二叉树以及二叉树的遍历，今天我们再来学习一种特殊的的二叉树，二叉查找树。二叉查找树最大的特点就是，支持动态数据集合的快速插入、删除、查找操作。</p>
+<p>我们之前说过，散列表也是支持这些操作的，并且散列表的这些操作比二叉查找树更高效，时间复杂度是 O(1)。<font color="red">既然有了这么高效的散列表，使用二叉树的地方是不是都可以替换成散列表呢？有没有哪些地方是散列表做不了，必须要用二叉树来做的呢？</font></p>
+<p>带着这些问题，我们就来学习今天的内容，二叉查找树</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/18/20-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80%E4%B8%8B-%E6%9C%89%E4%BA%86%E5%A6%82%E6%AD%A4%E9%AB%98%E6%95%88%E7%9A%84%E6%95%A3%E5%88%97%E8%A1%A8%E2%80%94-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E9%9C%80%E8%A6%81%E4%BA%8C%E5%8F%89%E6%A0%91/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
   
     <meta charset="utf-8">
 <article id="post-19-二叉树基础上-什么样的二叉树适合用数组来存储" class="article article-type-post  article-index" itemscope itemprop="blogPost">
@@ -944,508 +1441,6 @@
 
 
   
-    <meta charset="utf-8">
-<article id="post-14-散列表上-Word文档中的单词拼写检查功能如何实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/08/14-%E6%95%A3%E5%88%97%E8%A1%A8%E4%B8%8A-Word%E6%96%87%E6%A1%A3%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8D%E6%8B%BC%E5%86%99%E6%A3%80%E6%9F%A5%E5%8A%9F%E8%83%BD%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0/">14-散列表上_Word文档中的单词拼写检查功能如何实现</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2018/11/08/14-%E6%95%A3%E5%88%97%E8%A1%A8%E4%B8%8A-Word%E6%96%87%E6%A1%A3%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8D%E6%8B%BC%E5%86%99%E6%A3%80%E6%9F%A5%E5%8A%9F%E8%83%BD%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0/" class="archive-article-date">
-  	<time datetime="2018-11-08T12:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-08</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.9k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">13分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Word 这种文本编辑器你平时应该经常用吧，那你有没有留意过它的拼写检查功能呢？一旦我们在 Word 里输入一个错误的英文单词，它就会用标红的方式提示“拼写错误”。</p>
-<p><font color="red">Word 的这个单词拼写检查功能，虽然很小但却非常实用。你有没有想过，这个功能是如何实现的呢？</font></p>
-<p>其实啊，一点儿都不难。只要你学完今天的内容，散列表（Hash Table）。你就能像微软 Office 的工程师一样，轻松实现这个功能。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/08/14-%E6%95%A3%E5%88%97%E8%A1%A8%E4%B8%8A-Word%E6%96%87%E6%A1%A3%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8D%E6%8B%BC%E5%86%99%E6%A3%80%E6%9F%A5%E5%8A%9F%E8%83%BD%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-13-跳表-为什么Redis一定要用跳表来实现有序集合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/06/13-%E8%B7%B3%E8%A1%A8-%E4%B8%BA%E4%BB%80%E4%B9%88Redis%E4%B8%80%E5%AE%9A%E8%A6%81%E7%94%A8%E8%B7%B3%E8%A1%A8%E6%9D%A5%E5%AE%9E%E7%8E%B0%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88/">13-跳表_为什么Redis一定要用跳表来实现有序集合</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2018/11/06/13-%E8%B7%B3%E8%A1%A8-%E4%B8%BA%E4%BB%80%E4%B9%88Redis%E4%B8%80%E5%AE%9A%E8%A6%81%E7%94%A8%E8%B7%B3%E8%A1%A8%E6%9D%A5%E5%AE%9E%E7%8E%B0%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88/" class="archive-article-date">
-  	<time datetime="2018-11-06T11:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-06</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.3k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">14分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><a href="https://github.com/wangzheng0822/algo" target="_blank" rel="noopener">王争GitHub跳表Java实现</a></p>
-<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上两节我们讲了二分查找算法。当时我讲到，因为二分查找底层依赖的是数组随机访问的特性，所以只能用数组来实现。如果数据存储在链表中，就真的没法用二分查找算法了吗？</p>
-<p>实际上，我们只需要对链表稍加改造，就可以支持类似“二分”的查找算法。我们把改造之后的数据结构叫作<strong>跳表</strong>（Skip list），也就是今天要讲的内容。</p>
-<p>跳表这种数据结构对你来说，可能会比较陌生，因为一般的数据结构和算法书籍里都不怎么会讲。但是它确实是一种各方面性能都比较优秀的动态数据结构，可以支持快速的插入、删除、查找操作，写起来也不复杂，甚至可以替代<strong>红黑树（Red-black tree）</strong>。</p>
-<p>Redis 中的有序集合（Sorted Set）就是用跳表来实现的。如果你有一定基础，应该知道红黑树也可以实现快速的插入、删除和查找操作。<font color="red">那 Redis 为什么会选择用跳表来实现有序集合呢？</font> 为什么不用红黑树呢？学完今天的内容，你就知道答案了。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/06/13-%E8%B7%B3%E8%A1%A8-%E4%B8%BA%E4%BB%80%E4%B9%88Redis%E4%B8%80%E5%AE%9A%E8%A6%81%E7%94%A8%E8%B7%B3%E8%A1%A8%E6%9D%A5%E5%AE%9E%E7%8E%B0%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-12-二分查找下-如何快速定位IP对应的省份地址" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/04/12-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8B-%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%AE%9A%E4%BD%8DIP%E5%AF%B9%E5%BA%94%E7%9A%84%E7%9C%81%E4%BB%BD%E5%9C%B0%E5%9D%80/">12-二分查找下_如何快速定位IP对应的省份地址</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2018/11/04/12-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8B-%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%AE%9A%E4%BD%8DIP%E5%AF%B9%E5%BA%94%E7%9A%84%E7%9C%81%E4%BB%BD%E5%9C%B0%E5%9D%80/" class="archive-article-date">
-  	<time datetime="2018-11-04T10:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-04</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.9k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">14分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>通过 IP 地址来查找 IP 归属地的功能，不知道你有没有用过？没用过也没关系，你现在可以打开百度，在搜索框里随便输一个 IP 地址，就会看到它的归属地。</p>
-<p><img src="/2018/11/04/12-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8B-%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%AE%9A%E4%BD%8DIP%E5%AF%B9%E5%BA%94%E7%9A%84%E7%9C%81%E4%BB%BD%E5%9C%B0%E5%9D%80/c2daea40-5ba6-47a8-a2a4-14700561d4bb.jpg" alt></p>
-<p>这个功能并不复杂，它是通过维护一个很大的 IP 地址库来实现的。地址库中包括 IP 地址范围和归属地的对应关系。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/04/12-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8B-%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%AE%9A%E4%BD%8DIP%E5%AF%B9%E5%BA%94%E7%9A%84%E7%9C%81%E4%BB%BD%E5%9C%B0%E5%9D%80/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-11-二分查找上-如何用最省内存的方式实现快速查找功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/02/11-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8A-%E5%A6%82%E4%BD%95%E7%94%A8%E6%9C%80%E7%9C%81%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%BF%AB%E9%80%9F%E6%9F%A5%E6%89%BE%E5%8A%9F%E8%83%BD/">11-二分查找上_如何用最省内存的方式实现快速查找功能</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2018/11/02/11-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8A-%E5%A6%82%E4%BD%95%E7%94%A8%E6%9C%80%E7%9C%81%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%BF%AB%E9%80%9F%E6%9F%A5%E6%89%BE%E5%8A%9F%E8%83%BD/" class="archive-article-date">
-  	<time datetime="2018-11-02T13:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-02</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.6k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">16分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天我们讲一种<strong>针对有序数据集合</strong>的查找算法：二分查找（Binary Search）算法，也叫折半查找算法。二分查找的思想非常简单，很多非计算机专业的同学很容易就能理解，但是看似越简单的东西往往越难掌握好，想要灵活应用就更加困难。</p>
-<p>老规矩，我们还是来看一道思考题。</p>
-<p>设我们有 1000 万个整数数据，每个数据占 8 个字节，<font color="red">如何设计数据结构和算法，快速判断某个整数是否出现在这 1000 万数据中？</font> 我们希望这个功能不要占用太多的内存空间，最多不要超过 100MB，你会怎么做呢？带着这个问题，让我们进入今天的内容吧！</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/02/11-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8A-%E5%A6%82%E4%BD%95%E7%94%A8%E6%9C%80%E7%9C%81%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%BF%AB%E9%80%9F%E6%9F%A5%E6%89%BE%E5%8A%9F%E8%83%BD/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/20/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><a class="page-number" href="/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="extend next" rel="next" href="/page/22/">Next &amp;raquo;</a>
@@ -1569,15 +1564,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MQ</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1602,6 +1597,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">系统架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1642,10 +1641,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">分布式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">系统架构</a>
               </li>
              
               <li class="article-tag-list-item">
