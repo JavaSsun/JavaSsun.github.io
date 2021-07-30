@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 270</nav>
+		<nav style="color: #7FFFD4;">总文章数 271</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -326,22 +326,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-Hexo踩坑-主题优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-入门人工智能算法工程师-先来碗毒鸡汤" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/21/Hexo%E8%B8%A9%E5%9D%91-%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/">(5)Hexo踩坑_主题优化</a>
+      <a class="article-title" href="/2021/07/30/%E5%85%A5%E9%97%A8%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88-%E5%85%88%E6%9D%A5%E7%A2%97%E6%AF%92%E9%B8%A1%E6%B1%A4/">入门人工智能算法工程师-先来碗毒鸡汤</a>
     </h1>
   
 
         
         
 
-<a href="/2018/08/21/Hexo%E8%B8%A9%E5%9D%91-%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2018-08-21T09:15:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-21</time>
+<a href="/2021/07/30/%E5%85%A5%E9%97%A8%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88-%E5%85%88%E6%9D%A5%E7%A2%97%E6%AF%92%E9%B8%A1%E6%B1%A4/" class="archive-article-date">
+  	<time datetime="2021-07-30T09:20:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-30</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -352,7 +352,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">5.9k字</span>
+        <span class="post-count">4.1k字</span>
       </span>
     </span>
 
@@ -361,7 +361,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">29分</span>
+        <span class="post-count">14分</span>
       </span>
     </span>
 </div>
@@ -378,11 +378,11 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h2 id="0-字体乱码问题"><a href="#0-字体乱码问题" class="headerlink" title="0 字体乱码问题"></a>0 字体乱码问题</h2><p>Windows 上新建的文件一般都是 <strong>gb2312或iso-8859-1</strong>，这样windows下的文件传递到Linux可能会出乱码问题</p>
-<p>用 Git进去文件使用命令查看文件是否是<strong>utf-8</strong> 格式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">file -i word.ejs</span><br><span class="line">word.ejs: text&#x2F;html; charset&#x3D;iso-8859-1(或是其他)</span><br></pre></td></tr></table></figure>
-<p><strong>第一种</strong><br>最简单的办法就是  vim  word.ejs</p>
+			<p>Author: haoransun<br>WeChat: SHR—97<br>知识点来源：B站</p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&ensp;&ensp;&ensp;&ensp;很多刚入行或者还在读研的小伙伴的目标一直局限在算法上，总是觉得做出了一个机器学习模型是重中之重，觉得企业就应该等自己加入，然后提供一个巨牛逼的算法，把你的模型放进现有公司的系统当中，然后就能带领公司的业绩一路飞黄腾达，今儿呢给大家来一碗毒鸡汤。</p>
+<p>&ensp;&ensp;&ensp;&ensp;对于一个刚入行的同学来说，跳出算法好好的当一个<font color="red">工程师</font>比什么都重要。机器学习AI的落地过程中，有许多至关重要的工作都是在<font color="red">算法之外</font>的。<strong>先是一个工程师，你才是一个算法工程师</strong>。我更倾向于目标是<font color="red">算法岗</font>的同学们，把自己的成长目标换成是<strong>具备机器学习理论和工具使用经验的后端工程师</strong>。</p>
+<p>&ensp;&ensp;&ensp;&ensp;机器学习的落地远远不止是一个fit，然后predict，然后就完了。从<strong><font color="red">数据采集</font></strong>到最后的<strong><font color="red">模型部署</font></strong>，有许多许多环节，甚至在一个完整的机器学习项目当中，<strong>离线训练</strong>甚至都不是最重要的，他对最后的产出影响也不是最大的。</p>
+<p>&ensp;&ensp;&ensp;&ensp;<del>假设你还没有毕业或没有参加过工作</del>，我简单列举一下一个通用的机器学习落地项目当中会涉及到的几个重要的组成部分。咱们来一个一个来。</p>
 	
 	
     </div>
@@ -390,18 +390,13 @@
 
     <div class="article-info article-info-index">
       
-        <div class="article-pop-out tagcloud">
-          <i class="icon-tuding"></i>
-          <a class="article-tag-list-link color3">置顶</a>
-        </div>
-      
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Hexo-yilia</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
         		</li>
       		
 		</ul>
@@ -413,7 +408,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Hexo//" class="article-tag-list-link color5">Hexo</a>
+        			<a href="/categories/人工智能//" class="article-tag-list-link color5">人工智能</a>
         		</li>
       		
 		</ul>
@@ -422,7 +417,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/21/Hexo%E8%B8%A9%E5%9D%91-%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/07/30/%E5%85%A5%E9%97%A8%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88-%E5%85%88%E6%9D%A5%E7%A2%97%E6%AF%92%E9%B8%A1%E6%B1%A4/">展开全文 >></a>
         </p>
       
 
@@ -1472,7 +1467,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1593,7 +1588,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color3">MQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1601,7 +1596,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MQ</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1609,11 +1604,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Dubbo</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color1">Dubbo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1625,6 +1620,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Tools</a>
               </li>
              
@@ -1633,11 +1636,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">系统架构</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color5">系统架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1669,10 +1672,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">分布式</a>
               </li>
              
@@ -1682,10 +1681,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1718,6 +1713,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Quartz</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">人工智能</a>
               </li>
              
               <li class="article-tag-list-item">
