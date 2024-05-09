@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 273</nav>
+		<nav style="color: #7FFFD4;">总文章数 379</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -192,22 +192,22 @@
             
   
     <meta charset="utf-8">
-<article id="post-23-递归树-如何借助树来求解递归算法的时间复杂度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-45-搜索-如何用A星搜索算法实现游戏中的寻路功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/27/23-%E9%80%92%E5%BD%92%E6%A0%91-%E5%A6%82%E4%BD%95%E5%80%9F%E5%8A%A9%E6%A0%91%E6%9D%A5%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/">23-递归树_如何借助树来求解递归算法的时间复杂度</a>
+      <a class="article-title" href="/2019/08/13/45-%E6%90%9C%E7%B4%A2-%E5%A6%82%E4%BD%95%E7%94%A8A%E6%98%9F%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E5%AF%BB%E8%B7%AF%E5%8A%9F%E8%83%BD/">45-搜索_如何用A*搜索算法实现游戏中的寻路功能</a>
     </h1>
   
 
         
         
 
-<a href="/2018/12/27/23-%E9%80%92%E5%BD%92%E6%A0%91-%E5%A6%82%E4%BD%95%E5%80%9F%E5%8A%A9%E6%A0%91%E6%9D%A5%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" class="archive-article-date">
-  	<time datetime="2018-12-27T12:25:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-27</time>
+<a href="/2019/08/13/45-%E6%90%9C%E7%B4%A2-%E5%A6%82%E4%BD%95%E7%94%A8A%E6%98%9F%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E5%AF%BB%E8%B7%AF%E5%8A%9F%E8%83%BD/" class="archive-article-date">
+  	<time datetime="2019-08-13T13:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -218,7 +218,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.8k字</span>
+        <span class="post-count">3.5k字</span>
       </span>
     </span>
 
@@ -227,7 +227,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">14分</span>
+        <span class="post-count">13分</span>
       </span>
     </span>
 </div>
@@ -246,9 +246,7 @@
       
 			<p>Author: haoransun<br>Wechat: SHR—97</p>
 <p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天，我们来讲树这种数据结构的一种特殊应用，递归树。</p>
-<p>我们都知道，递归代码的时间复杂度分析起来很麻烦。我们在前文讲过，如何利用递推公式，求解归并排序、快速排序的时间复杂度，但是，有些情况，比如快排的平均时间复杂度的分析，用递推公式的话，会涉及非常复杂的数学推导。</p>
-<p>除了用递推公式这种比较复杂的分析方法，有没有更简单的方法呢？今天，我们就来学习另外一种方法，<strong>借助递归树来分析递归算法的时间复杂度</strong>。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>魔兽世界、仙剑奇侠传这类 MMRPG 游戏，不知道你有没有玩过？在这些游戏中，有一个非常重要的功能，那就是人物角色自动寻路。<font color="red">当人物处于游戏地图中的某个位置的时候，我们用鼠标点击另外一个相对较远的位置，人物就会自动地绕过障碍物走过去。玩过这么多游戏，不知你是否思考过，这个功能是怎么实现的呢？</font></p>
 	
 	
     </div>
@@ -283,7 +281,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/27/23-%E9%80%92%E5%BD%92%E6%A0%91-%E5%A6%82%E4%BD%95%E5%80%9F%E5%8A%A9%E6%A0%91%E6%9D%A5%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/08/13/45-%E6%90%9C%E7%B4%A2-%E5%A6%82%E4%BD%95%E7%94%A8A%E6%98%9F%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E5%AF%BB%E8%B7%AF%E5%8A%9F%E8%83%BD/">展开全文 >></a>
         </p>
       
 
@@ -317,22 +315,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-22-红黑树下-实现红黑树的技巧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-44-B加树-MySQL数据库索引是如何实现的" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/25/22-%E7%BA%A2%E9%BB%91%E6%A0%91%E4%B8%8B-%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91%E7%9A%84%E6%8A%80%E5%B7%A7/">22-红黑树下_实现红黑树的技巧</a>
+      <a class="article-title" href="/2019/08/10/44-B%E5%8A%A0%E6%A0%91-MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/">44-B+树_MySQL数据库索引是如何实现的</a>
     </h1>
   
 
         
         
 
-<a href="/2018/12/25/22-%E7%BA%A2%E9%BB%91%E6%A0%91%E4%B8%8B-%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91%E7%9A%84%E6%8A%80%E5%B7%A7/" class="archive-article-date">
-  	<time datetime="2018-12-25T13:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-25</time>
+<a href="/2019/08/10/44-B%E5%8A%A0%E6%A0%91-MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/" class="archive-article-date">
+  	<time datetime="2019-08-10T12:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -343,7 +341,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">5.5k字</span>
+        <span class="post-count">4.6k字</span>
       </span>
     </span>
 
@@ -352,7 +350,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">18分</span>
+        <span class="post-count">16分</span>
       </span>
     </span>
 </div>
@@ -370,12 +368,8 @@
     <div class="article-entry" itemprop="articleBody">
       
 			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><a href="https://blog.csdn.net/wan198809/article/details/48602921" target="_blank" rel="noopener">参考 算法导论-红黑树</a></p>
 <p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>红黑树是一个让我又爱又恨的数据结构，“爱”是因为它稳定、高效的性能，“恨”是因为实现起来实在太难了。我今天讲的红黑树的实现，对于基础不太好的同学，理解起来可能会有些困难。但是，我觉得没必要去死磕它。</p>
-<p>我为什么这么说呢？因为，即便你将左右旋背得滚瓜烂熟，我保证你过不几天就忘光了。因为，学习红黑树的代码实现，对于你平时做项目开发没有太大帮助。对于绝大部分开发工程师来说，这辈子你可能都用不着亲手写一个红黑树。除此之外，它对于算法面试也几乎没什么用，一般情况下，靠谱的面试官也不会让你手写红黑树的。</p>
-<p>如果你对数据结构和算法很感兴趣，想要开拓眼界、训练思维，我还是很推荐你看一看这节的内容。但是如果学完今天的内容你还觉得懵懵懂懂的话，也不要纠结。我们要有的放矢去学习。你先把平时要用的、基础的东西都搞会了，如果有余力了，再来深入地研究这节内容。</p>
-<p>好，我们现在就进入正式的内容。<font color="red">上一节，我们讲到红黑树定义的时候，提到红黑树的叶子节点都是黑色的空节点。当时我只是粗略地解释了，这是为了代码实现方便，那更加确切的原因是什么呢？</font> 我们这节就来说一说。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为一个软件开发工程师，你对数据库肯定再熟悉不过了。作为主流的数据存储系统，它在我们的业务开发中，有着举足轻重的地位。在工作中，为了加速数据库中数据的查找速度，我们常用的处理思路是，对表中数据创建索引。那你是否思考过，<font color="red">数据库索引是如何实现的呢？底层使用的是什么数据结构和算法呢？</font></p>
 	
 	
     </div>
@@ -410,7 +404,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/25/22-%E7%BA%A2%E9%BB%91%E6%A0%91%E4%B8%8B-%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91%E7%9A%84%E6%8A%80%E5%B7%A7/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/08/10/44-B%E5%8A%A0%E6%A0%91-MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/">展开全文 >></a>
         </p>
       
 
@@ -444,22 +438,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-21-红黑树上-为什么工程中都用红黑树这种二叉树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-43-向量空间-如何实现一个简单的音乐推荐系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/23/21-%E7%BA%A2%E9%BB%91%E6%A0%91%E4%B8%8A-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%B7%A5%E7%A8%8B%E4%B8%AD%E9%83%BD%E7%94%A8%E7%BA%A2%E9%BB%91%E6%A0%91%E8%BF%99%E7%A7%8D%E4%BA%8C%E5%8F%89%E6%A0%91/">21-红黑树上_为什么工程中都用红黑树这种二叉树</a>
+      <a class="article-title" href="/2019/08/08/43-%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E9%9F%B3%E4%B9%90%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">43-向量空间_如何实现一个简单的音乐推荐系统</a>
     </h1>
   
 
         
         
 
-<a href="/2018/12/23/21-%E7%BA%A2%E9%BB%91%E6%A0%91%E4%B8%8A-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%B7%A5%E7%A8%8B%E4%B8%AD%E9%83%BD%E7%94%A8%E7%BA%A2%E9%BB%91%E6%A0%91%E8%BF%99%E7%A7%8D%E4%BA%8C%E5%8F%89%E6%A0%91/" class="archive-article-date">
-  	<time datetime="2018-12-23T12:47:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-23</time>
+<a href="/2019/08/08/43-%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E9%9F%B3%E4%B9%90%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
+  	<time datetime="2019-08-08T11:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-08</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -470,7 +464,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.1k字</span>
+        <span class="post-count">2.5k字</span>
       </span>
     </span>
 
@@ -479,7 +473,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">10分</span>
+        <span class="post-count">8分</span>
       </span>
     </span>
 </div>
@@ -498,10 +492,7 @@
       
 			<p>Author: haoransun<br>Wechat: SHR—97</p>
 <p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上两节，我们依次讲了树、二叉树、二叉查找树。二叉查找树是最常用的一种二叉树，它支持快速插入、删除、查找操作，各个操作的时间复杂度跟树的高度成正比，理想情况下，时间复杂度是 O(logn)。</p>
-<p>不过，二叉查找树在频繁的动态更新过程中，可能会出现树的高度远大于 log2n 的情况，从而导致各个操作的效率下降。极端情况下，二叉树会退化为链表，时间复杂度会退化到 O(n)。我上一节说了，要解决这个复杂度退化的问题，我们需要设计一种平衡二叉查找树，也就是今天要讲的这种数据结构。</p>
-<p>很多书籍里，但凡讲到平衡二叉查找树，就会拿红黑树作为例子。不仅如此，如果你有一定的开发经验，你会发现，在工程中，很多用到平衡二叉查找树的地方都会用红黑树。你有没有想过，<font color="red">为什么工程中都喜欢用红黑树，而不是其他平衡二叉查找树呢？</font></p>
-<p>带着这个问题，让我们一起来学习今天的内容吧！</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>很多人都喜爱听歌，以前我们用 MP3 听歌，现在直接通过音乐 App 在线就能听歌。而且，各种音乐 App 的功能越来越强大，不仅可以自己选歌听，还可以根据你听歌的口味偏好，给你推荐可能会喜爱的音乐，而且有时候，推荐的音乐还非常适合你的口味，甚至会惊艳到你！如此智能的一个功能，你知道它是怎么实现的吗？</p>
 	
 	
     </div>
@@ -536,7 +527,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/23/21-%E7%BA%A2%E9%BB%91%E6%A0%91%E4%B8%8A-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%B7%A5%E7%A8%8B%E4%B8%AD%E9%83%BD%E7%94%A8%E7%BA%A2%E9%BB%91%E6%A0%91%E8%BF%99%E7%A7%8D%E4%BA%8C%E5%8F%89%E6%A0%91/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/08/08/43-%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E9%9F%B3%E4%B9%90%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">展开全文 >></a>
         </p>
       
 
@@ -570,144 +561,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-应用架构演变过程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-42-概率统计-如何利用朴素贝叶斯算法过滤垃圾短信" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/20/%E5%BA%94%E7%94%A8%E6%9E%B6%E6%9E%84%E6%BC%94%E5%8F%98%E8%BF%87%E7%A8%8B/">应用架构演变过程</a>
+      <a class="article-title" href="/2019/08/05/42-%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1-%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%AE%97%E6%B3%95%E8%BF%87%E6%BB%A4%E5%9E%83%E5%9C%BE%E7%9F%AD%E4%BF%A1/">42-概率统计_如何利用朴素贝叶斯算法过滤垃圾短信</a>
     </h1>
   
 
         
         
 
-<a href="/2018/12/20/%E5%BA%94%E7%94%A8%E6%9E%B6%E6%9E%84%E6%BC%94%E5%8F%98%E8%BF%87%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2018-12-20T12:57:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-20</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">59字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author：haoransun<br>WeChat：SHR—97</p>
-<p>看了好多大佬的架构设计经验，也看到好多大型网站的基本架构，始终是老虎吃天-无从下手，个人在此乱画一下，记录当前的经验见解。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Photo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/图//" class="article-tag-list-link color2">图</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/20/%E5%BA%94%E7%94%A8%E6%9E%B6%E6%9E%84%E6%BC%94%E5%8F%98%E8%BF%87%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-MyBatis常用插件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/14/MyBatis%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/">MyBatis常用插件</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2018/12/14/MyBatis%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/" class="archive-article-date">
-  	<time datetime="2018-12-14T13:22:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-14</time>
+<a href="/2019/08/05/42-%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1-%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%AE%97%E6%B3%95%E8%BF%87%E6%BB%A4%E5%9E%83%E5%9C%BE%E7%9F%AD%E4%BF%A1/" class="archive-article-date">
+  	<time datetime="2019-08-05T12:38:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-05</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -727,7 +596,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">18分</span>
+        <span class="post-count">15分</span>
       </span>
     </span>
 </div>
@@ -744,16 +613,11 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>工欲善其事必先利其器，介绍几个常用插件，提高开发效率。</p>
-<ul>
-<li><strong>MyBatis-Generator（MBG）</strong></li>
-<li><strong>MyBatis-PageHelper</strong></li>
-<li><strong>Free-MyBatis-Plugin</strong></li>
-</ul>
-<h2 id="1-MyBatis-Generator"><a href="#1-MyBatis-Generator" class="headerlink" title="1. MyBatis-Generator"></a>1. MyBatis-Generator</h2><p>MyBatis Generator官网<br><a href="http://mybatis.org/generator/index.html" target="_blank" rel="noopener">http://mybatis.org/generator/index.html</a></p>
-<p><strong><font color="red">建议：应用为主，直接看第4部分-实战</font></strong></p>
-<h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h3><p><strong>Mybatis-Generator</strong>是Mybatis提供的一个便捷型插件，自动可以为项目生产对应的实体类，Mapper，dao层。</p>
-<h3 id="2-XML配置解析"><a href="#2-XML配置解析" class="headerlink" title="2. XML配置解析"></a>2. XML配置解析</h3><p>在MBG中，最主要也最重要的就是XML配置文件，因此先解析下XML配置文件。</p>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><a href="https://www.jianshu.com/p/5cf3a155b2f0" target="_blank" rel="noopener">参考-朴素贝叶斯分类算法</a></p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一节我们讲到，如何用位图、布隆过滤器，来过滤重复的数据。今天，我们再讲一个跟过滤相关的问题，如何过滤垃圾短信？</p>
+<p>垃圾短信和骚扰电话，我想每个人都收到过吧？买房、贷款、投资理财、开发票，各种垃圾短信和骚扰电话，不胜其扰。<font color="red">如果你是一名手机应用开发工程师，让你实现一个简单的垃圾短信过滤功能以及骚扰电话拦截功能，该用什么样的数据结构和算法实现呢？</font></p>
 	
 	
     </div>
@@ -767,7 +631,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MyBatis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -779,7 +643,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/MyBatis//" class="article-tag-list-link color3">MyBatis</a>
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -788,7 +652,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/14/MyBatis%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/08/05/42-%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1-%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%AE%97%E6%B3%95%E8%BF%87%E6%BB%A4%E5%9E%83%E5%9C%BE%E7%9F%AD%E4%BF%A1/">展开全文 >></a>
         </p>
       
 
@@ -822,22 +686,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-JVM（二）：Jvm内存结构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-41-位图-如何实现网页爬虫中的URL去重功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/11/JVM%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AJvm%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/">JVM（二）：Jvm内存结构</a>
+      <a class="article-title" href="/2019/08/02/41-%E4%BD%8D%E5%9B%BE-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BD%91%E9%A1%B5%E7%88%AC%E8%99%AB%E4%B8%AD%E7%9A%84URL%E5%8E%BB%E9%87%8D%E5%8A%9F%E8%83%BD/">41-位图_如何实现网页爬虫中的URL去重功能</a>
     </h1>
   
 
         
         
 
-<a href="/2018/12/11/JVM%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AJvm%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/" class="archive-article-date">
-  	<time datetime="2018-12-11T13:04:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-11</time>
+<a href="/2019/08/02/41-%E4%BD%8D%E5%9B%BE-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BD%91%E9%A1%B5%E7%88%AC%E8%99%AB%E4%B8%AD%E7%9A%84URL%E5%8E%BB%E9%87%8D%E5%8A%9F%E8%83%BD/" class="archive-article-date">
+  	<time datetime="2019-08-02T11:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-02</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -848,7 +712,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.1k字</span>
+        <span class="post-count">4.5k字</span>
       </span>
     </span>
 
@@ -857,7 +721,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">11分</span>
+        <span class="post-count">15分</span>
       </span>
     </span>
 </div>
@@ -874,10 +738,12 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>转载自<a href="http://www.ityouknow.com/jvm/2017/08/25/jvm-memory-structure.html" target="_blank" rel="noopener">纯洁的微笑</a></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Java 虚拟机是中、高级开发人员必须修炼的知识，有着较高的学习门槛，很多人都不情愿去接触它。可能是觉得学习成本较高又或者是感觉没什么实用性，所以干脆懒得“搭理”它了。其实这种想法是错误的。举个最简单的例子，JVM 基本上是每家招聘公司都会问到的问题，它们会这么无聊问这些不切实际的问题吗？很显然不是。由 JVM 引发的故障问题，无论在我们开发过程中还是生产环境下都是非常常见的。比如 OutOfMemoryError(OOM) 内存溢出问题，你应该遇到过 Tomcat 容器中加载项目过多导致的 OOM 问题，导致 Web 项目无法启动。这就是JVM引发的故障问题。那到底JVM哪里发生内存溢出了呢？为什么会内存溢出呢？如何监控？最重要的就是如何解决问题呢？能解决问题的技术才是最实用最好的技术。然而你对JVM的内存结构都不清楚，就妄想解决JVM引发的故障问题，是不切实际的。了解JVM内存也是为了服务器出现性能问题的时候可以快速的了解那块的内存区域出现问题，以便于快速的解决生产故障。</p>
-<p>先来一张官方图：</p>
-<p><img src="/2018/12/11/JVM%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AJvm%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/94319eb4-b7c4-4c14-9f59-9fb8f5872d13.jpg" alt></p>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><a href="https://mp.weixin.qq.com/s/xxauNrJY9HlVNvLrL5j2hg" target="_blank" rel="noopener">参考-Bitmap算法</a></p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>网页爬虫是搜索引擎中的非常重要的系统，负责爬取几十亿、上百亿的网页。爬虫的工作原理是，通过解析已经爬取页面中的网页链接，然后再爬取这些链接对应的网页。而<font color="red">同一个网页链接有可能被包含在多个页面中，这就会导致爬虫在爬取的过程中，重复爬取相同的网页。如果你是一名负责爬虫的工程师，你会如何避免这些重复的爬取呢？</font></p>
+<p>最容易想到的方法就是，我们记录已经爬取的网页链接（也就是 URL），在爬取一个新的网页之前，我们拿它的链接，在已经爬取的网页链接列表中搜索。如果存在，那就说明这个网页已经被爬取过了；如果不存在，那就说明这个网页还没有被爬取过，可以继续去爬取。等爬取到这个网页之后，我们将这个网页的链接添加到已经爬取的网页链接列表了。</p>
+<p>思路非常简单，我想你应该很容易就能想到。不过，我们该如何记录已经爬取的网页链接呢？需要用什么样的数据结构呢？</p>
 	
 	
     </div>
@@ -891,7 +757,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Jvm</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -903,7 +769,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Jvm//" class="article-tag-list-link color4">Jvm</a>
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -912,7 +778,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/11/JVM%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AJvm%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/08/02/41-%E4%BD%8D%E5%9B%BE-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BD%91%E9%A1%B5%E7%88%AC%E8%99%AB%E4%B8%AD%E7%9A%84URL%E5%8E%BB%E9%87%8D%E5%8A%9F%E8%83%BD/">展开全文 >></a>
         </p>
       
 
@@ -946,22 +812,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-JVM（一）：Java类加载机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-40-最短路径-地图软件是如何计算出最优出行路径的" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/10/JVM%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9AJava%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/">JVM（一）：Java类加载机制</a>
+      <a class="article-title" href="/2019/07/28/40-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84-%E5%9C%B0%E5%9B%BE%E8%BD%AF%E4%BB%B6%E6%98%AF%E5%A6%82%E4%BD%95%E8%AE%A1%E7%AE%97%E5%87%BA%E6%9C%80%E4%BC%98%E5%87%BA%E8%A1%8C%E8%B7%AF%E5%BE%84%E7%9A%84/">40-最短路径_地图软件是如何计算出最优出行路径的</a>
     </h1>
   
 
         
         
 
-<a href="/2018/12/10/JVM%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9AJava%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/" class="archive-article-date">
-  	<time datetime="2018-12-10T12:04:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-10</time>
+<a href="/2019/07/28/40-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84-%E5%9C%B0%E5%9B%BE%E8%BD%AF%E4%BB%B6%E6%98%AF%E5%A6%82%E4%BD%95%E8%AE%A1%E7%AE%97%E5%87%BA%E6%9C%80%E4%BC%98%E5%87%BA%E8%A1%8C%E8%B7%AF%E5%BE%84%E7%9A%84/" class="archive-article-date">
+  	<time datetime="2019-07-28T11:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-28</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -998,259 +864,10 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>转载自<a href="http://www.ityouknow.com/jvm/2017/08/19/class-loading-principle.html" target="_blank" rel="noopener">纯洁的微笑</a></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在介绍<strong>类的加载机制</strong>之前，先来看一看类的加载机制在整个Java运行期间所处的位置。</p>
-<p><img src="/2018/12/10/JVM%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9AJava%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/5c52258c-78ec-4bf9-ba03-4120c03a413d.jpg" alt></p>
-<p>由上图可知，Java文件由编译器编译成.class文件，接下来由<strong>类加载器</strong>将这些.class文件加载进JVM中。类加载器的作用就是类的加载。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Jvm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Jvm//" class="article-tag-list-link color4">Jvm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/10/JVM%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9AJava%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-Map-Reduce学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/20/Map-Reduce%E5%AD%A6%E4%B9%A0/">Map-Reduce学习</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2018/11/20/Map-Reduce%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2018-11-20T12:43:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-20</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.6k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">9分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
 			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><font color="red">Map-Reduce的过程与MongoDB如出一辙</font>（如下图）<br><img src="/2018/11/20/Map-Reduce%E5%AD%A6%E4%B9%A0/b8211209-31ef-425b-b480-9765994698c9.jpg" alt></p>
-<h2 id="1-Map-Reduce简介"><a href="#1-Map-Reduce简介" class="headerlink" title="1 Map-Reduce简介"></a>1 Map-Reduce简介</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>MapReduce</strong>是一种编程模型，用于大规模数据集（大于<strong>1TB</strong>）的并行运算。该运算充分利用<strong>Hadoop</strong>存储节点（<strong>DateNode</strong>）所在物理主机的CPU、内存、网络以及少许磁盘完成分布式计算。通过在<strong>DateNode</strong>所在的主机上启动<strong>NodeManager</strong>进程，该进程负责启动计算任务。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>MapReduce</strong>计算框架将分布式计算分为两个阶段：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Map</strong>阶段：在任务计算初期，计算框架会提前计算好任务切片（对数据做区域划分），然后<font color="red">根据切片数目</font>启动MapTask，对切片所映射的数据做局部的分析/计算，将计算的临时结果存储到对应物理主机的磁盘（<strong>MapTask</strong>的溢写）。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Reduce</strong>阶段：在<strong>Map</strong>阶段的所有操作完成计算任务后，计算框架会选择若干机器（手动指定）执行ReduceTask，完成对<strong>Map</strong>阶段计算数据的汇总（<strong>shuffle</strong><font color="red">洗牌</font>）。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">BigData</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/大数据//" class="article-tag-list-link color4">大数据</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/20/Map-Reduce%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-20-二叉树基础下-有了如此高效的散列表—-为什么还需要二叉树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/18/20-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80%E4%B8%8B-%E6%9C%89%E4%BA%86%E5%A6%82%E6%AD%A4%E9%AB%98%E6%95%88%E7%9A%84%E6%95%A3%E5%88%97%E8%A1%A8%E2%80%94-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E9%9C%80%E8%A6%81%E4%BA%8C%E5%8F%89%E6%A0%91/">20-二叉树基础下_有了如此高效的散列表—_为什么还需要二叉树</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2018/11/18/20-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80%E4%B8%8B-%E6%9C%89%E4%BA%86%E5%A6%82%E6%AD%A4%E9%AB%98%E6%95%88%E7%9A%84%E6%95%A3%E5%88%97%E8%A1%A8%E2%80%94-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E9%9C%80%E8%A6%81%E4%BA%8C%E5%8F%89%E6%A0%91/" class="archive-article-date">
-  	<time datetime="2018-11-18T13:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-18</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.2k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">15分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><a href="https://mp.weixin.qq.com/s/ONKJyusGCIE2ctwT9uLv9g" target="_blank" rel="noopener">参考文章</a></p>
 <p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一节我们学习了树、二叉树以及二叉树的遍历，今天我们再来学习一种特殊的的二叉树，二叉查找树。二叉查找树最大的特点就是，支持动态数据集合的快速插入、删除、查找操作。</p>
-<p>我们之前说过，散列表也是支持这些操作的，并且散列表的这些操作比二叉查找树更高效，时间复杂度是 O(1)。<font color="red">既然有了这么高效的散列表，使用二叉树的地方是不是都可以替换成散列表呢？有没有哪些地方是散列表做不了，必须要用二叉树来做的呢？</font></p>
-<p>带着这些问题，我们就来学习今天的内容，二叉查找树</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>基础篇的时候，我们学习了图的两种搜索算法，深度优先搜索和广度优先搜索。这两种算法主要是针对无权图的搜索算法。针对有权图，也就是图中的每条边都有一个权重，我们该如何计算两点之间的最短路径（经过的边的权重和最小）呢？今天，我们就从地图软件的路线规划问题讲起，带你看看常用的<strong>最短路径算法</strong>（Shortest Path Algorithm）。</p>
+<p>像 Google 地图、百度地图、高德地图这样的地图软件，我想你应该经常使用吧？如果想从家开车到公司，你只需要输入起始、结束地址，地图就会给你规划一条最优出行路线。这里的最优，有很多种定义，比如最短路线、最少用时路线、最少红绿灯路线等等。<font color="red">作为一名软件开发工程师，你是否思考过，地图软件的最优路线是如何计算出来的吗？底层依赖了什么算法呢？</font></p>
 	
 	
     </div>
@@ -1285,7 +902,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/18/20-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80%E4%B8%8B-%E6%9C%89%E4%BA%86%E5%A6%82%E6%AD%A4%E9%AB%98%E6%95%88%E7%9A%84%E6%95%A3%E5%88%97%E8%A1%A8%E2%80%94-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E9%9C%80%E8%A6%81%E4%BA%8C%E5%8F%89%E6%A0%91/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/07/28/40-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84-%E5%9C%B0%E5%9B%BE%E8%BD%AF%E4%BB%B6%E6%98%AF%E5%A6%82%E4%BD%95%E8%AE%A1%E7%AE%97%E5%87%BA%E6%9C%80%E4%BC%98%E5%87%BA%E8%A1%8C%E8%B7%AF%E5%BE%84%E7%9A%84/">展开全文 >></a>
         </p>
       
 
@@ -1319,22 +936,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-19-二叉树基础上-什么样的二叉树适合用数组来存储" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-39-拓扑排序-如何确定代码源文件的编译依赖关系" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/16/19-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80%E4%B8%8A-%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91%E9%80%82%E5%90%88%E7%94%A8%E6%95%B0%E7%BB%84%E6%9D%A5%E5%AD%98%E5%82%A8/">19-二叉树基础上_什么样的二叉树适合用数组来存储</a>
+      <a class="article-title" href="/2019/07/24/39-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F-%E5%A6%82%E4%BD%95%E7%A1%AE%E5%AE%9A%E4%BB%A3%E7%A0%81%E6%BA%90%E6%96%87%E4%BB%B6%E7%9A%84%E7%BC%96%E8%AF%91%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB/">39-拓扑排序_如何确定代码源文件的编译依赖关系</a>
     </h1>
   
 
         
         
 
-<a href="/2018/11/16/19-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80%E4%B8%8A-%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91%E9%80%82%E5%90%88%E7%94%A8%E6%95%B0%E7%BB%84%E6%9D%A5%E5%AD%98%E5%82%A8/" class="archive-article-date">
-  	<time datetime="2018-11-16T12:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-16</time>
+<a href="/2019/07/24/39-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F-%E5%A6%82%E4%BD%95%E7%A1%AE%E5%AE%9A%E4%BB%A3%E7%A0%81%E6%BA%90%E6%96%87%E4%BB%B6%E7%9A%84%E7%BC%96%E8%AF%91%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB/" class="archive-article-date">
+  	<time datetime="2019-07-24T12:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-24</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1345,7 +962,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.5k字</span>
+        <span class="post-count">3k字</span>
       </span>
     </span>
 
@@ -1354,7 +971,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">12分</span>
+        <span class="post-count">11分</span>
       </span>
     </span>
 </div>
@@ -1372,12 +989,13 @@
     <div class="article-entry" itemprop="articleBody">
       
 			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><a href="https://mp.weixin.qq.com/s/ONKJyusGCIE2ctwT9uLv9g" target="_blank" rel="noopener">参考文章</a></p>
 <p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前面我们讲的都是线性表结构，栈、队列等等。今天我们讲一种非线性表结构，树。树这种数据结构比线性表的数据结构要复杂得多，内容也比较多，所以会分四篇来讲解。</p>
-<p><img src="/2018/11/16/19-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80%E4%B8%8A-%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91%E9%80%82%E5%90%88%E7%94%A8%E6%95%B0%E7%BB%84%E6%9D%A5%E5%AD%98%E5%82%A8/d785f5f3-bdc4-4658-89dd-5961bb3f5464.jpg" alt></p>
-<p>带着问题学习，是最有效的学习方式之一，所以在正式的内容开始之前，还是给你出一道思考题：<font color="red">二叉树有哪几种存储方式？什么样的二叉树适合用数组来存储？</font></p>
-<p>带着这些问题，我们就来学习今天的内容，树！</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>基础篇</strong>：开篇问题 - 知识讲解 - 回答开篇 - 总结 - 课后思考</p>
+<p><strong>高级篇</strong>：问题阐述 - 算法解析 - 总结引申 - 课后思考</p>
+<p><strong>如何确定代码源文件的编译依赖关系？</strong></p>
+<p>我们知道，一个完整的项目往往会包含很多代码源文件。编译器在编译整个项目的时候，需要按照依赖关系，依次编译每个源文件。比如，A.cpp 依赖 B.cpp，那在编译的时候，编译器需要先编译 B.cpp，才能编译 A.cpp。</p>
+<p>编译器通过分析源文件或者程序员事先写好的编译配置文件（比如 Makefile 文件），来获取这种局部的依赖关系。<font color="red">那编译器又该如何通过源文件两两之间的局部依赖关系，确定一个全局的编译顺序呢？</font></p>
+<p><img src="/2019/07/24/39-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F-%E5%A6%82%E4%BD%95%E7%A1%AE%E5%AE%9A%E4%BB%A3%E7%A0%81%E6%BA%90%E6%96%87%E4%BB%B6%E7%9A%84%E7%BC%96%E8%AF%91%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB/700bec14-3e73-4781-9d56-a809025f954f.jpg" alt></p>
 	
 	
     </div>
@@ -1412,7 +1030,380 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/16/19-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80%E4%B8%8A-%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91%E9%80%82%E5%90%88%E7%94%A8%E6%95%B0%E7%BB%84%E6%9D%A5%E5%AD%98%E5%82%A8/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/07/24/39-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F-%E5%A6%82%E4%BD%95%E7%A1%AE%E5%AE%9A%E4%BB%A3%E7%A0%81%E6%BA%90%E6%96%87%E4%BB%B6%E7%9A%84%E7%BC%96%E8%AF%91%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-38-动态规划实战-如何实现搜索引擎中的拼写纠错功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/20/38-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%9E%E6%88%98-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%B8%AD%E7%9A%84%E6%8B%BC%E5%86%99%E7%BA%A0%E9%94%99%E5%8A%9F%E8%83%BD/">38-动态规划实战_如何实现搜索引擎中的拼写纠错功能</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/07/20/38-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%9E%E6%88%98-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%B8%AD%E7%9A%84%E6%8B%BC%E5%86%99%E7%BA%A0%E9%94%99%E5%8A%9F%E8%83%BD/" class="archive-article-date">
+  	<time datetime="2019-07-20T11:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-20</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">4.7k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">18分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在<strong>Trie 树</strong>那节我们讲过，利用 Trie 树，可以实现搜索引擎的关键词提示功能，这样可以节省用户输入搜索关键词的时间。实际上，搜索引擎在用户体验方面的优化还有很多，比如你可能经常会用的拼写纠错功能。</p>
+<p>当你在搜索框中，一不小心输错单词时，搜索引擎会非常智能地检测出你的拼写错误，并且用对应的正确单词来进行搜索。作为一名软件开发工程师，你是否想过，这个功能是怎么实现的呢？</p>
+<p><img src="/2019/07/20/38-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%9E%E6%88%98-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%B8%AD%E7%9A%84%E6%8B%BC%E5%86%99%E7%BA%A0%E9%94%99%E5%8A%9F%E8%83%BD/77e66acb-3e4a-45d0-bb19-067b0061ebf7.jpg" alt></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/20/38-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%9E%E6%88%98-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%B8%AD%E7%9A%84%E6%8B%BC%E5%86%99%E7%BA%A0%E9%94%99%E5%8A%9F%E8%83%BD/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-23-MySQL是如何保证数据不丢的" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/19/23-MySQL%E6%98%AF%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E6%95%B0%E6%8D%AE%E4%B8%8D%E4%B8%A2%E7%9A%84/">23-MySQL是如何保证数据不丢的</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/07/19/23-MySQL%E6%98%AF%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E6%95%B0%E6%8D%AE%E4%B8%8D%E4%B8%A2%E7%9A%84/" class="archive-article-date">
+  	<time datetime="2019-07-19T13:15:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-19</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">3.8k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">13分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天这篇文章，会继续和你介绍在业务高峰期临时提升性能的方法。从文章标题“MySQL是怎么保证数据不丢的？”，你就可以看出来，今天和你介绍的方法，跟数据的可靠性有关。</p>
+<p>在专栏前面文章和答疑篇中，我都着重介绍了WAL机制（你可以再回顾下<strong>第2篇、第9篇、第12篇和第15篇文章中的相关内容</strong>），得到的结论是：只要redo log和binlog保证持久化到磁盘，就能确保MySQL异常重启后，数据可以恢复。</p>
+<p>又有人问到，redo log的写入流程是怎么样的，如何保证redo log真实地写入了磁盘。那么今天，我们就再一起看看MySQL写入binlog和redo log的流程。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/19/23-MySQL%E6%98%AF%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E6%95%B0%E6%8D%AE%E4%B8%8D%E4%B8%A2%E7%9A%84/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-22-MySQL有哪些“饮鸩止渴”提高性能的方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/18/22-MySQL%E6%9C%89%E5%93%AA%E4%BA%9B%E2%80%9C%E9%A5%AE%E9%B8%A9%E6%AD%A2%E6%B8%B4%E2%80%9D%E6%8F%90%E9%AB%98%E6%80%A7%E8%83%BD%E7%9A%84%E6%96%B9%E6%B3%95/">22-MySQL有哪些“饮鸩止渴”提高性能的方法</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/07/18/22-MySQL%E6%9C%89%E5%93%AA%E4%BA%9B%E2%80%9C%E9%A5%AE%E9%B8%A9%E6%AD%A2%E6%B8%B4%E2%80%9D%E6%8F%90%E9%AB%98%E6%80%A7%E8%83%BD%E7%9A%84%E6%96%B9%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2019-07-18T13:11:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-18</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">4.1k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">14分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>不知道你在实际运维过程中有没有碰到这样的情景：业务高峰期，生产环境的MySQL压力太大，没法正常响应，需要短期内、临时性地提升一些性能。</p>
+<p>以前做业务护航的时候，就偶尔会碰上这种场景。用户的开发负责人说，不管你用什么方案，让业务先跑起来再说。</p>
+<p>但，如果是无损方案的话，肯定不需要等到这个时候才上场。今天我们就来聊聊这些临时方案，并着重说一说它们可能存在的风险。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/18/22-MySQL%E6%9C%89%E5%93%AA%E4%BA%9B%E2%80%9C%E9%A5%AE%E9%B8%A9%E6%AD%A2%E6%B8%B4%E2%80%9D%E6%8F%90%E9%AB%98%E6%80%A7%E8%83%BD%E7%9A%84%E6%96%B9%E6%B3%95/">展开全文 >></a>
         </p>
       
 
@@ -1447,7 +1438,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/20/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><a class="page-number" href="/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/22/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/20/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><a class="page-number" href="/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/22/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1717,6 +1708,46 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">搬砖结晶</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">推荐系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">目标检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">SkLearn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">图神经网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TensorFlow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">研究生课题-AD检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">研究生成果</a>
               </li>
             
             <div class="clearfix"></div>

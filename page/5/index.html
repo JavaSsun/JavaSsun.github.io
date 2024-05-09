@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 273</nav>
+		<nav style="color: #7FFFD4;">总文章数 379</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -192,22 +192,22 @@
             
   
     <meta charset="utf-8">
-<article id="post-15-Worker集成协同工作的关键" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-生成式对抗网络GAN的工作原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/06/15-Worker%E9%9B%86%E6%88%90%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%85%B3%E9%94%AE/">15-Worker集成协同工作的关键</a>
+      <a class="article-title" href="/2022/12/13/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9CGAN%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/">生成式对抗网络GAN的工作原理</a>
     </h1>
   
 
         
         
 
-<a href="/2019/12/06/15-Worker%E9%9B%86%E6%88%90%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%85%B3%E9%94%AE/" class="archive-article-date">
-  	<time datetime="2019-12-06T10:13:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-06</time>
+<a href="/2022/12/13/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9CGAN%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/" class="archive-article-date">
+  	<time datetime="2022-12-13T15:50:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-13</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -218,7 +218,476 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">832字</span>
+        <span class="post-count">4.2k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">14分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<h2 id="1-写在前面"><a href="#1-写在前面" class="headerlink" title="1. 写在前面"></a>1. 写在前面</h2><p>今天完成了生成对抗网络GAN的学习，从基本原理到数学公式，从对GAN的一知半解到了解了全貌，感觉还是收获颇多，所以趁着学习的GAN在脑海中逗留的一刻，赶紧进行总结和整理。 这样能使学习到的知识逗留的更长久一些吧。</p>
+<p><strong>对世界理解的最高境界就是能创造世界</strong>，作为生成模型的两座大山之一，生成式对抗网络（Generative Adversial Networks）自从问世以来就颇受瞩目。相对于变分自编码器，生成式对抗网络也可以学习图像的潜在空间表征，它可以生成与真实图像再统计上几乎无法区分的合成图像，并且现在应用之处很多，图像生成，视频预测，图片超精度转换，图图变换等都会发现GAN的身影。所以了解GAN的工作原理是非常有必要的，而今天，就一点点的剖析一下这个伟大地思想 — <strong>生成对抗</strong></p>
+<p>今天的这篇文章，我想从白话和数学推导两方面进行GAN工作原理的描述，因为GAN毕竟作为生成模型的大山，肯定少不了数学公式的陪伴，但是如果单纯的讲数学公式，那么这篇文章就变得没意思了，所以数学公式固然重要，因为是理论的核心，但数学公式之前，白话一下背后的思想也挺重要的，因为这样，后面的数学公式理解才会理所当然。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/人工智能//" class="article-tag-list-link color5">人工智能</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/12/13/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9CGAN%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-Ubuntu查看cuda-cudnn等版本命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/12/10/Ubuntu%E6%9F%A5%E7%9C%8Bcuda-cudnn%E7%AD%89%E7%89%88%E6%9C%AC%E5%91%BD%E4%BB%A4/">Ubuntu查看cuda-cudnn等版本命令</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2022/12/10/Ubuntu%E6%9F%A5%E7%9C%8Bcuda-cudnn%E7%AD%89%E7%89%88%E6%9C%AC%E5%91%BD%E4%BB%A4/" class="archive-article-date">
+  	<time datetime="2022-12-10T13:50:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-10</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">209字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>1、查看ubuntu版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat &#x2F;proc&#x2F;version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/12/10/Ubuntu%E6%9F%A5%E7%9C%8Bcuda-cudnn%E7%AD%89%E7%89%88%E6%9C%AC%E5%91%BD%E4%BB%A4/2021-11-12_101814.png" alt></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Tools</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/12/10/Ubuntu%E6%9F%A5%E7%9C%8Bcuda-cudnn%E7%AD%89%E7%89%88%E6%9C%AC%E5%91%BD%E4%BB%A4/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-CUDA和CuDNN安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/12/08/CUDA%E5%92%8CCuDNN%E5%AE%89%E8%A3%85/">CUDA和CuDNN安装</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2022/12/08/CUDA%E5%92%8CCuDNN%E5%AE%89%E8%A3%85/" class="archive-article-date">
+  	<time datetime="2022-12-08T13:50:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-08</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">387字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<h2 id="1-检查自己电脑是否支持NVIDIA"><a href="#1-检查自己电脑是否支持NVIDIA" class="headerlink" title="1. 检查自己电脑是否支持NVIDIA"></a>1. 检查自己电脑是否支持NVIDIA</h2><p><img src="/2022/12/08/CUDA%E5%92%8CCuDNN%E5%AE%89%E8%A3%85/2021-10-11_205340.png" alt></p>
+<p>或者邮件 NVIDIA 控制面板 系统信息-组件进行查看</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Tools</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/12/08/CUDA%E5%92%8CCuDNN%E5%AE%89%E8%A3%85/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-GPU之nvidia-smi命令详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/12/05/GPU%E4%B9%8Bnvidia-smi%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/">GPU之nvidia-smi命令详解</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2022/12/05/GPU%E4%B9%8Bnvidia-smi%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
+  	<time datetime="2022-12-05T13:10:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-05</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">829字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<h2 id="1-nvidia-smi介绍"><a href="#1-nvidia-smi介绍" class="headerlink" title="1 nvidia-smi介绍"></a>1 nvidia-smi介绍</h2><p>nvidia-sim简称NVSMI，提供监控GPU使用情况和更改GPU状态的功能，是一个跨平台工具，支持所有标准的NVIDIA驱动程序支持的Linux和WindowsServer 2008 R2 开始的64位系统。这个工具是N卡驱动附带的，只要装好驱动，就会有这个命令。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Tools</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/12/05/GPU%E4%B9%8Bnvidia-smi%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-1-TensorFlow简介及安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/12/01/1-TensorFlow%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%AE%89%E8%A3%85/">1-TensorFlow简介及安装</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2022/12/01/1-TensorFlow%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%AE%89%E8%A3%85/" class="archive-article-date">
+  	<time datetime="2022-12-01T12:10:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-01</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">453字</span>
       </span>
     </span>
 
@@ -244,10 +713,13 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Nginx是一个多进程程序，不同的Worker进程间如果想要共享数据，只能通过共享内存来通讯。那么Nginx中的共享内存如何使用的呢？这个问题值得研究。</p>
-<h2 id="Nginx进程间通讯方式"><a href="#Nginx进程间通讯方式" class="headerlink" title="Nginx进程间通讯方式"></a>Nginx进程间通讯方式</h2><p><img src="/2019/12/06/15-Worker%E9%9B%86%E6%88%90%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%85%B3%E9%94%AE/0af09836-ba26-4f41-96af-e3fb0d421a2b.jpg" alt></p>
+			<h2 id="1-深度学习框架概览"><a href="#1-深度学习框架概览" class="headerlink" title="1. 深度学习框架概览"></a>1. 深度学习框架概览</h2><p><strong>2015</strong></p>
+<ul>
+<li>Scikit-Learn：Machine learning No GPU</li>
+<li>Caffe：2013，第一个面向深度学习的框架，No auto-grad，C++</li>
+<li>Keras：wrapper</li>
+<li>Theano：开发难，调试难</li>
+<li>Torch：Lua语言</li></ul>
 	
 	
     </div>
@@ -261,652 +733,21 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/06/15-Worker%E9%9B%86%E6%88%90%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%85%B3%E9%94%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-14-Nginx连接池处理网络请求-内存池对性能的影响" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/05/14-Nginx%E8%BF%9E%E6%8E%A5%E6%B1%A0%E5%A4%84%E7%90%86%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82-%E5%86%85%E5%AD%98%E6%B1%A0%E5%AF%B9%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D/">14-Nginx连接池处理网络请求-内存池对性能的影响</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/12/05/14-Nginx%E8%BF%9E%E6%8E%A5%E6%B1%A0%E5%A4%84%E7%90%86%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82-%E5%86%85%E5%AD%98%E6%B1%A0%E5%AF%B9%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D/" class="archive-article-date">
-  	<time datetime="2019-12-05T10:13:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-05</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">844字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前谈到的Nginx中的读写事件，这些网络读写事件究竟是怎样的应用到Nginx上的呢？</p>
-<p>Nginx使用了<strong>连接池</strong>来增加它对资源的利用率。</p>
-<h2 id="Nginx通过连接池处理网络请求"><a href="#Nginx通过连接池处理网络请求" class="headerlink" title="Nginx通过连接池处理网络请求"></a>Nginx通过连接池处理网络请求</h2><p><strong>连接池</strong><br><img src="/2019/12/05/14-Nginx%E8%BF%9E%E6%8E%A5%E6%B1%A0%E5%A4%84%E7%90%86%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82-%E5%86%85%E5%AD%98%E6%B1%A0%E5%AF%B9%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D/8b0e0f0d-eddf-4830-9dfa-ac9f3c6acf40.jpg" alt></p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/05/14-Nginx%E8%BF%9E%E6%8E%A5%E6%B1%A0%E5%A4%84%E7%90%86%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82-%E5%86%85%E5%AD%98%E6%B1%A0%E5%AF%B9%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-13-Nginx模块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/04/13-Nginx%E6%A8%A1%E5%9D%97/">13-Nginx模块</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/12/04/13-Nginx%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-  	<time datetime="2019-12-04T13:13:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-04</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">581字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Nginx之所以有如此多的特性，是因为有大量的第三方开发者在为它开发模块。Nginx之所以有这么丰富的生态圈，是因为它的模块设计十分优良。如TCP协议一样，从上个世纪70年代设计至今，没有做过大的变动。Nginx同样如此，从2004年发布后，没有发生过大的变化。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/04/13-Nginx%E6%A8%A1%E5%9D%97/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-12-网络收发与Nginx事件模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/03/12-%E7%BD%91%E7%BB%9C%E6%94%B6%E5%8F%91%E4%B8%8ENginx%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/">12-网络收发与Nginx事件模型</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/12/03/12-%E7%BD%91%E7%BB%9C%E6%94%B6%E5%8F%91%E4%B8%8ENginx%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2019-12-03T12:13:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.6k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Nginx是一个<strong>事件驱动</strong>的框架。事件主要指的是<strong>网络事件</strong>。Nginx每个连接会自然对应两个网络事件，<strong>读事件</strong> 与 <strong>写事件</strong>。因此，我们在深入了解Nginx的各种原理以及它在极端场景下的各种错误处理时，必须首先理解什么是网络事件。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/03/12-%E7%BD%91%E7%BB%9C%E6%94%B6%E5%8F%91%E4%B8%8ENginx%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-11-Nginx架构-相关流程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/02/11-Nginx%E6%9E%B6%E6%9E%84-%E7%9B%B8%E5%85%B3%E6%B5%81%E7%A8%8B/">11-Nginx架构_相关流程</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/12/02/11-Nginx%E6%9E%B6%E6%9E%84-%E7%9B%B8%E5%85%B3%E6%B5%81%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2019-12-02T11:13:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-02</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.7k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">9分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>为什么要讨论Nginx的架构技术呢？</strong></p>
-<p>因为Nginx运行在企业内网的最外层-边缘节点，它处理的流量是其他应用服务器的几个数量级。任何一种问题在不同的场景下解决方式不尽相同。因此，Nginx处理问题时的难度会被放大，我们有必要熟知:</p>
-<p><font color="red">为什么Nginx采用<strong>Master-Worker</strong>这样一种架构模型</font><br><font color="red">为什么Worker进程的数量要与CPU的核数相匹配</font><br><font color="red">在多个Worker之间共享数据时，为什么在TLS或者限流、限速场景下的共享方式是有所不同的。</font></p>
-<p>这些都需要我们对Nginx架构有一个清晰的了解。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/02/11-Nginx%E6%9E%B6%E6%9E%84-%E7%9B%B8%E5%85%B3%E6%B5%81%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-LinkedHashMap实现原理-探险" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/28/LinkedHashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">LinkedHashMap实现原理_探险</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/11/28/LinkedHashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/" class="archive-article-date">
-  	<time datetime="2019-11-28T10:30:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-28</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.7k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">7分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<h1 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h1><p>深入理解Java集合中的源代码，可以帮助我们更好地了解大佬的意图，规避不必要的bug。</p>
-<p>源码中的一段注释，提取关键信息<br>Hash table and linked list implementation of the Map interface, with predictable iteration order. This implementation differs from HashMap in that it maintains a doubly-linked list running through all of its entries. This linked list defines the iteration ordering, which is normally the order in which keys were inserted into the map (insertion-order). Note that insertion order is not affected if a key is re-inserted into the map. (A key k is reinserted into a map m if m.put(k, v) is invoked when m.containsKey(k) would return true immediately prior to the invocation.)</p>
-<p>从注释中，我们可以先了解到 LinkedHashMap 是通过哈希表和链表实现的，它通过 维护一个链表来保证对哈希表迭代时的有序性，而这个有序是指键值对插入的顺序。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">源码解析</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">TensorFlow</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/28/LinkedHashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/12/01/1-TensorFlow%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%AE%89%E8%A3%85/">展开全文 >></a>
         </p>
       
 
@@ -940,22 +781,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-HashTable实现原理-探险" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-入门图神经网络" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/22/HashTable%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">HashTable实现原理_探险</a>
+      <a class="article-title" href="/2022/11/25/%E5%85%A5%E9%97%A8%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">入门图神经网络</a>
     </h1>
   
 
         
         
 
-<a href="/2019/11/22/HashTable%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/" class="archive-article-date">
-  	<time datetime="2019-11-22T05:28:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-22</time>
+<a href="/2022/11/25/%E5%85%A5%E9%97%A8%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" class="archive-article-date">
+  	<time datetime="2022-11-25T15:10:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-25</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -966,7 +807,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.4k字</span>
+        <span class="post-count">963字</span>
       </span>
     </span>
 
@@ -975,7 +816,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
 </div>
@@ -992,8 +833,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<h1 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h1><p>深入理解Java集合中的源代码，可以帮助我们更好地了解大佬的意图，规避不必要的bug。</p>
-<p>Hashtable 可以说已经具有一定的历史了，现在也很少使用到 Hashtable 了，更多的是使 用 HashMap 或 ConcurrentHashMap。HashTable 是一个线程安全的哈希表，它通过使用 synchronized 关键字来对方法进行加锁，从而保证了线程安全。但这也导致了在单线程 环境中效率低下等问题。Hashtable 与 HashMap 不同，它不允许插入 null 值和 null 键。</p>
+			<h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><p><img src="/2022/11/25/%E5%85%A5%E9%97%A8%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/266851203.png" alt></p>
+<p>图神经网络的主要思想是：对目标节点，使用相邻的节点来进行计算。而相邻节点又要需要他的相邻节点来计算，形成多层的结构。</p>
+<p>至于，相邻节点如何用来计算目标节点，方法有两个，一个是平均领域的信息；另一个是使用神经网络来进行计算。</p>
 	
 	
     </div>
@@ -1007,32 +849,21 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">源码解析</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">图神经网络</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/22/HashTable%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/11/25/%E5%85%A5%E9%97%A8%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">展开全文 >></a>
         </p>
       
 
@@ -1066,22 +897,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-HashMap实现原理-探险" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-10-模型的保存加载-模型微调-GPU使用及Pytorch常见报错" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/20/HashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">HashMap实现原理_探险</a>
+      <a class="article-title" href="/2022/11/06/10-%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BF%9D%E5%AD%98%E5%8A%A0%E8%BD%BD-%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83-GPU%E4%BD%BF%E7%94%A8%E5%8F%8APytorch%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99/">10-模型的保存加载-模型微调-GPU使用及Pytorch常见报错</a>
     </h1>
   
 
         
         
 
-<a href="/2019/11/20/HashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/" class="archive-article-date">
-  	<time datetime="2019-11-20T12:05:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-20</time>
+<a href="/2022/11/06/10-%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BF%9D%E5%AD%98%E5%8A%A0%E8%BD%BD-%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83-GPU%E4%BD%BF%E7%94%A8%E5%8F%8APytorch%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99/" class="archive-article-date">
+  	<time datetime="2022-11-06T11:10:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-06</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1092,7 +923,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.3k字</span>
+        <span class="post-count">4.9k字</span>
       </span>
     </span>
 
@@ -1101,7 +932,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">19分</span>
+        <span class="post-count">18分</span>
       </span>
     </span>
 </div>
@@ -1118,9 +949,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<h1 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h1><p>深入理解Java集合中的源代码，可以帮助我们更好地了解大佬的意图，规避不必要的bug。</p>
-<p>源码中的一段注释，提取关键信息<br>Hash table based implementation of the Map interface. This implementation provides all of the optional map operations, and permits null values and the null key. (The HashMap class is roughly equivalent to Hashtable, except that it is unsynchronized and permits nulls.) This class makes no guarantees as to the order of the map; in particular, it does not guarantee that the order will remain constant over time.</p>
-<p>大致意思是：这个哈希表是基于 Map 接口的实现的，它允许 null 值和 null 键，它不是线程同步的，同时也不保证有序。</p>
+			<p>Pytorch官方英文文档：<a href="https://pytorch.org/docs/stable/torch.html?" target="_blank" rel="noopener">https://pytorch.org/docs/stable/torch.html?</a><br>Pytorch中文文档：<a href="https://pytorch-cn.readthedocs.io/zh/latest/" target="_blank" rel="noopener">https://pytorch-cn.readthedocs.io/zh/latest/</a></p>
+<h2 id="1-模型的保存与加载"><a href="#1-模型的保存与加载" class="headerlink" title="1. 模型的保存与加载"></a>1. 模型的保存与加载</h2><p>我们的建立的模型训练好了是需要保存的，以备我们后面的使用，所以究竟如何保存模型和加载模型呢？ 我们下面重点来看看， 主要分为三块： 首先介绍一下序列化和反序列化，然后介绍模型保存和加载的两种方式，最后是断点的续训练技术。</p>
+<h3 id="1-1-序列化与反序列化"><a href="#1-1-序列化与反序列化" class="headerlink" title="1.1 序列化与反序列化"></a>1.1 序列化与反序列化</h3><p>序列化就是说内存中的某一个对象保存到硬盘当中，以二进制序列的形式存储下来，这就是一个序列化的过程。 而反序列化，就是将硬盘中存储的二进制的数，反序列化到内存当中，得到一个相应的对象，这样就可以再次使用这个模型了。</p>
 	
 	
     </div>
@@ -1134,32 +965,21 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">源码解析</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">PyTorch</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/20/HashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/11/06/10-%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BF%9D%E5%AD%98%E5%8A%A0%E8%BD%BD-%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83-GPU%E4%BD%BF%E7%94%A8%E5%8F%8APytorch%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99/">展开全文 >></a>
         </p>
       
 
@@ -1193,22 +1013,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-LinkList实现原理-探险" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-9-正则化与标准化大总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/17/LinkList%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">LinkList实现原理_探险</a>
+      <a class="article-title" href="/2022/10/28/9-%E6%AD%A3%E5%88%99%E5%8C%96%E4%B8%8E%E6%A0%87%E5%87%86%E5%8C%96%E5%A4%A7%E6%80%BB%E7%BB%93/">9-正则化与标准化大总结</a>
     </h1>
   
 
         
         
 
-<a href="/2019/11/17/LinkList%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/" class="archive-article-date">
-  	<time datetime="2019-11-17T11:10:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-17</time>
+<a href="/2022/10/28/9-%E6%AD%A3%E5%88%99%E5%8C%96%E4%B8%8E%E6%A0%87%E5%87%86%E5%8C%96%E5%A4%A7%E6%80%BB%E7%BB%93/" class="archive-article-date">
+  	<time datetime="2022-10-28T07:10:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-28</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1219,7 +1039,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.5k字</span>
+        <span class="post-count">6.9k字</span>
       </span>
     </span>
 
@@ -1228,7 +1048,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">11分</span>
+        <span class="post-count">27分</span>
       </span>
     </span>
 </div>
@@ -1245,12 +1065,13 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<h1 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h1><p>深入理解Java集合中的源代码，可以帮助我们更好地了解大佬的意图，规避不必要的bug。</p>
-<p>源码中的一段注释，提取关键信息</p>
-<p>Doubly-linked list implementation of the List and Deque interfaces. Implements all optional list operations, and permits all elements (including null).</p>
-<p>All of the operations perform as could be expected for a doubly-linked list. Operations that index into the list will traverse the list from the beginning or the end, whichever is closer to the specified index.</p>
-<p>Note that this implementation is not synchronized. If multiple threads access a linked list concurrently, and at least one of the threads modifies the list structurally, it must be synchronized externally. (A structural modification is any operation that adds or deletes one or more elements; merely setting the value of an element is not a structural modification.) This is typically accomplished by synchronizing on some object that naturally encapsulates the list</p>
-<p>由上述注释中可以大概得知： LinkedList 是由一个双向链表来实现的，它允许插入所有元素，包括 null，同时，它是线程不同步的。</p>
+			<p>Pytorch官方英文文档：<a href="https://pytorch.org/docs/stable/torch.html?" target="_blank" rel="noopener">https://pytorch.org/docs/stable/torch.html?</a><br>Pytorch中文文档：<a href="https://pytorch-cn.readthedocs.io/zh/latest/" target="_blank" rel="noopener">https://pytorch-cn.readthedocs.io/zh/latest/</a></p>
+<h2 id="1-正则化weight-decay（L2正则）"><a href="#1-正则化weight-decay（L2正则）" class="headerlink" title="1. 正则化weight_decay（L2正则）"></a>1. 正则化weight_decay（L2正则）</h2><p>正则化从字面意思上可能一下子就懵逼，其实这是个纸老虎， 它就是一个减少<strong>方差</strong>的策略。那么这里就涉及到了一个概念方差， 什么是方差呢？</p>
+<p>误差可分解为：偏差，方差与噪声之和。 即<strong>误差=偏差+方差+噪声</strong></p>
+<ul>
+<li><strong>偏差</strong>度量了学习算法的期望预测与真实结果的偏离程度， 即刻画了学习算法本身的拟合能力</li>
+<li><strong>方差</strong>度量了同样大小的训练集的变动所导致的学习性能的变化，即刻画了数据扰动所造成的影响</li>
+<li><strong>噪声</strong>则表达了在当前任务上任何学习算法所能达到的期望泛化误差的下界。</li></ul>
 	
 	
     </div>
@@ -1264,32 +1085,21 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">源码解析</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">PyTorch</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/17/LinkList%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/10/28/9-%E6%AD%A3%E5%88%99%E5%8C%96%E4%B8%8E%E6%A0%87%E5%87%86%E5%8C%96%E5%A4%A7%E6%80%BB%E7%BB%93/">展开全文 >></a>
         </p>
       
 
@@ -1323,22 +1133,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-ArrayList实现原理-探险" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-8-Tensorboard可视化与Hook机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/16/ArrayList%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">ArrayList实现原理_探险</a>
+      <a class="article-title" href="/2022/10/25/8-Tensorboard%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B8%8EHook%E6%9C%BA%E5%88%B6/">8-Tensorboard可视化与Hook机制</a>
     </h1>
   
 
         
         
 
-<a href="/2019/11/16/ArrayList%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/" class="archive-article-date">
-  	<time datetime="2019-11-16T09:58:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-16</time>
+<a href="/2022/10/25/8-Tensorboard%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B8%8EHook%E6%9C%BA%E5%88%B6/" class="archive-article-date">
+  	<time datetime="2022-10-25T07:10:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-25</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1349,7 +1159,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.9k字</span>
+        <span class="post-count">6.6k字</span>
       </span>
     </span>
 
@@ -1358,7 +1168,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">8分</span>
+        <span class="post-count">24分</span>
       </span>
     </span>
 </div>
@@ -1375,10 +1185,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<h1 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h1><p>深入理解Java集合中的源代码，可以帮助我们更好地了解大佬的意图，规避不必要的bug。</p>
-<p>源码中的一段注释，提取关键信息</p>
-<p>Resizable-array implementation of the List interface. Implements all optional list operations, and permits all elements, including null. In addition to implementing the List interface, this class provides methods to manipulate the size of the array that is used internally to store the list. (This class is roughly equivalent to Vector, except that it is unsynchronized.)</p>
-<p>由上文注释可以大概得知：ArrayList是一个动态数组，实现了List接口以及list相关的所有方法，它允许所有元素的插入，包括null。另外，ArrayList和Vector除了线程不同步之外，大致相等。</p>
+			<p>Pytorch官方英文文档：<a href="https://pytorch.org/docs/stable/torch.html?" target="_blank" rel="noopener">https://pytorch.org/docs/stable/torch.html?</a><br>Pytorch中文文档：<a href="https://pytorch-cn.readthedocs.io/zh/latest/" target="_blank" rel="noopener">https://pytorch-cn.readthedocs.io/zh/latest/</a></p>
+<h2 id="1-Tensorboard的简介与安装"><a href="#1-Tensorboard的简介与安装" class="headerlink" title="1. Tensorboard的简介与安装"></a>1. Tensorboard的简介与安装</h2><p>首先，什么是Tensorboard， 这是TensorFlow中强大的可视化工具，支持标量，图像，文本，音频，视频和Embedding等多种数据可视化。下面是它的一个界面：</p>
+<p><img src="/2022/10/25/8-Tensorboard%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B8%8EHook%E6%9C%BA%E5%88%B6/13029671.png" alt></p>
 	
 	
     </div>
@@ -1392,32 +1201,136 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">源码解析</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">PyTorch</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/16/ArrayList%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E6%8E%A2%E9%99%A9/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/10/25/8-Tensorboard%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B8%8EHook%E6%9C%BA%E5%88%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-7-优化器和学习率调整策略" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/23/7-%E4%BC%98%E5%8C%96%E5%99%A8%E5%92%8C%E5%AD%A6%E4%B9%A0%E7%8E%87%E8%B0%83%E6%95%B4%E7%AD%96%E7%95%A5/">7-优化器和学习率调整策略</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2022/10/23/7-%E4%BC%98%E5%8C%96%E5%99%A8%E5%92%8C%E5%AD%A6%E4%B9%A0%E7%8E%87%E8%B0%83%E6%95%B4%E7%AD%96%E7%95%A5/" class="archive-article-date">
+  	<time datetime="2022-10-23T07:10:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-23</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">5.2k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">18分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Pytorch官方英文文档：<a href="https://pytorch.org/docs/stable/torch.html?" target="_blank" rel="noopener">https://pytorch.org/docs/stable/torch.html?</a><br>Pytorch中文文档：<a href="https://pytorch-cn.readthedocs.io/zh/latest/" target="_blank" rel="noopener">https://pytorch-cn.readthedocs.io/zh/latest/</a></p>
+<h2 id="1-优化器"><a href="#1-优化器" class="headerlink" title="1. 优化器"></a>1. 优化器</h2><p>进行优化器的具体概念之前，我们得看看优化器要干一个什么样的事情， 我们知道了机器学习的五个步骤： 数据 -&gt; 模型 -&gt; 损失 -&gt; 优化器 -&gt; 迭代训练。 我们通过前向传播的过程，得到了模型输出与真实标签的差异，我们称之为损失， 有了损失，我们会进入反向传播过程得到参数的梯度，那么接下来就是优化器干活了，<strong>优化器要根据我们的这个梯度去更新参数，使得损失不断的减低</strong>。 那么优化器是怎么做到的呢？ 下面我们从三部分进行展开，首先是优化器的概念，然后是优化器的属性和方法，最后是常用的优化器。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">PyTorch</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/10/23/7-%E4%BC%98%E5%8C%96%E5%99%A8%E5%92%8C%E5%AD%A6%E4%B9%A0%E7%8E%87%E8%B0%83%E6%95%B4%E7%AD%96%E7%95%A5/">展开全文 >></a>
         </p>
       
 
@@ -1452,7 +1365,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1722,6 +1635,46 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">搬砖结晶</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">推荐系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">目标检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">SkLearn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">图神经网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TensorFlow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">研究生课题-AD检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">研究生成果</a>
               </li>
             
             <div class="clearfix"></div>

@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 273</nav>
+		<nav style="color: #7FFFD4;">总文章数 379</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -192,22 +192,22 @@
             
   
     <meta charset="utf-8">
-<article id="post-分布式ID的花拳绣腿" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-8-3-海马体提取" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/19/%E5%88%86%E5%B8%83%E5%BC%8FID%E7%9A%84%E8%8A%B1%E6%8B%B3%E7%BB%A3%E8%85%BF/">分布式ID的花拳绣腿</a>
+      <a class="article-title" href="/2023/09/10/8-3-%E6%B5%B7%E9%A9%AC%E4%BD%93%E6%8F%90%E5%8F%96/">8-3-UNet提取海马体</a>
     </h1>
   
 
         
         
 
-<a href="/2020/04/19/%E5%88%86%E5%B8%83%E5%BC%8FID%E7%9A%84%E8%8A%B1%E6%8B%B3%E7%BB%A3%E8%85%BF/" class="archive-article-date">
-  	<time datetime="2020-04-19T09:20:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-19</time>
+<a href="/2023/09/10/8-3-%E6%B5%B7%E9%A9%AC%E4%BD%93%E6%8F%90%E5%8F%96/" class="archive-article-date">
+  	<time datetime="2023-09-10T15:17:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-10</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -218,7 +218,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.8k字</span>
+        <span class="post-count">4.3k字</span>
       </span>
     </span>
 
@@ -227,7 +227,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">20分</span>
+        <span class="post-count">22分</span>
       </span>
     </span>
 </div>
@@ -244,11 +244,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>转载自 原创作者 微信号-mhcoding</p>
-<h2 id="1-为什么要用分布式ID？"><a href="#1-为什么要用分布式ID？" class="headerlink" title="1. 为什么要用分布式ID？"></a>1. 为什么要用分布式ID？</h2><p>在说分布式ID的具体实现之前，我们来简单分析一下为什么用分布式ID？分布式ID应该满足哪些特征？</p>
-<h3 id="1、什么是分布式ID？"><a href="#1、什么是分布式ID？" class="headerlink" title="1、什么是分布式ID？"></a>1、什么是分布式ID？</h3><p>拿MySQL数据库举个栗子：</p>
-<p>在我们业务数据量不大的时候，单库单表完全可以支撑现有业务，数据再大一点搞个MySQL主从同步读写分离也能对付。</p>
-<p>但随着数据日渐增长，主从同步也扛不住了，就需要对数据库进行分库分表，但分库分表后需要有一个唯一ID来标识一条数据，数据库的自增ID显然不能满足需求；特别一点的如订单、优惠券也都需要有<code>唯一ID</code>做标识。此时一个能够生成<code>全局唯一ID</code>的系统是非常必要的。那么这个<code>全局唯一ID</code>就叫<code>分布式ID</code>。</p>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<h2 id="1-横截面选取"><a href="#1-横截面选取" class="headerlink" title="1-横截面选取"></a><strong>1-横截面选取</strong></h2><p>Axial：又名横断面，transverseCoronal：又名冠状面，Sagittal：矢状面，如同一个箭矢劈开成左右两半</p>
+<p><img src="/2023/09/10/8-3-%E6%B5%B7%E9%A9%AC%E4%BD%93%E6%8F%90%E5%8F%96/NFOZIMP_Ui4LAdS-bwIwPvDtwr6lbRf33xuAmdzInhE.png" alt="image"></p>
 	
 	
     </div>
@@ -262,44 +260,21 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">系统架构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">分布式</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">研究生课题-AD检测</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/分布式//" class="article-tag-list-link color4">分布式</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/分布式/面试//" class="article-tag-list-link color3">面试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/分布式/面试/系统架构//" class="article-tag-list-link color5">系统架构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/19/%E5%88%86%E5%B8%83%E5%BC%8FID%E7%9A%84%E8%8A%B1%E6%8B%B3%E7%BB%A3%E8%85%BF/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/09/10/8-3-%E6%B5%B7%E9%A9%AC%E4%BD%93%E6%8F%90%E5%8F%96/">展开全文 >></a>
         </p>
       
 
@@ -333,22 +308,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-4-Dockerfile上" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-8-2-ADNI论文数据预处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/08/4-Dockerfile%E4%B8%8A/">4-Dockerfile上</a>
+      <a class="article-title" href="/2023/09/02/8-2-ADNI%E8%AE%BA%E6%96%87%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/">8-2-ADNI论文数据预处理</a>
     </h1>
   
 
         
         
 
-<a href="/2020/04/08/4-Dockerfile%E4%B8%8A/" class="archive-article-date">
-  	<time datetime="2020-04-08T02:36:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-08</time>
+<a href="/2023/09/02/8-2-ADNI%E8%AE%BA%E6%96%87%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/" class="archive-article-date">
+  	<time datetime="2023-09-02T15:17:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-02</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -359,7 +334,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.1k字</span>
+        <span class="post-count">8.7k字</span>
       </span>
     </span>
 
@@ -368,7 +343,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">9分</span>
+        <span class="post-count">30分</span>
       </span>
     </span>
 </div>
@@ -385,9 +360,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在Docker中创建镜像最常用的方式，就是使用Dockerfile。Dockerfile是一个Docker镜像的描述文件，我们可以理解成火箭发射的A、B、C、D…的步骤。Dockerfile其内部<strong>包含了一条条的指令</strong>，<strong>每一条指令构建一层，因此每一条指令的内容，就是描述该层应当如何构建</strong>。</p>
-<p><strong>组成部分</strong></p>
-<p><img src="/2020/04/08/4-Dockerfile%E4%B8%8A/7932ac6c-6b67-4f43-bab8-5e61dd559c48.png" alt></p>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<h2 id="1-基于深度神经网络的阿尔兹海默病分类算法研究"><a href="#1-基于深度神经网络的阿尔兹海默病分类算法研究" class="headerlink" title="1: 基于深度神经网络的阿尔兹海默病分类算法研究"></a>1: 基于深度神经网络的阿尔兹海默病分类算法研究</h2><p>曲阜师范大学-计算机学院-崔秀明</p>
+<h3 id="1-数据集预处理"><a href="#1-数据集预处理" class="headerlink" title="1-数据集预处理"></a>1-数据集预处理</h3><p><img src="/2023/09/02/8-2-ADNI%E8%AE%BA%E6%96%87%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/TwTn80zU_EF9XwEHozZcr-zBV3MAQdkjg1MsGS8fzZ0.png" alt="image"></p>
 	
 	
     </div>
@@ -401,28 +376,29 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">论文</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Tools</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">研究生课题-AD检测</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Docker//" class="article-tag-list-link color2">Docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/08/4-Dockerfile%E4%B8%8A/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/09/02/8-2-ADNI%E8%AE%BA%E6%96%87%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/">展开全文 >></a>
         </p>
       
 
@@ -456,22 +432,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-3-Docker存储卷" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-8-1-数据预处理工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/07/3-Docker%E5%AD%98%E5%82%A8%E5%8D%B7/">3-Docker存储卷</a>
+      <a class="article-title" href="/2023/08/05/8-1-%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/">8-1-数据预处理工具</a>
     </h1>
   
 
         
         
 
-<a href="/2020/04/07/3-Docker%E5%AD%98%E5%82%A8%E5%8D%B7/" class="archive-article-date">
-  	<time datetime="2020-04-07T06:36:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-07</time>
+<a href="/2023/08/05/8-1-%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/" class="archive-article-date">
+  	<time datetime="2023-08-05T14:17:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-08-05</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -482,7 +458,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.6k字</span>
+        <span class="post-count">466字</span>
       </span>
     </span>
 
@@ -491,7 +467,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
 </div>
@@ -508,138 +484,14 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><img src="/2020/04/07/3-Docker%E5%AD%98%E5%82%A8%E5%8D%B7/08d2ea30-f590-4305-9b74-9aed3f47ca21.jpg" alt></p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Docker//" class="article-tag-list-link color2">Docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/07/3-Docker%E5%AD%98%E5%82%A8%E5%8D%B7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-2-Docker容器网络" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/06/2-Docker%E5%AE%B9%E5%99%A8%E7%BD%91%E7%BB%9C/">2-Docker容器网络</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2020/04/06/2-Docker%E5%AE%B9%E5%99%A8%E7%BD%91%E7%BB%9C/" class="archive-article-date">
-  	<time datetime="2020-04-06T10:36:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-06</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.1k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">8分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>Linux内核支持6种名称空间。</p>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
 <ul>
-<li><strong>UTS</strong>：主机名+域名</li>
-<li><strong>USER</strong>：用户</li>
-<li><strong>Mount</strong>：挂载文件系统</li>
-<li><strong>IPC</strong>：进程间通信</li>
-<li><strong>Pid</strong>：进程ID</li>
-<li><strong>Net</strong>：网络</li>
-</ul>
-<p><strong>OVS：OpenVSwitch</strong><br><strong>SDN：软件驱动网络</strong><br><strong>Overlay Network</strong>:基于隧道叠加实现的另外一层网络通信。</p>
-<p>C1要与C5通信，将报文发送给bridge上，由bridge发送给物理网卡，经由隧道转发。</p>
+<li><strong>Matlab</strong></li>
+<li>SPM12 <a href="https://www.fil.ion.ucl.ac.uk/spm/software/download/" target="_blank" rel="noopener">https://www.fil.ion.ucl.ac.uk/spm/software/download/</a></li>
+<li>Dpabi <a href="http://rfmri.org/dpabi" target="_blank" rel="noopener">http://rfmri.org/dpabi</a></li>
+<li>BrainNetViewer <a href="https://www.nitrc.org/projects/bnv/" target="_blank" rel="noopener">https://www.nitrc.org/projects/bnv/</a></li>
+<li>gretna <a href="https://www.nitrc.org/projects/gretna/" target="_blank" rel="noopener">https://www.nitrc.org/projects/gretna/</a></li>
+<li>AAL <a href="https://www.gin.cnrs.fr/en/tools/aal/" target="_blank" rel="noopener">https://www.gin.cnrs.fr/en/tools/aal/</a> <a href="https://www.oxcns.org/aal3.html" target="_blank" rel="noopener">https://www.oxcns.org/aal3.html</a></li></ul>
 	
 	
     </div>
@@ -653,28 +505,25 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Tools</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">研究生课题-AD检测</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Docker//" class="article-tag-list-link color2">Docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/06/2-Docker%E5%AE%B9%E5%99%A8%E7%BD%91%E7%BB%9C/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/08/05/8-1-%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/">展开全文 >></a>
         </p>
       
 
@@ -708,22 +557,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-1-安装-使用Docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-7-2-GNN-For-AD" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/05/1-%E5%AE%89%E8%A3%85-%E4%BD%BF%E7%94%A8Docker/">1-安装_使用Docker</a>
+      <a class="article-title" href="/2023/07/25/7-2-GNN-For-AD/">7-2-GNN For AD</a>
     </h1>
   
 
         
         
 
-<a href="/2020/04/05/1-%E5%AE%89%E8%A3%85-%E4%BD%BF%E7%94%A8Docker/" class="archive-article-date">
-  	<time datetime="2020-04-05T06:36:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-05</time>
+<a href="/2023/07/25/7-2-GNN-For-AD/" class="archive-article-date">
+  	<time datetime="2023-07-25T14:17:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-25</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -734,7 +583,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2k字</span>
+        <span class="post-count">15.4k字</span>
       </span>
     </span>
 
@@ -743,7 +592,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">8分</span>
+        <span class="post-count">58分</span>
       </span>
     </span>
 </div>
@@ -760,10 +609,8 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<h2 id="1-安装Docker"><a href="#1-安装Docker" class="headerlink" title="1. 安装Docker"></a>1. 安装Docker</h2><p><img src="/2020/04/05/1-%E5%AE%89%E8%A3%85-%E4%BD%BF%E7%94%A8Docker/0c401be3-4ee5-41fe-b2a6-b0c40ec3f933.jpg" alt></p>
-<p><strong>三种方式安装Docker</strong></p>
-<h3 id="1-Extras-Repository"><a href="#1-Extras-Repository" class="headerlink" title="1. Extras Repository"></a>1. Extras Repository</h3><p><strong>CentOS-6.2.32支持Docker，红帽以补丁方式补充。有很多不稳定因素，此处选用CentOS7</strong>。</p>
-<p>自带的有版本太老，自行搜索安装方法。</p>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><img src="/2023/07/25/7-2-GNN-For-AD/eoU98wMNr9k7Zd36NUkPlfXEbJotoTjFSFmZYL1eEAo.png" alt="image"></p>
 	
 	
     </div>
@@ -777,28 +624,29 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">论文</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">图神经网络</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">研究生课题-AD检测</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Docker//" class="article-tag-list-link color2">Docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/05/1-%E5%AE%89%E8%A3%85-%E4%BD%BF%E7%94%A8Docker/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/07/25/7-2-GNN-For-AD/">展开全文 >></a>
         </p>
       
 
@@ -832,22 +680,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-45-自增ID用完怎么办" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-7-1-GNN-For-Medical-Diagnosis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/11/45-%E8%87%AA%E5%A2%9EID%E7%94%A8%E5%AE%8C%E6%80%8E%E4%B9%88%E5%8A%9E/">45-自增ID用完怎么办</a>
+      <a class="article-title" href="/2023/06/28/7-1-GNN-For-Medical-Diagnosis/">7-1-GNN For Medical Diagnosis</a>
     </h1>
   
 
         
         
 
-<a href="/2020/03/11/45-%E8%87%AA%E5%A2%9EID%E7%94%A8%E5%AE%8C%E6%80%8E%E4%B9%88%E5%8A%9E/" class="archive-article-date">
-  	<time datetime="2020-03-11T13:18:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-11</time>
+<a href="/2023/06/28/7-1-GNN-For-Medical-Diagnosis/" class="archive-article-date">
+  	<time datetime="2023-06-28T15:16:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-06-28</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -858,7 +706,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.7k字</span>
+        <span class="post-count">4.4k字</span>
       </span>
     </span>
 
@@ -867,7 +715,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">13分</span>
+        <span class="post-count">15分</span>
       </span>
     </span>
 </div>
@@ -884,10 +732,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>MySQL里有很多自增的id，每个自增id都是定义了初始值，然后不停地往上加步长。虽然自然数是没有上限的，但是在计算机里，只要定义了表示这个数的字节长度，那它就有上限。比如，无符号整型(unsigned int)是4个字节，上限就是2<sup>32</sup>-1。</p>
-<p>既然自增id有上限，就有可能被用完。但是，自增id用完了会怎么样呢？</p>
-<p>今天这篇文章，我们就来看看MySQL里面的几种自增id，一起分析一下它们的值达到上限以后，会出现什么情况。</p>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<h2 id="1-Graph-Neural-Network-Based-Diagnosis-Prediction-2020"><a href="#1-Graph-Neural-Network-Based-Diagnosis-Prediction-2020" class="headerlink" title="1. Graph Neural Network-Based Diagnosis Prediction-2020"></a>1. Graph Neural Network-Based Diagnosis Prediction-2020</h2><p><a href="https://www.yuque.com/attachments/yuque/0/2024/pdf/22829897/1711445219100-bca0ae4c-8666-48a1-be50-69a3a16923c1.pdf" target="_blank" rel="noopener">📎Graph based for Diagnosis.pdf</a></p>
+<p>本文提出了一种基于知识的预测方法，即基于图形神经网络的诊断预测（GNDP），以充分利用医学知识进行准确的诊断预测。与常规的RNN+Attention机制不同，其提出的GNDP是基于时空图卷积网络（ST-GCN）的框架开发的。GNDP可以同时利用EHR中的顺序信息和医学本体中的领域知识，以获得更稳健和准确的患者表示，并在诊断预测任务中执行更准确的预测。</p>
 	
 	
     </div>
@@ -901,28 +748,29 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">论文</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">图神经网络</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">研究生课题-AD检测</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/11/45-%E8%87%AA%E5%A2%9EID%E7%94%A8%E5%AE%8C%E6%80%8E%E4%B9%88%E5%8A%9E/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/06/28/7-1-GNN-For-Medical-Diagnosis/">展开全文 >></a>
         </p>
       
 
@@ -956,22 +804,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-44-一些常见问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-6-2-SCI一区论文精读" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/09/44-%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">44-一些常见问题</a>
+      <a class="article-title" href="/2023/05/25/6-2-SCI%E4%B8%80%E5%8C%BA%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/">6-2-SCI一区论文精读</a>
     </h1>
   
 
         
         
 
-<a href="/2020/03/09/44-%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-03-09T13:11:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-09</time>
+<a href="/2023/05/25/6-2-SCI%E4%B8%80%E5%8C%BA%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" class="archive-article-date">
+  	<time datetime="2023-05-25T15:16:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-25</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -982,7 +830,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.1k字</span>
+        <span class="post-count">7.4k字</span>
       </span>
     </span>
 
@@ -991,7 +839,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">7分</span>
+        <span class="post-count">31分</span>
       </span>
     </span>
 </div>
@@ -1008,16 +856,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="1-join的用法"><a href="#1-join的用法" class="headerlink" title="1. join的用法"></a>1. join的用法</h2><p>在 <strong>第35篇文章《join语句怎么优化？》</strong> 中，在介绍join执行顺序的时候，用的都是straight_join。有人在文后提出了两个问题：</p>
-<ol>
-<li><p>如果用left join的话，左边的表一定是驱动表吗？</p>
-</li>
-<li><p>如果两个表的join包含多个条件的等值匹配，是都要写到on里面呢，还是只把一个条件写到on里面，其他条件写到where部分？</p>
-</li>
-</ol>
-<p>为了同时回答这两个问题，我来构造两个表a和b：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create table a(f1 int, f2 int, index(f1))engine&#x3D;innodb; </span><br><span class="line">create table b(f1 int, f2 int)engine&#x3D;innodb; </span><br><span class="line">insert into a values(1,1),(2,2),(3,3),(4,4),(5,5),(6,6); </span><br><span class="line">insert into b values(3,3),(4,4),(5,5),(6,6),(7,7),(8,8);</span><br></pre></td></tr></table></figure>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p>论文：<a href="https://www.yuque.com/attachments/yuque/0/2024/pdf/22829897/1711445164871-750ffa66-0171-4c77-b5c6-426bb99f1d42.pdf" target="_blank" rel="noopener">📎s41746-022-00577-x.pdf</a><br>补充材料：<a href="https://www.yuque.com/attachments/yuque/0/2024/pdf/22829897/1711445164882-e5e234d9-1ea9-409e-bbd6-56f9495ddf8b.pdf" target="_blank" rel="noopener">📎41746_2022_577_MOESM1_ESM.pdf</a><br>报告摘要：<a href="https://www.yuque.com/attachments/yuque/0/2024/pdf/22829897/1711445164874-3eca6782-7b91-4eb9-8885-b6c872771408.pdf" target="_blank" rel="noopener">📎41746_2022_577_MOESM2_ESM.pdf</a><br>文章官方网址：<a href="https://www.nature.com/articles/s41746-022-00577-x#MOESM1" target="_blank" rel="noopener">https://www.nature.com/articles/s41746-022-00577-x#MOESM1</a><br>录用：NPJ | digital medicine SCI医学1区</p>
+<h3 id="1-摘要"><a href="#1-摘要" class="headerlink" title="1-摘要"></a>1-摘要</h3><p>现状：ADNI领域数据集有限。<br>问题：小数据集上的模型会过拟合，且未进行跨组评估。</p>
 	
 	
     </div>
@@ -1031,28 +872,25 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">论文</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">研究生课题-AD检测</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/09/44-%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/05/25/6-2-SCI%E4%B8%80%E5%8C%BA%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/">展开全文 >></a>
         </p>
       
 
@@ -1086,22 +924,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-43-要不要使用分区表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-6-1-MRI成像及ADNI简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/08/43-%E8%A6%81%E4%B8%8D%E8%A6%81%E4%BD%BF%E7%94%A8%E5%88%86%E5%8C%BA%E8%A1%A8/">43-要不要使用分区表</a>
+      <a class="article-title" href="/2023/05/10/6-1-MRI%E6%88%90%E5%83%8F%E5%8F%8AADNI%E7%AE%80%E4%BB%8B/">6-1-MRI成像及ADNI简介</a>
     </h1>
   
 
         
         
 
-<a href="/2020/03/08/43-%E8%A6%81%E4%B8%8D%E8%A6%81%E4%BD%BF%E7%94%A8%E5%88%86%E5%8C%BA%E8%A1%A8/" class="archive-article-date">
-  	<time datetime="2020-03-08T12:31:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
+<a href="/2023/05/10/6-1-MRI%E6%88%90%E5%83%8F%E5%8F%8AADNI%E7%AE%80%E4%BB%8B/" class="archive-article-date">
+  	<time datetime="2023-05-10T15:16:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-10</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1112,7 +950,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.1k字</span>
+        <span class="post-count">797字</span>
       </span>
     </span>
 
@@ -1121,7 +959,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">10分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
 </div>
@@ -1138,8 +976,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>经常被问到这样一个问题：分区表有什么问题，为什么公司规范不让使用分区表呢？今天，我们就来聊聊分区表的使用行为，然后再一起回答这个问题。</p>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p>知识来源：知网《基于卷积神经网络的阿尔茨海默病 MRI影像辅助诊断研究》</p>
+<h2 id="MRI影像分析"><a href="#MRI影像分析" class="headerlink" title="MRI影像分析"></a>MRI影像分析</h2><p>医学影像成像的原理，是利用某些物理因子（如X线、电磁场、微波、红外线等）穿过人体，作为一种信息载体，这些含有能量的物理因子可以准确的反映出人体的内部组织或器官的结构、形态和功能等情况，并且通过影像成像的方式直观的呈现出来。</p>
 	
 	
     </div>
@@ -1153,28 +992,21 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">研究生课题-AD检测</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/08/43-%E8%A6%81%E4%B8%8D%E8%A6%81%E4%BD%BF%E7%94%A8%E5%88%86%E5%8C%BA%E8%A1%A8/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/05/10/6-1-MRI%E6%88%90%E5%83%8F%E5%8F%8AADNI%E7%AE%80%E4%BB%8B/">展开全文 >></a>
         </p>
       
 
@@ -1208,22 +1040,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-42-grant之后要跟着flush-privileges吗" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-5-ADNI-实验数据筛选与下载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/07/42-grant%E4%B9%8B%E5%90%8E%E8%A6%81%E8%B7%9F%E7%9D%80flush-privileges%E5%90%97/">42-grant之后要跟着flush privileges吗</a>
+      <a class="article-title" href="/2023/04/25/5-ADNI-%E5%AE%9E%E9%AA%8C%E6%95%B0%E6%8D%AE%E7%AD%9B%E9%80%89%E4%B8%8E%E4%B8%8B%E8%BD%BD/">5-ADNI-实验数据筛选与下载</a>
     </h1>
   
 
         
         
 
-<a href="/2020/03/07/42-grant%E4%B9%8B%E5%90%8E%E8%A6%81%E8%B7%9F%E7%9D%80flush-privileges%E5%90%97/" class="archive-article-date">
-  	<time datetime="2020-03-07T12:31:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-07</time>
+<a href="/2023/04/25/5-ADNI-%E5%AE%9E%E9%AA%8C%E6%95%B0%E6%8D%AE%E7%AD%9B%E9%80%89%E4%B8%8E%E4%B8%8B%E8%BD%BD/" class="archive-article-date">
+  	<time datetime="2023-04-25T15:16:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-25</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1234,7 +1066,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.8k字</span>
+        <span class="post-count">1.1k字</span>
       </span>
     </span>
 
@@ -1243,7 +1075,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">10分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
 </div>
@@ -1260,10 +1092,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在MySQL里面，grant语句是用来给用户赋权的。不知道你有没有见过一些操作文档里面提到，grant之后要马上跟着执行一个flush privileges命令，才能使赋权语句生效。我最开始使用MySQL的时候，就是照着一个操作文档的说明按照这个顺序操作的。</p>
-<p>那么，grant之后真的需要执行flush privileges吗？如果没有执行这个flush命令的话，赋权语句真的不能生效吗？</p>
-<p>接下来，就先和你介绍一下grant语句和flush privileges语句分别做了什么事情，然后再一起来分析这个问题。</p>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><a href="https://ida.loni.usc.edu/pages/access/search.jsp" target="_blank" rel="noopener">https://ida.loni.usc.edu/pages/access/search.jsp</a></p>
+<h3 id="1-实验数据集下载"><a href="#1-实验数据集下载" class="headerlink" title="1-实验数据集下载"></a>1-实验数据集下载</h3><p><strong>T1W1-3D-MP RAGE</strong>：T1加权三维磁化强度预备梯度回波序列属于快速容积扫描技术，具有较高的空间分辨率和时间分辨率，信噪比高，伪影小，对 脑内结构（如白质、灰质和脑脊液）对比度良好，能三维显示人脑内部精细解剖结构，有利于显示小病灶及其细节，对神经系统疾病的诊断具有重要价值；同时也是获取正常人脑的三维可视化图谱的重要方法。</p>
 	
 	
     </div>
@@ -1277,28 +1108,21 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">研究生课题-AD检测</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/07/42-grant%E4%B9%8B%E5%90%8E%E8%A6%81%E8%B7%9F%E7%9D%80flush-privileges%E5%90%97/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/04/25/5-ADNI-%E5%AE%9E%E9%AA%8C%E6%95%B0%E6%8D%AE%E7%AD%9B%E9%80%89%E4%B8%8E%E4%B8%8B%E8%BD%BD/">展开全文 >></a>
         </p>
       
 
@@ -1332,22 +1156,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-41-如何最快的复制一张表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-4-AD文献的阅读记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/06/41-%E5%A6%82%E4%BD%95%E6%9C%80%E5%BF%AB%E7%9A%84%E5%A4%8D%E5%88%B6%E4%B8%80%E5%BC%A0%E8%A1%A8/">41-如何最快的复制一张表</a>
+      <a class="article-title" href="/2023/04/20/4-AD%E6%96%87%E7%8C%AE%E7%9A%84%E9%98%85%E8%AF%BB%E8%AE%B0%E5%BD%95/">4-AD文献的阅读记录</a>
     </h1>
   
 
         
         
 
-<a href="/2020/03/06/41-%E5%A6%82%E4%BD%95%E6%9C%80%E5%BF%AB%E7%9A%84%E5%A4%8D%E5%88%B6%E4%B8%80%E5%BC%A0%E8%A1%A8/" class="archive-article-date">
-  	<time datetime="2020-03-06T11:30:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
+<a href="/2023/04/20/4-AD%E6%96%87%E7%8C%AE%E7%9A%84%E9%98%85%E8%AF%BB%E8%AE%B0%E5%BD%95/" class="archive-article-date">
+  	<time datetime="2023-04-20T11:16:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-20</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1358,7 +1182,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.1k字</span>
+        <span class="post-count">3.3k字</span>
       </span>
     </span>
 
@@ -1367,7 +1191,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">11分</span>
+        <span class="post-count">12分</span>
       </span>
     </span>
 </div>
@@ -1384,10 +1208,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在上一篇文章最后，给你留下的问题是怎么在两张表中拷贝数据。如果可以控制对源表的扫描行数和加锁范围很小的话，我们简单地使用insert … select 语句即可实现。</p>
-<p>当然，为了避免对源表加读锁，更稳妥的方案是先将数据写到外部文本文件，然后再写回目标表。这时，有两种常用的方法。接下来的内容，会和你详细展开一下这两种方法。</p>
-<p>为了便于说明，我还是先创建一个表db1.t，并插入1000行数据，同时创建一个相同结构的表db2.t。</p>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<h3 id="1-AD的诊断标准（张伟娇，张巍：阿尔茨病的诊断进展）"><a href="#1-AD的诊断标准（张伟娇，张巍：阿尔茨病的诊断进展）" class="headerlink" title="1 AD的诊断标准（张伟娇，张巍：阿尔茨病的诊断进展）"></a><strong>1 AD的诊断标准（张伟娇，张巍：阿尔茨病的诊断进展）</strong></h3><p>AD生物学标志物的包括**(强调病程连续性)**：（1）核磁MRI萎缩；（2）脑脊液CSF中beta淀粉蛋白A-beta42下降；（3）总tau(T-tau)、磷酸化tau(P-tau)升高。</p>
+<p>AD临床症状判断标准：（1）内侧颞叶萎缩；（2）延迟故事回忆DSR&lt;=10.5分；（3） 霍普金斯词语学习测试HVLT &lt;=15.5； （4）综合认知：简易精神状况检查表MMSE&lt;=26 (一说中国标准是&lt;=23)；（5）功能：日常生活能力ADL&gt;=16分；（6）语言：波士顿命名测试 BNT 30项&lt;=21.5分；（7）视空音：中国改良版连线测试A， TMF-A&gt;=98.5 ， TMT-B&gt;=188.5s。<br>几个诊断标准：NINCDS-ADRDA，IWG-1标准，NIA-AA标准，IWG-2标准。《中国认知障碍与痴呆指南》采用NINCDS-ADRDA与NIA-AA标准。</p>
 	
 	
     </div>
@@ -1401,28 +1224,141 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">论文</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">研究生课题-AD检测</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/06/41-%E5%A6%82%E4%BD%95%E6%9C%80%E5%BF%AB%E7%9A%84%E5%A4%8D%E5%88%B6%E4%B8%80%E5%BC%A0%E8%A1%A8/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/04/20/4-AD%E6%96%87%E7%8C%AE%E7%9A%84%E9%98%85%E8%AF%BB%E8%AE%B0%E5%BD%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-3-指标特征选择" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/04/05/3-%E6%8C%87%E6%A0%87%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9/">3-指标特征选择</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2023/04/05/3-%E6%8C%87%E6%A0%87%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9/" class="archive-article-date">
+  	<time datetime="2023-04-05T09:16:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-05</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">859字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>WeChat: SHR—97</p>
+<p>ADNI公开数据集中包含每个受试者的临床信息，包括人口统计学信息、神经心理学评估、生物学检测、神经病理学、基因检测等。本文通过CfsSubsetEval评估器和查阅医学相关论文，选择了其中11个指标作为临床特征。其中包括2个人口统计学指标，4个神经心理学指标，5个生物学检测指标。具体如下：</p>
+<p>（1）简易智力状态检查量表（MMSE）。MMSE是目前临床上检查智力最常见的量表，能全面、准确、迅速地反应被试患者智力状态及认知功能缺损程度。通过量表总分值数反应患者的情况，其中与文化教育程度有关，进一步的测验包括记忆力、执行功能等各项认知功能的评估。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">研究生课题-AD检测</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/04/05/3-%E6%8C%87%E6%A0%87%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9/">展开全文 >></a>
         </p>
       
 
@@ -1457,7 +1393,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1727,6 +1663,46 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">搬砖结晶</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">推荐系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">目标检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">SkLearn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">图神经网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TensorFlow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">研究生课题-AD检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">研究生成果</a>
               </li>
             
             <div class="clearfix"></div>

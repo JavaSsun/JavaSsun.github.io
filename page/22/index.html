@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 273</nav>
+		<nav style="color: #7FFFD4;">总文章数 379</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -192,22 +192,22 @@
             
   
     <meta charset="utf-8">
-<article id="post-18-哈希算法下-哈希算法在分布式系统中有哪些应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-21-为什么我只改一行的语句-锁还这么多" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/15/18-%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E4%B8%8B-%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E5%9C%A8%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E4%B8%AD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%BA%94%E7%94%A8/">18-哈希算法下_哈希算法在分布式系统中有哪些应用</a>
+      <a class="article-title" href="/2019/07/17/21-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E5%8F%AA%E6%94%B9%E4%B8%80%E8%A1%8C%E7%9A%84%E8%AF%AD%E5%8F%A5-%E9%94%81%E8%BF%98%E8%BF%99%E4%B9%88%E5%A4%9A/">21-为什么我只改一行的语句_锁还这么多</a>
     </h1>
   
 
         
         
 
-<a href="/2018/11/15/18-%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E4%B8%8B-%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E5%9C%A8%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E4%B8%AD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%BA%94%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2018-11-15T13:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-15</time>
+<a href="/2019/07/17/21-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E5%8F%AA%E6%94%B9%E4%B8%80%E8%A1%8C%E7%9A%84%E8%AF%AD%E5%8F%A5-%E9%94%81%E8%BF%98%E8%BF%99%E4%B9%88%E5%A4%9A/" class="archive-article-date">
+  	<time datetime="2019-07-17T13:28:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-17</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -218,7 +218,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.6k字</span>
+        <span class="post-count">3.8k字</span>
       </span>
     </span>
 
@@ -227,7 +227,387 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">8分</span>
+        <span class="post-count">13分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在上一篇文章中，介绍了间隙锁和next-key lock的概念，但是并没有说明加锁规则。间隙锁的概念理解起来确实有点儿难，尤其在配合上行锁以后，很容易在判断是否会出现锁等待的问题上犯错。</p>
+<p>所以今天，我们就先从这个加锁规则开始吧。</p>
+<p>首先说明一下，这些加锁规则我没在别的地方看到过有类似的总结，以前我自己判断的时候都是想着代码里面的实现来脑补的。这次为了总结成不看代码的同学也能理解的规则，是我又重新刷了代码临时总结出来的。所以，<strong>这个规则有以下两条前提说明：</strong></p>
+<ol>
+<li><p>MySQL后面的版本可能会改变加锁策略，所以这个规则只限于截止到现在的最新版本，即5.x系列&lt;=5.7.24，8.0系列 &lt;=8.0.13。</p>
+</li>
+<li><p>如果大家在验证中有发现bad case的话，请提出来，我会再补充进这篇文章，使得一起学习本专栏的所有同学都能受益。</p>
+</li>
+</ol>
+<p>因为间隙锁在可重复读隔离级别下才有效，所以本篇文章接下来的描述，若没有特殊说明，默认是可重复读隔离级别。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/17/21-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E5%8F%AA%E6%94%B9%E4%B8%80%E8%A1%8C%E7%9A%84%E8%AF%AD%E5%8F%A5-%E9%94%81%E8%BF%98%E8%BF%99%E4%B9%88%E5%A4%9A/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-20-幻读是什么-幻读有什么问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/16/20-%E5%B9%BB%E8%AF%BB%E6%98%AF%E4%BB%80%E4%B9%88-%E5%B9%BB%E8%AF%BB%E6%9C%89%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/">20-幻读是什么_幻读有什么问题</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/07/16/20-%E5%B9%BB%E8%AF%BB%E6%98%AF%E4%BB%80%E4%B9%88-%E5%B9%BB%E8%AF%BB%E6%9C%89%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2019-07-16T13:18:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-16</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">4k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">14分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在上一篇文章最后，留了一个关于加锁规则的问题。今天，我们就从这个问题说起吧。</p>
+<p>为了便于说明问题，这一篇文章，我们就先使用一个小一点儿的表。建表和初始化语句如下（为了便于本期的例子说明，我把上篇文章中用到的表结构做了点儿修改）：</p>
+<p><img src="/2019/07/16/20-%E5%B9%BB%E8%AF%BB%E6%98%AF%E4%BB%80%E4%B9%88-%E5%B9%BB%E8%AF%BB%E6%9C%89%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/c4dbbf81-9ace-4c76-ac6d-489cda16292f.png" alt></p>
+<p>这个表除了主键id外，还有一个索引c，初始化语句在表中插入了6行数据。</p>
+<p>上期留的问题是，下面的语句序列，是怎么加锁的，加的锁又是什么时候释放的呢？</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/16/20-%E5%B9%BB%E8%AF%BB%E6%98%AF%E4%BB%80%E4%B9%88-%E5%B9%BB%E8%AF%BB%E6%9C%89%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-19-只查一行的语句为何执行这么慢" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/15/19-%E5%8F%AA%E6%9F%A5%E4%B8%80%E8%A1%8C%E7%9A%84%E8%AF%AD%E5%8F%A5%E4%B8%BA%E4%BD%95%E6%89%A7%E8%A1%8C%E8%BF%99%E4%B9%88%E6%85%A2/">19-只查一行的语句为何执行这么慢</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/07/15/19-%E5%8F%AA%E6%9F%A5%E4%B8%80%E8%A1%8C%E7%9A%84%E8%AF%AD%E5%8F%A5%E4%B8%BA%E4%BD%95%E6%89%A7%E8%A1%8C%E8%BF%99%E4%B9%88%E6%85%A2/" class="archive-article-date">
+  	<time datetime="2019-07-15T12:38:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-15</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2.7k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">10分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一般情况下，如果跟你说查询性能优化，你首先会想到一些复杂的语句，想到查询需要返回大量的数据。但有些情况下，“查一行”，也会执行得特别慢。今天，我就跟你聊聊这个有趣的话题，看看什么情况下，会出现这个现象。</p>
+<p>需要说明的是，如果MySQL数据库本身就有很大的压力，导致数据库服务器CPU占用率很高或ioutil（IO利用率）很高，这种情况下所有语句的执行都有可能变慢，不属于我们今天的讨论范围。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/15/19-%E5%8F%AA%E6%9F%A5%E4%B8%80%E8%A1%8C%E7%9A%84%E8%AF%AD%E5%8F%A5%E4%B8%BA%E4%BD%95%E6%89%A7%E8%A1%8C%E8%BF%99%E4%B9%88%E6%85%A2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-37-动态规划理论-一篇文章带你彻底搞懂最优子结结构-无后效性-重复子问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/13/37-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%90%86%E8%AE%BA-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%B8%A6%E4%BD%A0%E5%BD%BB%E5%BA%95%E6%90%9E%E6%87%82%E6%9C%80%E4%BC%98%E5%AD%90%E7%BB%93%E7%BB%93%E6%9E%84-%E6%97%A0%E5%90%8E%E6%95%88%E6%80%A7-%E9%87%8D%E5%A4%8D%E5%AD%90%E9%97%AE%E9%A2%98/">37-动态规划理论_一篇文章带你彻底搞懂最优子结结构_无后效性_重复子问题</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/07/13/37-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%90%86%E8%AE%BA-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%B8%A6%E4%BD%A0%E5%BD%BB%E5%BA%95%E6%90%9E%E6%87%82%E6%9C%80%E4%BC%98%E5%AD%90%E7%BB%93%E7%BB%93%E6%9E%84-%E6%97%A0%E5%90%8E%E6%95%88%E6%80%A7-%E9%87%8D%E5%A4%8D%E5%AD%90%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2019-07-13T10:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-13</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">5.1k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">18分</span>
       </span>
     </span>
 </div>
@@ -245,11 +625,10 @@
     <div class="article-entry" itemprop="articleBody">
       
 			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><a href="https://mp.weixin.qq.com/s/yimfkNYF_tIJJqUIzV7TFA" target="_blank" rel="noopener">什么是一致性哈希</a></p>
-<p><a href="http://www.zsythink.net/archives/1182" target="_blank" rel="noopener">白话解析：一致性哈希算法</a></p>
 <p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一节，讲了哈希算法的四个应用，它们分别是：安全加密、数据校验、唯一标识、散列函数。今天，我们再来看剩余三种应用：<strong>负载均衡</strong>、<strong>数据分片</strong>、<strong>分布式存储</strong>。</p>
-<p>你可能已经发现，这三个应用都跟分布式系统有关。没错，今天我就带你看下，<font color="red">哈希算法是如何解决这些分布式问题的</font>。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一节，通过两个非常经典的问题，向你展示了用动态规划解决问题的过程。现在你对动态规划应该有了一个初步的认识。</p>
+<p>今天，主要讲动态规划的一些理论知识。学完这节内容，可以帮你解决这样几个问题：什么样的问题可以用动态规划解决？解决动态规划问题的一般思考过程是什么样的？贪心、分治、回溯、动态规划这四种算法思想又有什么区别和联系？</p>
+<p>理论的东西都比较抽象，不过你不用担心，本文会结合具体的例子来讲解，争取让你这次就能真正理解这些知识点，也为后面的应用和实战做好准备。</p>
 	
 	
     </div>
@@ -284,7 +663,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/15/18-%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E4%B8%8B-%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E5%9C%A8%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E4%B8%AD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%BA%94%E7%94%A8/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/07/13/37-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%90%86%E8%AE%BA-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%B8%A6%E4%BD%A0%E5%BD%BB%E5%BA%95%E6%90%9E%E6%87%82%E6%9C%80%E4%BC%98%E5%AD%90%E7%BB%93%E7%BB%93%E6%9E%84-%E6%97%A0%E5%90%8E%E6%95%88%E6%80%A7-%E9%87%8D%E5%A4%8D%E5%AD%90%E9%97%AE%E9%A2%98/">展开全文 >></a>
         </p>
       
 
@@ -318,22 +697,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-17-哈希算法上-如何防止数据库中的用户信息被脱库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-36-初识动态规划-如何巧妙解解决“双十一”购物时的凑单问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/13/17-%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E4%B8%8A-%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E8%A2%AB%E8%84%B1%E5%BA%93/">17-哈希算法上_如何防止数据库中的用户信息被脱库</a>
+      <a class="article-title" href="/2019/07/09/36-%E5%88%9D%E8%AF%86%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E5%A6%82%E4%BD%95%E5%B7%A7%E5%A6%99%E8%A7%A3%E8%A7%A3%E5%86%B3%E2%80%9C%E5%8F%8C%E5%8D%81%E4%B8%80%E2%80%9D%E8%B4%AD%E7%89%A9%E6%97%B6%E7%9A%84%E5%87%91%E5%8D%95%E9%97%AE%E9%A2%98/">36-初识动态规划_如何巧妙解解决“双十一”购物时的凑单问题</a>
     </h1>
   
 
         
         
 
-<a href="/2018/11/13/17-%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E4%B8%8A-%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E8%A2%AB%E8%84%B1%E5%BA%93/" class="archive-article-date">
-  	<time datetime="2018-11-13T12:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-13</time>
+<a href="/2019/07/09/36-%E5%88%9D%E8%AF%86%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E5%A6%82%E4%BD%95%E5%B7%A7%E5%A6%99%E8%A7%A3%E8%A7%A3%E5%86%B3%E2%80%9C%E5%8F%8C%E5%8D%81%E4%B8%80%E2%80%9D%E8%B4%AD%E7%89%A9%E6%97%B6%E7%9A%84%E5%87%91%E5%8D%95%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2019-07-09T12:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-09</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -344,7 +723,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.6k字</span>
+        <span class="post-count">6.1k字</span>
       </span>
     </span>
 
@@ -353,7 +732,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">15分</span>
+        <span class="post-count">24分</span>
       </span>
     </span>
 </div>
@@ -372,8 +751,8 @@
       
 			<p>Author: haoransun<br>Wechat: SHR—97</p>
 <p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>记得 2011 年 CSDN 的“脱库”事件吗？当时，CSDN 网站被黑客攻击，超过 600 万用户的注册邮箱和密码明文被泄露，很多网友对 CSDN 明文保存用户密码行为产生了不满。如果你是 CSDN 的一名工程师，<font color="red">你会如何存储用户密码这么重要的数据吗？仅仅 MD5 加密一下存储就够了吗？ </font>要想搞清楚这个问题，就要先弄明白哈希算法。</p>
-<p>哈希算法历史悠久，业界著名的哈希算法也有很多，比如 MD5、SHA 等。在我们平时的开发中，基本上都是拿现成的直接用。所以，这篇文章不会重点剖析哈希算法的原理，也不会教你如何设计一个哈希算法，而是从实战的角度告诉你，<strong>在实际的开发中，我们该如何用哈希算法解决问题</strong>。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>淘宝的“双十一”购物节有各种促销活动，比如“满 200 元减 50 元”。假设你女朋友的购物车中有 n 个（n&gt;100）想买的商品，她希望从里面选几个，在凑够满减条件的前提下，让选出来的商品价格总和最大程度地接近满减条件（200 元），这样就可以极大限度地“薅羊毛”。作为程序员的你，能不能编个代码来帮她搞定呢？</p>
+<p>要想高效地解决这个问题，就要用到我们今天讲的动态规划（Dynamic Programming）。</p>
 	
 	
     </div>
@@ -408,7 +787,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/13/17-%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E4%B8%8A-%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E8%A2%AB%E8%84%B1%E5%BA%93/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/07/09/36-%E5%88%9D%E8%AF%86%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E5%A6%82%E4%BD%95%E5%B7%A7%E5%A6%99%E8%A7%A3%E8%A7%A3%E5%86%B3%E2%80%9C%E5%8F%8C%E5%8D%81%E4%B8%80%E2%80%9D%E8%B4%AD%E7%89%A9%E6%97%B6%E7%9A%84%E5%87%91%E5%8D%95%E9%97%AE%E9%A2%98/">展开全文 >></a>
         </p>
       
 
@@ -442,22 +821,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-Hadoop学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-35-回溯算法-从电影《蝴蝶效应》中学习回溯算法的核心思想" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/10/Hadoop%E5%AD%A6%E4%B9%A0/">Hadoop学习</a>
+      <a class="article-title" href="/2019/07/06/35-%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95-%E4%BB%8E%E7%94%B5%E5%BD%B1%E3%80%8A%E8%9D%B4%E8%9D%B6%E6%95%88%E5%BA%94%E3%80%8B%E4%B8%AD%E5%AD%A6%E4%B9%A0%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E7%9A%84%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/">35-回溯算法_从电影《蝴蝶效应》中学习回溯算法的核心思想</a>
     </h1>
   
 
         
         
 
-<a href="/2018/11/10/Hadoop%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2018-11-10T11:43:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-10</time>
+<a href="/2019/07/06/35-%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95-%E4%BB%8E%E7%94%B5%E5%BD%B1%E3%80%8A%E8%9D%B4%E8%9D%B6%E6%95%88%E5%BA%94%E3%80%8B%E4%B8%AD%E5%AD%A6%E4%B9%A0%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E7%9A%84%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/" class="archive-article-date">
+  	<time datetime="2019-07-06T12:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-06</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -468,7 +847,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">6k字</span>
+        <span class="post-count">3.6k字</span>
       </span>
     </span>
 
@@ -477,7 +856,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">23分</span>
+        <span class="post-count">13分</span>
       </span>
     </span>
 </div>
@@ -495,8 +874,9 @@
     <div class="article-entry" itemprop="articleBody">
       
 			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h2 id="1-BigData是什么？"><a href="#1-BigData是什么？" class="headerlink" title="1 BigData是什么？"></a>1 BigData是什么？</h2><p>&nbsp;&nbsp; 巨量资料,需要利用目前主流软件工具在合理的时间范围内对数据进行截取，转换已达到帮助企业获取有用资讯的目的。<br>&nbsp;&nbsp; 数据量极大：GB、TB、PB数据样板足够大。<br>&nbsp;&nbsp; 数据时效性：time-value 数据处理速度快，合理的时间范围。<br>&nbsp;&nbsp; 数据多样性：数据存在形式多样化。<br>&nbsp;&nbsp; 数据可疑性：数据要有价值。—清洗、降噪（沙海淘金）</p>
-<h2 id="2-BigData面临的问题？"><a href="#2-BigData面临的问题？" class="headerlink" title="2 BigData面临的问题？"></a>2 BigData面临的问题？</h2><p>&nbsp;&nbsp; 存储、分析：<br>&nbsp;&nbsp; 方案：<br>&nbsp;&nbsp; 垂直提升：升级硬件，成本高 &nbsp;&nbsp; 计算机-摩尔定律（每18个月，成本不变-性能提升1倍）<br>&nbsp;&nbsp; <font color="red">水平扩展：成本可线性控制–分布式思维&nbsp;&nbsp; √</font><br>&nbsp;&nbsp; <strong>Hadoop</strong>就是在通过线性服务扩展，去解决大数据所面临的存储和计算。<br>&nbsp;&nbsp; <strong>Hadoop</strong>有两个模块：<br>&nbsp;&nbsp; &nbsp;&nbsp; <a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html" target="_blank" rel="noopener">HDFS</a> hadoop distributed file system：解决大数据存储问题。<br>&nbsp;&nbsp; &nbsp;&nbsp; MapReduce:通过Map阶段和Reduce阶段实现对大数据的分布式并行计算。</p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我们前面的文章提到，深度优先搜索算法利用的是回溯算法思想。这个算法思想非常简单，但是应用却非常广泛。它除了用来指导像深度优先搜索这种经典的算法设计之外，还可以用在很多实际的软件开发场景中，比如正则表达式匹配、编译原理中的语法分析等。</p>
+<p>除此之外，很多经典的数学问题都可以用回溯算法解决，比如数独、八皇后、0-1 背包、图的着色、旅行商问题、全排列等等。既然应用如此广泛，我们今天就来学习一下这个算法思想，看看它是如何指导我们解决问题的。</p>
 	
 	
     </div>
@@ -510,7 +890,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">BigData</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -522,7 +902,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/大数据//" class="article-tag-list-link color4">大数据</a>
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -531,7 +911,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/10/Hadoop%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/07/06/35-%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95-%E4%BB%8E%E7%94%B5%E5%BD%B1%E3%80%8A%E8%9D%B4%E8%9D%B6%E6%95%88%E5%BA%94%E3%80%8B%E4%B8%AD%E5%AD%A6%E4%B9%A0%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E7%9A%84%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3/">展开全文 >></a>
         </p>
       
 
@@ -565,22 +945,396 @@
 
   
     <meta charset="utf-8">
-<article id="post-16-散列表下-为什么散列表和链表经常一起使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-34-分治算法-谈一谈大规模计算框架MapReduce中的分治思想" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/09/16-%E6%95%A3%E5%88%97%E8%A1%A8%E4%B8%8B-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%95%A3%E5%88%97%E8%A1%A8%E5%92%8C%E9%93%BE%E8%A1%A8%E7%BB%8F%E5%B8%B8%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8/">16-散列表下_为什么散列表和链表经常一起使用</a>
+      <a class="article-title" href="/2019/07/04/34-%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95-%E8%B0%88%E4%B8%80%E8%B0%88%E5%A4%A7%E8%A7%84%E6%A8%A1%E8%AE%A1%E7%AE%97%E6%A1%86%E6%9E%B6MapReduce%E4%B8%AD%E7%9A%84%E5%88%86%E6%B2%BB%E6%80%9D%E6%83%B3/">34-分治算法_谈一谈大规模计算框架MapReduce中的分治思想</a>
     </h1>
   
 
         
         
 
-<a href="/2018/11/09/16-%E6%95%A3%E5%88%97%E8%A1%A8%E4%B8%8B-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%95%A3%E5%88%97%E8%A1%A8%E5%92%8C%E9%93%BE%E8%A1%A8%E7%BB%8F%E5%B8%B8%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2018-11-09T13:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-09</time>
+<a href="/2019/07/04/34-%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95-%E8%B0%88%E4%B8%80%E8%B0%88%E5%A4%A7%E8%A7%84%E6%A8%A1%E8%AE%A1%E7%AE%97%E6%A1%86%E6%9E%B6MapReduce%E4%B8%AD%E7%9A%84%E5%88%86%E6%B2%BB%E6%80%9D%E6%83%B3/" class="archive-article-date">
+  	<time datetime="2019-07-04T13:01:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-04</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">3.5k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">12分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>MapReduce 是 Google 大数据处理的三驾马车之一，另外两个是 GFS 和 Bigtable。它在倒排索引、PageRank 计算、网页分析等搜索引擎相关的技术中都有大量的应用。</p>
+<p>尽管开发一个 MapReduce 看起来很高深，感觉跟我们遥不可及。实际上，万变不离其宗，它的本质就是我们今天要学的这种算法思想，分治算法。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/04/34-%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95-%E8%B0%88%E4%B8%80%E8%B0%88%E5%A4%A7%E8%A7%84%E6%A8%A1%E8%AE%A1%E7%AE%97%E6%A1%86%E6%9E%B6MapReduce%E4%B8%AD%E7%9A%84%E5%88%86%E6%B2%BB%E6%80%9D%E6%83%B3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-33-贪心算法-如何用贪心算法实现Huffman压缩编码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/01/33-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95-%E5%A6%82%E4%BD%95%E7%94%A8%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0Huffman%E5%8E%8B%E7%BC%A9%E7%BC%96%E7%A0%81/">33-贪心算法_如何用贪心算法实现Huffman压缩编码</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/07/01/33-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95-%E5%A6%82%E4%BD%95%E7%94%A8%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0Huffman%E5%8E%8B%E7%BC%A9%E7%BC%96%E7%A0%81/" class="archive-article-date">
+  	<time datetime="2019-07-01T12:01:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-01</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">4.1k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">14分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>基础的数据结构和算法我们基本上学完了，接下来几节，会讲几种更加基本的算法。它们分别是贪心算法、分治算法、回溯算法、动态规划。更加确切地说，它们应该是算法思想，并不是具体的算法，常用来指导我们设计具体的算法和编码等。</p>
+<p>贪心、分治、回溯、动态规划这 4 个算法思想，原理解释起来都很简单，但是要真正掌握且灵活应用，并不是件容易的事情。所以，接下来的这 4 个算法思想的讲解，依旧不会长篇大论地去讲理论，而是结合具体的问题，让你自己感受这些算法是怎么工作的，是如何解决问题的，带你在问题中体会这些算法的本质。个人觉得，这比单纯记忆原理和定义要更有价值。</p>
+<p>今天，我们先来学习一下贪心算法（greedy algorithm）。贪心算法有很多经典的应用，比如霍夫曼编码（Huffman Coding）、Prim 和 Kruskal 最小生成树算法、还有 Dijkstra 单源最短路径算法。最小生成树算法和最短路径算法我们后面会讲到，所以我们今天讲下霍夫曼编码，看看<strong>它是如何利用贪心算法来实现对数据压缩编码，有效节省数据存储空间的</strong>。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/01/33-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95-%E5%A6%82%E4%BD%95%E7%94%A8%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0Huffman%E5%8E%8B%E7%BC%A9%E7%BC%96%E7%A0%81/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-32-AC自动机-如何用多模式串匹配实现敏感词过滤功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/25/32-AC%E8%87%AA%E5%8A%A8%E6%9C%BA-%E5%A6%82%E4%BD%95%E7%94%A8%E5%A4%9A%E6%A8%A1%E5%BC%8F%E4%B8%B2%E5%8C%B9%E9%85%8D%E5%AE%9E%E7%8E%B0%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4%E5%8A%9F%E8%83%BD/">32-AC自动机_如何用多模式串匹配实现敏感词过滤功能</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/06/25/32-AC%E8%87%AA%E5%8A%A8%E6%9C%BA-%E5%A6%82%E4%BD%95%E7%94%A8%E5%A4%9A%E6%A8%A1%E5%BC%8F%E4%B8%B2%E5%8C%B9%E9%85%8D%E5%AE%9E%E7%8E%B0%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4%E5%8A%9F%E8%83%BD/" class="archive-article-date">
+  	<time datetime="2019-06-25T12:01:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-25</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">4.5k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">16分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>很多支持用户发表文本内容的网站，比如 BBS，大都会有敏感词过滤功能，用来过滤掉用户输入的一些淫秽、反动、谩骂等内容。你有没有想过，这个功能是怎么实现的呢？</p>
+<p>实际上，这些功能最基本的原理就是字符串匹配算法，也就是通过维护一个敏感词的字典，当用户输入一段文字内容之后，通过字符串匹配算法，来查找用户输入的这段文字，是否包含敏感词。如果有，就用“***”把它替代掉。</p>
+<p>我们前面讲过好几种字符串匹配算法了，它们都可以处理这个问题。但是，对于访问量巨大的网站来说，比如淘宝，用户每天的评论数有几亿、甚至几十亿。这时候，我们对敏感词过滤系统的性能要求就要很高。毕竟，我们也不想，用户输入内容之后，要等几秒才能发送出去吧？我们也不想，为了这个功能耗费过多的机器吧？<strong>那如何才能实现一个高性能的敏感词过滤系统呢？</strong>这就要用到今天的<strong>多模式串匹配算法</strong>。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/25/32-AC%E8%87%AA%E5%8A%A8%E6%9C%BA-%E5%A6%82%E4%BD%95%E7%94%A8%E5%A4%9A%E6%A8%A1%E5%BC%8F%E4%B8%B2%E5%8C%B9%E9%85%8D%E5%AE%9E%E7%8E%B0%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4%E5%8A%9F%E8%83%BD/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-18-SQL语句逻辑相同-性能却为何差异巨大" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/23/18-SQL%E8%AF%AD%E5%8F%A5%E9%80%BB%E8%BE%91%E7%9B%B8%E5%90%8C-%E6%80%A7%E8%83%BD%E5%8D%B4%E4%B8%BA%E4%BD%95%E5%B7%AE%E5%BC%82%E5%B7%A8%E5%A4%A7/">18-SQL语句逻辑相同_性能却为何差异巨大</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/06/23/18-SQL%E8%AF%AD%E5%8F%A5%E9%80%BB%E8%BE%91%E7%9B%B8%E5%90%8C-%E6%80%A7%E8%83%BD%E5%8D%B4%E4%B8%BA%E4%BD%95%E5%B7%AE%E5%BC%82%E5%B7%A8%E5%A4%A7/" class="archive-article-date">
+  	<time datetime="2019-06-23T13:15:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -617,13 +1371,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>你有没有发现，有两种数据结构，散列表和链表，经常会被放在一起使用。你还记得，前面的章节中都有哪些地方讲到散列表和链表的组合使用吗？我带你一起回忆一下。</p>
-<p>在链表那一节，我讲到如何用链表来实现 LRU 缓存淘汰算法，但是链表实现的 LRU 缓存淘汰算法的时间复杂度是 O(n)，当时我也提到了，通过散列表可以将这个时间复杂度降低到 O(1)。</p>
-<p>在跳表那一节，我提到 Redis 的有序集合是使用跳表来实现的，跳表可以看作一种改进版的链表。当时我们也提到，Redis 有序集合不仅使用了跳表，还用到了散列表。</p>
-<p>除此之外，如果你熟悉 Java 编程语言，你会发现 LinkedHashMap 这样一个常用的容器，也用到了散列表和链表两种数据结构。</p>
-<p>今天，我们就来看看，在这几个问题中，散列表和链表都是如何组合起来使用的，以及为什么散列表和链表会经常放到一块使用。</p>
+			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在MySQL中，有很多看上去逻辑相同，但性能却差异巨大的SQL语句。对这些语句使用不当的话，就会不经意间导致整个数据库的压力变大。</p>
+<p>今天挑选了三个这样的案例和你分享。希望再遇到相似的问题时，你可以做到举一反三、快速解决问题。</p>
 	
 	
     </div>
@@ -637,7 +1387,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
         		</li>
       		
 		</ul>
@@ -649,7 +1399,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
         		</li>
       		
 		</ul>
@@ -658,759 +1408,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/09/16-%E6%95%A3%E5%88%97%E8%A1%A8%E4%B8%8B-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%95%A3%E5%88%97%E8%A1%A8%E5%92%8C%E9%93%BE%E8%A1%A8%E7%BB%8F%E5%B8%B8%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-15-散列表中-如何打造一个工业级水平的散列表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/09/15-%E6%95%A3%E5%88%97%E8%A1%A8%E4%B8%AD-%E5%A6%82%E4%BD%95%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E5%B7%A5%E4%B8%9A%E7%BA%A7%E6%B0%B4%E5%B9%B3%E7%9A%84%E6%95%A3%E5%88%97%E8%A1%A8/">15-散列表中_如何打造一个工业级水平的散列表</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2018/11/09/15-%E6%95%A3%E5%88%97%E8%A1%A8%E4%B8%AD-%E5%A6%82%E4%BD%95%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E5%B7%A5%E4%B8%9A%E7%BA%A7%E6%B0%B4%E5%B9%B3%E7%9A%84%E6%95%A3%E5%88%97%E8%A1%A8/" class="archive-article-date">
-  	<time datetime="2018-11-09T08:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-09</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">6k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">20分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>通过上一篇的学习，我们知道，散列表的查询效率并不能笼统地说成是 O(1)。它跟散列函数、装载因子、散列冲突等都有关系。如果散列函数设计得不好，或者装载因子过高，都可能导致散列冲突发生的概率升高，查询效率下降。</p>
-<p>在极端情况下，有些恶意的攻击者，还有可能通过精心构造的数据，使得所有的数据经过散列函数之后，都散列到同一个槽里。如果我们使用的是基于链表的冲突解决方法，那这个时候，散列表就会退化为链表，查询的时间复杂度就从 O(1) 急剧退化为 O(n)。</p>
-<p>如果散列表中有 10 万个数据，退化后的散列表查询的效率就下降了 10 万倍。更直接点说，如果之前运行 100 次查询只需要 0.1 秒，那现在就需要 1 万秒。这样就有可能因为查询操作消耗大量 CPU 或者线程资源，导致系统无法响应其他请求，从而达到拒绝服务攻击（DoS）的目的。这也就是散列表碰撞攻击的基本原理。</p>
-<p>今天，我们就来学习一下，<font color="red">如何设计一个可以应对各种异常情况的工业级散列表，来避免在散列冲突的情况下，散列表性能的急剧下降，并且能抵抗散列碰撞攻击？</font></p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/09/15-%E6%95%A3%E5%88%97%E8%A1%A8%E4%B8%AD-%E5%A6%82%E4%BD%95%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E5%B7%A5%E4%B8%9A%E7%BA%A7%E6%B0%B4%E5%B9%B3%E7%9A%84%E6%95%A3%E5%88%97%E8%A1%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-14-散列表上-Word文档中的单词拼写检查功能如何实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/08/14-%E6%95%A3%E5%88%97%E8%A1%A8%E4%B8%8A-Word%E6%96%87%E6%A1%A3%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8D%E6%8B%BC%E5%86%99%E6%A3%80%E6%9F%A5%E5%8A%9F%E8%83%BD%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0/">14-散列表上_Word文档中的单词拼写检查功能如何实现</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2018/11/08/14-%E6%95%A3%E5%88%97%E8%A1%A8%E4%B8%8A-Word%E6%96%87%E6%A1%A3%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8D%E6%8B%BC%E5%86%99%E6%A3%80%E6%9F%A5%E5%8A%9F%E8%83%BD%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0/" class="archive-article-date">
-  	<time datetime="2018-11-08T12:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-08</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.9k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">13分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Word 这种文本编辑器你平时应该经常用吧，那你有没有留意过它的拼写检查功能呢？一旦我们在 Word 里输入一个错误的英文单词，它就会用标红的方式提示“拼写错误”。</p>
-<p><font color="red">Word 的这个单词拼写检查功能，虽然很小但却非常实用。你有没有想过，这个功能是如何实现的呢？</font></p>
-<p>其实啊，一点儿都不难。只要你学完今天的内容，散列表（Hash Table）。你就能像微软 Office 的工程师一样，轻松实现这个功能。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/08/14-%E6%95%A3%E5%88%97%E8%A1%A8%E4%B8%8A-Word%E6%96%87%E6%A1%A3%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8D%E6%8B%BC%E5%86%99%E6%A3%80%E6%9F%A5%E5%8A%9F%E8%83%BD%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-13-跳表-为什么Redis一定要用跳表来实现有序集合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/06/13-%E8%B7%B3%E8%A1%A8-%E4%B8%BA%E4%BB%80%E4%B9%88Redis%E4%B8%80%E5%AE%9A%E8%A6%81%E7%94%A8%E8%B7%B3%E8%A1%A8%E6%9D%A5%E5%AE%9E%E7%8E%B0%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88/">13-跳表_为什么Redis一定要用跳表来实现有序集合</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2018/11/06/13-%E8%B7%B3%E8%A1%A8-%E4%B8%BA%E4%BB%80%E4%B9%88Redis%E4%B8%80%E5%AE%9A%E8%A6%81%E7%94%A8%E8%B7%B3%E8%A1%A8%E6%9D%A5%E5%AE%9E%E7%8E%B0%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88/" class="archive-article-date">
-  	<time datetime="2018-11-06T11:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-06</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.3k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">14分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><a href="https://github.com/wangzheng0822/algo" target="_blank" rel="noopener">王争GitHub跳表Java实现</a></p>
-<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上两节我们讲了二分查找算法。当时我讲到，因为二分查找底层依赖的是数组随机访问的特性，所以只能用数组来实现。如果数据存储在链表中，就真的没法用二分查找算法了吗？</p>
-<p>实际上，我们只需要对链表稍加改造，就可以支持类似“二分”的查找算法。我们把改造之后的数据结构叫作<strong>跳表</strong>（Skip list），也就是今天要讲的内容。</p>
-<p>跳表这种数据结构对你来说，可能会比较陌生，因为一般的数据结构和算法书籍里都不怎么会讲。但是它确实是一种各方面性能都比较优秀的动态数据结构，可以支持快速的插入、删除、查找操作，写起来也不复杂，甚至可以替代<strong>红黑树（Red-black tree）</strong>。</p>
-<p>Redis 中的有序集合（Sorted Set）就是用跳表来实现的。如果你有一定基础，应该知道红黑树也可以实现快速的插入、删除和查找操作。<font color="red">那 Redis 为什么会选择用跳表来实现有序集合呢？</font> 为什么不用红黑树呢？学完今天的内容，你就知道答案了。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/06/13-%E8%B7%B3%E8%A1%A8-%E4%B8%BA%E4%BB%80%E4%B9%88Redis%E4%B8%80%E5%AE%9A%E8%A6%81%E7%94%A8%E8%B7%B3%E8%A1%A8%E6%9D%A5%E5%AE%9E%E7%8E%B0%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-12-二分查找下-如何快速定位IP对应的省份地址" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/04/12-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8B-%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%AE%9A%E4%BD%8DIP%E5%AF%B9%E5%BA%94%E7%9A%84%E7%9C%81%E4%BB%BD%E5%9C%B0%E5%9D%80/">12-二分查找下_如何快速定位IP对应的省份地址</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2018/11/04/12-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8B-%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%AE%9A%E4%BD%8DIP%E5%AF%B9%E5%BA%94%E7%9A%84%E7%9C%81%E4%BB%BD%E5%9C%B0%E5%9D%80/" class="archive-article-date">
-  	<time datetime="2018-11-04T10:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-04</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.9k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">14分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>通过 IP 地址来查找 IP 归属地的功能，不知道你有没有用过？没用过也没关系，你现在可以打开百度，在搜索框里随便输一个 IP 地址，就会看到它的归属地。</p>
-<p><img src="/2018/11/04/12-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8B-%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%AE%9A%E4%BD%8DIP%E5%AF%B9%E5%BA%94%E7%9A%84%E7%9C%81%E4%BB%BD%E5%9C%B0%E5%9D%80/c2daea40-5ba6-47a8-a2a4-14700561d4bb.jpg" alt></p>
-<p>这个功能并不复杂，它是通过维护一个很大的 IP 地址库来实现的。地址库中包括 IP 地址范围和归属地的对应关系。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/04/12-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8B-%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%AE%9A%E4%BD%8DIP%E5%AF%B9%E5%BA%94%E7%9A%84%E7%9C%81%E4%BB%BD%E5%9C%B0%E5%9D%80/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-11-二分查找上-如何用最省内存的方式实现快速查找功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/02/11-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8A-%E5%A6%82%E4%BD%95%E7%94%A8%E6%9C%80%E7%9C%81%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%BF%AB%E9%80%9F%E6%9F%A5%E6%89%BE%E5%8A%9F%E8%83%BD/">11-二分查找上_如何用最省内存的方式实现快速查找功能</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2018/11/02/11-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8A-%E5%A6%82%E4%BD%95%E7%94%A8%E6%9C%80%E7%9C%81%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%BF%AB%E9%80%9F%E6%9F%A5%E6%89%BE%E5%8A%9F%E8%83%BD/" class="archive-article-date">
-  	<time datetime="2018-11-02T13:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-02</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.6k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">16分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天我们讲一种<strong>针对有序数据集合</strong>的查找算法：二分查找（Binary Search）算法，也叫折半查找算法。二分查找的思想非常简单，很多非计算机专业的同学很容易就能理解，但是看似越简单的东西往往越难掌握好，想要灵活应用就更加困难。</p>
-<p>老规矩，我们还是来看一道思考题。</p>
-<p>设我们有 1000 万个整数数据，每个数据占 8 个字节，<font color="red">如何设计数据结构和算法，快速判断某个整数是否出现在这 1000 万数据中？</font> 我们希望这个功能不要占用太多的内存空间，最多不要超过 100MB，你会怎么做呢？带着这个问题，让我们进入今天的内容吧！</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/02/11-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8A-%E5%A6%82%E4%BD%95%E7%94%A8%E6%9C%80%E7%9C%81%E5%86%85%E5%AD%98%E7%9A%84%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%BF%AB%E9%80%9F%E6%9F%A5%E6%89%BE%E5%8A%9F%E8%83%BD/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-10-排序优化-如何实现一个通用的高性能的排序函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/01/10-%E6%8E%92%E5%BA%8F%E4%BC%98%E5%8C%96-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E9%80%9A%E7%94%A8%E7%9A%84%E9%AB%98%E6%80%A7%E8%83%BD%E7%9A%84%E6%8E%92%E5%BA%8F%E5%87%BD%E6%95%B0/">10-排序优化_如何实现一个通用的高性能的排序函数</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2018/11/01/10-%E6%8E%92%E5%BA%8F%E4%BC%98%E5%8C%96-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E9%80%9A%E7%94%A8%E7%9A%84%E9%AB%98%E6%80%A7%E8%83%BD%E7%9A%84%E6%8E%92%E5%BA%8F%E5%87%BD%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2018-11-01T12:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-01</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.1k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">10分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>几乎所有的编程语言都会提供排序函数，比如 C 语言中 qsort()，C++ STL 中的 sort()、stable_sort()，还有 Java 语言中的 Collections.sort()。在平时的开发中，我们也都是直接使用这些现成的函数来实现业务逻辑中的排序功能。那你知道这些排序函数是如何实现的吗？底层都利用了哪种排序算法呢？</p>
-<p>基于这些问题，今天我们就来看排序这部分的最后一块内容：<font color="red">如何实现一个通用的、高性能的排序函数？</font></p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/01/10-%E6%8E%92%E5%BA%8F%E4%BC%98%E5%8C%96-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E9%80%9A%E7%94%A8%E7%9A%84%E9%AB%98%E6%80%A7%E8%83%BD%E7%9A%84%E6%8E%92%E5%BA%8F%E5%87%BD%E6%95%B0/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/06/23/18-SQL%E8%AF%AD%E5%8F%A5%E9%80%BB%E8%BE%91%E7%9B%B8%E5%90%8C-%E6%80%A7%E8%83%BD%E5%8D%B4%E4%B8%BA%E4%BD%95%E5%B7%AE%E5%BC%82%E5%B7%A8%E5%A4%A7/">展开全文 >></a>
         </p>
       
 
@@ -1445,7 +1443,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/21/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><a class="page-number" href="/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/23/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/21/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><a class="page-number" href="/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/23/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1715,6 +1713,46 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">搬砖结晶</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">推荐系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">目标检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">SkLearn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">图神经网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TensorFlow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">研究生课题-AD检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">研究生成果</a>
               </li>
             
             <div class="clearfix"></div>

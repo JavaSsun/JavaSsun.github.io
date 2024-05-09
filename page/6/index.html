@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 273</nav>
+		<nav style="color: #7FFFD4;">总文章数 379</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -192,22 +192,22 @@
             
   
     <meta charset="utf-8">
-<article id="post-10-OpenResty用Lua语言实现简单服务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-6-模型的权值初始化与损失函数介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/12/10-OpenResty%E7%94%A8Lua%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1/">10-OpenResty用Lua语言实现简单服务</a>
+      <a class="article-title" href="/2022/10/20/6-%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%9D%83%E5%80%BC%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%8E%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E4%BB%8B%E7%BB%8D/">6-模型的权值初始化与损失函数介绍</a>
     </h1>
   
 
         
         
 
-<a href="/2019/11/12/10-OpenResty%E7%94%A8Lua%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1/" class="archive-article-date">
-  	<time datetime="2019-11-12T13:40:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-12</time>
+<a href="/2022/10/20/6-%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%9D%83%E5%80%BC%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%8E%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E4%BB%8B%E7%BB%8D/" class="archive-article-date">
+  	<time datetime="2022-10-20T08:10:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-20</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -218,7 +218,1051 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">329字</span>
+        <span class="post-count">6.2k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">22分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Pytorch官方英文文档：<a href="https://pytorch.org/docs/stable/torch.html?" target="_blank" rel="noopener">https://pytorch.org/docs/stable/torch.html?</a><br>Pytorch中文文档：<a href="https://pytorch-cn.readthedocs.io/zh/latest/" target="_blank" rel="noopener">https://pytorch-cn.readthedocs.io/zh/latest/</a></p>
+<h2 id="1-权值初始化"><a href="#1-权值初始化" class="headerlink" title="1. 权值初始化"></a>1. 权值初始化</h2><p>在网络模型搭建完成之后，对网络中的权重进行合适的初始化是非常重要的一个步骤， 初始化好了，比如正好初始化到模型的最优解附近，那么模型训练起来速度也会非常的快， 但如果初始化不好，离最优解很远，那么模型就需要更多次迭代，有时候还会引发梯度消失和爆炸现象， 所以正确的权值初始化还是非常重要的，下面我们就来看看常用的权值初始化的方法，但是在这之前，先了解一下什么是梯度消失和梯度爆炸现象。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">PyTorch</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/10/20/6-%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%9D%83%E5%80%BC%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%8E%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E4%BB%8B%E7%BB%8D/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-5-nn各网络层介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/17/5-nn%E5%90%84%E7%BD%91%E7%BB%9C%E5%B1%82%E4%BB%8B%E7%BB%8D/">5-nn各网络层介绍</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2022/10/17/5-nn%E5%90%84%E7%BD%91%E7%BB%9C%E5%B1%82%E4%BB%8B%E7%BB%8D/" class="archive-article-date">
+  	<time datetime="2022-10-17T05:10:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-17</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">3.6k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">12分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Pytorch官方英文文档：<a href="https://pytorch.org/docs/stable/torch.html?" target="_blank" rel="noopener">https://pytorch.org/docs/stable/torch.html?</a><br>Pytorch中文文档：<a href="https://pytorch-cn.readthedocs.io/zh/latest/" target="_blank" rel="noopener">https://pytorch-cn.readthedocs.io/zh/latest/</a></p>
+<h2 id="1-卷积运算与卷积层"><a href="#1-卷积运算与卷积层" class="headerlink" title="1. 卷积运算与卷积层"></a>1. 卷积运算与卷积层</h2><p>说卷积层，我们得先从卷积运算开始， 卷积运算就是卷积核在输入信号（图像）上滑动， 相应位置上进行<strong>乘加</strong>。 卷积核又称为滤过器，过滤器， 可认为是某种模式，某种特征。</p>
+<p>卷积过程类似于用一个模板去图像上寻找与它相似的区域， 与卷积核模式越相似， 激活值越高， 从而实现特征提取。 好吧，估计依然懵逼，下面我们就看看1维/2维/3维的卷积示意图，通过动图的方式看看卷积操作到底在干啥？</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">PyTorch</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/10/17/5-nn%E5%90%84%E7%BD%91%E7%BB%9C%E5%B1%82%E4%BB%8B%E7%BB%8D/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-Pytorch提取神经网络层结构-层参数及自定义初始化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/14/Pytorch%E6%8F%90%E5%8F%96%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%B1%82%E7%BB%93%E6%9E%84-%E5%B1%82%E5%8F%82%E6%95%B0%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89%E5%88%9D%E5%A7%8B%E5%8C%96/">Pytorch提取神经网络层结构-层参数及自定义初始化</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2022/10/14/Pytorch%E6%8F%90%E5%8F%96%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%B1%82%E7%BB%93%E6%9E%84-%E5%B1%82%E5%8F%82%E6%95%B0%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89%E5%88%9D%E5%A7%8B%E5%8C%96/" class="archive-article-date">
+  	<time datetime="2022-10-14T05:10:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-14</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.9k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">10分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<h2 id="1-提取层结构"><a href="#1-提取层结构" class="headerlink" title="1. 提取层结构"></a>1. 提取层结构</h2><p>对于一个给定的模型，如果不想要模型中所有的层结构，只希望能够提取网络中的某一层或者某几层，应该如何实现呢？</p>
+<p>首先定义一下神经网络结构：</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">PyTorch</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/10/14/Pytorch%E6%8F%90%E5%8F%96%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%B1%82%E7%BB%93%E6%9E%84-%E5%B1%82%E5%8F%82%E6%95%B0%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89%E5%88%9D%E5%A7%8B%E5%8C%96/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-4-模型创建Module-模型容器Containers及AlexNet网络搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/12/4-%E6%A8%A1%E5%9E%8B%E5%88%9B%E5%BB%BAModule-%E6%A8%A1%E5%9E%8B%E5%AE%B9%E5%99%A8Containers%E5%8F%8AAlexNet%E7%BD%91%E7%BB%9C%E6%90%AD%E5%BB%BA/">4-模型创建Module-模型容器Containers及AlexNet网络搭建</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2022/10/12/4-%E6%A8%A1%E5%9E%8B%E5%88%9B%E5%BB%BAModule-%E6%A8%A1%E5%9E%8B%E5%AE%B9%E5%99%A8Containers%E5%8F%8AAlexNet%E7%BD%91%E7%BB%9C%E6%90%AD%E5%BB%BA/" class="archive-article-date">
+  	<time datetime="2022-10-12T11:10:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-12</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">7.9k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">29分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Pytorch官方英文文档：<a href="https://pytorch.org/docs/stable/torch.html?" target="_blank" rel="noopener">https://pytorch.org/docs/stable/torch.html?</a><br>Pytorch中文文档：<a href="https://pytorch-cn.readthedocs.io/zh/latest/" target="_blank" rel="noopener">https://pytorch-cn.readthedocs.io/zh/latest/</a></p>
+<h2 id="1-Pytorch模型的创建"><a href="#1-Pytorch模型的创建" class="headerlink" title="1. Pytorch模型的创建"></a>1. Pytorch模型的创建</h2><p>在学习Pytorch的模型创建之前，我们依然是回顾一下模型创建到底是以什么样的逻辑存在的， 上一次，我们已经整理了机器模型学习的五大模块，分别是数据，<strong>模型</strong>，损失函数，优化器，迭代训练：</p>
+<p><img src="/2022/10/12/4-%E6%A8%A1%E5%9E%8B%E5%88%9B%E5%BB%BAModule-%E6%A8%A1%E5%9E%8B%E5%AE%B9%E5%99%A8Containers%E5%8F%8AAlexNet%E7%BD%91%E7%BB%9C%E6%90%AD%E5%BB%BA/863635468.png" alt></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">PyTorch</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/10/12/4-%E6%A8%A1%E5%9E%8B%E5%88%9B%E5%BB%BAModule-%E6%A8%A1%E5%9E%8B%E5%AE%B9%E5%99%A8Containers%E5%8F%8AAlexNet%E7%BD%91%E7%BB%9C%E6%90%AD%E5%BB%BA/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-3-Pytorch数据读取机制-DataLoader-与图像预处理模块-transforms" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/09/3-Pytorch%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E6%9C%BA%E5%88%B6-DataLoader-%E4%B8%8E%E5%9B%BE%E5%83%8F%E9%A2%84%E5%A4%84%E7%90%86%E6%A8%A1%E5%9D%97-transforms/">3-Pytorch数据读取机制(DataLoader)与图像预处理模块(transforms)</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2022/10/09/3-Pytorch%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E6%9C%BA%E5%88%B6-DataLoader-%E4%B8%8E%E5%9B%BE%E5%83%8F%E9%A2%84%E5%A4%84%E7%90%86%E6%A8%A1%E5%9D%97-transforms/" class="archive-article-date">
+  	<time datetime="2022-10-09T11:10:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-09</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">6.9k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">25分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Pytorch官方英文文档：<a href="https://pytorch.org/docs/stable/torch.html?" target="_blank" rel="noopener">https://pytorch.org/docs/stable/torch.html?</a><br>Pytorch中文文档：<a href="https://pytorch-cn.readthedocs.io/zh/latest/" target="_blank" rel="noopener">https://pytorch-cn.readthedocs.io/zh/latest/</a></p>
+<h2 id="1-Pytorch的数据读取机制"><a href="#1-Pytorch的数据读取机制" class="headerlink" title="1. Pytorch的数据读取机制"></a>1. Pytorch的数据读取机制</h2><p>在学习Pytorch的数据读取之前，我们得先回顾一下这个数据读取到底是以什么样的逻辑存在的， 上一次，我们已经整理了机器模型学习的五大模块，分别是<strong>数据</strong>，模型，损失函数，优化器，迭代训练：</p>
+<p><img src="/2022/10/09/3-Pytorch%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E6%9C%BA%E5%88%B6-DataLoader-%E4%B8%8E%E5%9B%BE%E5%83%8F%E9%A2%84%E5%A4%84%E7%90%86%E6%A8%A1%E5%9D%97-transforms/856045390.png" alt></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">PyTorch</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/10/09/3-Pytorch%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E6%9C%BA%E5%88%B6-DataLoader-%E4%B8%8E%E5%9B%BE%E5%83%8F%E9%A2%84%E5%A4%84%E7%90%86%E6%A8%A1%E5%9D%97-transforms/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-2-Pytorch的动态图-自动求导及逻辑回归" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/02/2-Pytorch%E7%9A%84%E5%8A%A8%E6%80%81%E5%9B%BE-%E8%87%AA%E5%8A%A8%E6%B1%82%E5%AF%BC%E5%8F%8A%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/">2-Pytorch的动态图-自动求导及逻辑回归</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2022/10/02/2-Pytorch%E7%9A%84%E5%8A%A8%E6%80%81%E5%9B%BE-%E8%87%AA%E5%8A%A8%E6%B1%82%E5%AF%BC%E5%8F%8A%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/" class="archive-article-date">
+  	<time datetime="2022-10-02T02:50:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-02</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">5.5k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">21分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Pytorch官方英文文档：<a href="https://pytorch.org/docs/stable/torch.html?" target="_blank" rel="noopener">https://pytorch.org/docs/stable/torch.html?</a><br>Pytorch中文文档：<a href="https://pytorch-cn.readthedocs.io/zh/latest/" target="_blank" rel="noopener">https://pytorch-cn.readthedocs.io/zh/latest/</a></p>
+<h2 id="1-计算图与Pytorch的动态图机制"><a href="#1-计算图与Pytorch的动态图机制" class="headerlink" title="1. 计算图与Pytorch的动态图机制"></a>1. 计算图与Pytorch的动态图机制</h2><h3 id="1-1-计算图"><a href="#1-1-计算图" class="headerlink" title="1. 1 计算图"></a>1. 1 计算图</h3><p>前面已经整理了张量的一系列操作，而深度学习啊， 其实就是对各种张量进行操作，随着操作的种类和数量的增大，会导致各种想不到的问题，比如多个操作之间该并行还是顺序执行，底层的设备如何协同，如何避免冗余的操作等，这些问题都会影响我们算法的执行效率，甚至会出现一些bug。 而计算图就是为了解决这些问题而产生的， 那么什么是计算图呢？</p>
+<p>计算图是用来<strong>描述运算</strong>的有向无环图。 主要有两个因素： 节点和边。 其中节点表示数据，如向量，矩阵，张量， 而边表示运算，如加减乘除，卷积等。下面我们看一下具体这东西具体是什么样子：</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">PyTorch</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/10/02/2-Pytorch%E7%9A%84%E5%8A%A8%E6%80%81%E5%9B%BE-%E8%87%AA%E5%8A%A8%E6%B1%82%E5%AF%BC%E5%8F%8A%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-1-Pytorch的数据载体张量与线性回归" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/09/28/1-Pytorch%E7%9A%84%E6%95%B0%E6%8D%AE%E8%BD%BD%E4%BD%93%E5%BC%A0%E9%87%8F%E4%B8%8E%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">1-Pytorch的数据载体张量与线性回归</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2022/09/28/1-Pytorch%E7%9A%84%E6%95%B0%E6%8D%AE%E8%BD%BD%E4%BD%93%E5%BC%A0%E9%87%8F%E4%B8%8E%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" class="archive-article-date">
+  	<time datetime="2022-09-28T11:50:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-28</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">5.6k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">24分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Pytorch官方英文文档：<a href="https://pytorch.org/docs/stable/torch.html?" target="_blank" rel="noopener">https://pytorch.org/docs/stable/torch.html?</a><br>Pytorch中文文档：<a href="https://pytorch-cn.readthedocs.io/zh/latest/" target="_blank" rel="noopener">https://pytorch-cn.readthedocs.io/zh/latest/</a></p>
+<h2 id="1-张量的简介与创建"><a href="#1-张量的简介与创建" class="headerlink" title="1. 张量的简介与创建"></a>1. 张量的简介与创建</h2><p>这部分内容介绍pytorch中的数据结构——Tensor，Tensor是PyTorch中最基础的概念，其参与了整个运算过程，主要介绍张量的概念和属性，如data, device, dtype等，并介绍tensor的基本创建方法，如直接创建、依数值创建和依概率分布创建等。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">PyTorch</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/09/28/1-Pytorch%E7%9A%84%E6%95%B0%E6%8D%AE%E8%BD%BD%E4%BD%93%E5%BC%A0%E9%87%8F%E4%B8%8E%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-Pytorch与词向量" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/09/25/Pytorch%E4%B8%8E%E8%AF%8D%E5%90%91%E9%87%8F/">Pytorch与词向量</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2022/09/25/Pytorch%E4%B8%8E%E8%AF%8D%E5%90%91%E9%87%8F/" class="archive-article-date">
+  	<time datetime="2022-09-25T10:50:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-25</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">5.8k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">22分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Pytorch官方文档：<a href="https://pytorch.org/docs/stable/torch.html" target="_blank" rel="noopener">https://pytorch.org/docs/stable/torch.html</a></p>
+<h2 id="1-关于词向量的基础知识"><a href="#1-关于词向量的基础知识" class="headerlink" title="1. 关于词向量的基础知识"></a>1. 关于词向量的基础知识</h2><p>这一块不会讲的很深， 但是应该够理解这节课的知识了，如果想更加深入的学习，可以搜一些相关的资料进行研究。 毕竟这个系列的课都是实战，理论不会涉及太多，我这里把我了解的这块描述一下，尽量通俗易懂。</p>
+<p>首先，我们先来聊一聊在计算机中是如何表示一个词的。 比如下面一句话<br>                        ““John likes to watch movies. Mary likes too.””<br>这句话如果想让计算机看明白，我们应该怎么表示呢？ 首先，我们会有一个词典，这个词典，就类似下面这样子：</p>
+<p><img src="/2022/09/25/Pytorch%E4%B8%8E%E8%AF%8D%E5%90%91%E9%87%8F/767731531.png" alt></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">PyTorch</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/09/25/Pytorch%E4%B8%8E%E8%AF%8D%E5%90%91%E9%87%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-Pytorch基础理论和简单的神经网络实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/09/23/Pytorch%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA%E5%92%8C%E7%AE%80%E5%8D%95%E7%9A%84%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AE%9E%E7%8E%B0/">Pytorch基础理论和简单的神经网络实现</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2022/09/23/Pytorch%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA%E5%92%8C%E7%AE%80%E5%8D%95%E7%9A%84%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AE%9E%E7%8E%B0/" class="archive-article-date">
+  	<time datetime="2022-09-23T10:50:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-23</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">5.1k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">21分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Pytorch官方文档：<a href="https://pytorch.org/docs/stable/torch.html?" target="_blank" rel="noopener">https://pytorch.org/docs/stable/torch.html?</a></p>
+<h2 id="1-Pytorch的基础知识"><a href="#1-Pytorch的基础知识" class="headerlink" title="1. Pytorch的基础知识"></a>1. Pytorch的基础知识</h2><h3 id="1-1-什么是Pytorch？"><a href="#1-1-什么是Pytorch？" class="headerlink" title="1.1 什么是Pytorch？"></a>1.1 什么是Pytorch？</h3><p>PyTorch是一个基于Python的科学计算库，它有以下特点:</p>
+<ul>
+<li>类似于NumPy，但是它可以使用GPU</li>
+<li>可以用它定义深度学习模型，可以灵活地进行深度学习模型的训练和使用</li></ul>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">PyTorch</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/09/23/Pytorch%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA%E5%92%8C%E7%AE%80%E5%8D%95%E7%9A%84%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AE%9E%E7%8E%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-Windows下的Pytorch环境搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/09/20/Windows%E4%B8%8B%E7%9A%84Pytorch%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Windows下的Pytorch环境搭建</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2022/09/20/Windows%E4%B8%8B%E7%9A%84Pytorch%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="archive-article-date">
+  	<time datetime="2022-09-20T03:50:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-20</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">82字</span>
       </span>
     </span>
 
@@ -244,9 +1288,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
-<h2 id="简单应用"><a href="#简单应用" class="headerlink" title="简单应用"></a>简单应用</h2><p><img src="/2019/11/12/10-OpenResty%E7%94%A8Lua%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1/93c7612e-307f-4fe2-84c8-ac0e13a042e0.png" alt></p>
+			<p>实验室Ubuntu服务器cuda是11.1版本的，个人办公环境是shr，去官网按命令安装皆可。</p>
+<p><a href="https://pytorch.org/get-started/previous-versions/" target="_blank" rel="noopener">https://pytorch.org/get-started/previous-versions/</a></p>
+<p><img src="/2022/09/20/Windows%E4%B8%8B%E7%9A%84Pytorch%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/2021-11-16_193409.png" alt></p>
 	
 	
     </div>
@@ -260,1193 +1304,21 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">PyTorch</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/12/10-OpenResty%E7%94%A8Lua%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-9-SSL-Nginx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/11/9-SSL-Nginx/">9-SSL-Nginx</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/11/11/9-SSL-Nginx/" class="archive-article-date">
-  	<time datetime="2019-11-11T11:40:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-11</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.4k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">8分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>网络安全是当前非常受到关注的一个问题，大部分站点都是通过 <strong>HTTPS</strong> 来实现安全访问。如何将自己的站点改造成 <strong>HTTPS</strong> 站点呢？我们需要了解 <strong>SSL</strong> 协议。</p>
-<h2 id="知识普及"><a href="#知识普及" class="headerlink" title="知识普及"></a>知识普及</h2><ul>
-<li>TLS/SSL 发展历程<br><img src="/2019/11/11/9-SSL-Nginx/c97e2236-9c76-47a7-8101-c6a81360c5d0.jpg" alt></li></ul>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SSL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx/SSL//" class="article-tag-list-link color4">SSL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/11/9-SSL-Nginx/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-8-Nginx配置文件简易解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/10/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/">8-Nginx配置文件简易解析</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/11/10/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/" class="archive-article-date">
-  	<time datetime="2019-11-10T10:03:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-10</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">949字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
-<p><img src="/2019/11/10/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/0ad1a503df198bdb026ce7e8d83f53b9.png" alt>)<img src="/2019/11/10/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/d1820db3ef58dac396c152bf3d460f27.png" alt>)<img src="/2019/11/10/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/6432890dbc992690f2068620d9ee7951.png" alt></p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/10/8-Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E8%A7%A3%E6%9E%90/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-7-Nginx安装详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/09/7-Nginx%E5%AE%89%E8%A3%85%E8%AF%A6%E8%A7%A3/">7-Nginx安装详解</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/11/09/7-Nginx%E5%AE%89%E8%A3%85%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2019-11-09T11:01:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-09</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.1k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">4分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Nginx是一款轻量级高性能的Web服务器/反向代理服务器，</p>
-<p>并在一个BSD-like 协议下发行。其特点是占有内存少，并发能力强，<br>中国大陆使用nginx网站用户有：百度、京东、新浪、网易、腾讯、淘宝等。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/09/7-Nginx%E5%AE%89%E8%A3%85%E8%AF%A6%E8%A7%A3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-6-GoAccess实现可视化并实时监控access日志" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/">6-GoAccess实现可视化并实时监控access日志</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/" class="archive-article-date">
-  	<time datetime="2019-11-08T12:00:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-08</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.6k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">7分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>access日志</strong> 记录了用户非常重要的信息，可用它来分析、定位问题，也可用它来分析用户的运营数据，但是如果想要实时分析access 日志，相对比较困难。使用 cat、awk、sed 等命令做一些简单的日志分析统计，这样分析结果不理想也不全面，方法也极不高效。</p>
-<p><strong>GoAccess</strong> 这款工具以图形化的方式通过<strong>web socket</strong>协议，实时的将access日志的变迁反应到浏览器中。方便我们分析问题。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Tools</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">日志</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx/Tools//" class="article-tag-list-link color1">Tools</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx/Tools/日志//" class="article-tag-list-link color3">日志</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/08/6-GoAccess%E5%AE%9E%E7%8E%B0%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7access%E6%97%A5%E5%BF%97/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-5-Nginx搭建具备缓存功能的反向代理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/05/5-Nginx%E6%90%AD%E5%BB%BA%E5%85%B7%E5%A4%87%E7%BC%93%E5%AD%98%E5%8A%9F%E8%83%BD%E7%9A%84%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">5-Nginx搭建具备缓存功能的反向代理</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/11/05/5-Nginx%E6%90%AD%E5%BB%BA%E5%85%B7%E5%A4%87%E7%BC%93%E5%AD%98%E5%8A%9F%E8%83%BD%E7%9A%84%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" class="archive-article-date">
-  	<time datetime="2019-11-05T11:55:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-05</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.9k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">7分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前面已经展示了<strong>Nginx</strong>如何作为一个静态资源服务器进行工作，我们以此静态资源服务器作为-<strong>上游服务</strong>，再搭建一个Nginx服务，作为<strong>反向代理</strong>，演示当Nginx作为方向代理时，应该如何使用？</p>
-<p>由于上游服务要处理非常复杂的业务逻辑，而且强调开发效率，因此它的性能并不怎么样，而使用了Nginx作为反向代理之后，可以由一台Nginx将请求用负载均衡算法代理给多台上游服务器工作，这样就实现了水平扩展，在用户无感知的情况下，我们可以添加更多的上游服务器，来提高性能。当上游服务器出现问题时，Nginx可以自动的将请求由有问题、出现灾难的服务器转交给正常的服务器，</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/05/5-Nginx%E6%90%AD%E5%BB%BA%E5%85%B7%E5%A4%87%E7%BC%93%E5%AD%98%E5%8A%9F%E8%83%BD%E7%9A%84%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-4-Nginx搭建静态资源Web服务器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/">4-Nginx搭建静态资源Web服务器</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="archive-article-date">
-  	<time datetime="2019-11-01T10:53:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-01</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.4k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97<br><font color="red">学习来源：极客时间-Nginx核心知识100讲，本人购买课程后依据视频讲解汇总成个人见解。</font>`</p>
-<h2 id="1-上传静态资源到Nginx目录中"><a href="#1-上传静态资源到Nginx目录中" class="headerlink" title="1 上传静态资源到Nginx目录中"></a>1 上传静态资源到Nginx目录中</h2><p>如这里新建了一个dlib目录，里面存放静态资源<br><img src="/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/534bed34-738b-47df-9819-997373f35987.png" alt></p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Nginx//" class="article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/01/4-Nginx%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90Web%E6%9C%8D%E5%8A%A1%E5%99%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-SpringBoot中jar为什么可以直接运行" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/30/SpringBoot%E4%B8%ADjar%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E8%BF%90%E8%A1%8C/">SpringBoot中jar为什么可以直接运行</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/10/30/SpringBoot%E4%B8%ADjar%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E8%BF%90%E8%A1%8C/" class="archive-article-date">
-  	<time datetime="2019-10-30T00:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-30</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.5k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">11分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>转载自：<br><a href="http://fangjian0423.github.io/2017/05/31/springboot-executable-jar/" target="_blank" rel="noopener">http://fangjian0423.github.io/2017/05/31/springboot-executable-jar/</a></p>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ul>
-<li><p>Spring Boot Loader抽象的一些类</p>
-</li>
-<li><p>JarLauncher的执行过程</p>
-</li>
-<li><p>关于自定义的类加载器LaunchedURLClassLoader</p>
-</li>
-<li><p>Spring Boot Loader的作用</p>
-</li>
-</ul>
-<p>SpringBoot提供了一个插件spring-boot-maven-plugin用于把程序打包成一个可执行的jar包。在pom文件里加入这个插件即可：</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/面试//" class="article-tag-list-link color3">面试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/面试/SpringBoot//" class="article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/30/SpringBoot%E4%B8%ADjar%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E8%BF%90%E8%A1%8C/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-SpringBoot全局异常处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/29/SpringBoot%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">SpringBoot全局异常处理</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/10/29/SpringBoot%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="archive-article-date">
-  	<time datetime="2019-10-29T11:29:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-29</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">7.6k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">35分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>转载自</p>
-<p><a href="https://www.jianshu.com/p/accec85b4039" target="_blank" rel="noopener">https://www.jianshu.com/p/accec85b4039</a></p>
-<p><a href="https://www.cnblogs.com/xuwujing/p/10933082.html" target="_blank" rel="noopener">https://www.cnblogs.com/xuwujing/p/10933082.html</a></p>
-<p><a href="https://www.jianshu.com/p/d458694e739f" target="_blank" rel="noopener">https://www.jianshu.com/p/d458694e739f</a></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在日常web开发中发生了异常，往往是需要通过一个统一的异常处理来保证客户端能够收到友好的提示。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/面试//" class="article-tag-list-link color3">面试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/面试/SpringBoot//" class="article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/29/SpringBoot%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-SpringBoot事件和监听器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/29/SpringBoot%E4%BA%8B%E4%BB%B6%E5%92%8C%E7%9B%91%E5%90%AC%E5%99%A8/">SpringBoot事件和监听器</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/10/29/SpringBoot%E4%BA%8B%E4%BB%B6%E5%92%8C%E7%9B%91%E5%90%AC%E5%99%A8/" class="archive-article-date">
-  	<time datetime="2019-10-29T07:29:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-29</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.4k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在Spring Boot深入原理 - SpringApplication启动原理，我们概括性的介绍了SpringApplication的启动流程。</p>
-<p>看过的同学一定知道，第一步就是初始化监听器并触发ApplicationStartedEvent事件。本文就从SpringApplication的第一步开始，深入聊聊Spring Boot的事件和监听器。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/面试//" class="article-tag-list-link color3">面试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/面试/SpringBoot//" class="article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/29/SpringBoot%E4%BA%8B%E4%BB%B6%E5%92%8C%E7%9B%91%E5%90%AC%E5%99%A8/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/09/20/Windows%E4%B8%8B%E7%9A%84Pytorch%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">展开全文 >></a>
         </p>
       
 
@@ -1481,7 +1353,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1751,6 +1623,46 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">搬砖结晶</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">推荐系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">目标检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">SkLearn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">图神经网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TensorFlow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">研究生课题-AD检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">研究生成果</a>
               </li>
             
             <div class="clearfix"></div>

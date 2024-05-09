@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 273</nav>
+		<nav style="color: #7FFFD4;">总文章数 379</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -192,22 +192,22 @@
             
   
     <meta charset="utf-8">
-<article id="post-5-Redis高并发高可用有关问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-2-Docker安装与部署" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/21/5-Redis%E9%AB%98%E5%B9%B6%E5%8F%91%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9C%89%E5%85%B3%E9%97%AE%E9%A2%98/">5-Redis高并发高可用有关问题</a>
+      <a class="article-title" href="/2019/05/18/2-Docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/">2.1-Docker安装与部署</a>
     </h1>
   
 
         
         
 
-<a href="/2018/07/21/5-Redis%E9%AB%98%E5%B9%B6%E5%8F%91%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9C%89%E5%85%B3%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2018-07-21T12:15:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-21</time>
+<a href="/2019/05/18/2-Docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/" class="archive-article-date">
+  	<time datetime="2019-05-18T11:29:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-18</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -218,7 +218,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">5.9k字</span>
+        <span class="post-count">425字</span>
       </span>
     </span>
 
@@ -227,7 +227,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">21分</span>
+        <span class="post-count">1分</span>
       </span>
     </span>
 </div>
@@ -244,9 +244,8 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<h2 id="1-Redis如何保证高并发高可用？"><a href="#1-Redis如何保证高并发高可用？" class="headerlink" title="1. Redis如何保证高并发高可用？"></a>1. Redis如何保证高并发高可用？</h2><h3 id="1-面试题"><a href="#1-面试题" class="headerlink" title="1.面试题"></a>1.面试题</h3><p>如何保证Redis的高并发和高可用？redis的主从复制原理能介绍一下么？redis的哨兵原理能介绍一下么？</p>
-<h3 id="2-面试官心里分析"><a href="#2-面试官心里分析" class="headerlink" title="2. 面试官心里分析"></a>2. 面试官心里分析</h3><p>其实问这个问题，主要是考考你，redis单机能承载多高并发？如果单机扛不住如何扩容抗更多的并发？redis会不会挂？既然redis会挂那怎么保证redis是高可用的？</p>
-<p>其实针对的都是项目中你肯定要考虑的一些问题，如果你没考虑过，那确实你对生产系统中的问题思考太少。</p>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<h2 id="1-系统要求"><a href="#1-系统要求" class="headerlink" title="1 系统要求"></a>1 系统要求</h2><p>Docker 需要安装在 CentOS 7 64 位的平台，并且内核版本不低于 3.10. CentOS 7.× 满足要求的最低内核版本要求，但由于 CentOS 7 内核版本比较低，部分功能（如 <code>overlay2</code> 存储层驱动）无法使用，并且部分功能可能不太稳定。所以建议大家升级到最新的 CentOS 版本,并且内核也更新到最新的稳定版本.</p>
 	
 	
     </div>
@@ -260,11 +259,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
         		</li>
       		
 		</ul>
@@ -276,11 +271,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Redis//" class="article-tag-list-link color1">Redis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Redis/面试//" class="article-tag-list-link color3">面试</a>
+        			<a href="/categories/Docker//" class="article-tag-list-link color2">Docker</a>
         		</li>
       		
 		</ul>
@@ -289,7 +280,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/21/5-Redis%E9%AB%98%E5%B9%B6%E5%8F%91%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9C%89%E5%85%B3%E9%97%AE%E9%A2%98/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/05/18/2-Docker%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/">展开全文 >></a>
         </p>
       
 
@@ -323,22 +314,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-4-Redis过期策略-手写LRU" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-1-Docker缘由" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/19/4-Redis%E8%BF%87%E6%9C%9F%E7%AD%96%E7%95%A5-%E6%89%8B%E5%86%99LRU/">4-Redis过期策略_手写LRU</a>
+      <a class="article-title" href="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/">1-Docker缘由</a>
     </h1>
   
 
         
         
 
-<a href="/2018/07/19/4-Redis%E8%BF%87%E6%9C%9F%E7%AD%96%E7%95%A5-%E6%89%8B%E5%86%99LRU/" class="archive-article-date">
-  	<time datetime="2018-07-19T13:05:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-19</time>
+<a href="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/" class="archive-article-date">
+  	<time datetime="2019-05-12T12:23:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-12</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -349,7 +340,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.8k字</span>
+        <span class="post-count">8.8k字</span>
       </span>
     </span>
 
@@ -358,7 +349,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6分</span>
+        <span class="post-count">30分</span>
       </span>
     </span>
 </div>
@@ -375,9 +366,8 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<h2 id="1-面试题"><a href="#1-面试题" class="headerlink" title="1.面试题"></a>1.面试题</h2><p>redis的过期策略都有哪些？内存淘汰机制都有哪些？手写一下LRU代码实现？</p>
-<h2 id="2-面试官心里分析"><a href="#2-面试官心里分析" class="headerlink" title="2. 面试官心里分析"></a>2. 面试官心里分析</h2><h3 id="我往redis里写的数据怎么没了？"><a href="#我往redis里写的数据怎么没了？" class="headerlink" title="我往redis里写的数据怎么没了？"></a>我往redis里写的数据怎么没了？</h3><p>之前有同学提问过，说我们生产环境的redis怎么经常会丢掉一些数据？写进去了，过一会儿可能就没了。我的天，同学，你问这个问题就说明redis你就没用对啊。redis是缓存，你给当存储了是吧？</p>
-<p>啥叫缓存？用内存当缓存。内存是无限的吗，内存是很宝贵而且是有限的，磁盘是廉价而且是大量的。可能一台机器就几十个G的内存，但是可以有几个T的硬盘空间。redis主要是基于内存来进行高性能、高并发的读写操作的。</p>
+			<p>作者：雪雁<br><a href="https://www.cnblogs.com/codelove/p/10030439.html" target="_blank" rel="noopener">文章转载出自这里</a>：<a href="https://www.cnblogs.com/codelove/" target="_blank" rel="noopener">https://www.cnblogs.com/codelove/</a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>随着生产力的发展尤其是弹性架构的广泛应用（如微服务），许多一流开发者都将应用托管到了应用容器上，如Google、微软、亚马逊、阿里、京东、新浪等等。</p>
 	
 	
     </div>
@@ -391,11 +381,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
         		</li>
       		
 		</ul>
@@ -407,11 +393,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Redis//" class="article-tag-list-link color1">Redis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Redis/面试//" class="article-tag-list-link color3">面试</a>
+        			<a href="/categories/Docker//" class="article-tag-list-link color2">Docker</a>
         		</li>
       		
 		</ul>
@@ -420,7 +402,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/19/4-Redis%E8%BF%87%E6%9C%9F%E7%AD%96%E7%95%A5-%E6%89%8B%E5%86%99LRU/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/05/12/1-Docker%E7%BC%98%E7%94%B1/">展开全文 >></a>
         </p>
       
 
@@ -454,22 +436,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-3-Redis常用数据类型及使用场景" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-0-Docker配置国内免费registry-mirror" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/18/3-Redis%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/">3-Redis常用数据类型及使用场景</a>
+      <a class="article-title" href="/2019/05/08/0-Docker%E9%85%8D%E7%BD%AE%E5%9B%BD%E5%86%85%E5%85%8D%E8%B4%B9registry-mirror/">0-Docker配置国内免费registry_mirror</a>
     </h1>
   
 
         
         
 
-<a href="/2018/07/18/3-Redis%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" class="archive-article-date">
-  	<time datetime="2018-07-18T12:50:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-18</time>
+<a href="/2019/05/08/0-Docker%E9%85%8D%E7%BD%AE%E5%9B%BD%E5%86%85%E5%85%8D%E8%B4%B9registry-mirror/" class="archive-article-date">
+  	<time datetime="2019-05-08T11:23:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -480,7 +462,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1k字</span>
+        <span class="post-count">2.1k字</span>
       </span>
     </span>
 
@@ -489,7 +471,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">10分</span>
       </span>
     </span>
 </div>
@@ -506,12 +488,10 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<h2 id="1-面试题"><a href="#1-面试题" class="headerlink" title="1.面试题"></a>1.面试题</h2><p>redis都有哪些数据类型？分别在哪些场景下使用比较合适？</p>
-<h2 id="2-面试官心里分析"><a href="#2-面试官心里分析" class="headerlink" title="2. 面试官心里分析"></a>2. 面试官心里分析</h2><p>除非是我感觉看你简历，就是工作3年以内的比较初级的一个同学，可能对技术没有很深入的研究过，我才会问这类问题，在宝贵的面试时间里，我实在是不想多问</p>
-<p>其实问这个问题呢。。。主要就俩原因</p>
-<p>第一，看看你到底有没有全面的了解redis有哪些功能，一般怎么来用，啥场景用什么，就怕你别就会最简单的kv操作</p>
-<p>第二，看看你在实际项目里都怎么玩儿过redis</p>
-<p>要是你回答的不好，没说出几种数据类型，也没说什么场景，你完了，面试官对你印象肯定不好，觉得你平时就是做个简单的set和get。</p>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于国内特殊的网络环境，往往我们从 <strong><a href="https://hub.docker.com/" target="_blank" rel="noopener">Docker Hub</a></strong>中拉取镜像并不能成功，而且速度特别慢。</p>
+<p>那么我们可以给Docker配置一个国内的registry mirror，当我们需要的镜像在mirror中则直接返回，如果没有则从Docker Hub中拉取。<font color="red">是否使用registry mirror对Docker用户来说是透明的</font>。</p>
+<p>DaoCloud在国内提供了首个Docker Hub镜像服务，而且免费，大大提高了国内Docker用户的使用热情。</p>
 	
 	
     </div>
@@ -525,11 +505,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
         		</li>
       		
 		</ul>
@@ -541,11 +517,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Redis//" class="article-tag-list-link color1">Redis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Redis/面试//" class="article-tag-list-link color3">面试</a>
+        			<a href="/categories/Docker//" class="article-tag-list-link color2">Docker</a>
         		</li>
       		
 		</ul>
@@ -554,7 +526,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/18/3-Redis%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/05/08/0-Docker%E9%85%8D%E7%BD%AE%E5%9B%BD%E5%86%85%E5%85%8D%E8%B4%B9registry-mirror/">展开全文 >></a>
         </p>
       
 
@@ -588,22 +560,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-2-Redis线程模型-单线程效率高的原因" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-5-分布式搜索引擎如何部署" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/17/2-Redis%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B-%E5%8D%95%E7%BA%BF%E7%A8%8B%E6%95%88%E7%8E%87%E9%AB%98%E7%9A%84%E5%8E%9F%E5%9B%A0/">2-Redis线程模型_单线程效率高的原因</a>
+      <a class="article-title" href="/2019/04/26/5-%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%A6%82%E4%BD%95%E9%83%A8%E7%BD%B2/">5-分布式搜索引擎如何部署</a>
     </h1>
   
 
         
         
 
-<a href="/2018/07/17/2-Redis%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B-%E5%8D%95%E7%BA%BF%E7%A8%8B%E6%95%88%E7%8E%87%E9%AB%98%E7%9A%84%E5%8E%9F%E5%9B%A0/" class="archive-article-date">
-  	<time datetime="2018-07-17T11:50:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-17</time>
+<a href="/2019/04/26/5-%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%A6%82%E4%BD%95%E9%83%A8%E7%BD%B2/" class="archive-article-date">
+  	<time datetime="2019-04-26T13:20:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-26</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -614,138 +586,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.7k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<h2 id="1-面试题"><a href="#1-面试题" class="headerlink" title="1.面试题"></a>1.面试题</h2><p>redis和memcached有什么区别？redis的线程模型是什么？为什么单线程的redis比多线程的memcached效率要高得多（为什么redis是单线程的但是还可以支撑高并发）？</p>
-<h2 id="2-面试官心里分析"><a href="#2-面试官心里分析" class="headerlink" title="2. 面试官心里分析"></a>2. 面试官心里分析</h2><p>这个是问redis的时候，最基本的问题吧，redis最基本的一个内部原理和特点，就是redis实际上是个单线程工作模型，你要是这个都不知道，那后面玩儿redis的时候，出了问题岂不是什么都不知道？</p>
-<p>还有可能面试官会问问你redis和memcached的区别，不过说实话，最近这两年，作为面试官都不太喜欢这么问了，memched是早些年各大互联网公司常用的缓存方案，但是现在近几年基本都是redis，没什么公司用memcached了。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Redis//" class="article-tag-list-link color1">Redis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Redis/面试//" class="article-tag-list-link color3">面试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/17/2-Redis%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B-%E5%8D%95%E7%BA%BF%E7%A8%8B%E6%95%88%E7%8E%87%E9%AB%98%E7%9A%84%E5%8E%9F%E5%9B%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-1-项目中缓存如何使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/16/1-%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%BC%93%E5%AD%98%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8/">1-项目中缓存如何使用</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2018/07/16/1-%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%BC%93%E5%AD%98%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2018-07-16T11:38:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-16</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">953字</span>
+        <span class="post-count">905字</span>
       </span>
     </span>
 
@@ -771,10 +612,10 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<h2 id="1-面试题"><a href="#1-面试题" class="headerlink" title="1.面试题"></a>1.面试题</h2><p>在项目中缓存是如何使用的？缓存如果使用不当会造成什么后果？</p>
-<h2 id="2-面试官心里分析"><a href="#2-面试官心里分析" class="headerlink" title="2. 面试官心里分析"></a>2. 面试官心里分析</h2><p>这个问题，互联网公司必问，要是一个人连缓存都不太清楚，那确实比较尴尬</p>
-<p>只要问到缓存，上来第一个问题，肯定能是先问问你项目哪里用了缓存？为啥要用？不用行不行？如果用了以后可能会有什么不良的后果？</p>
-<p>这就是看看你对你用缓存这个东西背后，有没有思考，如果你就是傻乎乎的瞎用，没法给面试官一个合理的解答。那我只能说，面试官对你印象肯定不太好，觉得你平时思考太少，就知道干活儿。</p>
+			<h2 id="1-面试官心里分析"><a href="#1-面试官心里分析" class="headerlink" title="1. 面试官心里分析"></a>1. 面试官心里分析</h2><p>es生产集群的部署架构是什么？每个索引的数据量大概有多少？每个索引大概有多少个分片？</p>
+<p>这个问题，包括后面的redis什么的，谈到es、redis、mysql分库分表等等技术，面试必问！就是你生产环境咋部署的？说白了，这个问题没啥技术含量，就是看你有没有在真正的生产环境里干过这事儿！</p>
+<p>有些同学可能是没在生产环境中干过的，没实际去拿线上机器部署过es集群，也没实际玩儿过，也没往es集群里面导入过几千万甚至是几亿的数据量，可能你就不太清楚这里面的一些生产项目中的细节</p>
+<p>如果你是自己就玩儿过demo，没碰过真实的es集群，那你可能此时会懵，但是别懵。。。你一定要云淡风轻的回答出来这个问题，表示你确实干过这事儿</p>
 	
 	
     </div>
@@ -788,11 +629,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Elasticsearch</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
         		</li>
       		
 		</ul>
@@ -804,11 +645,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Redis//" class="article-tag-list-link color1">Redis</a>
+        			<a href="/categories/Elasticsearch//" class="article-tag-list-link color4">Elasticsearch</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Redis/面试//" class="article-tag-list-link color3">面试</a>
+        			<a href="/categories/Elasticsearch/面试//" class="article-tag-list-link color3">面试</a>
         		</li>
       		
 		</ul>
@@ -817,7 +658,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/16/1-%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%BC%93%E5%AD%98%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/26/5-%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%A6%82%E4%BD%95%E9%83%A8%E7%BD%B2/">展开全文 >></a>
         </p>
       
 
@@ -851,22 +692,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-AWK三剑客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-4-ES如何在几十亿数据场景下优化查询性能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/15/AWK%E4%B8%89%E5%89%91%E5%AE%A2/">AWK三剑客</a>
+      <a class="article-title" href="/2019/04/23/4-ES%E5%A6%82%E4%BD%95%E5%9C%A8%E5%87%A0%E5%8D%81%E4%BA%BF%E6%95%B0%E6%8D%AE%E5%9C%BA%E6%99%AF%E4%B8%8B%E4%BC%98%E5%8C%96%E6%9F%A5%E8%AF%A2%E6%80%A7%E8%83%BD/">4-ES如何在几十亿数据场景下优化查询性能</a>
     </h1>
   
 
         
         
 
-<a href="/2018/07/15/AWK%E4%B8%89%E5%89%91%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2018-07-15T11:06:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-15</time>
+<a href="/2019/04/23/4-ES%E5%A6%82%E4%BD%95%E5%9C%A8%E5%87%A0%E5%8D%81%E4%BA%BF%E6%95%B0%E6%8D%AE%E5%9C%BA%E6%99%AF%E4%B8%8B%E4%BC%98%E5%8C%96%E6%9F%A5%E8%AF%A2%E6%80%A7%E8%83%BD/" class="archive-article-date">
+  	<time datetime="2019-04-23T12:20:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-23</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -877,7 +718,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.6k字</span>
+        <span class="post-count">3.7k字</span>
       </span>
     </span>
 
@@ -886,7 +727,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">16分</span>
+        <span class="post-count">13分</span>
       </span>
     </span>
 </div>
@@ -903,9 +744,10 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p><a href="https://www.cnblogs.com/ginvip/p/6352157.html" target="_blank" rel="noopener">转载出处</a></p>
-<h2 id="1-awk简介"><a href="#1-awk简介" class="headerlink" title="1 awk简介"></a>1 awk简介</h2><p><strong>awk</strong>其名称得自于它的创始人 Alfred Aho 、Peter Weinberger 和 Brian Kernighan 姓氏的首个字母。实际上 AWK 的确拥有自己的语言： AWK 程序设计语言 ， 三位创建者已将它正式定义为“样式扫描和处理语言”。它允许您创建简短的程序，这些程序读取输入文件、为数据排序、处理数据、对输入执行计算以及生成报表，还有无数其他的功能。</p>
-<p>awk 是一种很棒的语言，它适合<strong>文本处理和报表生成</strong>，其语法较为常见，借鉴了某些语言的一些精华，如 C 语言等。在 linux 系统日常处理工作中，发挥很重要的作用，掌握了 awk将会使你的工作变的高大上。</p>
+			<h2 id="1-面试官心里分析"><a href="#1-面试官心里分析" class="headerlink" title="1. 面试官心里分析"></a>1. 面试官心里分析</h2><p>es在数据量很大的情况下（数十亿级别）如何提高查询效率啊？</p>
+<p>问这个问题，是肯定的，说白了，就是看你有没有实际干过es，因为啥？es说白了其实性能并没有你想象中那么好的。很多时候数据量大了，特别是有几亿条数据的时候，可能你会懵逼的发现，跑个搜索怎么一下5秒<del>10秒，坑爹了。第一次搜索的时候，是5</del>10秒，后面反而就快了，可能就几百毫秒。</p>
+<p>你就很懵，每个用户第一次访问都会比较慢，比较卡么？</p>
+<p>所以你要是没玩儿过es，或者就是自己玩玩儿demo，被问到这个问题容易懵逼，显示出你对es确实玩儿的不怎么样</p>
 	
 	
     </div>
@@ -919,7 +761,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Elasticsearch</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
         		</li>
       		
 		</ul>
@@ -931,7 +777,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
+        			<a href="/categories/Elasticsearch//" class="article-tag-list-link color4">Elasticsearch</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Elasticsearch/面试//" class="article-tag-list-link color3">面试</a>
         		</li>
       		
 		</ul>
@@ -940,7 +790,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/15/AWK%E4%B8%89%E5%89%91%E5%AE%A2/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/23/4-ES%E5%A6%82%E4%BD%95%E5%9C%A8%E5%87%A0%E5%8D%81%E4%BA%BF%E6%95%B0%E6%8D%AE%E5%9C%BA%E6%99%AF%E4%B8%8B%E4%BC%98%E5%8C%96%E6%9F%A5%E8%AF%A2%E6%80%A7%E8%83%BD/">展开全文 >></a>
         </p>
       
 
@@ -974,22 +824,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-Maven插件-assembly插件基本使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-3-ES读写数据的工作原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/28/Maven%E6%8F%92%E4%BB%B6-assembly%E6%8F%92%E4%BB%B6%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">Maven插件-assembly插件基本使用</a>
+      <a class="article-title" href="/2019/04/22/3-ES%E8%AF%BB%E5%86%99%E6%95%B0%E6%8D%AE%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/">3-ES读写数据的工作原理</a>
     </h1>
   
 
         
         
 
-<a href="/2018/06/28/Maven%E6%8F%92%E4%BB%B6-assembly%E6%8F%92%E4%BB%B6%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2018-06-28T12:15:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-28</time>
+<a href="/2019/04/22/3-ES%E8%AF%BB%E5%86%99%E6%95%B0%E6%8D%AE%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/" class="archive-article-date">
+  	<time datetime="2019-04-22T12:45:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-22</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1009,7 +859,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">11分</span>
+        <span class="post-count">8分</span>
       </span>
     </span>
 </div>
@@ -1026,10 +876,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h2><p>maven-assembly-plugin 就是用来帮助打包用的，比如说打出一个什么类型的包，包里包括哪些内容等等。即<strong>定制化打包</strong>。</p>
-<p>因为大数据项目中往往有很多shell脚本、SQL脚本、.properties及.xml配置项等，采用assembly插件可以让输出的结构清晰且标准化。</p>
-<h2 id="2-常见的Maven插件"><a href="#2-常见的Maven插件" class="headerlink" title="2. 常见的Maven插件"></a>2. 常见的Maven插件</h2><p>对于打包来说，有多种插件选择。最常见的有以下3个：</p>
-<p><img src="/2018/06/28/Maven%E6%8F%92%E4%BB%B6-assembly%E6%8F%92%E4%BB%B6%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/237d77e7-8de1-422f-9a82-37d08f3ace20.png" alt></p>
+			<h2 id="1-面试官心里分析"><a href="#1-面试官心里分析" class="headerlink" title="1. 面试官心里分析"></a>1. 面试官心里分析</h2><p>es写入数据的工作原理是什么啊？es查询数据的工作原理是什么啊？</p>
+<p>问这个，其实面试官就是要看看你了解不了解es的一些基本原理，因为用es无非就是写入数据，搜索数据。你要是不明白你发起一个写入和搜索请求的时候，es在干什么，那你真的就是。。。。</p>
+<p>对es基本就是个黑盒，你还能干啥？你唯一能干的就是用es的api读写数据了。。。要是出点什么问题，你啥都不知道，那还能指望你什么呢？是不是。。</p>
 	
 	
     </div>
@@ -1043,11 +892,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Elasticsearch</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Maven</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
         		</li>
       		
 		</ul>
@@ -1059,11 +908,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Maven//" class="article-tag-list-link color1">Maven</a>
+        			<a href="/categories/Elasticsearch//" class="article-tag-list-link color4">Elasticsearch</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Maven/Java//" class="article-tag-list-link color5">Java</a>
+        			<a href="/categories/Elasticsearch/面试//" class="article-tag-list-link color3">面试</a>
         		</li>
       		
 		</ul>
@@ -1072,7 +921,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/28/Maven%E6%8F%92%E4%BB%B6-assembly%E6%8F%92%E4%BB%B6%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/22/3-ES%E8%AF%BB%E5%86%99%E6%95%B0%E6%8D%AE%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/">展开全文 >></a>
         </p>
       
 
@@ -1106,22 +955,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-Maven知多少" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-2-分布式搜索引擎的架构是如何设计的" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/27/Maven%E7%9F%A5%E5%A4%9A%E5%B0%91/">Maven知多少</a>
+      <a class="article-title" href="/2019/04/21/2-%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%9A%84%E6%9E%B6%E6%9E%84%E6%98%AF%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E7%9A%84/">2-分布式搜索引擎的架构是如何设计的</a>
     </h1>
   
 
         
         
 
-<a href="/2018/06/27/Maven%E7%9F%A5%E5%A4%9A%E5%B0%91/" class="archive-article-date">
-  	<time datetime="2018-06-27T11:28:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-27</time>
+<a href="/2019/04/21/2-%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%9A%84%E6%9E%B6%E6%9E%84%E6%98%AF%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E7%9A%84/" class="archive-article-date">
+  	<time datetime="2019-04-21T11:45:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-21</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1132,7 +981,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.2k字</span>
+        <span class="post-count">1.3k字</span>
       </span>
     </span>
 
@@ -1141,7 +990,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">17分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
 </div>
@@ -1158,148 +1007,282 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><a href="https://mvnrepository.com/" target="_blank" rel="noopener">Maven中央仓库地址：https://mvnrepository.com/</a></p>
-<p><a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">Maven官网下载地址：http://maven.apache.org/download.cgi</a></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>生产环境下开发不再是一个项目一个工程，而是每一个模块创建一个工程，而多个模块整合在一起就需要使用到像 <strong>Maven</strong> 这样的构建工具。</p>
-<h2 id="1-Maven是什么？"><a href="#1-Maven是什么？" class="headerlink" title="1. Maven是什么？"></a>1. Maven是什么？</h2><p>Maven 是 Apache 软件基金会组织维护的一款<strong>自动化构建工具</strong>，专注服务于 Java 平台的<strong>项目构建</strong>和 <strong>依赖管理</strong>。Maven 这个单词的本意是：专家，内行。读音是[‘meɪv(ə)n]或[‘mevn]。 </p>
-<p><strong>基本作用：</strong></p>
+			<h2 id="1-面试官心里分析"><a href="#1-面试官心里分析" class="headerlink" title="1. 面试官心里分析"></a>1. 面试官心里分析</h2><p>es的分布式架构原理能说一下么（es是如何实现分布式的啊）？</p>
+<p>在搜索这块，lucene是最流行的搜索库。几年前业内一般都问，你了解lucene吗？你知道倒排索引的原理吗？现在早已经out了，因为现在很多项目都是直接用基于lucene的分布式搜索引擎——elasticsearch，简称为es。</p>
+<p>而现在分布式搜索基本已经成为大部分互联网行业的java系统的标配，其中尤为流行的就是es，前几年es没火的时候，大家一般用solr。但是这两年基本大部分企业和项目都开始转向es了。</p>
+<p>所以互联网面试，肯定会跟你聊聊分布式搜索引擎，也就一定会聊聊es，如果你确实不知道，那你真的就out了。</p>
+<p>如果面试官问你第一个问题，确实一般都会问你es的分布式架构设计能介绍一下么？就看看你对分布式搜索引擎架构的一个基本理解。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Elasticsearch</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Elasticsearch//" class="article-tag-list-link color4">Elasticsearch</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Elasticsearch/面试//" class="article-tag-list-link color3">面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/21/2-%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%9A%84%E6%9E%B6%E6%9E%84%E6%98%AF%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E7%9A%84/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-1-面试官对分布式搜索引擎的4个连环炮" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/20/1-%E9%9D%A2%E8%AF%95%E5%AE%98%E5%AF%B9%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%9A%844%E4%B8%AA%E8%BF%9E%E7%8E%AF%E7%82%AE/">1-面试官对分布式搜索引擎的4个连环炮</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/04/20/1-%E9%9D%A2%E8%AF%95%E5%AE%98%E5%AF%B9%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%9A%844%E4%B8%AA%E8%BF%9E%E7%8E%AF%E7%82%AE/" class="archive-article-date">
+  	<time datetime="2019-04-20T11:35:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-20</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">312字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>业内目前来说事实上的一个标准，就是分布式搜索引擎一般大家都用elasticsearch，es，solr，但是确实，这两年大家一般都用更加易用的es。</p>
+<p><strong>lucene</strong></p>
+<p>如果你确实真的不连lucene都不知道是什么？我觉得你确实不应该，可以自行百度。lucene底层的原理是一个东西，叫做倒排索引。太基础了。</p>
+<p>百度，搜索一下lucene入门，了解一下lucene是什么？倒排索引是什么？全文检索是什么？写个lucene的demo程序体验一把。</p>
+<p><strong>elasticsearch</strong></p>
+<p>自行百度，搜索一下：elasticsearch入门，初步至少知道es的一些基本概念，然后包括es的基本部署和基本的使用。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Elasticsearch</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Elasticsearch//" class="article-tag-list-link color4">Elasticsearch</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Elasticsearch/面试//" class="article-tag-list-link color3">面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/20/1-%E9%9D%A2%E8%AF%95%E5%AE%98%E5%AF%B9%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%9A%844%E4%B8%AA%E8%BF%9E%E7%8E%AF%E7%82%AE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-8-如何设计一个消息队列" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/10/8-%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">8-如何设计一个消息队列</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/04/10/8-%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" class="archive-article-date">
+  	<time datetime="2019-04-10T15:50:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-10</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">960字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<h2 id="1-面试官心里分析"><a href="#1-面试官心里分析" class="headerlink" title="1. 面试官心里分析"></a>1. 面试官心里分析</h2><p>如果让你写一个消息队列，该如何进行架构设计啊？说一下你的思路</p>
+<p>其实聊到这个问题，一般面试官要考察两块：</p>
 <ul>
-<li><strong>添加第三方 jar包</strong></li>
-<li><strong>jar包之间依赖关系</strong></li>
-<li><strong>项目拆分为多模块</strong></li></ul>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Maven</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Maven//" class="article-tag-list-link color1">Maven</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Maven/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/27/Maven%E7%9F%A5%E5%A4%9A%E5%B0%91/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-1-分库分表知多少" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/25/1-%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E7%9F%A5%E5%A4%9A%E5%B0%91/">1-分库分表知多少</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2018/06/25/1-%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E7%9F%A5%E5%A4%9A%E5%B0%91/" class="archive-article-date">
-  	<time datetime="2018-06-25T11:15:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">10.2k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">36分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<h2 id="1-体验一下面试官对于分库分表这个事儿的一个连环炮"><a href="#1-体验一下面试官对于分库分表这个事儿的一个连环炮" class="headerlink" title="1. 体验一下面试官对于分库分表这个事儿的一个连环炮"></a>1. 体验一下面试官对于分库分表这个事儿的一个连环炮</h2><p>（1）为什么要分库分表（设计高并发系统的时候，数据库层面该如何设计）？用过哪些分库分表中间件？不同的分库分表中间件都有什么优点和缺点？你们具体是如何对数据库如何进行垂直拆分或水平拆分的？</p>
-<p>（2）现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表动态切换到分库分表上？</p>
-<p>（3）如何设计可以动态扩容缩容的分库分表方案？</p>
-<p>（4）分库分表之后，id主键如何处理？</p>
+<li><p>你有没有对某一个消息队列做过较为深入的原理的了解，或者从整体了解把握住一个mq的架构原理</p>
+</li>
+<li><p>看看你的设计能力，给你一个常见的系统，就是消息队列系统，看看你能不能从全局把握一下整体架构设计，给出一些关键点出来</p>
+</li>
+</ul>
+<p>说实话，遇到类似此类问题，大部分人基本都会蒙，因为平时从来没有思考过类似的问题，大多数人就是平时埋头用，从来不去思考背后的一些东西。类似的问题，如果让你来设计一个spring框架你会怎么做？如果让你来设计一个dubbo框架你会怎么做？如果让你来设计一个mybatis框架你会怎么做？</p>
 	
 	
     </div>
@@ -1317,7 +1300,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MQ</a>
         		</li>
       		
 		</ul>
@@ -1329,11 +1312,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
+        			<a href="/categories/MQ//" class="article-tag-list-link color3">MQ</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/MySql/面试//" class="article-tag-list-link color3">面试</a>
+        			<a href="/categories/MQ/面试//" class="article-tag-list-link color3">面试</a>
         		</li>
       		
 		</ul>
@@ -1342,7 +1325,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/25/1-%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E7%9F%A5%E5%A4%9A%E5%B0%91/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/10/8-%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">展开全文 >></a>
         </p>
       
 
@@ -1376,22 +1359,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-MySQL基本用法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-7-消息队列如何解决延迟-过期失效-积压消息等问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/21/MySQL%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/">MySQL基本用法</a>
+      <a class="article-title" href="/2019/04/10/7-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%BB%B6%E8%BF%9F-%E8%BF%87%E6%9C%9F%E5%A4%B1%E6%95%88-%E7%A7%AF%E5%8E%8B%E6%B6%88%E6%81%AF%E7%AD%89%E9%97%AE%E9%A2%98/">7-消息队列如何解决延迟_过期失效_积压消息等问题</a>
     </h1>
   
 
         
         
 
-<a href="/2018/06/21/MySQL%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2018-06-21T09:10:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-21</time>
+<a href="/2019/04/10/7-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%BB%B6%E8%BF%9F-%E8%BF%87%E6%9C%9F%E5%A4%B1%E6%95%88-%E7%A7%AF%E5%8E%8B%E6%B6%88%E6%81%AF%E7%AD%89%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2019-04-10T12:42:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-10</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1402,7 +1385,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">10k字</span>
+        <span class="post-count">1.3k字</span>
       </span>
     </span>
 
@@ -1411,7 +1394,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">41分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
 </div>
@@ -1428,9 +1411,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<h1 id="MySql基本用法"><a href="#MySql基本用法" class="headerlink" title="MySql基本用法"></a>MySql基本用法</h1><p><strong>官方练习文件 World.sql</strong><br><a href="https://dev.mysql.com/doc/world-setup/en/world-setup-installation.html" target="_blank" rel="noopener">https://dev.mysql.com/doc/world-setup/en/world-setup-installation.html</a></p>
-<h2 id="1-系统操作"><a href="#1-系统操作" class="headerlink" title="1. 系统操作"></a>1. 系统操作</h2><h3 id="1-1-用户管理"><a href="#1-1-用户管理" class="headerlink" title="1.1 用户管理"></a>1.1 用户管理</h3><p><strong>权限详解</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#39;10.0.0.200&#39;   ----&gt;只允许200地址访问mysql</span><br><span class="line"></span><br><span class="line">&#39;10.0.0.%&#39;     -----》允许这个网段的所有服务器都能访问mysql</span><br><span class="line"></span><br><span class="line">&#39;10.0.0.5%&#39;    ----》 允许50-59</span><br><span class="line"></span><br><span class="line">&#39;%&#39;          ----&gt; 允许所有人</span><br></pre></td></tr></table></figure>
+			<h2 id="1-面试官心里分析"><a href="#1-面试官心里分析" class="headerlink" title="1. 面试官心里分析"></a>1. 面试官心里分析</h2><p>如何解决消息队列的延时以及过期失效问题？消息队列满了以后该怎么处理？有几百万消息持续积压几小时，说说怎么解决？</p>
+<p>你看这问法，其实本质针对的场景，都是说，可能你的消费端出了问题，不消费了，或者消费的极其极其慢。接着就坑爹了，可能你的消息队列集群的磁盘都快写满了，都没人消费，这个时候怎么办？或者是整个这就积压了几个小时，你这个时候怎么办？或者是你积压的时间太长了，导致比如rabbitmq设置了消息过期时间后就没了怎么办？</p>
+<p>所以就这事儿，其实线上挺常见的，一般不出，一出就是大case，一般常见于，举个例子，消费端每次消费之后要写mysql，结果mysql挂了，消费端hang那儿了，不动了。或者是消费端出了个什么叉子，导致消费速度极其慢。</p>
 	
 	
     </div>
@@ -1444,7 +1427,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MQ</a>
         		</li>
       		
 		</ul>
@@ -1456,7 +1443,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
+        			<a href="/categories/MQ//" class="article-tag-list-link color3">MQ</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/MQ/面试//" class="article-tag-list-link color3">面试</a>
         		</li>
       		
 		</ul>
@@ -1465,7 +1456,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/21/MySQL%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/10/7-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%BB%B6%E8%BF%9F-%E8%BF%87%E6%9C%9F%E5%A4%B1%E6%95%88-%E7%A7%AF%E5%8E%8B%E6%B6%88%E6%81%AF%E7%AD%89%E9%97%AE%E9%A2%98/">展开全文 >></a>
         </p>
       
 
@@ -1500,7 +1491,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/25/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/25/">25</a><span class="page-number current">26</span><a class="page-number" href="/page/27/">27</a><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/27/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/25/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/25/">25</a><span class="page-number current">26</span><a class="page-number" href="/page/27/">27</a><a class="page-number" href="/page/28/">28</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/27/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1770,6 +1761,46 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">搬砖结晶</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">推荐系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">目标检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">SkLearn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">图神经网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TensorFlow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">研究生课题-AD检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">研究生成果</a>
               </li>
             
             <div class="clearfix"></div>

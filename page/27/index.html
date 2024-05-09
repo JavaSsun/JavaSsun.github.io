@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 273</nav>
+		<nav style="color: #7FFFD4;">总文章数 379</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -192,22 +192,22 @@
             
   
     <meta charset="utf-8">
-<article id="post-MySQL安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-JWT学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/20/MySQL%E5%AE%89%E8%A3%85/">MySQL安装</a>
+      <a class="article-title" href="/2019/04/09/JWT%E5%AD%A6%E4%B9%A0/">JWT学习</a>
     </h1>
   
 
         
         
 
-<a href="/2018/06/20/MySQL%E5%AE%89%E8%A3%85/" class="archive-article-date">
-  	<time datetime="2018-06-20T11:21:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-20</time>
+<a href="/2019/04/09/JWT%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
+  	<time datetime="2019-04-09T11:27:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -218,7 +218,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.7k字</span>
+        <span class="post-count">2.9k字</span>
       </span>
     </span>
 
@@ -227,7 +227,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">7分</span>
+        <span class="post-count">13分</span>
       </span>
     </span>
 </div>
@@ -244,12 +244,11 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在CentOS中默认安装有MariaDB，这个是MySQL的分支，但为了需要，还是要在系统中安装MySQL，而且安装完成之后可以直接覆盖掉MariaDB。</p>
-<p><strong>CentOS7安装MySql5.7</strong></p>
-<h2 id="1-卸载旧版本Mysql"><a href="#1-卸载旧版本Mysql" class="headerlink" title="1 卸载旧版本Mysql"></a>1 卸载旧版本Mysql</h2><p>采用yum安装mysql后，如果想要完全卸载mysql，可以采用如下方式：</p>
-<p>1、查看mysql安装了哪些东西</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa |grep -i mysql</span><br></pre></td></tr></table></figure>
+			<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p> 文章出处： JSON Web Token–摘自<a href="http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html" target="_blank" rel="noopener">阮一峰</a></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>JSON Web Token</strong>(缩写 JWT)是目前最流行的跨域认证解决方案。</p>
+<h1 id="1-跨域认证的问题"><a href="#1-跨域认证的问题" class="headerlink" title="1 跨域认证的问题"></a>1 跨域认证的问题</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;互联网离不开用户认证，一般流程是下面这样。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">用户向服务器发送用户名和密码。</span><br><span class="line">服务器验证通过后，在当前会话（session）里面保存相关数据，比如用户角色、登录时间等。</span><br><span class="line">服务器向用户返回一个 session_id，写入用户的Cookie。</span><br><span class="line">用户随后的每一次请求，都会通过Cookie，将 session_id 回传服务器。</span><br><span class="line">服务器收到 session_id ，找到前期保存的数据，由此得知用户的身份。</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这种模式的问题在于：扩展性（scaling）不好。单机当然没有问题，如果是服务器集群，或者跨域的服务导向架构，就要求 session 数据共享，每台服务器都能够读取 session。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;举例来说，A网站和B网站是同一家公司的关联服务。现在要求，用户只要在其中一个网站登录，再访问另一个网站就会自动登录，请问怎么实现？</p>
 	
 	
     </div>
@@ -263,133 +262,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/20/MySQL%E5%AE%89%E8%A3%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-Swagger2学习与集成" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/20/Swagger2%E5%AD%A6%E4%B9%A0%E4%B8%8E%E9%9B%86%E6%88%90/">Swagger2学习与集成</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2018/05/20/Swagger2%E5%AD%A6%E4%B9%A0%E4%B8%8E%E9%9B%86%E6%88%90/" class="archive-article-date">
-  	<time datetime="2018-05-20T11:32:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-20</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">674字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h1 id="1-Swagger2介绍"><a href="#1-Swagger2介绍" class="headerlink" title="1 Swagger2介绍"></a>1 Swagger2介绍</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;现在都奉行<strong>前后端分离</strong>和<strong>微服务</strong>大行其道，分微服务及前后端分离后，前后端开发的沟通成本就增加了。所以一款强大的<strong>RestFul API</strong> 文档则十分重要，而目前在后端领域，基本上就是<font color="red">Swagger</font>的天下了。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Swagger</strong>是一款RestFul接口的文档在线自动生成、功能测试功能框架。一个规范和完整的框架，用于生成、描述、调用和可视化RestFul风格的Web服务，加上Swagger-ui，可以有很好的呈现。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Swagger2</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Jwt</a>
         		</li>
       		
 		</ul>
@@ -401,7 +278,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Swagger//" class="article-tag-list-link color3">Swagger</a>
+        			<a href="/categories/Jwt//" class="article-tag-list-link color4">Jwt</a>
         		</li>
       		
 		</ul>
@@ -410,7 +287,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/20/Swagger2%E5%AD%A6%E4%B9%A0%E4%B8%8E%E9%9B%86%E6%88%90/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/09/JWT%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
         </p>
       
 
@@ -444,22 +321,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-SpringBoot面试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-6-消息队列如何保证消息的顺序性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/16/SpringBoot%E9%9D%A2%E8%AF%95/">SpringBoot面试</a>
+      <a class="article-title" href="/2019/04/08/6-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E6%B6%88%E6%81%AF%E7%9A%84%E9%A1%BA%E5%BA%8F%E6%80%A7/">6-消息队列如何保证消息的顺序性</a>
     </h1>
   
 
         
         
 
-<a href="/2018/05/16/SpringBoot%E9%9D%A2%E8%AF%95/" class="archive-article-date">
-  	<time datetime="2018-05-16T11:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-16</time>
+<a href="/2019/04/08/6-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E6%B6%88%E6%81%AF%E7%9A%84%E9%A1%BA%E5%BA%8F%E6%80%A7/" class="archive-article-date">
+  	<time datetime="2019-04-08T13:15:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-08</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -470,7 +347,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.8k字</span>
+        <span class="post-count">533字</span>
       </span>
     </span>
 
@@ -479,7 +356,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">10分</span>
+        <span class="post-count">1分</span>
       </span>
     </span>
 </div>
@@ -496,22 +373,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>随着 Spring Boot 使用越来越广泛，Spring Boot 已经成为 Java 程序员面试的知识点，比如下面这一段的 Spring Boot 问答：</p>
-<p>问：你觉得 Spring Boot 最大的优势是什么呢？</p>
-<p>答：Spring Boot 的最大的优势是“约定优于配置“。“约定优于配置“是一种软件设计范式，开发人员按照约定的方式来进行编程，可以减少软件开发人员需做决定的数量，获得简单的好处，而又不失灵活性。</p>
-<p>问：Spring Boot 中 “约定优于配置“的具体产品体现在哪里。</p>
-<p>答：Spring Boot Starter、Spring Boot Jpa 都是“约定优于配置“的一种体现。都是通过“约定优于配置“的设计思路来设计的，Spring Boot Starter 在启动的过程中会根据约定的信息对资源进行初始化；Spring Boot Jpa 通过约定的方式来自动生成 Sql ，避免大量无效代码编写。具体详细可以参考：Spring Boot 为什么这么火？</p>
-<p>问：Spring Boot Starter 的工作原理是什么？</p>
-<p>答：Spring Boot 在启动的时候会干这几件事情：</p>
-<ul>
-<li><p>① Spring Boot 在启动时会去依赖的 Starter 包中寻找 resources/META-INF/spring.factories 文件，然后根据文件中配置的 Jar 包去扫描项目所依赖的 Jar 包。</p>
-</li>
-<li><p>② 根据 spring.factories 配置加载 AutoConfigure 类</p>
-</li>
-<li><p>③ 根据 @Conditional 注解的条件，进行自动配置并将 Bean 注入 Spring Context</p>
-</li>
-</ul>
-<p>总结一下，其实就是 Spring Boot 在启动的时候，按照约定去读取 Spring Boot Starter 的配置信息，再根据配置信息对资源进行初始化，并注入到 Spring 容器中。这样 Spring Boot 启动完毕后，就已经准备好了一切资源，使用过程中直接注入对应 Bean 资源即可。</p>
+			<h2 id="1-面试官心里分析"><a href="#1-面试官心里分析" class="headerlink" title="1. 面试官心里分析"></a>1. 面试官心里分析</h2><p>其实这个也是用MQ的时候必问的话题，第一看看你了解不了解顺序这个事儿？第二看看你有没有办法保证消息是有顺序的？这个生产系统中常见的问题。</p>
 	
 	
     </div>
@@ -529,7 +391,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MQ</a>
         		</li>
       		
 		</ul>
@@ -541,11 +403,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/面试//" class="article-tag-list-link color3">面试</a>
+        			<a href="/categories/MQ//" class="article-tag-list-link color3">MQ</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/面试/SpringBoot//" class="article-tag-list-link color1">SpringBoot</a>
+        			<a href="/categories/MQ/面试//" class="article-tag-list-link color3">面试</a>
         		</li>
       		
 		</ul>
@@ -554,7 +416,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/16/SpringBoot%E9%9D%A2%E8%AF%95/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/08/6-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E6%B6%88%E6%81%AF%E7%9A%84%E9%A1%BA%E5%BA%8F%E6%80%A7/">展开全文 >></a>
         </p>
       
 
@@ -588,22 +450,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-SpringBoot-Docker简单配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-5-消息队列如何保证可靠性传输（消息丢了怎么办）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/15/SpringBoot-Docker%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/">SpringBoot+Docker简单配置</a>
+      <a class="article-title" href="/2019/04/07/5-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E5%8F%AF%E9%9D%A0%E6%80%A7%E4%BC%A0%E8%BE%93%EF%BC%88%E6%B6%88%E6%81%AF%E4%B8%A2%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%89/">5-消息队列如何保证可靠性传输（消息丢了怎么办）</a>
     </h1>
   
 
         
         
 
-<a href="/2018/05/15/SpringBoot-Docker%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2018-05-15T13:20:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-15</time>
+<a href="/2019/04/07/5-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E5%8F%AF%E9%9D%A0%E6%80%A7%E4%BC%A0%E8%BE%93%EF%BC%88%E6%B6%88%E6%81%AF%E4%B8%A2%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2019-04-07T12:35:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -614,7 +476,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.6k字</span>
+        <span class="post-count">2.2k字</span>
       </span>
     </span>
 
@@ -640,9 +502,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>转自<a href="http://www.ityouknow.com/springboot/2018/03/19/spring-boot-docker.html" target="_blank" rel="noopener">纯洁的微笑</a></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Docker 技术发展为微服务落地提供了更加便利的环境，使用 Docker 部署 Spring Boot其实非常简单。</p>
-<p>首先构建一个简单的 Spring Boot 项目，然后给项目添加 Docker 支持，最后对项目进行部署。</p>
+			<h2 id="1-面试官心里分析"><a href="#1-面试官心里分析" class="headerlink" title="1. 面试官心里分析"></a>1. 面试官心里分析</h2><p>这个是肯定的，用mq有个基本原则，就是数据不能多一条，也不能少一条，不能多，就是刚才说的重复消费和幂等性问题。不能少，就是说这数据别搞丢了。那这个问题你必须得考虑一下。</p>
+<p>如果说你这个是用mq来传递非常核心的消息，比如说计费，扣费的一些消息，之前参与设计和研发过一个公司非常核心的广告平台，计费系统，计费系统是很重的一个业务，操作是很耗时的。所以说广告系统整体的架构里面，实际上是将计费做成异步化的，然后中间就是加了一个MQ。</p>
+<p>当时为了确保说这个MQ传递过程中绝对不会把计费消息给弄丢，花了很多的精力。广告主投放了一个广告，明明说好了，用户点击一次扣费1块钱。结果要是用户动不动点击了一次，扣费的时候搞的消息丢了，我们公司就会不断的少几块钱，几块钱，积少成多，这个就对公司是一个很大的损失。</p>
 	
 	
     </div>
@@ -656,11 +518,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MQ</a>
         		</li>
       		
 		</ul>
@@ -672,11 +534,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot//" class="article-tag-list-link color1">SpringBoot</a>
+        			<a href="/categories/MQ//" class="article-tag-list-link color3">MQ</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot/Docket//" class="article-tag-list-link color2">Docket</a>
+        			<a href="/categories/MQ/面试//" class="article-tag-list-link color3">面试</a>
         		</li>
       		
 		</ul>
@@ -685,7 +547,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/15/SpringBoot-Docker%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/07/5-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E5%8F%AF%E9%9D%A0%E6%80%A7%E4%BC%A0%E8%BE%93%EF%BC%88%E6%B6%88%E6%81%AF%E4%B8%A2%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%89/">展开全文 >></a>
         </p>
       
 
@@ -719,22 +581,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-Java定时任务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-4-消息队列消费到重复数据怎么办" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/13/Java%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/">Java定时任务</a>
+      <a class="article-title" href="/2019/04/06/4-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E6%B6%88%E8%B4%B9%E5%88%B0%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE%E6%80%8E%E4%B9%88%E5%8A%9E/">4-消息队列消费到重复数据怎么办</a>
     </h1>
   
 
         
         
 
-<a href="/2018/05/13/Java%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" class="archive-article-date">
-  	<time datetime="2018-05-13T12:39:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-13</time>
+<a href="/2019/04/06/4-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E6%B6%88%E8%B4%B9%E5%88%B0%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE%E6%80%8E%E4%B9%88%E5%8A%9E/" class="archive-article-date">
+  	<time datetime="2019-04-06T13:28:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-06</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -745,783 +607,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.1k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">10分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoranSun<br>Wechat: SHR—97</p>
-<h3 id="一、什么是定时任务："><a href="#一、什么是定时任务：" class="headerlink" title="一、什么是定时任务："></a>一、什么是定时任务：</h3><blockquote>
-<p>定时任务是指调度程序在指定的时间或周期触发执行的任务<br>使用场景：发送邮件、统计、状态修改、消息推送、活动开启、增量索引</p>
-</blockquote>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">定时任务</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/定时任务//" class="article-tag-list-link color5">定时任务</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/13/Java%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-Netty知多少" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/05/Netty%E7%9F%A5%E5%A4%9A%E5%B0%91/">Netty知多少</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2018/05/05/Netty%E7%9F%A5%E5%A4%9A%E5%B0%91/" class="archive-article-date">
-  	<time datetime="2018-05-05T11:43:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-05</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">17分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><p>官方网站：<a href="http://netty.io/" target="_blank" rel="noopener">http://netty.io/</a></p>
-<ul>
-<li><p><strong>Netty</strong>是一款异步事件驱动的网络通信框架，用来快速开发可维护的高性能、高扩展的协议服务器和客户端。</p>
-</li>
-<li><p><strong>Netty</strong>是一个基于NI0客户端、服务器框架，使用它可以轻松快速的的构建网络应用，如协议服务器和客户端。它极大地简化了TCP和UDP套接字服务器网络编程开发。</p>
-</li>
-<li><p>高性能、稳定、高度灵活，社区活跃，有大量成功的商业实践项目</p></li></ul>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/网络编程//" class="article-tag-list-link color5">网络编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/05/Netty%E7%9F%A5%E5%A4%9A%E5%B0%91/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-Java编程瞎侃" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/18/Java%E7%BC%96%E7%A8%8B%E7%9E%8E%E4%BE%83/">Java编程瞎侃</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2018/04/18/Java%E7%BC%96%E7%A8%8B%E7%9E%8E%E4%BE%83/" class="archive-article-date">
-  	<time datetime="2018-04-18T09:39:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-18</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.1k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">14分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>文章出处：<a href="https://www.cnblogs.com/aoyeyuyan/p/5495219.html" target="_blank" rel="noopener">https://www.cnblogs.com/aoyeyuyan/p/5495219.html</a></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;那些年，空气中仿佛还能闻到汉唐盛世的余韵，因此决不允许自己的脸上有油光，时刻保持活力。然而，你一定称为那些“高深术语”感到过困惑。也许时至今日，你仍对他们一知半解。不过今天，讲以一种全新的高清视角进入奇妙的编程世界，领略涵涌在这些“高深术语”中活泼的底气，以及蹁跹于青萍之末的云水禅心。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/编程语言//" class="article-tag-list-link color5">编程语言</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/18/Java%E7%BC%96%E7%A8%8B%E7%9E%8E%E4%BE%83/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-Vim常用操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/25/Vim%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/">Vim常用操作</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2018/03/25/Vim%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" class="archive-article-date">
-  	<time datetime="2018-03-25T12:00:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-25</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.8k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">14分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-	
-		<p>Author：haoransun<br>WeChat：SHR—97</p>
-<p><strong>Practice makes perfect</strong></p>
-<h2 id="1-Vim-的前生今世"><a href="#1-Vim-的前生今世" class="headerlink" title="1. Vim 的前生今世"></a>1. Vim 的前生今世</h2><p>Vi 最初是由 Bill Joy 在 1976 年编码实现的。而 Vim (Vi IMproved) 则是改进的 Vi，由 Bram Moolenaar 在 1991 年开发并发布。Vi/Vim 是所有 Unix/Linux 操作系统默认配备的编辑器。因其强大的功能和高效的操作，Vi/Vim 也成为众多 Unix/Linux 用户、管理员必须掌握并熟练使用的编辑工具之一。尤其是在没有图形界面的情况下，更是离不开 Vi/Vim。Vi/Vim 命令非常多、用法极为灵活，掌握起来有一定的难度。本文为入门教程，关于 Vi/Vim 各种定制后的功能不在本文讨论范围之列。</p>
-<h2 id="2-Vi和Vim"><a href="#2-Vi和Vim" class="headerlink" title="2. Vi和Vim"></a>2. Vi和Vim</h2><p>在 Linux 的世界中，绝大部分的配置文件都是以 ASCII 的<strong>纯文本</strong>形态存在，因此利用简单的文字编辑软件就能够修改！ 与微软 Windows 系统不同的是，如果你用惯了 Microsoft Word 的话，在 Linux 的文本模式下，会觉得文书编辑程序都没有窗口接口来的直观与方便，那么问题来了，干嘛还要学这个不是很友善和方便的vi编辑器呢？因为：</p>
-<ul>
-<li>跨平台无所不在。所有的 Unix 和 Linux 系统都会内建 vi 文本编辑器，其他的编辑器则不一定会有而且你无需担心到了其他平台需要学习新编辑器，除了Linux/Mac OS X外Windows系统也都可用。</li>
-<li>很多个别软件的编辑接口都会主动调用 vi ；</li>
-<li>可扩展性。你可以只用它来编辑配置文件，也可以将它当做你的开发平台。vim 具有程序编辑的能力，可以主动的以字体颜色辨别语法的正确性，方便程序设计；</li>
-<li>程序简单、功能强大、运行飞快</li>
-</ul>
-<h2 id="3-什么是Vim呢？"><a href="#3-什么是Vim呢？" class="headerlink" title="3. 什么是Vim呢？"></a>3. 什么是Vim呢？</h2><p>其实你可以将 vim 视作 vi 的进阶版本，vim 可以用颜色或底线等方式来显示一些特殊的信息。 举例来说，当你使用 vim 去编辑一个 C 程序语言的档案，或者是shell script程序时，vim 会依据档案的扩展名或者是档案内的开头信息， 判断该档案的内容而自动调用该程序的语法判断式，再以颜色来显示程序代码与一般信息。也就是说， 这个 vim 已经是个『程序编辑器』了！甚至一些 Linux 基础配置文件内的语法，都能用 vim 来检查！<br> 简单来说， vi 是老式的文本处理器，不过功能已经很齐全了，但是还是有可以进步的地方。vim 则可以说是程序开发者的『程序编辑器』了，就连 vim 的<a href="https://link.jianshu.com?t=http://www.vim.org/" target="_blank" rel="noopener">官网</a>也说 vim 是一个『程序开发工具』而不是文本处理软件。 因为 vim 里面加入了很多额外的功能，例如支持正规表示法的搜寻架构、多档案编辑、区块复制等等。</p>
-<p><strong>学习 <a href="https://link.jianshu.com?t=http://www.vim.org/" target="_blank" rel="noopener">vim</a> 并且它可能会成为你最后一个使用的文本编辑器。没有比这个更好的文本编辑器了，非常地难学，但是却不可思议地好用</strong>。</p>
-<p><strong>提示</strong>：在 Linux 下，如果以 root 用户登录系统的话，通过 vi 命令打开的 Vim 编辑器往往只加载最基本的功能，像语法加亮着色的功能基本上没有。在 root 用户下使用 Vim 所有功能的技巧是用 vim 命令打开 Vim 编辑器。</p>
-<h2 id="4-如何进入Vim"><a href="#4-如何进入Vim" class="headerlink" title="4. 如何进入Vim?"></a>4. 如何进入Vim?</h2><p>可以在终端（不明白什么是终端的，请自行谷歌命令行、终端、shell、bash了解）输入下面的命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$vim [filename]</span><br></pre></td></tr></table></figure>
-
-<p>其中<code>filename</code>是文件的路径。如果文件不存在，它将为你建立一个新文件。</p>
-<h2 id="5-Vim的三种操作模式"><a href="#5-Vim的三种操作模式" class="headerlink" title="5. Vim的三种操作模式"></a>5. Vim的三种操作模式</h2><p>Vim编辑程序有三种操作模式，分别称为<strong>编辑模式</strong>、<strong>插入模式</strong> 和 <strong>命令模式</strong>。</p>
-<p><strong>编辑模式</strong>：用以执行命令，也称为Normal正常模式，也是进入Vim的缺省模式。进入Vim后会直接进入编辑模式(这是默认的模式)。在这个模式中， 你可以使用『上下左右』按键来移动光标，你可以使用『删除字符』或『删除整行』来操作文本， 也可以使用『复制、剪切、粘贴』来处理文本数据，删除正文和插入新的正文。但是却是无法编辑文本内容的！</p>
-<p><strong>插入模式</strong>：即 Insert 模式，用来输入文本，就像你用“记事本”一样。进入Vim后会直接进入编辑模式，要等到你按下『i, I, o, O, a, A, r, R』等任何一个字母之后才会进入编辑模式。注意了！通常在 Linux 中，按下这些按键时，在画面的左下方会出现『 INSERT 或 REPLACE 』的字样，此时才可以进行编辑，可以输入字符。而如果要回到一般模式时， 则必须要按下『Esc』这个按键才可退出编辑模式。</p>
-<p><strong>命令模式</strong>：用来执行冒号命令。在编辑模式下输入『 : / ? 』三个中的任何一个按钮，就可以将光标移动到最底下那一行。在这个模式当中，可以进行保存、查找、替换、显示行号、退出、配置Vim操作等等的动作。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">i → Insert 模式，按 ESC 回到 Normal 模式。</span><br><span class="line">x → 删当前光标所在的一个字符。</span><br><span class="line">dd → 删除当前行，并把删除的行存到剪贴板里。</span><br><span class="line">p → 粘贴剪贴板。</span><br><span class="line">:wq → 存盘 + 退出 (:w 存盘后可以跟文件名，:q 退出，:q!强制退出)</span><br><span class="line">:help &lt;command&gt; → 显示相关命令的帮助。你也可以就输入 :help 而不跟命令。</span><br></pre></td></tr></table></figure>
-
-<p><strong>推荐</strong>：<br>强例推荐使用hjkl键盘移动光标，但不必需，你也可以使用光标键 (←↓↑→)移动。<br>以 : 开始的命令你需要输入 <enter> 回车结束，例如我写成 :q 也就是说你要输入 :q然后回车。</enter></p>
-<h2 id="6-编辑模式下命令"><a href="#6-编辑模式下命令" class="headerlink" title="6. 编辑模式下命令"></a>6. 编辑模式下命令</h2><h3 id="1-跳转"><a href="#1-跳转" class="headerlink" title="1. 跳转"></a>1. 跳转</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">k或↑              上移</span><br><span class="line">j或↓               下移</span><br><span class="line">h或←            左移</span><br><span class="line">l或→             右移</span><br></pre></td></tr></table></figure>
-
-<p>上面这４个键将光标位置每次移动一行或一个字符 。Vim还提供稍大范围移动光标的命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ctrl+f         在文件中前移一页（相当于 page down）</span><br><span class="line">ctrl+b        在文件中后移一页（相当于 page up）</span><br><span class="line">ctrl+d        屏幕向下移动半页</span><br><span class="line">ctrl+u        屏幕向上移动一页</span><br></pre></td></tr></table></figure>
-
-<p>更大范围的移动：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">*          当光标停留在一个单词上，x 键会在文件内搜索该单词，并跳转到下一处；</span><br><span class="line">#          当光标停留在一个单词上，# 在文件内搜索该单词，并跳转到上一处；</span><br><span class="line">(&#x2F;)        移动到 前&#x2F;后 句 的开始；</span><br><span class="line">&#123;&#x2F;&#125;        跳转到 当前&#x2F;下一个 段落 的开始。</span><br><span class="line">g_         到本行最后一个不是 blank 字符的位置。</span><br><span class="line">fa         到下一个为 a 的字符处，你也可以fs到下一个为s的字符。</span><br><span class="line">t,         到逗号前的第一个字符。逗号可以变成其它字符。</span><br><span class="line">3fa        在当前行查找第三个出现的 a。</span><br><span class="line">F&#x2F;T        和 f 和 t 一样，只不过是相反方向;</span><br></pre></td></tr></table></figure>
-
-<p>在屏幕中找到需要的一页 时，可以用下面的命令快速移动光标：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">H                  将光标移到屏幕上的起始行（或最上行）</span><br><span class="line">M                  将光标移到屏幕中间</span><br><span class="line">L                  将光标移到屏幕最后一行</span><br><span class="line">G                  将光标定位到文件最后一行起始位置</span><br><span class="line">NG或Ngg            将光标定位到第 N 行的起始位置</span><br><span class="line">gg                 将光标定位到文件第一行起始位置</span><br><span class="line">N(ENTER)           光标下移N行</span><br></pre></td></tr></table></figure>
-
-<p>同样需要注意字母的大小写。H 和 L 命令还可以加数字。如 2H 表示将光标移到屏幕的第２行，3L 表示将光标移到屏幕的倒数第3行。</p>
-<p>当将光标移到所要的行是，行内移动 光标可以用下面的命令来实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">w                右移光标到下一个字的开头；</span><br><span class="line">e                右移光标到一个字的末尾；</span><br><span class="line">b                左移光标到前一个字的开头；</span><br><span class="line">0                数字０，左移光标到本行的开始；</span><br><span class="line">$                右移光标，到本行的末尾；</span><br><span class="line">^                移动光标，到本行的第一个非空字符。</span><br><span class="line">+                光标移动到非空格符的下一行；</span><br><span class="line">-                光标移动到非空格符的上一行n；</span><br><span class="line">n                n表示数字，按下数字后按空格键，光标右移n个字符，会跨行移动。</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-查找。搜索匹配"><a href="#2-查找。搜索匹配" class="headerlink" title="2. 查找。搜索匹配"></a>2. 查找。搜索匹配</h3><p>和许多先进的编辑器一样，Vim 提供了强大的字符串搜索功能。要查找文件中指定字或短语出现的位置，可以用Vim直接进行搜索，而不必以手工方式进行。搜索方法是：键入字符 / ，后面跟以要搜索的字符串，然后按回车键。编辑程序执行正向搜索（即朝文件末尾方向），并在找到指定字符串后，将光标停到该字符串的开头；键入 n 命令可以继续执行搜索，找出这一字符串下次出现的位置。用字符 ? 取代 / ，可以实现反向搜索（朝文件开头方向）。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;str1                正向搜索字符串 str1；</span><br><span class="line">n                    继续搜索，重复之前的查找，但是向上重复查找；</span><br><span class="line">N                    继续搜索，重复之前的查找，但是向下重复查找；</span><br><span class="line">?str2                反向搜索字符串 str2 。</span><br><span class="line">:n1,n2s&#x2F;word1&#x2F;word2&#x2F;g   这个操作代表在n1与n2行之间查找word1并用word2来代替它</span><br><span class="line">:1,$s&#x2F;word1&#x2F;word2&#x2F;g     这个操作是从第一行到最后一行进行查找替换</span><br><span class="line">:1,$s&#x2F;word1&#x2F;word2&#x2F;gc    与上面一样只不过多了个确认confirm</span><br></pre></td></tr></table></figure>
-
-<p>无论搜索方向如何，当到达文件末尾或开头时，搜索工作会循环到文件的另一端并继续执行。<br>Vim中执行搜索匹配最强大的地方是结合 正则表达式 来搜索，</p>
-<h3 id="3-替换和删除"><a href="#3-替换和删除" class="headerlink" title="3. 替换和删除"></a>3. 替换和删除</h3><p>Vim常规的删除命令是 d、 x (前者删除 行 ，后者删除 字符 ),结合Vim的其他特性可以实现基础的删除功能。将光标定位于文件内指定位置后，可以用其他字符来替换光标所指向的字符，或从当前光标位置删除一个或多个字符或一行、多行。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">rc                 用 c 替换光标所指向的当前字符；</span><br><span class="line">nrc                用 c 替换光标所指向的前 n 个字符；</span><br><span class="line">5rA                用 A 替换光标所指向的前 5 个字符；</span><br><span class="line">x                  删除光标所指向的当前字符；</span><br><span class="line">nx                 删除光标所指向的前 n 个字符；</span><br><span class="line">3x                 删除光标所指向的前 3 个字符；</span><br><span class="line">dw                 删除光标右侧的字；</span><br><span class="line">ndw                删除光标右侧的 n 个字；</span><br><span class="line">3dw                删除光标右侧的 3 个字；</span><br><span class="line">db                 删除光标左侧的字；</span><br><span class="line">ndb                删除光标左侧的 n 个字；</span><br><span class="line">5db                删除光标左侧的 5 个字；</span><br><span class="line">dd                 删除光标所在行，并去除空隙；</span><br><span class="line">ndd                删除（剪切） n 行内容，并去除空隙；</span><br><span class="line">3dd                删除（剪切） 3 行内容，并去除空隙；</span><br></pre></td></tr></table></figure>
-
-<p>其他常用的删除命令有：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">d$                从当前光标起删除字符直到行的结束；</span><br><span class="line">d0                从当前光标起删除字符直到行的开始；</span><br><span class="line">J                 删除本行的回车符（CR），并和下一行合并。</span><br></pre></td></tr></table></figure>
-<p>Vim常规的替换命令有 c 和 s ，结合Vim的其他特性可以实现基础的替换功能，不过替换命令执行以后，通常会由<strong>编辑模式</strong>进入<strong>插入模式</strong>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">s                用输入的正文替换光标所指向的字符；</span><br><span class="line">S                删除当前行，并进入编辑模式；</span><br><span class="line">ns               用输入的正文替换光标右侧 n 个字符；</span><br><span class="line">nS               删除当前行在内的 n 行，并进入编辑模式；</span><br><span class="line">cw               用输入的正文替换光标右侧的字；</span><br><span class="line">cW               用输入的正文替换从光标到行尾的所有字符（同 c$ )；</span><br><span class="line">ncw              用输入的正文替换光标右侧的 n 个字；</span><br><span class="line">cb               用输入的正文替换光标左侧的字；</span><br><span class="line">ncb              用输入的正文替换光标左侧的 n 个字；</span><br><span class="line">cd               用输入的正文替换光标的所在行；</span><br><span class="line">ncd              用输入的正文替换光标下面的 n 行；</span><br><span class="line">c$               用输入的正文替换从光标开始到本行末尾的所有字符；</span><br><span class="line">c0               用输入的正文替换从本行开头到光标的所有字符。</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="4-临时显示行号"><a href="#4-临时显示行号" class="headerlink" title="4. 临时显示行号"></a>4. 临时显示行号</h3><p> 如果只是临时显示vim的行号，只须按ESC键退出编辑内容模式，输入“：set number” / “:set nu”后按回车键，就可以显示行号了。行号显示只是暂时的，退出vim后再次打开vim就不显示行号了。</p>
-<h3 id="5-永久显示行号"><a href="#5-永久显示行号" class="headerlink" title="5. 永久显示行号"></a>5. 永久显示行号</h3><p> 如果想让vim永久显示行号，则需要修改vim配置文件vimrc。whereis vimrc</p>
-<p> 如果没有此文件可以创建一个 vimrc<br> 在打开的vimrc文件中最后一行输入：set number ，然后保存退出。再次用vim打开文件时，就会显示行号了。</p>
-<h2 id="7-多区域选择"><a href="#7-多区域选择" class="headerlink" title="7. 多区域选择"></a>7. 多区域选择</h2><p>选中一个起始点后，按 ctrl+v 可以看到左下角出现 区块选择，然后点击上下左右选择即可。按下y即可剪切，按下p粘贴刚才剪切的内容.</p>
-<p>在命令模式下输入 :files 可以列出目前这个vim开启到的所有档案。</p>
-<h2 id="8-多窗口分屏功能"><a href="#8-多窗口分屏功能" class="headerlink" title="8. 多窗口分屏功能"></a>8. 多窗口分屏功能</h2><h3 id="1-分屏启动-Vim"><a href="#1-分屏启动-Vim" class="headerlink" title="1. 分屏启动 Vim"></a>1. 分屏启动 Vim</h3><ol>
-<li>使用大写的O参数来垂直分屏</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim -On file1 file2</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>使用小写的o参数来水平分屏</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim -on file1 file2</span><br></pre></td></tr></table></figure>
-
-<p><strong>注释：n是数字，表示分成几个屏</strong></p>
-<h3 id="2-关闭分屏"><a href="#2-关闭分屏" class="headerlink" title="2. 关闭分屏"></a>2. 关闭分屏</h3><ol>
-<li>关闭当前窗口</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl +w c</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>关闭当前窗口，如果只剩最后一个，则退出Vim</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl +w q</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-分屏"><a href="#3-分屏" class="headerlink" title="3. 分屏"></a>3. 分屏</h3><ol>
-<li>上下分割当前打开的文件</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl +w s</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>上下分割，并打开一个新的文件</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:sp filename</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>左右分割当前打开的文件 </li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl +w v</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>左右分割，并打开一个新的文件</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:vsp filename</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-移动光标"><a href="#4-移动光标" class="headerlink" title="4. 移动光标"></a>4. 移动光标</h3><p>Vi中的光标键是h, j, k, l，要在各个屏间切换，只需要先按一下Ctrl+W</p>
-<ol>
-<li><p>把光标移到<strong>右边</strong>的屏。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+w l</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>把光标移到<strong>左边</strong>的屏中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+w h</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>把光标移到<strong>上边</strong>的屏中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+w k</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>把光标移到<strong>下边</strong>的屏中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+w j</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>把光标移到<strong>下一个</strong>的屏中。.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+w w  &#96;注：也可以按住cntl键，同时按下两次w键&#96;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<h3 id="5-移动分屏"><a href="#5-移动分屏" class="headerlink" title="5. 移动分屏"></a>5. 移动分屏</h3><p>这个功能还是使用了Vim的光标键，<strong>参数是大写的</strong>。当然了，如果你的分屏很乱很复杂的话，这个功能可能会出现一些非常奇怪的症状。</p>
-<ol>
-<li><p>向右移动。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+w L</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>向左移动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+w H</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>向上移动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+w K</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>向下移动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+w J</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<h3 id="6-屏幕尺寸"><a href="#6-屏幕尺寸" class="headerlink" title="6. 屏幕尺寸"></a>6. 屏幕尺寸</h3><ol>
-<li><p>让所有的屏都有一样的高度。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+w &#x3D;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>增加高度。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+w +</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>减少高度。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+w -</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-</li>
-</ol>
-<p><a href="https://link.jianshu.com/?t=http://blog.jobbole.com/86132/" target="_blank" rel="noopener">Vim 入门教程</a><br><a href="https://link.jianshu.com/?t=http://cn.linux.vbird.org/linux_basic/0310vi.php" target="_blank" rel="noopener">vim 程序编辑器</a><br><a href="https://www.jianshu.com/p/7678a7e6973e" target="_blank" rel="noopener">http://www.jianshu.com/p/7678a7e6973e</a><br><a href="https://www.jianshu.com/p/bcbe916f97e1" target="_blank" rel="noopener">http://www.jianshu.com/p/bcbe916f97e1</a><br><a href="https://link.jianshu.com/?t=http://coolshell.cn/articles/5426.html" target="_blank" rel="noopener">http://coolshell.cn/articles/5426.html</a></p>
-
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/25/Vim%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-Linux定时任务Crontab详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/23/Linux%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1Crontab%E8%AF%A6%E8%A7%A3/">Linux定时任务Crontab详解</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2018/03/23/Linux%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1Crontab%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2018-03-23T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-23</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.9k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">15分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p><a href="https://www.cnblogs.com/intval/p/5763929.html" target="_blank" rel="noopener">文章出处</a></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Linux系统是由cron（crond）这个系统服务来控制的。Linux系统上面原本就有非常多的计划性工作，因此这个系统服务是默认启动的。另 外, 由于使用者自己也可以设置计划任务，所以， Linux 系统也提供了使用者控制计划任务的命令 :crontab 命令。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/23/Linux%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1Crontab%E8%AF%A6%E8%A7%A3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-Linux常用插件及乱码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/20/Linux%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B9%B1%E7%A0%81/">Linux常用插件及乱码</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2018/03/20/Linux%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B9%B1%E7%A0%81/" class="archive-article-date">
-  	<time datetime="2018-03-20T10:53:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-20</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">799字</span>
+        <span class="post-count">1.1k字</span>
       </span>
     </span>
 
@@ -1547,12 +633,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h1 id="1-清空文件"><a href="#1-清空文件" class="headerlink" title="1. 清空文件"></a>1. 清空文件</h1><blockquote>
-<p>filename 或者 : &gt; filename</p>
-</blockquote>
-<h1 id="2-configure-make-make-install"><a href="#2-configure-make-make-install" class="headerlink" title="2. ./configure make make install"></a>2. ./configure make make install</h1><ul>
-<li><p>./configure 检测安装平台的目标特征的。如会检测是不是有CC或者GCC，并不是需要CC或者GCC，它是个shell脚本，生成Makefile,为下一步的编译做准备。</p></li></ul>
+			<h2 id="1-面试官心里分析"><a href="#1-面试官心里分析" class="headerlink" title="1. 面试官心里分析"></a>1. 面试官心里分析</h2><p>如何保证消息不被重复消费啊（如何保证消息消费时的幂等性）？</p>
+<p>其实这个很常见的一个问题，这俩问题基本可以连起来问。既然是消费消息，那肯定要考虑考虑会不会重复消费？能不能避免重复消费？或者重复消费了也别造成系统异常可以吗？这个是MQ领域的基本问题，其实本质上还是问你使用消息队列如何保证幂等性，这个是你架构里要考虑的一个问题。</p>
+<p>面试官问你，肯定是必问的，这是你要考虑的实际生产上的系统设计问题。</p>
 	
 	
     </div>
@@ -1566,7 +649,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MQ</a>
         		</li>
       		
 		</ul>
@@ -1578,7 +665,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
+        			<a href="/categories/MQ//" class="article-tag-list-link color3">MQ</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/MQ/面试//" class="article-tag-list-link color3">面试</a>
         		</li>
       		
 		</ul>
@@ -1587,7 +678,776 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/20/Linux%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B9%B1%E7%A0%81/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/06/4-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E6%B6%88%E8%B4%B9%E5%88%B0%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE%E6%80%8E%E4%B9%88%E5%8A%9E/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-3-消息队列如何保证高可用性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/03/3-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E9%AB%98%E5%8F%AF%E7%94%A8%E6%80%A7/">3-消息队列如何保证高可用性</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/04/03/3-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E9%AB%98%E5%8F%AF%E7%94%A8%E6%80%A7/" class="archive-article-date">
+  	<time datetime="2019-04-03T13:28:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-03</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2.4k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">8分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<h2 id="1-面试官心里分析"><a href="#1-面试官心里分析" class="headerlink" title="1. 面试官心里分析"></a>1. 面试官心里分析</h2><p>如果有人问到你MQ的知识，高可用是必问的，因为MQ的缺点，我刚才已经说过了，有好多，导致系统可用性降低，等等。所以只要你用了MQ，接下来问的一些要点肯定就是围绕着MQ的那些缺点怎么来解决了。</p>
+<p>要是你傻乎乎的就干用了一个MQ，各种问题从来没考虑过，那你就杯具了，面试官对你的印象就是，只会简单实用一些技术，没任何思考，马上对你的印象就不太好了。这样的同学招进来要是做个20k薪资以内的普通小弟还凑合。如果招进来做薪资20多k的高工，那就惨了，让你设计个系统，里面肯定一堆坑，出了事故公司受损失，团队一起背锅。</p>
+<p>前几年的事儿，非常大的互联网公司，非常核心的系统，就是疏忽了MQ，没考虑MQ如何保证高可用，如果MQ挂了怎么办，导致几个小时系统不可用，公司损失几千万，team背锅，你闹的祸，你老大帮你一起背锅</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MQ</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/MQ//" class="article-tag-list-link color3">MQ</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/MQ/面试//" class="article-tag-list-link color3">面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/03/3-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E9%AB%98%E5%8F%AF%E7%94%A8%E6%80%A7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-2-消息队列引入原原因-优缺点-应用场景-技术选型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/02/2-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%BC%95%E5%85%A5%E5%8E%9F%E5%8E%9F%E5%9B%A0-%E4%BC%98%E7%BC%BA%E7%82%B9-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/">2-消息队列引入原原因_优缺点_应用场景_技术选型</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/04/02/2-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%BC%95%E5%85%A5%E5%8E%9F%E5%8E%9F%E5%9B%A0-%E4%BC%98%E7%BC%BA%E7%82%B9-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/" class="archive-article-date">
+  	<time datetime="2019-04-02T12:28:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-02</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">3.3k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">11分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<h2 id="1-面试官心里分析"><a href="#1-面试官心里分析" class="headerlink" title="1. 面试官心里分析"></a>1. 面试官心里分析</h2><p>（1）第一，你知道不知道你们系统里为什么要用消息队列这个东西？</p>
+<p>之前就见过大量的候选人，说自己项目里用了redis、mq，但是其实他并不知道自己为什么要用这个东西。其实说白了，就是为了用而用，或者是别人设计的架构，他从头到尾没思考过。</p>
+<p>没有对自己的架构问过为什么的人，一定是平时没有思考的人，面试官对这类候选人印象通常很不好。因为进了团队担心你就木头木脑的干呆活儿，不会自己思考。</p>
+<p>（2）第二，你既然用了消息队列这个东西，你知道不知道用了有什么好处？</p>
+<p>系统中引入消息队列之后会不会有什么坏处？你要是没考虑过这个，那你盲目弄个MQ进系统里，后面出了问题你是不是就自己溜了给公司留坑？你要是没考虑过引入一个技术可能存在的弊端和风险，面试官把这类候选人招进来了，基本可能就是挖坑型选手。就怕你干1年挖一堆坑，自己跳槽了，给公司留下后患无穷。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MQ</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/MQ//" class="article-tag-list-link color3">MQ</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/MQ/面试//" class="article-tag-list-link color3">面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/02/2-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%BC%95%E5%85%A5%E5%8E%9F%E5%8E%9F%E5%9B%A0-%E4%BC%98%E7%BC%BA%E7%82%B9-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-1-面试官对消息队列的10个连环炮" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/01/1-%E9%9D%A2%E8%AF%95%E5%AE%98%E5%AF%B9%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E7%9A%8410%E4%B8%AA%E8%BF%9E%E7%8E%AF%E7%82%AE/">1-面试官对消息队列的10个连环炮</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/04/01/1-%E9%9D%A2%E8%AF%95%E5%AE%98%E5%AF%B9%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E7%9A%8410%E4%B8%AA%E8%BF%9E%E7%8E%AF%E7%82%AE/" class="archive-article-date">
+  	<time datetime="2019-04-01T11:28:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-01</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">808字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<h1 id="1-连环炮"><a href="#1-连环炮" class="headerlink" title="1 连环炮"></a>1 连环炮</h1><p>面试官：<strong>说一下你们在项目里是怎么用消息队列的？</strong></p>
+<p>候选人：巴拉巴拉，我们啥啥系统发送个啥啥消息到队列，别的系统来消费啥啥的（很多同学在这里会进入一个误区，就是你仅仅就是知道以及回答你们是怎么用这个消息队列的，用这个消息队列来干了个什么事情？）<br>比如我们有个订单系统，订单系统会每次下一个新的订单的时候，就会发送时一条消息到ActiveMQ里面去，后台有个库存系统负责获取了消息然后更新库存。</p>
+<p>面试官：<strong>那你们为什么使用消息队列啊？（你的订单系统不发送消息到MQ，直接订单系统调用库存系统一个接口，咔嚓一下，直接就调用成功能了，库存就更新了）</strong><br>候选人：没怎么想过，老大让用就用了。</p>
+<p>面试官：<strong>那你说说用消息队列都有什么优点和缺点？</strong></p>
+<p>面试官：<strong>kafka、activemq、rabbitmq、rocketmq都有什么区别？</strong><br>（面试官问你这个问题，就是说，绕过比较虚的话题，直接看看你对各种MQ中间件是否了解，是否做过功课，是否做过调研）</p>
+<p>面试官：<strong>那你们是如何保证消息队列的高可用啊？</strong></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MQ</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/MQ//" class="article-tag-list-link color3">MQ</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/MQ/面试//" class="article-tag-list-link color3">面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/01/1-%E9%9D%A2%E8%AF%95%E5%AE%98%E5%AF%B9%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E7%9A%8410%E4%B8%AA%E8%BF%9E%E7%8E%AF%E7%82%AE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-Git常见200-条命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/28/Git%E5%B8%B8%E8%A7%81200-%E6%9D%A1%E5%91%BD%E4%BB%A4/">Git常见200+条命令</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/03/28/Git%E5%B8%B8%E8%A7%81200-%E6%9D%A1%E5%91%BD%E4%BB%A4/" class="archive-article-date">
+  	<time datetime="2019-03-28T11:05:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-28</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">3.4k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">14分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<h2 id="新建"><a href="#新建" class="headerlink" title="新建"></a>新建</h2><p>创建一个新的 git 版本库。这个版本库的配置、存储等信息会被保存到.git 文件夹中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 初始化当前项目</span><br><span class="line">$ git init</span><br><span class="line"></span><br><span class="line"># 新建一个目录，将其初始化为Git代码库</span><br><span class="line">$ git init [project-name]</span><br><span class="line"></span><br><span class="line"># 在指定目录创建一个空的 Git 仓库。运行这个命令会创建一个名为 directory，只包含 .git 子目录的空目录。</span><br><span class="line"></span><br><span class="line">$ git init --bare &lt;directory&gt;</span><br><span class="line"></span><br><span class="line"># 下载一个项目和它的整个代码历史</span><br><span class="line"># 这个命令就是将一个版本库拷贝到另一个目录中，同时也将分支都拷贝到新的版本库中。这样就可以在新的版本库中提交到远程分支</span><br><span class="line">$ git clone [url]</span><br></pre></td></tr></table></figure>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/28/Git%E5%B8%B8%E8%A7%81200-%E6%9D%A1%E5%91%BD%E4%BB%A4/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-8-GitLab简单操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/25/8-GitLab%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/">8-GitLab简单操作</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/03/25/8-GitLab%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/" class="archive-article-date">
+  	<time datetime="2019-03-25T11:04:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-25</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">243字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97<br>图片来源：极客时间，需个人购买教程。</p>
+<h2 id="1-国内为什么普遍使用GitLab"><a href="#1-国内为什么普遍使用GitLab" class="headerlink" title="1 国内为什么普遍使用GitLab"></a>1 国内为什么普遍使用GitLab</h2><p><a href="https://about.gitlab.com/" target="_blank" rel="noopener">https://about.gitlab.com/</a><br>大公司有能力自己基于GitLab做二次开发，有利于将代码保存在自己手中。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/25/8-GitLab%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-31-Trie树-如何实现搜索引擎的搜索关键词提示功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/12/31-Trie%E6%A0%91-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%9A%84%E6%90%9C%E7%B4%A2%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E7%A4%BA%E5%8A%9F%E8%83%BD/">31-Trie树_如何实现搜索引擎的搜索关键词提示功能</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/03/12/31-Trie%E6%A0%91-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%9A%84%E6%90%9C%E7%B4%A2%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E7%A4%BA%E5%8A%9F%E8%83%BD/" class="archive-article-date">
+  	<time datetime="2019-03-12T13:01:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-12</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">4.6k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">16分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>搜索引擎的搜索关键词提示功能，我想你应该不陌生吧？为了方便快速输入，当你在搜索引擎的搜索框中，输入要搜索的文字的某一部分的时候，搜索引擎就会自动弹出下拉框，里面是各种关键词提示。你可以直接从下拉框中选择你要搜索的东西，而不用把所有内容都输入进去，一定程度上节省了我们的搜索时间。</p>
+<p><img src="/2019/03/12/31-Trie%E6%A0%91-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%9A%84%E6%90%9C%E7%B4%A2%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E7%A4%BA%E5%8A%9F%E8%83%BD/278d4698-47ef-4675-a5a8-7866c612edfa.jpg" alt></p>
+<p>尽管这个功能我们几乎天天在用，作为一名工程师，你是否思考过，它是怎么实现的呢？它底层使用的是哪种数据结构和算法呢？</p>
+<p>像 Google、百度这样的搜索引擎，它们的关键词提示功能非常全面和精准，肯定做了很多优化，但万变不离其宗，底层最基本的原理就是今天要讲的这种数据结构：Trie 树。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/12/31-Trie%E6%A0%91-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%9A%84%E6%90%9C%E7%B4%A2%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E7%A4%BA%E5%8A%9F%E8%83%BD/">展开全文 >></a>
         </p>
       
 
@@ -1622,7 +1482,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/26/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="page-number" href="/page/26/">26</a><span class="page-number current">27</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/28/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/26/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="page-number" href="/page/26/">26</a><span class="page-number current">27</span><a class="page-number" href="/page/28/">28</a><a class="page-number" href="/page/29/">29</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/28/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1892,6 +1752,46 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">搬砖结晶</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">推荐系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">目标检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">SkLearn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">图神经网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TensorFlow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">研究生课题-AD检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">研究生成果</a>
               </li>
             
             <div class="clearfix"></div>

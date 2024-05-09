@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 273</nav>
+		<nav style="color: #7FFFD4;">总文章数 379</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -192,22 +192,22 @@
             
   
     <meta charset="utf-8">
-<article id="post-Linux安装常用软件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-7-基于GitHub进行团队协作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/19/Linux%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/">Linux安装常用软件</a>
+      <a class="article-title" href="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/">7-基于GitHub进行团队协作</a>
     </h1>
   
 
         
         
 
-<a href="/2018/03/19/Linux%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" class="archive-article-date">
-  	<time datetime="2018-03-19T11:00:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-19</time>
+<a href="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/" class="archive-article-date">
+  	<time datetime="2019-03-09T12:01:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-09</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -227,7 +227,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6分</span>
+        <span class="post-count">5分</span>
       </span>
     </span>
 </div>
@@ -244,98 +244,8 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-	
-		<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h1 id="mysql国内镜像下载网址"><a href="#mysql国内镜像下载网址" class="headerlink" title="mysql国内镜像下载网址"></a>mysql国内镜像下载网址</h1><p><a href="https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql57-community-el7/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql57-community-el7/</a></p>
-<h1 id="开源镜像站点汇总"><a href="#开源镜像站点汇总" class="headerlink" title="开源镜像站点汇总"></a>开源镜像站点汇总</h1><p><a href="http://segmentfault.com/a/1190000000375848" target="_blank" rel="noopener">http://segmentfault.com/a/1190000000375848</a></p>
-<p><a href="https://opsx.alibaba.com/mirror/search?q=mysq5.7&lang=zh-CN" target="_blank" rel="noopener">https://opsx.alibaba.com/mirror/search?q=mysq5.7&amp;lang=zh-CN</a></p>
-<p><a href="http://mirrors.ustc.edu.cn/" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/</a></p>
-<h1 id="安装-jdk"><a href="#安装-jdk" class="headerlink" title="安装 jdk"></a>安装 jdk</h1><p><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">java包</a></p>
-<h2 id="手动解压"><a href="#手动解压" class="headerlink" title="手动解压"></a>手动解压</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;geek&#x2F;</span><br><span class="line">make java</span><br><span class="line">[root@haoransun java]# wget https:&#x2F;&#x2F;download.oracle.com&#x2F;otn&#x2F;java&#x2F;jdk&#x2F;8u211-b12&#x2F;478a62b7d4e34b78b671c754eaaf38ab&#x2F;jdk-8u211-linux-x64.tar.gz</span><br><span class="line"></span><br><span class="line">此方式不推荐使用。</span><br><span class="line"></span><br><span class="line">或者直接将jar由 winSCP包传导至Linux指定目录</span><br><span class="line"></span><br><span class="line">配置环境变量</span><br><span class="line">vim &#x2F;etc&#x2F;profile</span><br><span class="line">将下列配置文件添加，保存退出(一定要去掉等号两边的空格)</span><br><span class="line"></span><br><span class="line">export JAVA_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;geek&#x2F;java&#x2F;jdk1.8.0</span><br><span class="line">export PATH&#x3D;$PATH:$JAVA_HOME&#x2F;bin</span><br><span class="line">export CLASSPATH&#x3D;.$JAVA_HOME&#x2F;lib&#x2F;dt.jar:$JAVA_HOME&#x2F;lib</span><br><span class="line">:wq</span><br><span class="line">source &#x2F;etc&#x2F;profile</span><br><span class="line">java -version 或者 jps 验证即可</span><br></pre></td></tr></table></figure>
-
-<p>wget 方式不推荐使用，会出现无法解压的情况，用wget命令直接下载的JDK，这是问题的根源。</p>
-<p>去Oracle官网下载过jdk的童鞋应该都知道，下载之前需要同意Oracle的安装协议，不然不能下载，但是用wget的方式，默认是不同意，虽然能下载下来，但是下载下来的文件会有问题，所以在Linux上解压一直失败。</p>
-<p>后来去官网下载好，然后传到服务器上，再解压就没有问题了。</p>
-<hr>
-<h2 id="yum-安装"><a href="#yum-安装" class="headerlink" title="yum 安装"></a>yum 安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum search java | grep jdk</span><br><span class="line">yum install java-1.8.0-openjdk</span><br><span class="line">默认安装在 &#x2F;usr&#x2F;lib&#x2F;jvm&#x2F;</span><br><span class="line">配置环境变量及验证安装</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="rpm-安装"><a href="#rpm-安装" class="headerlink" title="rpm 安装"></a>rpm 安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh  指定安装包</span><br><span class="line">配置环境变量。验证安装</span><br></pre></td></tr></table></figure>
-
-<h1 id="CentOS7-安装-MySQL5-7"><a href="#CentOS7-安装-MySQL5-7" class="headerlink" title="CentOS7 安装 MySQL5.7"></a>CentOS7 安装 MySQL5.7</h1><p>安装环境：CentOS7 64位 mini版，安装MySQL5.7</p>
-<p>mysql-client和server的区别：<br><strong>本质上的区别是：server是执行一个crud操作，client是发送一个crud操作</strong></p>
-<p>server是把sql语句翻译成对内存和文件的操作，也就是说，server是直接操作文件的。</p>
-<p>而client是对数据库/表进行操作，不是直接对文件进行操作。</p>
-<p>举个例子：<br>①client：我用一个Navicat去链接一个数据库，这个Navicat就是client。</p>
-<p>②server：我有多个mysql服务实例，他们可以位于不同的端口（这句不重要），但是他们是挂载在了宿主机同一个目录下的（这句重要，对内存/文件进行操作了），而且数据共享（这句也不重要）。</p>
-<p>小知识点：</p>
-<p>①sql只是去知道server如何去操作数据。</p>
-<p>②即使C/S在同一台机器上，他们也是通过网络通讯的。</p>
-<h2 id="1-配置-YUM源"><a href="#1-配置-YUM源" class="headerlink" title="1. 配置 YUM源"></a>1. 配置 YUM源</h2><p>在<a href="http://lib.csdn.net/base/14" target="_blank" rel="noopener" title="MySQL知识库">MySQL</a>官网中下载YUM源rpm安装包：<a href="http://dev.mysql.com/downloads/repo/yum/" target="_blank" rel="noopener">http://dev.mysql.com/downloads/repo/yum/</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">下载mysql源安装包</span><br><span class="line">wget http:&#x2F;&#x2F;dev.mysql.com&#x2F;get&#x2F;mysql57-community-release-el7-8.noarch.rpm</span><br><span class="line">安装mysql源</span><br><span class="line">yum localinstall mysql57-community-release-el7-8.noarch.rpm</span><br></pre></td></tr></table></figure>
-<p><strong><font color="red">由于某些原因，下载过慢，可以参考最上方的国内网址进行下载，</font>如下所示：</strong><br><a href="https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql57-community-el7/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql57-community-el7/</a></p>
-<p><img src="/2018/03/19/Linux%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/060fa4bb-b320-4095-bd6c-aab5b5f1f232.png" alt></p>
-<ul>
-<li><strong>1</strong> 右键选择，复制链接地址，到Linux中  wget 链接地址，下载 xxx.rpm安装包<br><img src="/2018/03/19/Linux%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/a7aa735c-9414-4e83-beae-d17b54ce252e.png" alt></li>
-<li><strong>2</strong> sudo rpm -ivh 上述mysql安装包</li>
-<li><strong>3</strong> 安装MySql sudo yum install mysql-server<br><img src="/2018/03/19/Linux%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/adb53ba1-80e5-413e-8cf0-16cd3b40b621.png" alt></li>
-</ul>
-<p>看到上图所示，则表示安装成功。</p>
-<h2 id="2-启动MySQL服务"><a href="#2-启动MySQL服务" class="headerlink" title="2. 启动MySQL服务"></a>2. 启动MySQL服务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld</span><br><span class="line">systemctl status mysqld</span><br></pre></td></tr></table></figure>
-<p>查看MySQL的启动状态<br><img src="/2018/03/19/Linux%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/c8cbc2ec-f7aa-4adb-8729-3abbb7b9396b.png" alt></p>
-<h2 id="3-开机启动"><a href="#3-开机启动" class="headerlink" title="3. 开机启动"></a>3. 开机启动</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable mysqld</span><br><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-修改root默认密码"><a href="#4-修改root默认密码" class="headerlink" title="4. 修改root默认密码"></a>4. 修改root默认密码</h2><p>mysql安装完成之后，在/var/log/mysqld.log文件中给root生成了一个默认密码。通过下面的方式找到root默认密码，然后登录mysql进行修改：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &#39;temporary password&#39; &#x2F;var&#x2F;log&#x2F;mysqld.log</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2018/03/19/Linux%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/5bbf95fd-6e34-40ef-a1c7-ad57bea532e0.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br><span class="line">mysql &gt; ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;Sun@123456!&#39;;</span><br></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; set password for &#39;root&#39;@&#39;localhost&#39;&#x3D;password(&#39;MyNewPass4!&#39;);</span><br></pre></td></tr></table></figure>
-<p>注意：mysql5.7默认安装了密码安全检查插件（validate_password），默认密码检查策略要求密码必须包含：大小写字母、数字和特殊符号，并且长度不能少于8位。否则会提示ERROR 1819 (HY000): Your password does not satisfy the current policy requirements错误，如下图所示：</p>
-<p>通过msyql环境变量可以查看密码策略的相关信息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like &#39;%password%&#39;;</span><br></pre></td></tr></table></figure>
-<p> validate_password_policy：密码策略，默认为MEDIUM策略  validate_password_dictionary_file：密码策略文件，策略为STRONG才需要  validate_password_length：密码最少长度  validate_password_mixed_case_count：大小写字符长度，至少1个  validate_password_number_count ：数字至少1个  validate_password_special_char_count：特殊字符至少1个  _上述参数是默认策略MEDIUM的密码检查规则。</p>
-<p>共有以下几种密码策略：</p>
-<table>
-<thead>
-<tr>
-<th>策略</th>
-<th>检查规则</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>0 or LOW</td>
-<td>Length</td>
-</tr>
-<tr>
-<td>1 or MEDIUM</td>
-<td>Length; numeric, lowercase/uppercase, and special characters</td>
-</tr>
-<tr>
-<td>2 or STRONG</td>
-<td>Length; numeric, lowercase/uppercase, and special characters; dictionary file</td>
-</tr>
-<tr>
-<td>MySQL官网密码策略详细说明：<a href="http://dev.mysql.com/doc/refman/5.7/en/validate-password-options-variables.html#sysvar_validate_password_policy" target="_blank" rel="noopener">http://dev.mysql.com/doc/refman/5.7/en/validate-password-options-variables.html#sysvar_validate_password_policy</a></td>
-<td></td>
-</tr>
-</tbody></table>
-<h4 id="修改密码策略"><a href="#修改密码策略" class="headerlink" title="修改密码策略"></a>修改密码策略</h4><p>在/etc/my.cnf文件添加validate_password_policy配置，指定密码策略</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 选择0（LOW），1（MEDIUM），2（STRONG）其中一种，选择2需要提供密码字典文件</span><br><span class="line">validate_password_policy&#x3D;0</span><br></pre></td></tr></table></figure>
-<p>如果不需要密码策略，添加my.cnf文件中添加如下配置禁用即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">validate_password &#x3D; off</span><br></pre></td></tr></table></figure>
-<p>重新启动mysql服务使配置生效：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart mysqld</span><br></pre></td></tr></table></figure>
-<h2 id="5-添加远程登录用户"><a href="#5-添加远程登录用户" class="headerlink" title="5. 添加远程登录用户"></a>5. 添加远程登录用户</h2><p>默认只允许root帐户在本地登录，如果要在其它机器上连接mysql，必须修改root允许远程连接，或者添加一个允许远程连接的帐户，为了安全起见，我添加一个新的帐户：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; GRANT ALL PRIVILEGES ON *.* TO &#39;sunhaoran&#39;@&#39;%&#39; IDENTIFIED BY &#39;Sun@123456&#39; WITH GRANT OPTION;</span><br></pre></td></tr></table></figure>
-<h2 id="6-配置默认编码为-utf8"><a href="#6-配置默认编码为-utf8" class="headerlink" title="6. 配置默认编码为 utf8"></a>6. 配置默认编码为 utf8</h2><p>修改/etc/my.cnf配置文件，在[mysqld]下添加编码配置，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">character_set_server&#x3D;utf8</span><br><span class="line">init_connect&#x3D;&#39;SET NAMES utf8&#39;</span><br></pre></td></tr></table></figure>
-<p>重新启动mysql服务，查看<a href="http://lib.csdn.net/base/14" target="_blank" rel="noopener" title="MySQL知识库">数据库</a>默认编码如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show variables like &#39;character%&#39;;</span><br></pre></td></tr></table></figure>
-
-
-<p><strong>默认配置文件路径：</strong>  配置文件：/etc/my.cnf  日志文件：/var/log//var/log/mysqld.log  服务启动脚本：/usr/lib/systemd/system/mysqld.service  socket文件：/var/run/mysqld/mysqld.pid</p>
-<h3 id="mysql-基本操作"><a href="#mysql-基本操作" class="headerlink" title="mysql 基本操作"></a>mysql 基本操作</h3><h4 id="客户端访问"><a href="#客户端访问" class="headerlink" title="客户端访问"></a>客户端访问</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p 回车</span><br><span class="line">输入密码回车即可</span><br><span class="line">数据库查看：show databases;</span><br><span class="line">数据库选择：use xx;</span><br></pre></td></tr></table></figure>
+			<p>Author: haoransun<br>Wechat: SHR—97<br>图片来源：极客时间，需个人购买教程。</p>
+<h2 id="1-创建团队项目"><a href="#1-创建团队项目" class="headerlink" title="1 创建团队项目"></a>1 创建团队项目</h2><p>先在settings中创建组织类型的托管。然后在组织中创建团队的仓库。</p>
 	
 	
     </div>
@@ -349,7 +259,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
         		</li>
       		
 		</ul>
@@ -361,7 +271,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
+        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
         		</li>
       		
 		</ul>
@@ -370,7 +280,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/19/Linux%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/03/09/7-%E5%9F%BA%E4%BA%8EGitHub%E8%BF%9B%E8%A1%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/">展开全文 >></a>
         </p>
       
 
@@ -404,22 +314,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-Idea常用插件及个性化配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-30-字符串匹配基础下-如何借助BM算法轻松理解KMP算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/18/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/">Idea常用插件及个性化配置</a>
+      <a class="article-title" href="/2019/03/06/30-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E5%9F%BA%E7%A1%80%E4%B8%8B-%E5%A6%82%E4%BD%95%E5%80%9F%E5%8A%A9BM%E7%AE%97%E6%B3%95%E8%BD%BB%E6%9D%BE%E7%90%86%E8%A7%A3KMP%E7%AE%97%E6%B3%95/">30-字符串匹配基础下_如何借助BM算法轻松理解KMP算法</a>
     </h1>
   
 
         
         
 
-<a href="/2018/03/18/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2018-03-18T11:23:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-18</time>
+<a href="/2019/03/06/30-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E5%9F%BA%E7%A1%80%E4%B8%8B-%E5%A6%82%E4%BD%95%E5%80%9F%E5%8A%A9BM%E7%AE%97%E6%B3%95%E8%BD%BB%E6%9D%BE%E7%90%86%E8%A7%A3KMP%E7%AE%97%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2019-03-06T14:01:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-06</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -430,7 +340,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.7k字</span>
+        <span class="post-count">3.4k字</span>
       </span>
     </span>
 
@@ -439,7 +349,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6分</span>
+        <span class="post-count">12分</span>
       </span>
     </span>
 </div>
@@ -456,14 +366,12 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<h1 id="Idea常用插件"><a href="#Idea常用插件" class="headerlink" title="Idea常用插件"></a>Idea常用插件</h1><h2 id="1-阿里代码规约检查"><a href="#1-阿里代码规约检查" class="headerlink" title="1 阿里代码规约检查"></a>1 阿里代码规约检查</h2><p>Alibaba Java Coding Guidelines</p>
-<h2 id="2-lombok"><a href="#2-lombok" class="headerlink" title="2 lombok"></a>2 lombok</h2><p>一个在编译阶段修改增强Java类的工具，使用方式基于注解，常用于:</p>
-<ul>
-<li>为Java POJO生成属性对应的getter,setter等</li>
-<li>为Java POJO生成builder构造器模式的实现</li>
-<li>为Java类自动添加其他重复性代码，比如日志记录的声明代码可以通过@Slf4j注解添加</li>
-</ul>
-<p>项目中是否引入Lombok一直是个存在争议，它的主要优势在于消除Java类的部分臃肿代码，提高开发效率，降低代码维护成本；缺点是需要IDE插件支持，需要团队统一规范，另外某些注解生成的隐性实现可能导致问题跟踪调试困难。</p>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><a href="https://www.zhihu.com/question/21923021" target="_blank" rel="noopener">如何更好地理解和掌握 KMP 算法?</a></p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一节我们讲了 BM 算法，尽管它很复杂，也不好理解，但却是工程中非常常用的一种高效字符串匹配算法。有统计说，它是最高效、最常用的字符串匹配算法。不过，在所有的字符串匹配算法里，要说最知名的一种的话，那就非 KMP 算法莫属。很多时候，提到字符串匹配，我们首先想到的就是 KMP 算法。</p>
+<p>尽管在实际的开发中，我们几乎不大可能自己亲手实现一个 KMP 算法。但是，学习这个算法的思想，作为让你开拓眼界、锻炼下逻辑思维，也是极好的，所以我觉得有必要拿出来给你讲一讲。不过，KMP 算法是出了名的不好懂。我会尽力把它讲清楚，但是你自己也要多动动脑子。</p>
+<p>实际上，KMP 算法跟 BM 算法的本质是一样的。上一节，我们讲了好后缀和坏字符规则，今天，我们就看下，如何借助上一节 BM 算法的讲解思路，让你能更好地理解 KMP 算法？</p>
 	
 	
     </div>
@@ -477,21 +385,28 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Tools</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">IDEA</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/18/Idea%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/03/06/30-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E5%9F%BA%E7%A1%80%E4%B8%8B-%E5%A6%82%E4%BD%95%E5%80%9F%E5%8A%A9BM%E7%AE%97%E6%B3%95%E8%BD%BB%E6%9D%BE%E7%90%86%E8%A7%A3KMP%E7%AE%97%E6%B3%95/">展开全文 >></a>
         </p>
       
 
@@ -525,22 +440,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-Host-Vm相互ping不同到的解决办法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-29-字符串匹配基础中-如何实现文本编辑器中的查找功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/16/Host-Vm%E7%9B%B8%E4%BA%92ping%E4%B8%8D%E5%90%8C%E5%88%B0%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">Host-Vm相互ping不同到的解决办法</a>
+      <a class="article-title" href="/2019/03/03/29-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E5%9F%BA%E7%A1%80%E4%B8%AD-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE%E5%8A%9F%E8%83%BD/">29-字符串匹配基础中_如何实现文本编辑器中的查找功能</a>
     </h1>
   
 
         
         
 
-<a href="/2018/03/16/Host-Vm%E7%9B%B8%E4%BA%92ping%E4%B8%8D%E5%90%8C%E5%88%B0%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2018-03-16T11:47:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-16</time>
+<a href="/2019/03/03/29-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E5%9F%BA%E7%A1%80%E4%B8%AD-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE%E5%8A%9F%E8%83%BD/" class="archive-article-date">
+  	<time datetime="2019-03-03T14:01:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-03</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -551,7 +466,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">835字</span>
+        <span class="post-count">6.2k字</span>
       </span>
     </span>
 
@@ -560,7 +475,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">22分</span>
       </span>
     </span>
 </div>
@@ -577,8 +492,12 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author：haoransun<br>WeChat：SHR—97</p>
-<h2 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;今天总结一下前段时间出现的一些虚拟机问题，之前配置的宿主机ping虚拟机以及虚拟机ping外网没有什么问题，但是后来不知道什么原因突然就ping不通了，经过网上各种找资料，研究了下VM0,1,8的区别，为了防止遗忘在此记录。</p>
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>文本编辑器中的查找替换功能，我想你应该不陌生吧？比如，我们在 Word 中把一个单词统一替换成另一个，用的就是这个功能。你有没有想过，它是怎么实现的呢？</p>
+<p>当然，你用上一节讲的 BF 算法和 RK 算法，也可以实现这个功能，但是在某些极端情况下，BF 算法性能会退化的比较严重，而 RK 算法需要用到哈希算法，而设计一个可以应对各种类型字符的哈希算法并不简单。</p>
+<p>对于工业级的软件开发来说，我们希望算法尽可能的高效，并且在极端情况下，性能也不要退化的太严重。那么，<font color="red">对于查找功能是重要功能的软件来说，比如一些文本编辑器，它们的查找功能都是用哪种算法来实现的呢？有没有比 BF 算法和 RK 算法更加高效的字符串匹配算法呢？</font></p>
+<p>今天，我们就来学习 BM（Boyer-Moore）算法。它是一种非常高效的字符串匹配算法，有实验统计，它的性能是著名的<strong>KMP 算法</strong>的 3 到 4 倍。BM 算法的原理很复杂，比较难懂，学起来会比较烧脑，我会尽量给你讲清楚，同时也希望你做好打硬仗的准备。好，现在我们正式开始！</p>
 	
 	
     </div>
@@ -592,7 +511,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -604,7 +523,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -613,7 +532,874 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/16/Host-Vm%E7%9B%B8%E4%BA%92ping%E4%B8%8D%E5%90%8C%E5%88%B0%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/03/03/29-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E5%9F%BA%E7%A1%80%E4%B8%AD-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE%E5%8A%9F%E8%83%BD/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-28-字符串匹配基础上-如何借助哈希算法实现高效字符串匹配" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/01/28-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E5%9F%BA%E7%A1%80%E4%B8%8A-%E5%A6%82%E4%BD%95%E5%80%9F%E5%8A%A9%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E9%AB%98%E6%95%88%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/">28-字符串匹配基础上_如何借助哈希算法实现高效字符串匹配</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/03/01/28-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E5%9F%BA%E7%A1%80%E4%B8%8A-%E5%A6%82%E4%BD%95%E5%80%9F%E5%8A%A9%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E9%AB%98%E6%95%88%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" class="archive-article-date">
+  	<time datetime="2019-03-01T12:35:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-01</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">3.7k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">12分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>从今天开始，我们来学习字符串匹配算法。字符串匹配这样一个功能，我想对于任何一个开发工程师来说，应该都不会陌生。我们用的最多的就是编程语言提供的字符串查找函数，比如 Java 中的 indexOf()，Python 中的 find() 函数等，它们底层就是依赖接下来要讲的字符串匹配算法。</p>
+<p>字符串匹配算法很多，会分四节来讲解。今天会讲两种比较简单的、好理解的，它们分别是：BF 算法和 RK 算法。下一节，会讲两种比较难理解、但更加高效的，它们是：BM 算法和 KMP 算法。</p>
+<p>这两节讲的都是单模式串匹配的算法，也就是一个串跟一个串进行匹配。第三节、第四节，我会讲两种多模式串匹配算法，也就是在一个串中同时查找多个串，它们分别是 Trie 树和 AC 自动机。</p>
+<p>今天讲的两个算法中，RK 算法是 BF 算法的改进，它巧妙借助了我们前面讲过的哈希算法，让匹配的效率有了很大的提升。那<font color="red">RK 算法是如何借助哈希算法来实现高效字符串匹配的呢？</font>你可以带着这个问题，来学习今天的内容。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/01/28-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E5%9F%BA%E7%A1%80%E4%B8%8A-%E5%A6%82%E4%BD%95%E5%80%9F%E5%8A%A9%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E9%AB%98%E6%95%88%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-6-GitHub的认识与使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/">6-GitHub的认识与使用</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2019-02-25T09:58:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-25</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">508字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97<br>图片来源：极客时间，需个人购买教程。</p>
+<h2 id="1-GitHub为什么会火"><a href="#1-GitHub为什么会火" class="headerlink" title="1 GitHub为什么会火"></a>1 GitHub为什么会火</h2><p><img src="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/53d51f84-9a62-4dde-9be4-7cbb9d0b1dae.jpg" alt></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/25/6-GitHub%E7%9A%84%E8%AE%A4%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-5-Git集成使用禁忌" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/15/5-Git%E9%9B%86%E6%88%90%E4%BD%BF%E7%94%A8%E7%A6%81%E5%BF%8C/">5-Git集成使用禁忌</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/02/15/5-Git%E9%9B%86%E6%88%90%E4%BD%BF%E7%94%A8%E7%A6%81%E5%BF%8C/" class="archive-article-date">
+  	<time datetime="2019-02-15T11:57:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-15</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">173字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<h2 id="1-禁止向集成分支执行push-f-操作"><a href="#1-禁止向集成分支执行push-f-操作" class="headerlink" title="1.禁止向集成分支执行push -f 操作"></a>1.禁止向集成分支执行push -f 操作</h2><p><strong>git push -f：会强制推送，对团队造成危害（虽然远程仓库有特殊机制制止这种变更）</strong></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/15/5-Git%E9%9B%86%E6%88%90%E4%BD%BF%E7%94%A8%E7%A6%81%E5%BF%8C/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-27-深度和广度优先搜索-如何找出社交网络中的三度好友关系" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/13/27-%E6%B7%B1%E5%BA%A6%E5%92%8C%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2-%E5%A6%82%E4%BD%95%E6%89%BE%E5%87%BA%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E4%B8%89%E5%BA%A6%E5%A5%BD%E5%8F%8B%E5%85%B3%E7%B3%BB/">27-深度和广度优先搜索_如何找出社交网络中的三度好友关系</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/02/13/27-%E6%B7%B1%E5%BA%A6%E5%92%8C%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2-%E5%A6%82%E4%BD%95%E6%89%BE%E5%87%BA%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E4%B8%89%E5%BA%A6%E5%A5%BD%E5%8F%8B%E5%85%B3%E7%B3%BB/" class="archive-article-date">
+  	<time datetime="2019-02-13T11:35:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-13</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">3.3k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">12分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一节我们讲了图的表示方法，讲到如何用有向图、无向图来表示一个社交网络。在社交网络中，有一个<strong>六度分割理论</strong>，具体是说，你与世界上的另一个人间隔的关系不会超过六度，也就是说平均只需要六步就可以联系到任何两个互不相识的人。</p>
+<p>一个用户的一度连接用户很好理解，就是他的好友，二度连接用户就是他好友的好友，三度连接用户就是他好友的好友的好友。在社交网络中，我们往往通过用户之间的连接关系，来实现推荐“可能认识的人”这么一个功能。今天的开篇问题就是，<font color="red">&gt;给你一个用户，如何找出这个用户的所有三度（其中包含一度、二度和三度）好友关系？</font></p>
+<p>这就要用到今天要讲的深度优先和广度优先搜索算法。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/13/27-%E6%B7%B1%E5%BA%A6%E5%92%8C%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2-%E5%A6%82%E4%BD%95%E6%89%BE%E5%87%BA%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E4%B8%89%E5%BA%A6%E5%A5%BD%E5%8F%8B%E5%85%B3%E7%B3%BB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-26-图的表示-如何存储微博微信等社交网络中的好友关系" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/10/26-%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA-%E5%A6%82%E4%BD%95%E5%AD%98%E5%82%A8%E5%BE%AE%E5%8D%9A%E5%BE%AE%E4%BF%A1%E7%AD%89%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E5%A5%BD%E5%8F%8B%E5%85%B3%E7%B3%BB/">26-图的表示_如何存储微博微信等社交网络中的好友关系</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/02/10/26-%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA-%E5%A6%82%E4%BD%95%E5%AD%98%E5%82%A8%E5%BE%AE%E5%8D%9A%E5%BE%AE%E4%BF%A1%E7%AD%89%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E5%A5%BD%E5%8F%8B%E5%85%B3%E7%B3%BB/" class="archive-article-date">
+  	<time datetime="2019-02-10T12:17:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-10</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">4k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">13分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97</p>
+<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>微博、微信、LinkedIn 这些社交软件我想你肯定都玩过吧。在微博中，两个人可以互相关注；在微信中，两个人可以互加好友。那你知道，如何存储微博、微信等这些社交网络的好友关系吗？</p>
+<p>这就要用到我们今天要讲的这种数据结构：图。实际上，涉及图的算法有很多，也非常复杂，比如图的搜索、最短路径、最小生成树、二分图等等。我们今天聚焦在图存储这一方面，后面会分好几篇来依次讲解图相关的算法。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/10/26-%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA-%E5%A6%82%E4%BD%95%E5%AD%98%E5%82%A8%E5%BE%AE%E5%8D%9A%E5%BE%AE%E4%BF%A1%E7%AD%89%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E5%A5%BD%E5%8F%8B%E5%85%B3%E7%B3%BB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-国内地图坐标系转换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/08/%E5%9B%BD%E5%86%85%E5%9C%B0%E5%9B%BE%E5%9D%90%E6%A0%87%E7%B3%BB%E8%BD%AC%E6%8D%A2/">国内地图坐标系转换</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/02/08/%E5%9B%BD%E5%86%85%E5%9C%B0%E5%9B%BE%E5%9D%90%E6%A0%87%E7%B3%BB%E8%BD%AC%E6%8D%A2/" class="archive-article-date">
+  	<time datetime="2019-02-08T12:00:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-08</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">3.2k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">15分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>文章出处<br><a href="https://blog.csdn.net/m0_37738114/article/details/80452485" target="_blank" rel="noopener">https://blog.csdn.net/m0_37738114/article/details/80452485</a></p>
+<h2 id="一、国内常用坐标系"><a href="#一、国内常用坐标系" class="headerlink" title="一、国内常用坐标系"></a>一、国内常用坐标系</h2><p>1、WGS-84坐标系：地心坐标系，GPS原始坐标体系<br>在中国，任何一个地图产品都<font color="red">不允许使用<a href="https://www.baidu.com/s?wd=GPS%E5%9D%90%E6%A0%87&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao" target="_blank" rel="noopener">GPS坐标</a></font>，据说是为了保密。</p>
+<p>2、GCJ-02 坐标系：国测局坐标，火星坐标系<br>1）国测局02年发布的坐标体系，它是一种对经纬度数据的加密算法，即加入随机的偏差。<br>2）互联网地图在国内必须至少使用GCJ-02进行首次加密，不允许直接使用WGS-84坐标下的地理数据，同时任何坐标系均不可转换为WGS-84坐标。<br>3）是国内最广泛使用的坐标体系，高德、腾讯、Google中国地图都使用它。</p>
+<p>3、CGCS2000坐标系：国家大地坐标系<br>该坐标系是通过中国GPS 连续运行基准站、 空间大地控制网以及天文大地网与空间地网联合平差建立的地心大地坐标系统。</p>
+<p>4、BD-09坐标系<br>百度中国地图所采用的坐标系，由GCJ-02进行进一步的偏移算法得到。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">地图坐标转换</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Tools//" class="article-tag-list-link color1">Tools</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/08/%E5%9B%BD%E5%86%85%E5%9C%B0%E5%9B%BE%E5%9D%90%E6%A0%87%E7%B3%BB%E8%BD%AC%E6%8D%A2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-4-Git多人单分支集成协作时的常见场景" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/08/4-Git%E5%A4%9A%E4%BA%BA%E5%8D%95%E5%88%86%E6%94%AF%E9%9B%86%E6%88%90%E5%8D%8F%E4%BD%9C%E6%97%B6%E7%9A%84%E5%B8%B8%E8%A7%81%E5%9C%BA%E6%99%AF/">4-Git多人单分支集成协作时的常见场景</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2019/02/08/4-Git%E5%A4%9A%E4%BA%BA%E5%8D%95%E5%88%86%E6%94%AF%E9%9B%86%E6%88%90%E5%8D%8F%E4%BD%9C%E6%97%B6%E7%9A%84%E5%B8%B8%E8%A7%81%E5%9C%BA%E6%99%AF/" class="archive-article-date">
+  	<time datetime="2019-02-08T10:55:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-08</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.2k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">4分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>Wechat: SHR—97<br>图片来源：极客时间，需个人购买教程。</p>
+<h2 id="1-不同人修改不同文件如何处理"><a href="#1-不同人修改不同文件如何处理" class="headerlink" title="1.不同人修改不同文件如何处理"></a>1.不同人修改不同文件如何处理</h2><p><strong>JavaSsun用户修改 readme文件</strong><br><strong>haoran用户修改index文件</strong><br><strong>远端仓库新建一个名字为 feature/add_git_commands的分支</strong></p>
+<p>为了在单机模拟两个人做操作，需要从远端克隆一个 命名为 git_learning_02 以 JavaSsun为用户的仓库</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/08/4-Git%E5%A4%9A%E4%BA%BA%E5%8D%95%E5%88%86%E6%94%AF%E9%9B%86%E6%88%90%E5%8D%8F%E4%BD%9C%E6%97%B6%E7%9A%84%E5%B8%B8%E8%A7%81%E5%9C%BA%E6%99%AF/">展开全文 >></a>
         </p>
       
 
@@ -648,7 +1434,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/27/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="page-number" href="/page/27/">27</a><span class="page-number current">28</span>
+      <a class="extend prev" rel="prev" href="/page/27/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="page-number" href="/page/27/">27</a><span class="page-number current">28</span><a class="page-number" href="/page/29/">29</a><a class="page-number" href="/page/30/">30</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/29/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -918,6 +1704,46 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">搬砖结晶</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">推荐系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">目标检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">SkLearn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">图神经网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TensorFlow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">研究生课题-AD检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">研究生成果</a>
               </li>
             
             <div class="clearfix"></div>

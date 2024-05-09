@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 273</nav>
+		<nav style="color: #7FFFD4;">总文章数 379</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -192,22 +192,22 @@
             
   
     <meta charset="utf-8">
-<article id="post-40-insert语句的锁为什么这么多" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-2-AD有关课题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/04/40-insert%E8%AF%AD%E5%8F%A5%E7%9A%84%E9%94%81%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E4%B9%88%E5%A4%9A/">40-insert语句的锁为什么这么多</a>
+      <a class="article-title" href="/2023/03/25/2-AD%E6%9C%89%E5%85%B3%E8%AF%BE%E9%A2%98/">2-AD有关课题</a>
     </h1>
   
 
         
         
 
-<a href="/2020/03/04/40-insert%E8%AF%AD%E5%8F%A5%E7%9A%84%E9%94%81%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E4%B9%88%E5%A4%9A/" class="archive-article-date">
-  	<time datetime="2020-03-04T11:25:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-04</time>
+<a href="/2023/03/25/2-AD%E6%9C%89%E5%85%B3%E8%AF%BE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2023-03-25T11:16:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-25</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -218,7 +218,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.7k字</span>
+        <span class="post-count">1.3k字</span>
       </span>
     </span>
 
@@ -227,7 +227,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">9分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
 </div>
@@ -244,10 +244,8 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在上一篇文章中，提到MySQL对自增主键锁做了优化，尽量在申请到自增id以后，就释放自增锁。</p>
-<p>因此，insert语句是一个很轻量的操作。不过，这个结论对于“普通的insert语句”才有效。也就是说，还有些insert语句是属于“特殊情况”的，在执行过程中需要给其他资源加锁，或者无法在申请到自增id以后就立马释放自增锁。</p>
-<p>那么，今天这篇文章，我们就一起来聊聊这个话题。</p>
+			<p>Author: haoransun<br>WeChat: SHR—97</p>
+<h3 id="如何基于AD病理构建多层级的图神经网络实现AD早期预警和筛查"><a href="#如何基于AD病理构建多层级的图神经网络实现AD早期预警和筛查" class="headerlink" title="如何基于AD病理构建多层级的图神经网络实现AD早期预警和筛查"></a>如何基于AD病理构建多层级的图神经网络实现AD早期预警和筛查</h3><h4 id="（a）结合MRI图像、数字生物标志物和时序关系，建立新型的多通道结构的图神经网络模型，优化设计群体性AD特征的组合关系"><a href="#（a）结合MRI图像、数字生物标志物和时序关系，建立新型的多通道结构的图神经网络模型，优化设计群体性AD特征的组合关系" class="headerlink" title="（a）结合MRI图像、数字生物标志物和时序关系，建立新型的多通道结构的图神经网络模型，优化设计群体性AD特征的组合关系"></a>（a）结合MRI图像、数字生物标志物和时序关系，建立新型的多通道结构的图神经网络模型，优化设计群体性AD特征的组合关系</h4><p>利用丰富的成像和非成像信息进行AD早期预测任务，需要模型能够同时表示个体特征以及来自潜在大人群的受试者之间的数据关联。图为该任务提供了一个自然框架，它捕捉了图中节点呈现的各元素之间的交互，将图像和非图像信息相结合，用于群体性受试者的大脑分析。节点可以表示潜在大量人群（患者或健康对照）中的个体，并带有一组特征（MRI/fMRI图像特征），边直观的整合了非图像信息（数字生物标志物：年龄、性别、血流信号、APOE-4基因数据等），并借助权重建模了相邻受试者的相似性。同时，设计了两种注意力机制分别从结构域和时间域揭示与AD关联程度最高的大脑区域。结构域利用注意力机制引导随机游走模块提取大脑网络中的结构图特征，由于其在随机游走的每一步只需要邻域节点周围的局部信息，因此它对图噪声具有鲁棒性并且在处理动态图时更具有灵活性。全局注意力机制集成到序列处理模块中构建了时间域，可以突出显示与图序列诊断标签相关的重要时间点，进一步揭示与AD相关大脑区域的病灶演变过程。</p>
 	
 	
     </div>
@@ -261,28 +259,21 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">研究生课题-AD检测</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/04/40-insert%E8%AF%AD%E5%8F%A5%E7%9A%84%E9%94%81%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E4%B9%88%E5%A4%9A/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/25/2-AD%E6%9C%89%E5%85%B3%E8%AF%BE%E9%A2%98/">展开全文 >></a>
         </p>
       
 
@@ -316,22 +307,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-39-自增主键为什么不是连续的" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-1-阿尔茨海默病" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/03/39-%E8%87%AA%E5%A2%9E%E4%B8%BB%E9%94%AE%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E6%98%AF%E8%BF%9E%E7%BB%AD%E7%9A%84/">39-自增主键为什么不是连续的</a>
+      <a class="article-title" href="/2023/03/20/1-%E9%98%BF%E5%B0%94%E8%8C%A8%E6%B5%B7%E9%BB%98%E7%97%85/">1-阿尔茨海默病</a>
     </h1>
   
 
         
         
 
-<a href="/2020/03/03/39-%E8%87%AA%E5%A2%9E%E4%B8%BB%E9%94%AE%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E6%98%AF%E8%BF%9E%E7%BB%AD%E7%9A%84/" class="archive-article-date">
-  	<time datetime="2020-03-03T11:20:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-03</time>
+<a href="/2023/03/20/1-%E9%98%BF%E5%B0%94%E8%8C%A8%E6%B5%B7%E9%BB%98%E7%97%85/" class="archive-article-date">
+  	<time datetime="2023-03-20T11:16:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-20</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -342,7 +333,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.1k字</span>
+        <span class="post-count">529字</span>
       </span>
     </span>
 
@@ -351,7 +342,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">15分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
 </div>
@@ -368,10 +359,10 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在 <strong>第4篇文章</strong> 中，我们提到过自增主键，由于自增主键可以让主键索引尽量地保持递增顺序插入，避免了页分裂，因此索引更紧凑。</p>
-<p>之前见过有的业务设计依赖于自增主键的连续性，也就是说，这个设计假设自增主键是连续的。但实际上，这样的假设是错的，因为自增主键不能保证连续递增。</p>
-<p>今天这篇文章，我们就来说说这个问题，看看什么情况下自增主键会出现 “空洞”？</p>
+			<p>Author: haoransun<br>WeChat: SHR—97</p>
+<h2 id="ADNI"><a href="#ADNI" class="headerlink" title="ADNI"></a>ADNI</h2><p>官网：<a href="https://adni.loni.usc.edu/" target="_blank" rel="noopener">https://adni.loni.usc.edu/</a></p>
+<p>官网简介：<a href="https://blog.csdn.net/weixin_43916387/article/details/116464264" target="_blank" rel="noopener">https://blog.csdn.net/weixin_43916387/article/details/116464264</a></p>
+<p><a href="https://blog.csdn.net/jancis/article/details/105580486" target="_blank" rel="noopener">SimpleITK库 - 医学图像处理</a></p>
 	
 	
     </div>
@@ -385,28 +376,21 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">研究生课题-AD检测</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/03/39-%E8%87%AA%E5%A2%9E%E4%B8%BB%E9%94%AE%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E6%98%AF%E8%BF%9E%E7%BB%AD%E7%9A%84/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/20/1-%E9%98%BF%E5%B0%94%E8%8C%A8%E6%B5%B7%E9%BB%98%E7%97%85/">展开全文 >></a>
         </p>
       
 
@@ -440,22 +424,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-38-都说InnoDB好-那还要不要使用Memory引擎" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-7-SHAP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/02/38-%E9%83%BD%E8%AF%B4InnoDB%E5%A5%BD-%E9%82%A3%E8%BF%98%E8%A6%81%E4%B8%8D%E8%A6%81%E4%BD%BF%E7%94%A8Memory%E5%BC%95%E6%93%8E/">38-都说InnoDB好_那还要不要使用Memory引擎</a>
+      <a class="article-title" href="/2023/03/15/7-SHAP/">7-SHAP</a>
     </h1>
   
 
         
         
 
-<a href="/2020/03/02/38-%E9%83%BD%E8%AF%B4InnoDB%E5%A5%BD-%E9%82%A3%E8%BF%98%E8%A6%81%E4%B8%8D%E8%A6%81%E4%BD%BF%E7%94%A8Memory%E5%BC%95%E6%93%8E/" class="archive-article-date">
-  	<time datetime="2020-03-02T10:30:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-02</time>
+<a href="/2023/03/15/7-SHAP/" class="archive-article-date">
+  	<time datetime="2023-03-15T10:16:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-15</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -466,7 +450,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.6k字</span>
+        <span class="post-count">2.6k字</span>
       </span>
     </span>
 
@@ -475,7 +459,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">12分</span>
+        <span class="post-count">10分</span>
       </span>
     </span>
 </div>
@@ -492,9 +476,8 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在上一篇文章末尾留给你的问题是：两个group by 语句都用了order by null，为什么使用内存临时表得到的语句结果里，0这个值在最后一行；而使用磁盘临时表得到的结果里，0这个值在第一行？</p>
-<p>今天我们就来看看，出现这个问题的原因吧。</p>
+			<h2 id="1-写在前面"><a href="#1-写在前面" class="headerlink" title="1. 写在前面"></a>1. 写在前面</h2><p>很多高级的机器学习模型(xgboost， lgb， cat)和神经网络模型， 它们相对于普通线性模型在进行预测时往往有更好的精度，但是同时也失去了线性模型的可解释性， 所以这些模型也往往看作是黑箱模型， 在2017年，Lundberg和Lee的论文提出了SHAP值这一广泛适用的方法用来解释各种模型（分类以及回归）， 使得前面的黑箱模型变得可解释了，这篇文章主要整理一下SHAP的使用， 这个在特征选择的时候特别好用。</p>
+<p>这次整理， 主要是在xgboost和lgb等树模型上的使用方式， 并且用一个真实的数据集进行演示， 详细的内容参考SHAP的原地址：<a href="https://github.com/slundberg/shap" target="_blank" rel="noopener">https://github.com/slundberg/shap</a></p>
 	
 	
     </div>
@@ -508,28 +491,21 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据挖掘</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/02/38-%E9%83%BD%E8%AF%B4InnoDB%E5%A5%BD-%E9%82%A3%E8%BF%98%E8%A6%81%E4%B8%8D%E8%A6%81%E4%BD%BF%E7%94%A8Memory%E5%BC%95%E6%93%8E/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/15/7-SHAP/">展开全文 >></a>
         </p>
       
 
@@ -563,22 +539,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-37-什么时候会使用内部临时表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-6-模型的融合技术大总结与结果部署" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/01/37-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BC%9A%E4%BD%BF%E7%94%A8%E5%86%85%E9%83%A8%E4%B8%B4%E6%97%B6%E8%A1%A8/">37-什么时候会使用内部临时表</a>
+      <a class="article-title" href="/2023/02/25/6-%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%9E%8D%E5%90%88%E6%8A%80%E6%9C%AF%E5%A4%A7%E6%80%BB%E7%BB%93%E4%B8%8E%E7%BB%93%E6%9E%9C%E9%83%A8%E7%BD%B2/">6-模型的融合技术大总结与结果部署</a>
     </h1>
   
 
         
         
 
-<a href="/2020/03/01/37-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BC%9A%E4%BD%BF%E7%94%A8%E5%86%85%E9%83%A8%E4%B8%B4%E6%97%B6%E8%A1%A8/" class="archive-article-date">
-  	<time datetime="2020-03-01T07:40:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
+<a href="/2023/02/25/6-%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%9E%8D%E5%90%88%E6%8A%80%E6%9C%AF%E5%A4%A7%E6%80%BB%E7%BB%93%E4%B8%8E%E7%BB%93%E6%9E%9C%E9%83%A8%E7%BD%B2/" class="archive-article-date">
+  	<time datetime="2023-02-25T09:11:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-25</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -589,7 +565,579 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.1k字</span>
+        <span class="post-count">11.9k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">45分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<h2 id="1-写在前面"><a href="#1-写在前面" class="headerlink" title="1. 写在前面"></a>1. 写在前面</h2><p>今天是数据挖掘入门系列的最后一篇文章模型融合技术大总结和结果部署， 一般来说，通过融合多个不同的模型，可能提升机器学习的性能，这一方法在各种机器学习比赛中广泛应用， 也是在比赛的攻坚时刻冲刺Top的关键，而融合模型往往又可以从模型结果，模型自身，样本集等不同的角度进行融合。 所以今天会从不同的角度介绍模型融合的技术，今天整理的这些技术在今后的比赛或者项目里面会非常的有用，既然是这个系列的最后一篇文章，就想着把这些技术整理的详细一些作为最后的压轴了，通过这篇文章，希望你能真正的理解模型结果层面的融合方式Voting和Averaging的原理、从样本集角度出发把模型进行集成的Boosting和Bagging的区别，以及更为强大的模型自身融合方法Stacking和Blending的原理和区别（其实后面这两个才是真正的模型融合，即将多个已经有较好效果的模型融合成更好的模型）。 在这个比赛中， 我尝试把baseline里面的xgb和lgb作为第一层， 然后把LinearRegressor作为第二层进行Stacking，最后再进行结果层面加权融合，效果又会有一个提升。所以今天的这些技术可以让模型发挥更大的作用， 当然这些技术不会仅适用于这个比赛。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据挖掘</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/02/25/6-%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%9E%8D%E5%90%88%E6%8A%80%E6%9C%AF%E5%A4%A7%E6%80%BB%E7%BB%93%E4%B8%8E%E7%BB%93%E6%9E%9C%E9%83%A8%E7%BD%B2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-5-模型建立与调参" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/02/20/5-%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B%E4%B8%8E%E8%B0%83%E5%8F%82/">5-模型建立与调参</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2023/02/20/5-%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B%E4%B8%8E%E8%B0%83%E5%8F%82/" class="archive-article-date">
+  	<time datetime="2023-02-20T10:11:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-20</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">9.8k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">37分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<h2 id="1-写在前面"><a href="#1-写在前面" class="headerlink" title="1. 写在前面"></a>1. 写在前面</h2><p>今天是本系列的第五篇文章模型的建立与调参部分，这一块也是很费时间且核心的一部分工作，毕竟特征工程也好，数据清洗也罢，都是为最终的模型来服务的，模型的建立和调参才决定了最终的结果，<strong>上限是一回事， 如何更好的去达到这个上限又是一回事</strong>， </p>
+<p>首先，我们会先从简单的线性模型开始，看看如何去建立一个模型以及建立完模型之后要去分析什么东西， 然后我们会学习交叉验证的思想和技术（这个在评估模型的效果是经常会用到）并且会构建一个线下测试集（当然这个针对本比赛）， 上面的这些算是建立模型的基础，然后我们会尝试建立更多的模型去解决这个问题，并对比它们的效果， 当把模型选择出来之后，我们还得掌握一些调参的技术发挥模型最大的性能， 模型选择出来之后，也调完参数，但是模型真的就没有问题了吗？ 我们其实不知道， 所以最后我们学习绘制学习率曲线看模型是否存在过拟合或者欠拟合的问题并给出相应的解决方法。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据挖掘</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/02/20/5-%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B%E4%B8%8E%E8%B0%83%E5%8F%82/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-4-特征工程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/02/12/4-%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/">4-特征工程</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2023/02/12/4-%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2023-02-12T07:11:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-12</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">9k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">33分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<h2 id="1-写在前面"><a href="#1-写在前面" class="headerlink" title="1. 写在前面"></a>1. 写在前面</h2><p>今天是本系列的第四篇文章特征工程部分，特征工程和数据清洗转换是比赛中至关重要的一块， 因为<strong>数据和特征决定了机器学习的上限，而算法和模型只是逼近这个上限而已</strong>，</p>
+<p>所以特征工程的好坏往往决定着最后的结果。 特征工程和数据清洗，我用了四天的进行整理总结，就是尝试把尽可能多的方法和技巧都尝试一下，当然可能有些细节在这个比赛中不一定适用， 但以全面为主，毕竟是为了学习知识。特征工程一般包括特征构造， 特征选择， 降维等步骤， 但是它一般是和数据清洗转换放在一块，也有的把这两块统称为特征工程，因为两者联系实在是密切（你中有我，我中有你的景象）。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据挖掘</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/02/12/4-%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-3-数据清洗和转换技巧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/02/09/3-%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97%E5%92%8C%E8%BD%AC%E6%8D%A2%E6%8A%80%E5%B7%A7/">3-数据清洗和转换技巧</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2023/02/09/3-%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97%E5%92%8C%E8%BD%AC%E6%8D%A2%E6%8A%80%E5%B7%A7/" class="archive-article-date">
+  	<time datetime="2023-02-09T07:11:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-09</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">4.3k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">16分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<h2 id="1-写在前面"><a href="#1-写在前面" class="headerlink" title="1. 写在前面"></a>1. 写在前面</h2><p>今天是本系列的第三篇文章数据的清晰和转换技巧，依然是围绕着上面的比赛进行展开。数据清洗和转换在数据挖掘中也非常重要，毕竟数据探索我们发现了问题之后，下一步就是要解决问题，通过数据清洗和转换，可以让数据变得更加整洁和干净，才能进一步帮助我们做特征工程，也有利于模型更好的完成任务。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据挖掘</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/02/09/3-%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97%E5%92%8C%E8%BD%AC%E6%8D%A2%E6%8A%80%E5%B7%A7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-2-数据的探索性-EDA分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/02/06/2-%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8E%A2%E7%B4%A2%E6%80%A7-EDA%E5%88%86%E6%9E%90/">2-数据的探索性-EDA分析</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2023/02/06/2-%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8E%A2%E7%B4%A2%E6%80%A7-EDA%E5%88%86%E6%9E%90/" class="archive-article-date">
+  	<time datetime="2023-02-06T12:11:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-06</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">6k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">23分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<h2 id="1-写在前面"><a href="#1-写在前面" class="headerlink" title="1. 写在前面"></a>1. 写在前面</h2><p>今天是本系列的第二篇数据的EDA探索分析，这一块主要是对数据进行一个探索，帮助我们了解和熟悉数据，只有真正的了解数据，我们才能更好的进行后面的特征工程等处理，所以这一步也是非常重要的，所以这次会整理各种数据探索性分析的技巧，依然是围绕着上面的比赛进行展开论述，为了增加趣味性，我把数据探索这一块分成了五个维度，依然是采用将夜里面昊天世界的修炼等级境界来命名，分为数据初识，数据感知，数据不惑，数据洞玄和数据知命。因为学习的本身也是一场修行，相信通过这篇文章，能够修习到不错的数据探索技巧。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据挖掘</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/02/06/2-%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8E%A2%E7%B4%A2%E6%80%A7-EDA%E5%88%86%E6%9E%90/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-1-赛题理解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/02/04/1-%E8%B5%9B%E9%A2%98%E7%90%86%E8%A7%A3/">1-赛题理解</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2023/02/04/1-%E8%B5%9B%E9%A2%98%E7%90%86%E8%A7%A3/" class="archive-article-date">
+  	<time datetime="2023-02-04T15:11:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-04</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">3.2k字</span>
       </span>
     </span>
 
@@ -615,10 +1163,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在 <strong>第16**</strong> 和 <strong>第34</strong> 篇文章中，分别介绍了sort buffer、内存临时表和join buffer。这三个数据结构都是用来存放语句执行过程中的中间数据，以辅助SQL语句的执行的。其中，我们在排序的时候用到了sort buffer，在使用join语句的时候用到了join buffer。</p>
-<p>然后，你可能会有这样的疑问，MySQL什么时候会使用内部临时表呢？</p>
-<p>今天这篇文章，先给你举两个需要用到内部临时表的例子，来看看内部临时表是怎么工作的。然后，我们再来分析，什么情况下会使用内部临时表。</p>
+			<h2 id="1-写在前面"><a href="#1-写在前面" class="headerlink" title="1. 写在前面"></a>1. 写在前面</h2><p>今天是本系列的第一篇赛题理解，这一个算是热身，作为切入一道赛题的基础，赛题理解是极其重要的，对于赛题的理解甚至会影响后续的特征工程构建以及模型的选择，最主要是会影响后续发展工作的方向，比如挖掘特征的方向或者存在问题解决问题的方向，正确了解赛题背后的思想以及赛题业务逻辑的清晰，也很有利于花费更少时间构建更为有效的特征模型。 今天我们就从赛题的理解出发， 首先了解一下这次赛题的概况和数据，从中分析赛题以及大致的处理方式， 其次我们了解一些模型评测的指标，最后对赛题的理解整理一些经验（来自Datawhale团队的零基础入门数据挖掘）</p>
 	
 	
     </div>
@@ -632,28 +1177,21 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据挖掘</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/01/37-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BC%9A%E4%BD%BF%E7%94%A8%E5%86%85%E9%83%A8%E4%B8%B4%E6%97%B6%E8%A1%A8/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/02/04/1-%E8%B5%9B%E9%A2%98%E7%90%86%E8%A7%A3/">展开全文 >></a>
         </p>
       
 
@@ -687,22 +1225,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-SpringBoot-RabbitMQ配置参数详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-0-零基础入门数据挖掘学习路径" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/26/SpringBoot-RabbitMQ%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3/">SpringBoot_RabbitMQ配置参数详解</a>
+      <a class="article-title" href="/2023/02/03/0-%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84/">0-零基础入门数据挖掘学习路径</a>
     </h1>
   
 
         
         
 
-<a href="/2020/02/26/SpringBoot-RabbitMQ%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2020-02-26T15:45:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-26</time>
+<a href="/2023/02/03/0-%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84/" class="archive-article-date">
+  	<time datetime="2023-02-03T14:11:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-03</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -713,7 +1251,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">818字</span>
+        <span class="post-count">414字</span>
       </span>
     </span>
 
@@ -722,7 +1260,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">1分</span>
       </span>
     </span>
 </div>
@@ -739,10 +1277,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>★RabbitMQ<br>★Version: 1.5.13.RELEASE</p>
-<p>★属性文件：org.springframework.boot.autoconfigure.amqp.RabbitProperties</p>
-<p>★Config:</p>
-<h1 id="base"><a href="#base" class="headerlink" title="base"></a>base</h1><p>spring.rabbitmq.host: 服务Host<br>spring.rabbitmq.port: 服务端口<br>spring.rabbitmq.username: 登陆用户名<br>spring.rabbitmq.password: 登陆密码<br>spring.rabbitmq.virtual-host: 连接到rabbitMQ的vhost<br>spring.rabbitmq.addresses: 指定client连接到的server的地址，多个以逗号分隔(优先取addresses，然后再取host)<br>spring.rabbitmq.requested-heartbeat: 指定心跳超时，单位秒，0为不指定；默认60s<br>spring.rabbitmq.publisher-confirms: 是否启用【发布确认】<br>spring.rabbitmq.publisher-returns: 是否启用【发布返回】<br>spring.rabbitmq.connection-timeout: 连接超时，单位毫秒，0表示无穷大，不超时<br>spring.rabbitmq.parsed-addresses:</p>
+			<h2 id="1-写在前面"><a href="#1-写在前面" class="headerlink" title="1. 写在前面"></a>1. 写在前面</h2><p>零基础入门数据挖掘系列是记录自己在Datawhale举办的数据挖掘专题学习中的所学和所想， 该系列笔记使用理论结合实践的方式，整理数据挖掘相关知识，提升在实际场景中的数据分析、数据清洗，特征工程、建模调参和模型融合等技能。所以这个系列笔记共五篇重点内容，也分别从上面五方面进行整理学习，既是希望能对知识从实战的角度串联回忆，加强动手能力的锻炼，也希望这五篇笔记能够帮助到更多喜欢数据挖掘的小伙伴，我们一起学习，一起交流吧。</p>
 	
 	
     </div>
@@ -756,678 +1291,21 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MQ</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MQ//" class="article-tag-list-link color3">MQ</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/26/SpringBoot-RabbitMQ%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-RabbitMQ安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/26/RabbitMQ%E5%AE%89%E8%A3%85/">RabbitMQ安装</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2020/02/26/RabbitMQ%E5%AE%89%E8%A3%85/" class="archive-article-date">
-  	<time datetime="2020-02-26T11:40:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-26</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.4k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>个人在<strong>CentOS7</strong>下安装RabbitMQ以及遇到的问题。</p>
-<p><strong>RabbitMQ</strong> 是流行的开源消息队列系统，是 AMQP（Advanced Message Queuing Protocol 高级消息队列协议）的标准实现，用 erlang 语言开发。RabbitMQ 具有良好的性能和时效性，同时还能够非常好的支持集群和负载部署，非常适合在较大规模的分布式系统中使用。并且支持多种开发语言。我们项目中使用RabbitMQ作为消息队列，解耦业务，构建高可靠的消息队列系统。RabbitMQ可以用在订单系统、日志系统、数据收集等常见场景中。</p>
-<h2 id="1-安装RabbitMQ"><a href="#1-安装RabbitMQ" class="headerlink" title="1. 安装RabbitMQ"></a>1. 安装RabbitMQ</h2><p><strong>可能需要sudo权限</strong></p>
-<p>安装 RabbitMQ 之前要安装 Erlang，需要先到<a href="https://www.rabbitmq.com/which-erlang.html" target="_blank" rel="noopener">RabbitMQ官网</a>看下版本对应关系。<font color="red"><strong>必须看</strong></font></p>
-<p>当前最新版rabbitmq-server是rabbitmq-server-3.8.3-1.el7.noarch.rpm，最新版Erlang是erlang-23.0.1-1.el7.x86_64.rpm。我们可以分别在<a href="https://github.com/rabbitmq/erlang-rpm/releases" target="_blank" rel="noopener">Github</a>和<a href="https://www.rabbitmq.com/install-rpm.html#downloads" target="_blank" rel="noopener">RabbitMQ官网</a>下载对应的版本的rpm包。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MQ</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MQ//" class="article-tag-list-link color3">MQ</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/26/RabbitMQ%E5%AE%89%E8%A3%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-ELK日志平台-中" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/11/ELK%E6%97%A5%E5%BF%97%E5%B9%B3%E5%8F%B0-%E4%B8%AD/">ELK日志平台-中</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2020/02/11/ELK%E6%97%A5%E5%BF%97%E5%B9%B3%E5%8F%B0-%E4%B8%AD/" class="archive-article-date">
-  	<time datetime="2020-02-11T06:25:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-11</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.7k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">12分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于初期系统日志量还在可控范围，选择 ELK+Beats 的方案，并未引入消息队列，后续根据需求可以对系统升级。由此，只需要在日志平台部署 Elasticsearch 和 Logstash 集群，同时在应用服务器部署 Filebeat即可。</p>
-<p><strong>ELK版本务必保持一致，否则可能会出现 Kibana server is not ready yet的情况。</strong><br><font color="red"><strong>警告：</strong><br><strong>ELK 版本 7.4.X 以上需要 Java11 版本</strong><br><strong>ELK 版本 6.6.0 可以使用 Java8 版本</strong><br><strong>因此我们使用 6.6.0 版本</strong><br></font></p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">日志</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ELK</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据挖掘</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/ELK//" class="article-tag-list-link color4">ELK</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/ELK/日志//" class="article-tag-list-link color3">日志</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/11/ELK%E6%97%A5%E5%BF%97%E5%B9%B3%E5%8F%B0-%E4%B8%AD/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-ELK日志平台-上" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/10/ELK%E6%97%A5%E5%BF%97%E5%B9%B3%E5%8F%B0-%E4%B8%8A/">ELK日志平台-上</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2020/02/10/ELK%E6%97%A5%E5%BF%97%E5%B9%B3%E5%8F%B0-%E4%B8%8A/" class="archive-article-date">
-  	<time datetime="2020-02-10T02:30:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-10</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">14分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在过往的单体应用时代，我们所有组件都部署到一台服务器中，那时日志管理平台的需求可能并没有那么强烈，我们只需要登录到一台服务器通过shell命令就可以很方便的查看系统日志，并快速定位问题。随着互联网的发展，互联网已经全面渗入到生活的各个领域，使用互联网的用户量也越来越多，单体应用已不能够支持庞大的用户的并发量，那么将单体应用进行拆分，通过水平扩展来支持庞大用户的使用迫在眉睫，微服务概念就是在类似这样的阶段诞生，在微服务盛行的互联网技术时代，单个应用被拆分为多个应用，每个应用集群部署进行负载均衡，那么如果某项业务发生系统错误，开发或运维人员还是以过往单体应用方式登录一台一台登录服务器查看日志来定位问题，这种解决线上问题的效率可想而知。日志管理平台的建设就显得极其重要。通过Logstash去收集每台服务器日志文件，然后按定义的正则模板过滤后传输到Kafka或redis，然后由另一个Logstash从KafKa或redis读取日志存储到elasticsearch中创建索引，最后通过Kibana展示给开发者或运维人员进行分析。这样大大提升了运维线上问题的效率。除此之外，还可以将收集的日志进行大数据分析，得到更有价值的数据给到高层进行决策。</p>
-<p><strong>优点</strong></p>
-<ul>
-<li><p>ELK 提供的功能满足使用要求，并有较高的扩展性。</p>
-</li>
-<li><p>ELK 为一套开源项目，较低的维护成本。</p></li></ul>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">日志</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ELK</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/ELK//" class="article-tag-list-link color4">ELK</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/ELK/日志//" class="article-tag-list-link color3">日志</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/10/ELK%E6%97%A5%E5%BF%97%E5%B9%B3%E5%8F%B0-%E4%B8%8A/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-Java8新特性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/08/Java8%E6%96%B0%E7%89%B9%E6%80%A7/">Java8新特性</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2020/02/08/Java8%E6%96%B0%E7%89%B9%E6%80%A7/" class="archive-article-date">
-  	<time datetime="2020-02-08T04:43:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-08</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">9k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">40分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>2014年，Oracle发布了Java8新版本后，愈来愈多的公司开始尝试使用Java8新特性来摆脱繁琐的语法，在使用Java8代码编写公司项目后，为了追上时代潮流，开始系统学习Java8的一些新特性。在收集整理网上各种Java8学习笔记后，此篇文章算是个人Java8学习笔记的小结。</p>
-<ul>
-<li>速度更块</li>
-<li>代码更少（Lambda表达式）</li>
-<li>强大的Stream API</li>
-<li>便于并行</li>
-<li>最大化减少空指针异常 Optional</li>
-</ul>
-<p><font color="red">核心为：Lambda表达式与Stream API</font></p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/08/Java8%E6%96%B0%E7%89%B9%E6%80%A7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-1-Hystrix知多少" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/01/1-Hystrix%E7%9F%A5%E5%A4%9A%E5%B0%91/">1-Hystrix知多少</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2020/01/01/1-Hystrix%E7%9F%A5%E5%A4%9A%E5%B0%91/" class="archive-article-date">
-  	<time datetime="2020-01-01T07:38:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.6k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">12分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一般来说，互联网的面试，一般都会考察你，什么是分布式系统，高并发，简单的高可用问题。限流、熔断、降级，在分布式的系统架构中，微服务架构中，其实都是最常见、基础和简单的保障系统高可用的手法。dubbo去开发了，spring cloud去开发了，在这个系统的接口调用中，我们是用hystrix去实现一整套的高可用保障机制，基于hystrix去做了限流、熔断和降级。</p>
-<p>hystrix是国外的netflix开源的，netflix是国外很大的视频网站，系统非常复杂，微服务架构，多达几千个服务，为自己的场景，经过大量的工业验证，线上生产环境的实践，产出和开源了高可用相关的一个框架，熔断框架，hystrix。</p>
-<p>hystrix未来或已经成为国内的高可用的限流、熔断和降级这一块的事实上的标准，spring cloud微服务框架，就是集成了hystrix来做微服务架构中的限流、降级和熔断的。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Hystrix</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Hystrix//" class="article-tag-list-link color3">Hystrix</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Hystrix/面试//" class="article-tag-list-link color3">面试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/01/1-Hystrix%E7%9F%A5%E5%A4%9A%E5%B0%91/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/02/03/0-%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84/">展开全文 >></a>
         </p>
       
 
@@ -1462,7 +1340,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1732,6 +1610,46 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">搬砖结晶</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">推荐系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">目标检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">SkLearn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">图神经网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TensorFlow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">研究生课题-AD检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">研究生成果</a>
               </li>
             
             <div class="clearfix"></div>

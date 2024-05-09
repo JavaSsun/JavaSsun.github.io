@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 273</nav>
+		<nav style="color: #7FFFD4;">总文章数 379</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -192,22 +192,22 @@
             
   
     <meta charset="utf-8">
-<article id="post-34-分治算法-谈一谈大规模计算框架MapReduce中的分治思想" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-1-学术小白" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/04/34-%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95-%E8%B0%88%E4%B8%80%E8%B0%88%E5%A4%A7%E8%A7%84%E6%A8%A1%E8%AE%A1%E7%AE%97%E6%A1%86%E6%9E%B6MapReduce%E4%B8%AD%E7%9A%84%E5%88%86%E6%B2%BB%E6%80%9D%E6%83%B3/">34-分治算法_谈一谈大规模计算框架MapReduce中的分治思想</a>
+      <a class="article-title" href="/2021/06/06/1-%E5%AD%A6%E6%9C%AF%E5%B0%8F%E7%99%BD/">1-学术小白</a>
     </h1>
   
 
         
         
 
-<a href="/2019/07/04/34-%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95-%E8%B0%88%E4%B8%80%E8%B0%88%E5%A4%A7%E8%A7%84%E6%A8%A1%E8%AE%A1%E7%AE%97%E6%A1%86%E6%9E%B6MapReduce%E4%B8%AD%E7%9A%84%E5%88%86%E6%B2%BB%E6%80%9D%E6%83%B3/" class="archive-article-date">
-  	<time datetime="2019-07-04T13:01:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-04</time>
+<a href="/2021/06/06/1-%E5%AD%A6%E6%9C%AF%E5%B0%8F%E7%99%BD/" class="archive-article-date">
+  	<time datetime="2021-06-06T02:12:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-06</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -218,7 +218,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.5k字</span>
+        <span class="post-count">3k字</span>
       </span>
     </span>
 
@@ -227,7 +227,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">12分</span>
+        <span class="post-count">10分</span>
       </span>
     </span>
 </div>
@@ -244,10 +244,10 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>MapReduce 是 Google 大数据处理的三驾马车之一，另外两个是 GFS 和 Bigtable。它在倒排索引、PageRank 计算、网页分析等搜索引擎相关的技术中都有大量的应用。</p>
-<p>尽管开发一个 MapReduce 看起来很高深，感觉跟我们遥不可及。实际上，万变不离其宗，它的本质就是我们今天要学的这种算法思想，分治算法。</p>
+			<p>Author: haoransun<br>WeChat: SHR—97<br>图片&amp;知识点来源：B站</p>
+<h2 id="一-学术界常见缩写"><a href="#一-学术界常见缩写" class="headerlink" title="一. 学术界常见缩写"></a>一. 学术界常见缩写</h2><h3 id="1-1-缩写"><a href="#1-1-缩写" class="headerlink" title="1.1 缩写"></a>1.1 缩写</h3><p><strong>CNS</strong><br>Cell、Nature、Science是三个最负盛名的学术期刊，其实都是SCI的收录期刊。即我们可以通过SCI这个工具检索到里面收录的所有期刊的文章。</p>
+<p><strong>JCR</strong><br>JCR：Journal Citation Reports。即期刊引用报告。JCR对包括SCI收录的核心期刊(光盘版)在内的8000多种期刊(网络版)之间的引用和被引用数据进行统计、运算，并针对每种期刊定义了<strong>影响因子</strong>（Impact Factor）等指数加以报道。</p>
+<p>一种期刊的影响因子，指的是该刊前二年发表的文献在当前年的平均被引用次数。一种刊物的影响因子越高，也即其刊载的文献被引用率越高，一方面说明这些文献报道的研究成果影响力大，另一方面也反映该刊物的学术水平高。因此，JCR以其大量的期刊统计数据及计算的影响因子等指数，而成为一种期刊评价工具。图书馆可根据JCR提供的数据制定期刊引进政策；论文作者可根据期刊的<strong>影响因子</strong>排名决定投稿方向。</p>
 	
 	
     </div>
@@ -261,7 +261,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">论文</a>
         		</li>
       		
 		</ul>
@@ -273,7 +273,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        			<a href="/categories/论文//" class="article-tag-list-link color3">论文</a>
         		</li>
       		
 		</ul>
@@ -282,7 +282,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/04/34-%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95-%E8%B0%88%E4%B8%80%E8%B0%88%E5%A4%A7%E8%A7%84%E6%A8%A1%E8%AE%A1%E7%AE%97%E6%A1%86%E6%9E%B6MapReduce%E4%B8%AD%E7%9A%84%E5%88%86%E6%B2%BB%E6%80%9D%E6%83%B3/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/06/06/1-%E5%AD%A6%E6%9C%AF%E5%B0%8F%E7%99%BD/">展开全文 >></a>
         </p>
       
 
@@ -316,22 +316,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-33-贪心算法-如何用贪心算法实现Huffman压缩编码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-领域驱动设计在互联网业务开发中的实践" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/01/33-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95-%E5%A6%82%E4%BD%95%E7%94%A8%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0Huffman%E5%8E%8B%E7%BC%A9%E7%BC%96%E7%A0%81/">33-贪心算法_如何用贪心算法实现Huffman压缩编码</a>
+      <a class="article-title" href="/2020/09/13/%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%E5%9C%A8%E4%BA%92%E8%81%94%E7%BD%91%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E5%AE%9E%E8%B7%B5/">领域驱动设计在互联网业务开发中的实践</a>
     </h1>
   
 
         
         
 
-<a href="/2019/07/01/33-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95-%E5%A6%82%E4%BD%95%E7%94%A8%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0Huffman%E5%8E%8B%E7%BC%A9%E7%BC%96%E7%A0%81/" class="archive-article-date">
-  	<time datetime="2019-07-01T12:01:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-01</time>
+<a href="/2020/09/13/%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%E5%9C%A8%E4%BA%92%E8%81%94%E7%BD%91%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E5%AE%9E%E8%B7%B5/" class="archive-article-date">
+  	<time datetime="2020-09-13T09:10:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-13</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -342,7 +342,504 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.1k字</span>
+        <span class="post-count">9.9k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">35分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>转载自：<a href="https://zhuanlan.zhihu.com/p/32459776" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32459776</a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>至少30年以前，一些软件设计人员就已经意识到领域建模和设计的重要性，并形成一种思潮，Eric Evans将其定义为领域驱动设计（Domain-Driven Design，简称DDD）。在互联网开发“小步快跑，迭代试错”的大环境下，DDD似乎是一种比较“古老而缓慢”的思想。然而，由于互联网公司也逐渐深入实体经济，业务日益复杂，我们在开发中也越来越多地遇到传统行业软件开发中所面临的问题。本文就先来讲一下这些问题，然后再尝试在实践中用DDD的思想来解决这些问题。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">系统架构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/系统架构//" class="article-tag-list-link color5">系统架构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/13/%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%E5%9C%A8%E4%BA%92%E8%81%94%E7%BD%91%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E5%AE%9E%E8%B7%B5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-领域驱动设计" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/12/%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1/">领域驱动设计</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2020/07/12/%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1/" class="archive-article-date">
+  	<time datetime="2020-07-12T03:08:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-12</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">9.3k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">32分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>转载自：<a href="https://www.jianshu.com/p/147f2d170377" target="_blank" rel="noopener">https://www.jianshu.com/p/147f2d170377</a></p>
+<p><img src="/2020/07/12/%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1/5ae0aba8-41a2-4f7e-8f92-802271ea9c50.jpg" alt></p>
+<h2 id="一、Hello-DDD"><a href="#一、Hello-DDD" class="headerlink" title="一、Hello DDD"></a>一、Hello DDD</h2><p>刚开始接触学习<strong>「DDD - 领域驱动」</strong>的时候，我被各种新颖的概念所吸引：「领域」、「领域驱动」、「子域」、「聚合」、「聚合根」、「值对象」、「通用语言」…..总之一大堆有关的、无关的概念从我的脑海经过，其中不乏让我陷入思考的地方，我原以为我会很开心地 <em>“享用”</em> 这些新知识带给我的营养</p>
+<p><img src="/2020/07/12/%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1/7896890-a7db610ac865f917.gif" alt></p>
+<p>可事实上，我为学习<strong>「DDD - 领域驱动」</strong>付出了很多的精力，我尝试用「DDD CRUD」、「DDD vs CRUD」、「Domain-Driven Design」、「DDD CQRS」、「领域驱动设计」等等一系列的关键字搜集我想要的资料_（翻遍了 Google 前排的所有文章&amp;手动感谢谷歌让我能获得一些精彩的文章）_，可似乎都不太近人意，一方面这个「新概念」我对它的困惑太多了，另一方面真正「落地」并实践起来的经验有很少是可以直接借鉴的，再结合一些实际的场景（没有人解答），我感到更加困惑。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">系统架构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/系统架构//" class="article-tag-list-link color5">系统架构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/12/%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-DDD模式-从天书到实践" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/28/DDD%E6%A8%A1%E5%BC%8F-%E4%BB%8E%E5%A4%A9%E4%B9%A6%E5%88%B0%E5%AE%9E%E8%B7%B5/">DDD模式-从天书到实践</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2020/06/28/DDD%E6%A8%A1%E5%BC%8F-%E4%BB%8E%E5%A4%A9%E4%B9%A6%E5%88%B0%E5%AE%9E%E8%B7%B5/" class="archive-article-date">
+  	<time datetime="2020-06-28T08:59:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">7.6k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">27分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>转载自 <a href="https://zhuanlan.zhihu.com/p/91525839" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/91525839</a></p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>正所谓有人的地方就有江湖，有设计的地方也一定会有架构。如果你是一位软件行业的老鸟，你一定会有这样的经历：一个业务的初期，普通的 CRUD 就能满足，业务线也很短，此时系统的一切都看起来很 nice，但随着迭代的不断演化，以及业务逻辑越来越复杂，我们的系统也越来越冗杂，模块彼此关联，甚至没有人能描述清楚每个细节。当新需求需要修改一个功能时，往往光回顾该功能涉及的流程就需要很长时间，更别提修改带来的不可预知的影响面。于是 RD 就加开关，小心翼翼地切流量上线，一有问题赶紧关闭开关。</p>
+<p>面对此般场景，你要么跑路，要么重构。重构是克服演进式设计中大杂烩问题的主力，通过在单独的类及方法级别上做一系列小步重构来完成，我们可以很容易重构出一个独立的类来放某些通用的逻辑，但是，你会发现你很难给它一个业务上的含义，只能给予一个技术维度描绘的含义。你正在一边重构一边给后人挖坑。</p>
+<p>在互联网开发“小步快跑，迭代试错”的大环境下，DDD 似乎是一种比较“古老而缓慢”的思想。然而，由于互联网公司也逐渐深入实体经济，业务日益复杂，我们在开发中也越来越多地遇到传统行业软件开发中所面临的问题。</p>
+<p>怎么解决这个问题呢？其实法宝就是今天的主题，领域驱动设计！！</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">系统架构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/系统架构//" class="article-tag-list-link color5">系统架构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/28/DDD%E6%A8%A1%E5%BC%8F-%E4%BB%8E%E5%A4%A9%E4%B9%A6%E5%88%B0%E5%AE%9E%E8%B7%B5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-DDD-马什么梅" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/14/DDD-%E9%A9%AC%E4%BB%80%E4%B9%88%E6%A2%85/">DDD-马什么梅</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2020/06/14/DDD-%E9%A9%AC%E4%BB%80%E4%B9%88%E6%A2%85/" class="archive-article-date">
+  	<time datetime="2020-06-14T05:59:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-14</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.8k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">6分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>转载自：<a href="https://zhuanlan.zhihu.com/p/200876311" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/200876311</a></p>
+<blockquote>
+<p>领域模型(domain model)是对领域内的概念类或现实世界中对象的可视化表示。领域模型也称为概念模型、领域对象模型和分析对象模型。《UML和模式应用》</p>
+</blockquote>
+<p>我们在日常开发中，经常针对一些功能点争论“这个功能不应该我改，应该是你那边改”，最终被妥协改了之后都改不明白为什么这个功能要在自己这边改。区别于传统的架构设计，领域驱动设计（DDD）也许在这个时候能帮助你做到清晰的划分。</p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">系统架构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/系统架构//" class="article-tag-list-link color5">系统架构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/14/DDD-%E9%A9%AC%E4%BB%80%E4%B9%88%E6%A2%85/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-FaaS-又一个为未来" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/17/FaaS-%E5%8F%88%E4%B8%80%E4%B8%AA%E4%B8%BA%E6%9C%AA%E6%9D%A5/">FaaS-又一个为未来</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2020/05/17/FaaS-%E5%8F%88%E4%B8%80%E4%B8%AA%E4%B8%BA%E6%9C%AA%E6%9D%A5/" class="archive-article-date">
+  	<time datetime="2020-05-17T06:46:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-17</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">4k字</span>
       </span>
     </span>
 
@@ -368,11 +865,10 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>基础的数据结构和算法我们基本上学完了，接下来几节，会讲几种更加基本的算法。它们分别是贪心算法、分治算法、回溯算法、动态规划。更加确切地说，它们应该是算法思想，并不是具体的算法，常用来指导我们设计具体的算法和编码等。</p>
-<p>贪心、分治、回溯、动态规划这 4 个算法思想，原理解释起来都很简单，但是要真正掌握且灵活应用，并不是件容易的事情。所以，接下来的这 4 个算法思想的讲解，依旧不会长篇大论地去讲理论，而是结合具体的问题，让你自己感受这些算法是怎么工作的，是如何解决问题的，带你在问题中体会这些算法的本质。个人觉得，这比单纯记忆原理和定义要更有价值。</p>
-<p>今天，我们先来学习一下贪心算法（greedy algorithm）。贪心算法有很多经典的应用，比如霍夫曼编码（Huffman Coding）、Prim 和 Kruskal 最小生成树算法、还有 Dijkstra 单源最短路径算法。最小生成树算法和最短路径算法我们后面会讲到，所以我们今天讲下霍夫曼编码，看看<strong>它是如何利用贪心算法来实现对数据压缩编码，有效节省数据存储空间的</strong>。</p>
+			<p>转载自：<a href="http://www.uml.org.cn/zjjs/202001023.asp" target="_blank" rel="noopener">http://www.uml.org.cn/zjjs/202001023.asp</a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>云计算时代出现了大量XaaS形式的概念,从IaaS、PaaS、SaaS到容器云引领的CaaS,再到火热的微服务架构,以及现在越来越多被谈起的Serverless和FaaS,我们正在经历?一个技术飞速变革的时代。</p>
+<h2 id="一、什么是Faas"><a href="#一、什么是Faas" class="headerlink" title="一、什么是Faas"></a>一、什么是Faas</h2><p>云计算时代出现了大量XaaS形式的概念，从IaaS(Infrastructure as a Service)、PaaS(Platform as a Service)、SaaS(Software as a Service)到容器云引领的CaaS(Containers as a Service)，再到火热的微服务架构，它们都在试着将各种软、硬件资源等抽象为一种服务提供给开发者使用，让他们不再担心基础设施、资源需求、中间件等等，在减轻心智负担的同时更好地专注于业务。FaaS是Functions as a Service的简称，它往往和无服务架构(Serverless Architecture)一同被提起。</p>
+<p>Serverless的概念刚刚出现在HackerNews时并不为大众所接受。后来随着微服务和事件驱动架构的发展才慢慢引起关注。Serverless并不是说没有服务器参与，它通过将复杂的服务器架构透明化，使开发者专注于“要做什么”，从而强调了减少开发者对服务器等计算资源的关注、工作粒度从服务器切换到任务的思想。2006年第一个支持“随用随付”的代码执行平台Zimki问世。2014年亚马逊AWS推出了Lambda成为最主要的无服务架构的代表。接着Google、IBM和Microsoft也纷纷推出了各自支持Serverless的平台。</p>
 	
 	
     </div>
@@ -386,7 +882,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">系统架构</a>
         		</li>
       		
 		</ul>
@@ -398,7 +894,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        			<a href="/categories/系统架构//" class="article-tag-list-link color5">系统架构</a>
         		</li>
       		
 		</ul>
@@ -407,7 +903,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/01/33-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95-%E5%A6%82%E4%BD%95%E7%94%A8%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0Huffman%E5%8E%8B%E7%BC%A9%E7%BC%96%E7%A0%81/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/05/17/FaaS-%E5%8F%88%E4%B8%80%E4%B8%AA%E4%B8%BA%E6%9C%AA%E6%9D%A5/">展开全文 >></a>
         </p>
       
 
@@ -441,22 +937,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-32-AC自动机-如何用多模式串匹配实现敏感词过滤功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-分布式ID的花拳绣腿" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/25/32-AC%E8%87%AA%E5%8A%A8%E6%9C%BA-%E5%A6%82%E4%BD%95%E7%94%A8%E5%A4%9A%E6%A8%A1%E5%BC%8F%E4%B8%B2%E5%8C%B9%E9%85%8D%E5%AE%9E%E7%8E%B0%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4%E5%8A%9F%E8%83%BD/">32-AC自动机_如何用多模式串匹配实现敏感词过滤功能</a>
+      <a class="article-title" href="/2020/04/19/%E5%88%86%E5%B8%83%E5%BC%8FID%E7%9A%84%E8%8A%B1%E6%8B%B3%E7%BB%A3%E8%85%BF/">分布式ID的花拳绣腿</a>
     </h1>
   
 
         
         
 
-<a href="/2019/06/25/32-AC%E8%87%AA%E5%8A%A8%E6%9C%BA-%E5%A6%82%E4%BD%95%E7%94%A8%E5%A4%9A%E6%A8%A1%E5%BC%8F%E4%B8%B2%E5%8C%B9%E9%85%8D%E5%AE%9E%E7%8E%B0%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4%E5%8A%9F%E8%83%BD/" class="archive-article-date">
-  	<time datetime="2019-06-25T12:01:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-25</time>
+<a href="/2020/04/19/%E5%88%86%E5%B8%83%E5%BC%8FID%E7%9A%84%E8%8A%B1%E6%8B%B3%E7%BB%A3%E8%85%BF/" class="archive-article-date">
+  	<time datetime="2020-04-19T09:20:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-19</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -467,7 +963,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.5k字</span>
+        <span class="post-count">4.8k字</span>
       </span>
     </span>
 
@@ -476,7 +972,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">16分</span>
+        <span class="post-count">20分</span>
       </span>
     </span>
 </div>
@@ -493,11 +989,11 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>很多支持用户发表文本内容的网站，比如 BBS，大都会有敏感词过滤功能，用来过滤掉用户输入的一些淫秽、反动、谩骂等内容。你有没有想过，这个功能是怎么实现的呢？</p>
-<p>实际上，这些功能最基本的原理就是字符串匹配算法，也就是通过维护一个敏感词的字典，当用户输入一段文字内容之后，通过字符串匹配算法，来查找用户输入的这段文字，是否包含敏感词。如果有，就用“***”把它替代掉。</p>
-<p>我们前面讲过好几种字符串匹配算法了，它们都可以处理这个问题。但是，对于访问量巨大的网站来说，比如淘宝，用户每天的评论数有几亿、甚至几十亿。这时候，我们对敏感词过滤系统的性能要求就要很高。毕竟，我们也不想，用户输入内容之后，要等几秒才能发送出去吧？我们也不想，为了这个功能耗费过多的机器吧？<strong>那如何才能实现一个高性能的敏感词过滤系统呢？</strong>这就要用到今天的<strong>多模式串匹配算法</strong>。</p>
+			<p>转载自 原创作者 微信号-mhcoding</p>
+<h2 id="1-为什么要用分布式ID？"><a href="#1-为什么要用分布式ID？" class="headerlink" title="1. 为什么要用分布式ID？"></a>1. 为什么要用分布式ID？</h2><p>在说分布式ID的具体实现之前，我们来简单分析一下为什么用分布式ID？分布式ID应该满足哪些特征？</p>
+<h3 id="1、什么是分布式ID？"><a href="#1、什么是分布式ID？" class="headerlink" title="1、什么是分布式ID？"></a>1、什么是分布式ID？</h3><p>拿MySQL数据库举个栗子：</p>
+<p>在我们业务数据量不大的时候，单库单表完全可以支撑现有业务，数据再大一点搞个MySQL主从同步读写分离也能对付。</p>
+<p>但随着数据日渐增长，主从同步也扛不住了，就需要对数据库进行分库分表，但分库分表后需要有一个唯一ID来标识一条数据，数据库的自增ID显然不能满足需求；特别一点的如订单、优惠券也都需要有<code>唯一ID</code>做标识。此时一个能够生成<code>全局唯一ID</code>的系统是非常必要的。那么这个<code>全局唯一ID</code>就叫<code>分布式ID</code>。</p>
 	
 	
     </div>
@@ -511,7 +1007,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">系统架构</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">分布式</a>
         		</li>
       		
 		</ul>
@@ -523,7 +1027,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        			<a href="/categories/分布式//" class="article-tag-list-link color4">分布式</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/分布式/面试//" class="article-tag-list-link color3">面试</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/分布式/面试/系统架构//" class="article-tag-list-link color5">系统架构</a>
         		</li>
       		
 		</ul>
@@ -532,7 +1044,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/25/32-AC%E8%87%AA%E5%8A%A8%E6%9C%BA-%E5%A6%82%E4%BD%95%E7%94%A8%E5%A4%9A%E6%A8%A1%E5%BC%8F%E4%B8%B2%E5%8C%B9%E9%85%8D%E5%AE%9E%E7%8E%B0%E6%95%8F%E6%84%9F%E8%AF%8D%E8%BF%87%E6%BB%A4%E5%8A%9F%E8%83%BD/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/19/%E5%88%86%E5%B8%83%E5%BC%8FID%E7%9A%84%E8%8A%B1%E6%8B%B3%E7%BB%A3%E8%85%BF/">展开全文 >></a>
         </p>
       
 
@@ -566,22 +1078,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-18-SQL语句逻辑相同-性能却为何差异巨大" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-4-Dockerfile上" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/23/18-SQL%E8%AF%AD%E5%8F%A5%E9%80%BB%E8%BE%91%E7%9B%B8%E5%90%8C-%E6%80%A7%E8%83%BD%E5%8D%B4%E4%B8%BA%E4%BD%95%E5%B7%AE%E5%BC%82%E5%B7%A8%E5%A4%A7/">18-SQL语句逻辑相同_性能却为何差异巨大</a>
+      <a class="article-title" href="/2020/04/08/4-Dockerfile%E4%B8%8A/">4-Dockerfile上</a>
     </h1>
   
 
         
         
 
-<a href="/2019/06/23/18-SQL%E8%AF%AD%E5%8F%A5%E9%80%BB%E8%BE%91%E7%9B%B8%E5%90%8C-%E6%80%A7%E8%83%BD%E5%8D%B4%E4%B8%BA%E4%BD%95%E5%B7%AE%E5%BC%82%E5%B7%A8%E5%A4%A7/" class="archive-article-date">
-  	<time datetime="2019-06-23T13:15:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
+<a href="/2020/04/08/4-Dockerfile%E4%B8%8A/" class="archive-article-date">
+  	<time datetime="2020-04-08T02:36:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-08</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -592,383 +1104,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.7k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">13分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在MySQL中，有很多看上去逻辑相同，但性能却差异巨大的SQL语句。对这些语句使用不当的话，就会不经意间导致整个数据库的压力变大。</p>
-<p>今天挑选了三个这样的案例和你分享。希望再遇到相似的问题时，你可以做到举一反三、快速解决问题。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/23/18-SQL%E8%AF%AD%E5%8F%A5%E9%80%BB%E8%BE%91%E7%9B%B8%E5%90%8C-%E6%80%A7%E8%83%BD%E5%8D%B4%E4%B8%BA%E4%BD%95%E5%B7%AE%E5%BC%82%E5%B7%A8%E5%A4%A7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-17-如何正确的显示随机消息" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/22/17-%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%98%BE%E7%A4%BA%E9%9A%8F%E6%9C%BA%E6%B6%88%E6%81%AF/">17-如何正确的显示随机消息</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/06/22/17-%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%98%BE%E7%A4%BA%E9%9A%8F%E6%9C%BA%E6%B6%88%E6%81%AF/" class="archive-article-date">
-  	<time datetime="2019-06-22T13:10:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-22</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.3k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">16分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在上一篇文章，讲完order by语句的几种执行模式后，就想到了之前一个做英语学习App的朋友碰到过的一个性能问题。今天这篇文章，我就从这个性能问题说起，和你说说MySQL中的另外一种排序需求，希望能够加深你对MySQL排序逻辑的理解。</p>
-<p>这个英语学习App首页有一个随机显示单词的功能，也就是根据每个用户的级别有一个单词表，然后这个用户每次访问首页的时候，都会随机滚动显示三个单词。他们发现随着单词表变大，选单词这个逻辑变得越来越慢，甚至影响到了首页的打开速度。</p>
-<p>现在，如果让你来设计这个SQL语句，你会怎么写呢？</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/22/17-%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%98%BE%E7%A4%BA%E9%9A%8F%E6%9C%BA%E6%B6%88%E6%81%AF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-16-MySQL中order-by是如何工作的" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/20/16-MySQL%E4%B8%ADorder-by%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/">16-MySQL中order by是如何工作的</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/06/20/16-MySQL%E4%B8%ADorder-by%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/" class="archive-article-date">
-  	<time datetime="2019-06-20T12:20:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-20</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.4k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">16分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在你开发应用的时候，一定会经常碰到需要根据指定的字段排序来显示结果的需求。还是以我们前面举例用过的市民表为例，假设你要查询城市是“杭州”的所有人名字，并且按照姓名排序返回前1000个人的姓名、年龄。</p>
-<p>假设这个表的部分定义是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &#96;t&#96; ( </span><br><span class="line">&#96;id&#96; int(11) NOT NULL, </span><br><span class="line">&#96;city&#96; varchar(16) NOT NULL, </span><br><span class="line">&#96;name&#96; varchar(16) NOT NULL, </span><br><span class="line">&#96;age&#96; int(11) NOT NULL, </span><br><span class="line">&#96;addr&#96; varchar(128) DEFAULT NULL, </span><br><span class="line">PRIMARY KEY (&#96;id&#96;), </span><br><span class="line">KEY &#96;city&#96; (&#96;city&#96;) </span><br><span class="line">) ENGINE&#x3D;InnoDB;</span><br></pre></td></tr></table></figure>
-
-<p>这时，你的SQL语句可以这么写：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select city,name,age from t where city&#x3D;&#39;杭州&#39; order by name limit 1000 ;</span><br></pre></td></tr></table></figure>
-
-<p>这个语句看上去逻辑很清晰，但是你了解它的执行流程吗？今天，就和你聊聊这个语句是怎么执行的，以及有什么参数会影响执行的行为。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/20/16-MySQL%E4%B8%ADorder-by%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-15-日志和索引有关问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/18/15-%E6%97%A5%E5%BF%97%E5%92%8C%E7%B4%A2%E5%BC%95%E6%9C%89%E5%85%B3%E9%97%AE%E9%A2%98/">15-日志和索引有关问题</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/06/18/15-%E6%97%A5%E5%BF%97%E5%92%8C%E7%B4%A2%E5%BC%95%E6%9C%89%E5%85%B3%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2019-06-18T13:20:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-18</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.8k字</span>
+        <span class="post-count">2.1k字</span>
       </span>
     </span>
 
@@ -994,9 +1130,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<h3 id="在两阶段提交的不同瞬间，MySQL如果发生异常重启，是怎么保证数据完整性的？"><a href="#在两阶段提交的不同瞬间，MySQL如果发生异常重启，是怎么保证数据完整性的？" class="headerlink" title="在两阶段提交的不同瞬间，MySQL如果发生异常重启，是怎么保证数据完整性的？"></a>在两阶段提交的不同瞬间，MySQL如果发生异常重启，是怎么保证数据完整性的？</h3><p>再放一次两阶段提交的图，方便学习下面的内容。</p>
-<p><img src="/2019/06/18/15-%E6%97%A5%E5%BF%97%E5%92%8C%E7%B4%A2%E5%BC%95%E6%9C%89%E5%85%B3%E9%97%AE%E9%A2%98/02c0f35a-1a03-4b59-9236-a151c8064670.jpg" alt></p>
-<p>这里，要先和你解释一个误会式的问题。有人问到，这个图不是一个update语句的执行流程吗，怎么还会调用commit语句？</p>
+			<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在Docker中创建镜像最常用的方式，就是使用Dockerfile。Dockerfile是一个Docker镜像的描述文件，我们可以理解成火箭发射的A、B、C、D…的步骤。Dockerfile其内部<strong>包含了一条条的指令</strong>，<strong>每一条指令构建一层，因此每一条指令的内容，就是描述该层应当如何构建</strong>。</p>
+<p><strong>组成部分</strong></p>
+<p><img src="/2020/04/08/4-Dockerfile%E4%B8%8A/7932ac6c-6b67-4f43-bab8-5e61dd559c48.png" alt></p>
 	
 	
     </div>
@@ -1010,7 +1146,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
         		</li>
       		
 		</ul>
@@ -1022,7 +1158,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
+        			<a href="/categories/Docker//" class="article-tag-list-link color2">Docker</a>
         		</li>
       		
 		</ul>
@@ -1031,7 +1167,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/18/15-%E6%97%A5%E5%BF%97%E5%92%8C%E7%B4%A2%E5%BC%95%E6%9C%89%E5%85%B3%E9%97%AE%E9%A2%98/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/08/4-Dockerfile%E4%B8%8A/">展开全文 >></a>
         </p>
       
 
@@ -1065,22 +1201,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-RocketMQ探索" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-3-Docker存储卷" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/17/RocketMQ%E6%8E%A2%E7%B4%A2/">RocketMQ探索</a>
+      <a class="article-title" href="/2020/04/07/3-Docker%E5%AD%98%E5%82%A8%E5%8D%B7/">3-Docker存储卷</a>
     </h1>
   
 
         
         
 
-<a href="/2019/06/17/RocketMQ%E6%8E%A2%E7%B4%A2/" class="archive-article-date">
-  	<time datetime="2019-06-17T11:25:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-17</time>
+<a href="/2020/04/07/3-Docker%E5%AD%98%E5%82%A8%E5%8D%B7/" class="archive-article-date">
+  	<time datetime="2020-04-07T06:36:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-07</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1091,7 +1227,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">7.8k字</span>
+        <span class="post-count">1.6k字</span>
       </span>
     </span>
 
@@ -1100,7 +1236,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">29分</span>
+        <span class="post-count">6分</span>
       </span>
     </span>
 </div>
@@ -1117,32 +1253,138 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>转载自：<br><a href="https://blog.csdn.net/javahongxi/article/details/72956608" target="_blank" rel="noopener">https://blog.csdn.net/javahongxi/article/details/72956608</a></p>
-<p><a href="https://www.cnblogs.com/tudachui/p/10998984.html" target="_blank" rel="noopener">https://www.cnblogs.com/tudachui/p/10998984.html</a></p>
-<h2 id="1-簡介RocketMQ"><a href="#1-簡介RocketMQ" class="headerlink" title="1. 簡介RocketMQ"></a>1. 簡介RocketMQ</h2><p>RocektMQ是阿里巴巴在2012年开源的一个纯java、分布式、队列模型的第三代消息中间件，不仅在传统高频交易链路有着低延迟的出色表现，在实时计算等大数据领域也有着不错的吞吐。</p>
-<p>2016年11月11号，双十一大促见证了RocketMQ低延迟存储架构的成功试水，99.996%的延迟落在了10ms以内，极个别由于GC引发的停顿在50ms以内，其高性能、低延时和高可靠的特性承载了近年来双十一17万笔/秒的交易峰值，在整个生产链路上都有着稳定和出色的表现。其在同年捐赠给Apache后正式进入孵化期。并于2017年9月RocketMQ正式从Apache社区正式毕业，成为Apache顶级项目。</p>
-<p><strong>RocketMQ</strong>是一个分布式开放消息中间件，底层基于队列模型来实现消息收发功能。RocketMQ集群中包含4个模块：Namesrv, Broker, Producer, Consumer。</p>
+			<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><img src="/2020/04/07/3-Docker%E5%AD%98%E5%82%A8%E5%8D%B7/08d2ea30-f590-4305-9b74-9aed3f47ca21.jpg" alt></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Docker//" class="article-tag-list-link color2">Docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/07/3-Docker%E5%AD%98%E5%82%A8%E5%8D%B7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-2-Docker容器网络" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/06/2-Docker%E5%AE%B9%E5%99%A8%E7%BD%91%E7%BB%9C/">2-Docker容器网络</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2020/04/06/2-Docker%E5%AE%B9%E5%99%A8%E7%BD%91%E7%BB%9C/" class="archive-article-date">
+  	<time datetime="2020-04-06T10:36:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-06</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2.1k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">8分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>Linux内核支持6种名称空间。</p>
 <ul>
-<li><p><strong>Namesrv</strong>: 存储当前集群所有Brokers信息、Topic跟Broker的对应关系。</p>
-</li>
-<li><p><strong>Broker</strong>: 集群最核心模块，主要负责Topic消息存储、消费者的消费位点管理（消费进度）。</p>
-</li>
-<li><p><strong>Producer</strong>: 消息生产者，每个生产者都有一个ID(编号)，多个生产者实例可以共用同一个ID。同一个ID下所有实例组成一个生产者集群。</p>
-</li>
-<li><p><strong>Consumer</strong>: 消息消费者，每个订阅者也有一个ID(编号)，多个消费者实例可以共用同一个ID。同一个ID下所有实例组成一个消费者集群。</p>
-</li>
+<li><strong>UTS</strong>：主机名+域名</li>
+<li><strong>USER</strong>：用户</li>
+<li><strong>Mount</strong>：挂载文件系统</li>
+<li><strong>IPC</strong>：进程间通信</li>
+<li><strong>Pid</strong>：进程ID</li>
+<li><strong>Net</strong>：网络</li>
 </ul>
-<p><strong>官方简介</strong>：</p>
-<ul>
-<li><p><strong>能够保证严格的消息顺序</strong></p>
-</li>
-<li><p><strong>提供丰富的消息拉取模式</strong></p>
-</li>
-<li><p><strong>高效的订阅者水平扩展能力</strong></p>
-</li>
-<li><p><strong>实时的消息订阅机制</strong></p>
-</li>
-<li><p><strong>亿级消息堆积能力</strong></p></li></ul>
+<p><strong>OVS：OpenVSwitch</strong><br><strong>SDN：软件驱动网络</strong><br><strong>Overlay Network</strong>:基于隧道叠加实现的另外一层网络通信。</p>
+<p>C1要与C5通信，将报文发送给bridge上，由bridge发送给物理网卡，经由隧道转发。</p>
 	
 	
     </div>
@@ -1156,7 +1398,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MQ</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
         		</li>
       		
 		</ul>
@@ -1168,7 +1410,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/MQ//" class="article-tag-list-link color3">MQ</a>
+        			<a href="/categories/Docker//" class="article-tag-list-link color2">Docker</a>
         		</li>
       		
 		</ul>
@@ -1177,256 +1419,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/17/RocketMQ%E6%8E%A2%E7%B4%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-14-count（星）为什么这么慢" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/16/14-count%EF%BC%88%E6%98%9F%EF%BC%89%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E4%B9%88%E6%85%A2/">14-count（\*）为什么这么慢</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/06/16/14-count%EF%BC%88%E6%98%9F%EF%BC%89%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E4%B9%88%E6%85%A2/" class="archive-article-date">
-  	<time datetime="2019-06-16T12:35:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.9k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">13分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在开发系统的时候，你可能经常需要计算一个表的行数，比如一个交易系统的所有变更记录总数。这时候你可能会想，一条select count(*) from t 语句不就解决了吗？</p>
-<p>但是，你会发现随着系统中记录数越来越多，这条语句执行得也会越来越慢。然后你可能就想了，MySQL怎么这么笨啊，记个总数，每次要查的时候直接读出来，不就好了吗。</p>
-<p>那么今天，我们就来聊聊count(*)语句到底是怎样实现的，以及MySQL为什么会这么实现。然后，会再和你说说，如果应用中有这种频繁变更并需要统计表行数的需求，业务设计上可以怎么做。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/16/14-count%EF%BC%88%E6%98%9F%EF%BC%89%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E4%B9%88%E6%85%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-13-为什么表数据删掉一半而表文件大小不变" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/15/13-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A1%A8%E6%95%B0%E6%8D%AE%E5%88%A0%E6%8E%89%E4%B8%80%E5%8D%8A%E8%80%8C%E8%A1%A8%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E4%B8%8D%E5%8F%98/">13-为什么表数据删掉一半而表文件大小不变</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/06/15/13-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A1%A8%E6%95%B0%E6%8D%AE%E5%88%A0%E6%8E%89%E4%B8%80%E5%8D%8A%E8%80%8C%E8%A1%A8%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E4%B8%8D%E5%8F%98/" class="archive-article-date">
-  	<time datetime="2019-06-15T12:45:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-15</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.4k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">12分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>经常会有人提问，我的数据库占用空间太大，我把一个最大的表删掉了一半的数据，怎么表文件的大小还是没变？</p>
-<p>那么今天，一起聊聊数据库表的空间回收，看看如何解决这个问题。</p>
-<p>这里，我们还是针对MySQL中应用最广泛的InnoDB引擎展开讨论。一个InnoDB表包含两部分，即：表结构定义和数据。在MySQL 8.0版本以前，表结构是存在以.frm为后缀的文件里。而MySQL 8.0版本，则已经允许把表结构定义放在系统数据表中了。因为表结构定义占用的空间很小，所以我们今天主要讨论的是表数据。</p>
-<p>接下来，会先和你说明为什么简单地删除表数据达不到表空间回收的效果，然后再和你介绍正确回收空间的方法。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/15/13-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A1%A8%E6%95%B0%E6%8D%AE%E5%88%A0%E6%8E%89%E4%B8%80%E5%8D%8A%E8%80%8C%E8%A1%A8%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E4%B8%8D%E5%8F%98/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/06/2-Docker%E5%AE%B9%E5%99%A8%E7%BD%91%E7%BB%9C/">展开全文 >></a>
         </p>
       
 
@@ -1461,7 +1454,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/11/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/13/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/11/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/13/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1731,6 +1724,46 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">搬砖结晶</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">推荐系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">目标检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">SkLearn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">图神经网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TensorFlow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">研究生课题-AD检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">研究生成果</a>
               </li>
             
             <div class="clearfix"></div>

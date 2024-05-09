@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		
-		<nav style="color: #7FFFD4;">总文章数 273</nav>
+		<nav style="color: #7FFFD4;">总文章数 379</nav>
 
 		<nav class="header-smart-menu">
     		
@@ -192,22 +192,22 @@
             
   
     <meta charset="utf-8">
-<article id="post-52-算法实战（五）-如何用学过的数据结构和算法实现一个短网址系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-4-图像平滑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/14/52-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%94%EF%BC%89-%E5%A6%82%E4%BD%95%E7%94%A8%E5%AD%A6%E8%BF%87%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%9F%AD%E7%BD%91%E5%9D%80%E7%B3%BB%E7%BB%9F/">52-算法实战（五）_如何用学过的数据结构和算法实现一个短网址系统</a>
+      <a class="article-title" href="/2022/04/26/4-%E5%9B%BE%E5%83%8F%E5%B9%B3%E6%BB%91/">4-图像平滑</a>
     </h1>
   
 
         
         
 
-<a href="/2019/09/14/52-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%94%EF%BC%89-%E5%A6%82%E4%BD%95%E7%94%A8%E5%AD%A6%E8%BF%87%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%9F%AD%E7%BD%91%E5%9D%80%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
-  	<time datetime="2019-09-14T13:16:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-14</time>
+<a href="/2022/04/26/4-%E5%9B%BE%E5%83%8F%E5%B9%B3%E6%BB%91/" class="archive-article-date">
+  	<time datetime="2022-04-26T03:30:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-26</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -218,7 +218,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.6k字</span>
+        <span class="post-count">1.3k字</span>
       </span>
     </span>
 
@@ -227,7 +227,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">15分</span>
+        <span class="post-count">5分</span>
       </span>
     </span>
 </div>
@@ -244,12 +244,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>短网址服务你用过吗？如果我们在微博里发布一条带网址的信息，微博会把里面的网址转化成一个更短的网址。我们只要访问这个短网址，就相当于访问原始的网址。比如下面这两个网址，尽管长度不同，但是都可以跳转到我的一个 GitHub 开源项目里。其中，第二个网址就是通过新浪提供的短网址服务生成的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">原始网址：https:&#x2F;&#x2F;github.com&#x2F;wangzheng0822&#x2F;ratelimiter4j</span><br><span class="line">短网址：http:&#x2F;&#x2F;t.cn&#x2F;EtR9QEG</span><br></pre></td></tr></table></figure>
-
-<p>从功能上讲，短网址服务其实非常简单，就是把一个长的网址转化成一个短的网址。作为一名软件工程师，你是否思考过，这样一个简单的功能，是如何实现的呢？底层都依赖了哪些数据结构和算法呢？短网址服务整体介绍</p>
+			<p>Author: haoransun<br>WeChat: SHR—97</p>
+<h2 id="1-图像噪声"><a href="#1-图像噪声" class="headerlink" title="1 图像噪声"></a>1 图像噪声</h2><p>由于图像采集、处理、传输等过程不可避免的会受到噪声的污染，妨碍人们对图像理解及分析处理。常见的图像噪声有高斯噪声、椒盐噪声等。</p>
+<h3 id="1-1-椒盐噪声"><a href="#1-1-椒盐噪声" class="headerlink" title="1.1 椒盐噪声"></a>1.1 椒盐噪声</h3><p>椒盐噪声也称为脉冲噪声，是图像中经常见到的一种噪声，它是一种随机出现的白点或者黑点，可能是亮的区域有黑色像素或是在暗的区域有白色像素（或是两者皆有）。椒盐噪声的成因可能是影像讯号受到突如其来的强烈干扰而产生、类比数位转换器或位元传输错误等。例如失效的感应器导致像素值为最小值，饱和的感应器导致像素值为最大值。</p>
 	
 	
     </div>
@@ -263,28 +260,21 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/14/52-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%94%EF%BC%89-%E5%A6%82%E4%BD%95%E7%94%A8%E5%AD%A6%E8%BF%87%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%9F%AD%E7%BD%91%E5%9D%80%E7%B3%BB%E7%BB%9F/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/04/26/4-%E5%9B%BE%E5%83%8F%E5%B9%B3%E6%BB%91/">展开全文 >></a>
         </p>
       
 
@@ -318,22 +308,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-30-用动态的观点看加锁" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-3-形态学操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/13/30-%E7%94%A8%E5%8A%A8%E6%80%81%E7%9A%84%E8%A7%82%E7%82%B9%E7%9C%8B%E5%8A%A0%E9%94%81/">30-用动态的观点看加锁</a>
+      <a class="article-title" href="/2022/04/22/3-%E5%BD%A2%E6%80%81%E5%AD%A6%E6%93%8D%E4%BD%9C/">3-形态学操作</a>
     </h1>
   
 
         
         
 
-<a href="/2019/09/13/30-%E7%94%A8%E5%8A%A8%E6%80%81%E7%9A%84%E8%A7%82%E7%82%B9%E7%9C%8B%E5%8A%A0%E9%94%81/" class="archive-article-date">
-  	<time datetime="2019-09-13T14:15:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-13</time>
+<a href="/2022/04/22/3-%E5%BD%A2%E6%80%81%E5%AD%A6%E6%93%8D%E4%BD%9C/" class="archive-article-date">
+  	<time datetime="2022-04-22T02:30:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-22</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -344,7 +334,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.2k字</span>
+        <span class="post-count">1.9k字</span>
       </span>
     </span>
 
@@ -353,7 +343,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">12分</span>
+        <span class="post-count">8分</span>
       </span>
     </span>
 </div>
@@ -370,17 +360,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前文介绍了InnoDB的间隙锁、next-key lock，以及加锁规则。此处罗列几个有代表性的问题，加深对加锁规则的理解。</p>
-<p><strong>为了方便理解，一起复习一下加锁规则。这个规则中，包含了两个“原则”、两个“优化”和一个“bug”：</strong></p>
-<ul>
-<li>原则1：加锁的基本单位是next-key lock。希望你还记得，next-key lock是前开后闭区间。</li>
-<li>原则2：查找过程中访问到的对象才会加锁。</li>
-<li>优化1：索引上的等值查询，给唯一索引加锁的时候，next-key lock退化为行锁。</li>
-<li>优化2：索引上的等值查询，向右遍历时且最后一个值不满足等值条件的时候，next-key lock退化为间隙锁。</li>
-<li>一个bug：唯一索引上的范围查询会访问到不满足条件的第一个值为止。</li>
-</ul>
-<p>接下来，我们的讨论还是基于下面这个表t：</p>
+			<p>Author: haoransun<br>WeChat: SHR—97</p>
+<h2 id="1-连通性"><a href="#1-连通性" class="headerlink" title="1 连通性"></a>1 连通性</h2><p>在图像中，最小的单位是像素，每个像素周围有8个邻接像素，常见的邻接关系有3种：4邻接、8邻接和D邻接。分别如下图所示：</p>
+<p><img src="/2022/04/22/3-%E5%BD%A2%E6%80%81%E5%AD%A6%E6%93%8D%E4%BD%9C/2021-11-14_190738.png" alt></p>
 	
 	
     </div>
@@ -394,28 +376,21 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/13/30-%E7%94%A8%E5%8A%A8%E6%80%81%E7%9A%84%E8%A7%82%E7%82%B9%E7%9C%8B%E5%8A%A0%E9%94%81/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/04/22/3-%E5%BD%A2%E6%80%81%E5%AD%A6%E6%93%8D%E4%BD%9C/">展开全文 >></a>
         </p>
       
 
@@ -449,22 +424,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-29-如何判断一个数据库是不是出问题了" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-2-几何变换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/12/29-%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93%E6%98%AF%E4%B8%8D%E6%98%AF%E5%87%BA%E9%97%AE%E9%A2%98%E4%BA%86/">29-如何判断一个数据库是不是出问题了</a>
+      <a class="article-title" href="/2022/04/20/2-%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2/">2-几何变换</a>
     </h1>
   
 
         
         
 
-<a href="/2019/09/12/29-%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93%E6%98%AF%E4%B8%8D%E6%98%AF%E5%87%BA%E9%97%AE%E9%A2%98%E4%BA%86/" class="archive-article-date">
-  	<time datetime="2019-09-12T13:15:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-12</time>
+<a href="/2022/04/20/2-%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2/" class="archive-article-date">
+  	<time datetime="2022-04-20T02:30:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-20</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -475,7 +450,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.7k字</span>
+        <span class="post-count">3.1k字</span>
       </span>
     </span>
 
@@ -501,11 +476,15 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在 <strong>第25和27篇</strong> 文章中，介绍了主备切换流程。通过这些内容的讲解，你应该已经很清楚了：在一主一备的双M架构里，主备切换只需要把客户端流量切到备库；而在一主多从架构里，主备切换除了要把客户端流量切到备库外，还需要把从库接到新主库上。</p>
-<p>主备切换有两种场景，一种是主动切换，一种是被动切换。而其中被动切换，往往是因为主库出问题了，由HA系统发起的。</p>
-<p>这也就引出了我们今天要讨论的问题：怎么判断一个主库出问题了？</p>
-<p>你一定会说，这很简单啊，连上MySQL，执行个select 1就好了。但是select 1成功返回了，就表示主库没问题吗？</p>
+			<p>Author: haoransun<br>WeChat: SHR—97</p>
+<h2 id="1-图像缩放"><a href="#1-图像缩放" class="headerlink" title="1 图像缩放"></a>1 图像缩放</h2><p>缩放是对图像的大小进行调整，即使图像放大或缩小。</p>
+<ol>
+<li>API<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.resize(src,dsize,fx&#x3D;0,fy&#x3D;0,interpolation&#x3D;cv2.INTER_LINEAR)</span><br></pre></td></tr></table></figure>
+参数：<ul>
+<li>src : 输入图像</li>
+<li>dsize: 绝对尺寸，直接指定调整后图像的大小</li>
+<li>fx,fy: 相对尺寸，将dsize设置为None，然后将fx和fy设置为比例因子即可</li>
+<li>interpolation：插值方法，</li></ul></li></ol>
 	
 	
     </div>
@@ -519,28 +498,21 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/12/29-%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93%E6%98%AF%E4%B8%8D%E6%98%AF%E5%87%BA%E9%97%AE%E9%A2%98%E4%BA%86/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/04/20/2-%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2/">展开全文 >></a>
         </p>
       
 
@@ -574,22 +546,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-28-读写分离有哪些坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-1-图像的基础操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/11/28-%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E6%9C%89%E5%93%AA%E4%BA%9B%E5%9D%91/">28-读写分离有哪些坑</a>
+      <a class="article-title" href="/2022/04/18/1-%E5%9B%BE%E5%83%8F%E7%9A%84%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/">1-图像的基础操作</a>
     </h1>
   
 
         
         
 
-<a href="/2019/09/11/28-%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E6%9C%89%E5%93%AA%E4%BA%9B%E5%9D%91/" class="archive-article-date">
-  	<time datetime="2019-09-11T13:05:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
+<a href="/2022/04/18/1-%E5%9B%BE%E5%83%8F%E7%9A%84%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" class="archive-article-date">
+  	<time datetime="2022-04-18T08:30:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-18</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -600,133 +572,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">5.2k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">17分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->
-	
-	
-      </header>
-    
-
-	<!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在上一篇文章中，介绍了一主多从的结构以及切换流程。今天我们就继续聊聊一主多从架构的应用场景：读写分离，以及怎么处理主备延迟导致的读写分离问题。</p>
-<p>我们在上一篇文章中提到的一主多从的结构，其实就是读写分离的基本结构了。这里，我再把这张图贴过来，方便你理解。</p>
-<p><img src="/2019/09/11/28-%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E6%9C%89%E5%93%AA%E4%BA%9B%E5%9D%91/912e05ad-efc6-4868-8281-35f59e84d256.jpg" alt></p>
-<p>读写分离的主要目标就是分摊主库的压力。图1中的结构是客户端（client）主动做负载均衡，这种模式下一般会把数据库的连接信息放在客户端的连接层。也就是说，由客户端来选择后端数据库进行查询。</p>
-<p>还有一种架构是，在MySQL和客户端之间有一个中间代理层proxy，客户端只连接proxy， 由proxy根据请求类型和上下文决定请求的分发路由。</p>
-	
-	
-    </div>
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/11/28-%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E6%9C%89%E5%93%AA%E4%BA%9B%E5%9D%91/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <meta charset="utf-8">
-<article id="post-51-算法实战（四）-剖析微服务接口鉴权限流背后的数据结构和算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/09/51-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E5%9B%9B%EF%BC%89-%E5%89%96%E6%9E%90%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E9%99%90%E6%B5%81%E8%83%8C%E5%90%8E%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">51-算法实战（四）_剖析微服务接口鉴权限流背后的数据结构和算法</a>
-    </h1>
-  
-
-        
-        
-
-<a href="/2019/09/09/51-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E5%9B%9B%EF%BC%89-%E5%89%96%E6%9E%90%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E9%99%90%E6%B5%81%E8%83%8C%E5%90%8E%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2019-09-09T12:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-09</time>
-</a>
-        
-	<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.3k字</span>
+        <span class="post-count">3k字</span>
       </span>
     </span>
 
@@ -752,12 +598,11 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><a href="https://github.com/wangzheng0822/ratelimiter4j" target="_blank" rel="noopener">限流开发库/框架-java</a></p>
-<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>微服务是最近几年才兴起的概念。简单点讲，就是把复杂的大应用，解耦拆分成几个小的应用。这样做的好处有很多。比如，这样有利于团队组织架构的拆分，毕竟团队越大协作的难度越大；再比如，每个应用都可以独立运维，独立扩容，独立上线，各个应用之间互不影响。不用像原来那样，一个小功能上线，整个大应用都要重新发布。</p>
-<p>不过，有利就有弊。大应用拆分成微服务之后，服务之间的调用关系变得更复杂，平台的整体复杂熵升高，出错的概率、debug 问题的难度都高了好几个数量级。所以，为了解决这些问题，<strong>服务治理</strong>便成了微服务的一个技术重点。</p>
-<p>所谓服务治理，简单点讲，就是管理微服务，保证平台整体正常、平稳地运行。服务治理涉及的内容比较多，比如鉴权、限流、降级、熔断、监控告警等等。这些服务治理功能的实现，底层依赖大量的数据结构和算法。今天，就拿其中的鉴权和限流这两个功能，看看它们的实现过程中都要用到哪些数据结构和算法。</p>
+			<p>Author: haoransun<br>WeChat: SHR—97</p>
+<h2 id="0-写在前面——如何处理使用opencv-imshow造成的内核崩溃"><a href="#0-写在前面——如何处理使用opencv-imshow造成的内核崩溃" class="headerlink" title="0 写在前面——如何处理使用opencv.imshow造成的内核崩溃?"></a>0 写在前面——如何处理使用opencv.imshow造成的内核崩溃?</h2><p>当在Notebook中使用opencv.imshow后，会造成Notebook崩溃。</p>
+<p><strong>opencv的cv2.imshow在jupyter这样的client/server环境下存在问题。 而matplotlib不存在这个问题</strong>。</p>
+<p>参考如下示例进行图片显示。注意opencv加载的是BGR格式， 而matplotlib显示的是RGB格式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from matplotlib import pyplot as plt</span><br><span class="line">import cv2</span><br><span class="line">img &#x3D; cv2.imread(&#39;图片路径&#39;)</span><br><span class="line">plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))</span><br><span class="line">plt.title(&#39;my picture&#39;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 	
 	
     </div>
@@ -771,28 +616,21 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/09/51-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E5%9B%9B%EF%BC%89-%E5%89%96%E6%9E%90%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E9%99%90%E6%B5%81%E8%83%8C%E5%90%8E%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/04/18/1-%E5%9B%BE%E5%83%8F%E7%9A%84%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/">展开全文 >></a>
         </p>
       
 
@@ -826,22 +664,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-50-算法实战（三）-剖析高性能队列Disruptor背后的数据结构和算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-0-OpenCV简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/06/50-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89-%E5%89%96%E6%9E%90%E9%AB%98%E6%80%A7%E8%83%BD%E9%98%9F%E5%88%97Disruptor%E8%83%8C%E5%90%8E%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">50-算法实战（三）_剖析高性能队列Disruptor背后的数据结构和算法</a>
+      <a class="article-title" href="/2022/04/15/0-OpenCV%E7%AE%80%E4%BB%8B/">0-OpenCV简介</a>
     </h1>
   
 
         
         
 
-<a href="/2019/09/06/50-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89-%E5%89%96%E6%9E%90%E9%AB%98%E6%80%A7%E8%83%BD%E9%98%9F%E5%88%97Disruptor%E8%83%8C%E5%90%8E%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2019-09-06T13:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-06</time>
+<a href="/2022/04/15/0-OpenCV%E7%AE%80%E4%BB%8B/" class="archive-article-date">
+  	<time datetime="2022-04-15T08:30:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-15</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -852,7 +690,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.3k字</span>
+        <span class="post-count">2.4k字</span>
       </span>
     </span>
 
@@ -861,7 +699,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">12分</span>
+        <span class="post-count">8分</span>
       </span>
     </span>
 </div>
@@ -878,12 +716,10 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><a href="https://github.com/LMAX-Exchange/disruptor" target="_blank" rel="noopener">Disruptor源码</a>。</p>
-<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Disruptor 你是否听说过呢？它是一种内存消息队列。从功能上讲，它其实有点儿类似 Kafka。不过，和 Kafka 不同的是，Disruptor 是线程之间用于消息传递的队列。它在 Apache Storm、Camel、Log4j 2 等很多知名项目中都有广泛应用。</p>
-<p>之所以如此受青睐，主要还是因为它的性能表现非常优秀。它比 Java 中另外一个非常常用的内存消息队列 ArrayBlockingQueue（ABS）的性能，要高一个数量级，可以算得上是最快的内存消息队列了。它还因此获得过 Oracle 官方的 Duke 大奖。</p>
-<p>如此高性能的内存消息队列，在设计和实现上，必然有它独到的地方。今天，我们就来一块儿看下，<font color="red">Disruptor 是如何做到如此高性能的？其底层依赖了哪些数据结构和算法？</font></p>
+			<p>Author: haoransun<br>WeChat: SHR—97</p>
+<h2 id="1-图像的起源"><a href="#1-图像的起源" class="headerlink" title="1 图像的起源"></a>1 图像的起源</h2><h3 id="1-1-图像是什么"><a href="#1-1-图像是什么" class="headerlink" title="1.1 图像是什么"></a>1.1 图像是什么</h3><blockquote>
+<p>图像是人类视觉的基础，是自然景物的客观反映，是人类认识世界和人类本身的重要源泉。“图”是物体反射或透射光的分布，“像“是人的视觉系统所接受的图在人脑中所形版的印象或认识，照片、绘画、剪贴画、地图、书法作品、手写汉学、传真、卫星云图、影视画面、X光片、脑电图、心电图等都是图像。—姚敏. 数字图像处理：机械工业出版社，2014年。</p>
+</blockquote>
 	
 	
     </div>
@@ -897,28 +733,21 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/06/50-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%89%EF%BC%89-%E5%89%96%E6%9E%90%E9%AB%98%E6%80%A7%E8%83%BD%E9%98%9F%E5%88%97Disruptor%E8%83%8C%E5%90%8E%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/04/15/0-OpenCV%E7%AE%80%E4%BB%8B/">展开全文 >></a>
         </p>
       
 
@@ -952,22 +781,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-49-算法实战（二）-剖析搜索引擎背后的经典数据结构和算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-Ubuntu18-04下安装OpenCV3-4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/02/49-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89-%E5%89%96%E6%9E%90%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E8%83%8C%E5%90%8E%E7%9A%84%E7%BB%8F%E5%85%B8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">49-算法实战（二）_剖析搜索引擎背后的经典数据结构和算法</a>
+      <a class="article-title" href="/2022/04/01/Ubuntu18-04%E4%B8%8B%E5%AE%89%E8%A3%85OpenCV3-4/">Ubuntu18.04下安装OpenCV3.4</a>
     </h1>
   
 
         
         
 
-<a href="/2019/09/02/49-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89-%E5%89%96%E6%9E%90%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E8%83%8C%E5%90%8E%E7%9A%84%E7%BB%8F%E5%85%B8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2019-09-02T12:18:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
+<a href="/2022/04/01/Ubuntu18-04%E4%B8%8B%E5%AE%89%E8%A3%85OpenCV3-4/" class="archive-article-date">
+  	<time datetime="2022-04-01T05:30:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-01</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -978,7 +807,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">5.8k字</span>
+        <span class="post-count">867字</span>
       </span>
     </span>
 
@@ -987,7 +816,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">19分</span>
+        <span class="post-count">3分</span>
       </span>
     </span>
 </div>
@@ -1004,12 +833,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p>Author: haoransun<br>Wechat: SHR—97</p>
-<p><a href="https://github.com/kkzfl22/searchEngine" target="_blank" rel="noopener">搜索引擎微代码-java实现</a></p>
-<p><font color="red">学习来源：极客时间-算法之美，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>像百度、Google 这样的搜索引擎，在我们平时的工作、生活中，几乎天天都会用到。如果我们把搜索引擎也当作一个互联网产品的话，那它跟社交、电商这些类型的产品相比，有一个非常大的区别，那就是，它是一个技术驱动的产品。所谓技术驱动是指，搜索引擎实现起来，技术难度非常大，技术的好坏直接决定了这个产品的核心竞争力。</p>
-<p>在搜索引擎的设计与实现中，会用到大量的算法。有很多针对特定问题的算法，也有很多我们之前讲到的基础算法。所以，百度、Google 这样的搜索引擎公司，在面试的时候，会格外重视考察候选人的算法能力。</p>
-<p><font color="red">今天借助搜索引擎，这样一个非常有技术含量的产品，来给你展示一下，数据结构和算法是如何应用在其中的。</font></p>
+			<p>Author: haoransun<br>WeChat: SHR—97</p>
+<h2 id="查看pip支持的whl版本"><a href="#查看pip支持的whl版本" class="headerlink" title="查看pip支持的whl版本"></a>查看pip支持的whl版本</h2><p>pip has no attribute pep425tags 的解决</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 适合pip 20.0.2以上的方法</span><br><span class="line">python -m pip debug --verbose</span><br><span class="line"></span><br><span class="line"># 低版本貌似可以用 pep425tags解决，自行百度</span><br></pre></td></tr></table></figure>
 	
 	
     </div>
@@ -1023,28 +849,21 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/02/49-%E7%AE%97%E6%B3%95%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89-%E5%89%96%E6%9E%90%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E8%83%8C%E5%90%8E%E7%9A%84%E7%BB%8F%E5%85%B8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/04/01/Ubuntu18-04%E4%B8%8B%E5%AE%89%E8%A3%85OpenCV3-4/">展开全文 >></a>
         </p>
       
 
@@ -1078,22 +897,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-27-主库出问题了-从库怎么办" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-后-R-CNN时代，-Faster-R-CNN、SSD、YOLO-各类变体统治下的目标检测综述：Faster-R-CNN系列胜了吗？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/29/27-%E4%B8%BB%E5%BA%93%E5%87%BA%E9%97%AE%E9%A2%98%E4%BA%86-%E4%BB%8E%E5%BA%93%E6%80%8E%E4%B9%88%E5%8A%9E/">27-主库出问题了_从库怎么办</a>
+      <a class="article-title" href="/2022/03/28/%E5%90%8E-R-CNN%E6%97%B6%E4%BB%A3%EF%BC%8C-Faster-R-CNN%E3%80%81SSD%E3%80%81YOLO-%E5%90%84%E7%B1%BB%E5%8F%98%E4%BD%93%E7%BB%9F%E6%B2%BB%E4%B8%8B%E7%9A%84%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B0%EF%BC%9AFaster-R-CNN%E7%B3%BB%E5%88%97%E8%83%9C%E4%BA%86%E5%90%97%EF%BC%9F/">后 R-CNN时代， Faster R-CNN、SSD、YOLO 各类变体统治下的目标检测综述：Faster R-CNN系列胜了吗？</a>
     </h1>
   
 
         
         
 
-<a href="/2019/08/29/27-%E4%B8%BB%E5%BA%93%E5%87%BA%E9%97%AE%E9%A2%98%E4%BA%86-%E4%BB%8E%E5%BA%93%E6%80%8E%E4%B9%88%E5%8A%9E/" class="archive-article-date">
-  	<time datetime="2019-08-29T12:25:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-29</time>
+<a href="/2022/03/28/%E5%90%8E-R-CNN%E6%97%B6%E4%BB%A3%EF%BC%8C-Faster-R-CNN%E3%80%81SSD%E3%80%81YOLO-%E5%90%84%E7%B1%BB%E5%8F%98%E4%BD%93%E7%BB%9F%E6%B2%BB%E4%B8%8B%E7%9A%84%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B0%EF%BC%9AFaster-R-CNN%E7%B3%BB%E5%88%97%E8%83%9C%E4%BA%86%E5%90%97%EF%BC%9F/" class="archive-article-date">
+  	<time datetime="2022-03-28T08:30:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-28</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1104,7 +923,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.6k字</span>
+        <span class="post-count">5k字</span>
       </span>
     </span>
 
@@ -1113,7 +932,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">16分</span>
+        <span class="post-count">18分</span>
       </span>
     </span>
 </div>
@@ -1130,12 +949,10 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在前面的 <strong>第24、25和26篇</strong> 文章中，介绍了MySQL主备复制的基础结构，但这些都是一主一备的结构。</p>
-<p>大多数的互联网应用场景都是读多写少，因此你负责的业务，在发展过程中很可能先会遇到读性能的问题。而在数据库层解决读性能问题，就要涉及到接下来两篇文章要讨论的架构：<strong>一主多从</strong>。</p>
-<p>今天这篇文章，我们就先聊聊一主多从的切换正确性。然后，我们在下一篇文章中再聊聊解决一主多从的查询逻辑正确性的方法。</p>
-<p>如图1所示，就是一个基本的一主多从结构。</p>
-<p><img src="/2019/08/29/27-%E4%B8%BB%E5%BA%93%E5%87%BA%E9%97%AE%E9%A2%98%E4%BA%86-%E4%BB%8E%E5%BA%93%E6%80%8E%E4%B9%88%E5%8A%9E/fc5d2816-e4c5-4d11-a070-5bb0965781f9.jpg" alt></p>
+			<p><a href="https://zhuanlan.zhihu.com/p/38709522" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/38709522</a><br><a href="https://zhuanlan.zhihu.com/p/52499758" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/52499758</a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>深度学习助力目标检测达到了一个前所未有的高峰。自 2014 年以来，目标检测框架分为two-stage 和 one-stage 两大类，前者以经典方法 Faster R-CNN 为代表，后者以 YOLO 和 SSD 为主要框架。近年来，两类最深刻的idea：<strong>更好的基础网络 &amp; 融合不同卷积层的特征</strong>叠加在经典方法上，产生了大量变体，本文以三类主要框架为基础，速览后Faster R-CNN 时代下的目标检测方法。</p>
+<p><strong>目录：</strong></p>
+<p>1. 简单回顾<br>2. 最深刻的两个idea<br>3. 大显神通的各类变体<br>4. PASCAL VOC &amp; COCO 数据集排名 ： Faster R-CNN 系列胜了吗？</p>
 	
 	
     </div>
@@ -1149,28 +966,21 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">目标检测</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/29/27-%E4%B8%BB%E5%BA%93%E5%87%BA%E9%97%AE%E9%A2%98%E4%BA%86-%E4%BB%8E%E5%BA%93%E6%80%8E%E4%B9%88%E5%8A%9E/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/03/28/%E5%90%8E-R-CNN%E6%97%B6%E4%BB%A3%EF%BC%8C-Faster-R-CNN%E3%80%81SSD%E3%80%81YOLO-%E5%90%84%E7%B1%BB%E5%8F%98%E4%BD%93%E7%BB%9F%E6%B2%BB%E4%B8%8B%E7%9A%84%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B0%EF%BC%9AFaster-R-CNN%E7%B3%BB%E5%88%97%E8%83%9C%E4%BA%86%E5%90%97%EF%BC%9F/">展开全文 >></a>
         </p>
       
 
@@ -1204,22 +1014,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-26-备库为什么会延迟好几个小时" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-SKLearn学习总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/28/26-%E5%A4%87%E5%BA%93%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%BB%B6%E8%BF%9F%E5%A5%BD%E5%87%A0%E4%B8%AA%E5%B0%8F%E6%97%B6/">26-备库为什么会延迟好几个小时</a>
+      <a class="article-title" href="/2022/03/20/SKLearn%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">SKLearn学习总结</a>
     </h1>
   
 
         
         
 
-<a href="/2019/08/28/26-%E5%A4%87%E5%BA%93%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%BB%B6%E8%BF%9F%E5%A5%BD%E5%87%A0%E4%B8%AA%E5%B0%8F%E6%97%B6/" class="archive-article-date">
-  	<time datetime="2019-08-28T12:35:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-28</time>
+<a href="/2022/03/20/SKLearn%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" class="archive-article-date">
+  	<time datetime="2022-03-20T08:30:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-20</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1230,7 +1040,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">5.8k字</span>
+        <span class="post-count">12.8k字</span>
       </span>
     </span>
 
@@ -1239,7 +1049,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">20分</span>
+        <span class="post-count">49分</span>
       </span>
     </span>
 </div>
@@ -1256,11 +1066,10 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在上一篇文章中，我和你介绍了几种可能导致备库延迟的原因。你会发现，这些场景里，不论是偶发性的查询压力，还是备份，对备库延迟的影响一般是分钟级的，而且在备库恢复正常以后都能够追上来。</p>
-<p>但是，如果备库执行日志的速度持续低于主库生成日志的速度，那这个延迟就有可能成了小时级别。而且对于一个压力持续比较高的主库来说，备库很可能永远都追不上主库的节奏。</p>
-<p>这就涉及到今天我要给你介绍的话题：备库并行复制能力。</p>
-<p>为了便于你理解，我们再一起看一下第24篇文章《MySQL是怎么保证主备一致的？》的主备流程图。</p>
+			<p>Author: haoransun<br>WeChat: SHR—97</p>
+<p>Sklearn地址：<a href="https://scikit-learn.org/stable/" target="_blank" rel="noopener">https://scikit-learn.org/stable/</a></p>
+<h2 id="0-引言"><a href="#0-引言" class="headerlink" title="0-引言"></a>0-引言</h2><p><a href="https://scikit-learn.org/stable/" target="_blank" rel="noopener">Sklearn</a> (全称 Scikit-Learn) 是基于 Python 语言的机器学习工具。它建立在 NumPy, SciPy, Pandas 和 Matplotlib 之上，里面的 API 的设计非常好，所有对象的接口简单，很适合新手上路。</p>
+<p>在 Sklearn 里面有六大任务模块：分别是分类、回归、聚类、降维、模型选择和预处理，如下图从其官网的截屏。</p>
 	
 	
     </div>
@@ -1274,28 +1083,21 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">SkLearn</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/28/26-%E5%A4%87%E5%BA%93%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%BB%B6%E8%BF%9F%E5%A5%BD%E5%87%A0%E4%B8%AA%E5%B0%8F%E6%97%B6/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/03/20/SKLearn%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">展开全文 >></a>
         </p>
       
 
@@ -1329,22 +1131,22 @@
 
   
     <meta charset="utf-8">
-<article id="post-25-MySQL是怎么保证高可用的" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-详细了解PyCharm支持的4种Python-Interpreter和配置方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/27/25-MySQL%E6%98%AF%E6%80%8E%E4%B9%88%E4%BF%9D%E8%AF%81%E9%AB%98%E5%8F%AF%E7%94%A8%E7%9A%84/">25-MySQL是怎么保证高可用的</a>
+      <a class="article-title" href="/2022/03/02/%E8%AF%A6%E7%BB%86%E4%BA%86%E8%A7%A3PyCharm%E6%94%AF%E6%8C%81%E7%9A%844%E7%A7%8DPython-Interpreter%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95/">详细了解PyCharm支持的4种Python Interpreter和配置方法</a>
     </h1>
   
 
         
         
 
-<a href="/2019/08/27/25-MySQL%E6%98%AF%E6%80%8E%E4%B9%88%E4%BF%9D%E8%AF%81%E9%AB%98%E5%8F%AF%E7%94%A8%E7%9A%84/" class="archive-article-date">
-  	<time datetime="2019-08-27T12:22:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-27</time>
+<a href="/2022/03/02/%E8%AF%A6%E7%BB%86%E4%BA%86%E8%A7%A3PyCharm%E6%94%AF%E6%8C%81%E7%9A%844%E7%A7%8DPython-Interpreter%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2022-03-02T08:30:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-02</time>
 </a>
         
 	<!-- 需要添加的位置 -->
@@ -1355,7 +1157,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.4k字</span>
+        <span class="post-count">2.6k字</span>
       </span>
     </span>
 
@@ -1364,7 +1166,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">15分</span>
+        <span class="post-count">9分</span>
       </span>
     </span>
 </div>
@@ -1381,11 +1183,13 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-			<p><font color="red">学习来源：极客时间-MySQL实战45讲，本人购买课程后依据图文讲解汇总成个人见解。</font></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在上一篇文章中，介绍了binlog的基本内容，在一个主备关系中，每个备库接收主库的binlog并执行。</p>
-<p>正常情况下，只要主库执行更新生成的所有binlog，都可以传到备库并被正确地执行，备库就能达到跟主库一致的状态，这就是最终一致性。</p>
-<p>但是，MySQL要提供高可用能力，只有最终一致性是不够的。为什么这么说呢？今天我就着重和你分析一下。</p>
-<p>这里，我再放一次上一篇文章中讲到的双M结构的主备切换流程图。</p>
+			<p>Author: haoransun<br>WeChat: SHR—97</p>
+<p>初次使用Pycharm的时候，可能会对于解释器的配置有些疑问，因为PyCharm支持以下4种Python Interpreter:</p>
+<ul>
+<li>Virtualenv Environment</li>
+<li>Conda Environment</li>
+<li>System Interpreter</li>
+<li>Pipenv Environment</li></ul>
 	
 	
     </div>
@@ -1399,28 +1203,128 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Tools</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySql//" class="article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/27/25-MySQL%E6%98%AF%E6%80%8E%E4%B9%88%E4%BF%9D%E8%AF%81%E9%AB%98%E5%8F%AF%E7%94%A8%E7%9A%84/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/03/02/%E8%AF%A6%E7%BB%86%E4%BA%86%E8%A7%A3PyCharm%E6%94%AF%E6%8C%81%E7%9A%844%E7%A7%8DPython-Interpreter%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <meta charset="utf-8">
+<article id="post-Pycharm远程连接" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/02/26/Pycharm%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/">Pycharm远程连接</a>
+    </h1>
+  
+
+        
+        
+
+<a href="/2022/02/26/Pycharm%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/" class="archive-article-date">
+  	<time datetime="2022-02-26T08:30:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-26</time>
+</a>
+        
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">144字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+	
+	
+      </header>
+    
+
+	<!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+			<p>Author: haoransun<br>WeChat: SHR—97</p>
+<p>Tool-Deployment-Configuration<br><img src="/2022/02/26/Pycharm%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/361605406.png" alt></p>
+	
+	
+    </div>
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Tools</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/02/26/Pycharm%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/">展开全文 >></a>
         </p>
       
 
@@ -1455,7 +1359,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/8/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/10/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/8/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/10/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1725,6 +1629,46 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">搬砖结晶</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">推荐系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">目标检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">SkLearn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">图神经网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TensorFlow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">研究生课题-AD检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">研究生成果</a>
               </li>
             
             <div class="clearfix"></div>
